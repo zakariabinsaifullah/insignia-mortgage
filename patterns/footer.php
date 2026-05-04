@@ -14,7 +14,7 @@ $logo = get_template_directory_uri() . '/assets/images/insignia-logo.svg';
 $powered_by_logo = get_template_directory_uri() . '/assets/images/nested-logo.png';
 
 ?>
-<!-- wp:kadence/rowlayout {"uniqueID":"325_716215-d0","columns":1,"colLayout":"equal","bgColor":"#000000","align":"full","firstColumnWidth":0,"secondColumnWidth":0,"thirdColumnWidth":0,"fourthColumnWidth":0,"fifthColumnWidth":0,"sixthColumnWidth":0,"inheritMaxWidth":true,"bgColorClass":"blnt-black","padding":[100,30,100,30],"mobilePadding":[70,"",70,""],"kbVersion":2} -->
+<!-- wp:kadence/rowlayout {"uniqueID":"325_716215-d0","columns":1,"colLayout":"equal","bgColor":"#000000","align":"full","firstColumnWidth":0,"secondColumnWidth":0,"thirdColumnWidth":0,"fourthColumnWidth":0,"fifthColumnWidth":0,"sixthColumnWidth":0,"inheritMaxWidth":true,"bgColorClass":"insa-black","padding":[100,30,100,30],"mobilePadding":[70,"",70,""],"kbVersion":2} -->
 <!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"325_686155-2d","kbVersion":2} -->
 <div class="wp-block-kadence-column kadence-column325_686155-2d"><div class="kt-inside-inner-col"><!-- wp:kadence/rowlayout {"uniqueID":"325_6186ce-b8","columns":3,"tabletLayout":"first-row","tabletRowGutter":"wider","mobileRowGutter":"default","customRowGutter":["",60,30],"colLayout":"center-half","align":"full","firstColumnWidth":0,"secondColumnWidth":0,"thirdColumnWidth":0,"fourthColumnWidth":0,"fifthColumnWidth":0,"sixthColumnWidth":0,"inheritMaxWidth":true,"padding":[0,0,100,0],"mobilePadding":["","",50,""],"borderStyle":[{"top":["","",""],"right":["","",""],"bottom":["rgba(255,255,255,0.15)","solid",1],"left":["","",""],"unit":"px"}],"kbVersion":2} -->
 <!-- wp:kadence/column {"borderWidth":["","","",""],"uniqueID":"325_06e62b-f3","kbVersion":2} -->
@@ -22,27 +22,27 @@ $powered_by_logo = get_template_directory_uri() . '/assets/images/nested-logo.pn
 <figure class="wp-block-kadence-image kb-image325_ebef62-ab size-large image-is-svg"><a href="/" class="kb-advanced-image-link" aria-label="Brilliant"><img src="<?php echo esc_url($logo); ?>" alt="insignia Tax &amp; Accounting Services" class="kb-img wp-image-110"/></a></figure>
 <!-- /wp:kadence/image -->
 
-<!-- wp:group {"style":{"spacing":{"blockGap":"5px","margin":{"bottom":"var:preset|spacing|blnt-20"}}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--blnt-20)"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|blnt-white"}}}},"textColor":"blnt-white"} -->
-<p class="has-blnt-white-color has-text-color has-link-color"><strong>Contact</strong></p>
+<!-- wp:group {"style":{"spacing":{"blockGap":"5px","margin":{"bottom":"var:preset|spacing|insa-20"}}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--insa-20)"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|insa-white"}}}},"textColor":"insa-white"} -->
+<p class="has-insa-white-color has-text-color has-link-color"><strong>Contact</strong></p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|blnt-white"}}},"typography":{"fontSize":"14px","textDecoration":"underline"}},"textColor":"blnt-white"} -->
-<p class="has-blnt-white-color has-text-color has-link-color" style="font-size:14px;text-decoration:underline">Glendale</p>
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|insa-white"}}},"typography":{"fontSize":"14px","textDecoration":"underline"}},"textColor":"insa-white"} -->
+<p class="has-insa-white-color has-text-color has-link-color" style="font-size:14px;text-decoration:underline">Glendale</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|blnt-white"}}},"typography":{"fontSize":"14px"}},"textColor":"blnt-white"} -->
-<p class="has-blnt-white-color has-text-color has-link-color" style="font-size:14px">900 W. Glenoaks Blvd, Unit A<br>Glendale, CA 91202</p>
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|insa-white"}}},"typography":{"fontSize":"14px"}},"textColor":"insa-white"} -->
+<p class="has-insa-white-color has-text-color has-link-color" style="font-size:14px">900 W. Glenoaks Blvd, Unit A<br>Glendale, CA 91202</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"5px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|blnt-white"}}},"typography":{"fontSize":"14px","textDecoration":"underline"}},"textColor":"blnt-white"} -->
-<p class="has-blnt-white-color has-text-color has-link-color" style="font-size:14px;text-decoration:underline">Beverly Hills</p>
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|insa-white"}}},"typography":{"fontSize":"14px","textDecoration":"underline"}},"textColor":"insa-white"} -->
+<p class="has-insa-white-color has-text-color has-link-color" style="font-size:14px;text-decoration:underline">Beverly Hills</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|blnt-white"}}},"typography":{"fontSize":"14px"}},"textColor":"blnt-white"} -->
-<p class="has-blnt-white-color has-text-color has-link-color" style="font-size:14px">9465 Wilshire Blvd., Suite 300<br>Beverly Hills, CA 90212</p>
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|insa-white"}}},"typography":{"fontSize":"14px"}},"textColor":"insa-white"} -->
+<p class="has-insa-white-color has-text-color has-link-color" style="font-size:14px">9465 Wilshire Blvd., Suite 300<br>Beverly Hills, CA 90212</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:kadence/column -->
@@ -52,7 +52,7 @@ $powered_by_logo = get_template_directory_uri() . '/assets/images/nested-logo.pn
 <!-- /wp:kadence/column -->
 
 <!-- wp:kadence/column {"id":3,"borderWidth":["","","",""],"uniqueID":"325_e0f37b-f8","justifyContent":["flex-end","flex-end","flex-start"],"verticalAlignment":"middle","verticalAlignmentTablet":"middle","verticalAlignmentMobile":"top","kbVersion":2} -->
-<div class="wp-block-kadence-column kadence-column325_e0f37b-f8"><div class="kt-inside-inner-col"><!-- wp:social-links {"iconColor":"blnt-white","iconColorValue":"#FFFFFF","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"top":"8px","left":"12px"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
+<div class="wp-block-kadence-column kadence-column325_e0f37b-f8"><div class="kt-inside-inner-col"><!-- wp:social-links {"iconColor":"insa-white","iconColorValue":"#FFFFFF","className":"is-style-logos-only","style":{"spacing":{"blockGap":{"top":"8px","left":"12px"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
 <ul class="wp-block-social-links has-icon-color is-style-logos-only"><!-- wp:social-link {"url":"#","service":"facebook"} /-->
 
 <!-- wp:social-link {"url":"#","service":"linkedin"} /-->
@@ -70,8 +70,8 @@ $powered_by_logo = get_template_directory_uri() . '/assets/images/nested-logo.pn
 <!-- /wp:kadence/column -->
 
 <!-- wp:kadence/column {"id":2,"borderWidth":["","","",""],"uniqueID":"325_2c5aa6-1e","justifyContent":["flex-end","center",""],"verticalAlignment":"middle","verticalAlignmentTablet":"middle","kbVersion":2} -->
-<div class="wp-block-kadence-column kadence-column325_2c5aa6-1e"><div class="kt-inside-inner-col"><!-- wp:group {"style":{"spacing":{"blockGap":"5px","margin":{"bottom":"var:preset|spacing|blnt-20"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
-<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--blnt-20)"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"#ffffffb3"}}},"color":{"text":"#ffffffb3"},"typography":{"fontSize":"14px"},"spacing":{"margin":{"top":"0px","bottom":"0px"}}}} -->
+<div class="wp-block-kadence-column kadence-column325_2c5aa6-1e"><div class="kt-inside-inner-col"><!-- wp:group {"style":{"spacing":{"blockGap":"5px","margin":{"bottom":"var:preset|spacing|insa-20"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center"}} -->
+<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--insa-20)"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"#ffffffb3"}}},"color":{"text":"#ffffffb3"},"typography":{"fontSize":"14px"},"spacing":{"margin":{"top":"0px","bottom":"0px"}}}} -->
 <p class="has-text-color has-link-color" style="color:#ffffffb3;margin-top:0px;margin-bottom:0px;font-size:14px">Powered by</p>
 <!-- /wp:paragraph -->
 

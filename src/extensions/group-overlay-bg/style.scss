@@ -1,4 +1,4 @@
-.blnt-overlay-bg {
+.insa-overlay-bg {
 	position: relative;
 
 	// Overlay sits behind block content via z-index layering.
@@ -8,7 +8,7 @@
 		inset: 0;
 		z-index: 0;
 		pointer-events: none;
-		background: var(--blnt-overlay-bg);
+		background: var(--insa-overlay-bg);
 	}
 
 	// Lift all direct children above the ::after overlay.

@@ -74,7 +74,7 @@ addFilter(
 );
 
 /**
- * Apply `blnt-overlay-bg` class and `--blnt-overlay-bg` CSS variable in the editor preview.
+ * Apply `insa-overlay-bg` class and `--insa-overlay-bg` CSS variable in the editor preview.
  */
 addFilter(
     'editor.BlockListBlock',
@@ -105,11 +105,11 @@ addFilter(
                 ...props.wrapperProps,
                 style: {
                     ...props.wrapperProps?.style,
-                    '--blnt-overlay-bg': bgValue
+                    '--insa-overlay-bg': bgValue
                 }
             };
 
-            const classes = [ props.className, 'blnt-overlay-bg' ]
+            const classes = [ props.className, 'insa-overlay-bg' ]
                 .filter( Boolean )
                 .join( ' ' );
 

@@ -1,10 +1,12 @@
 {
     "$schema": "https://schemas.wp.org/wp/6.9/theme.json",
     "version": 3,
-    "customTemplates": [
+    "insaTemplates": [
         {
             "name": "page-no-title",
-            "postTypes": ["page"],
+            "postTypes": [
+                "page"
+            ],
             "title": "Page No Title"
         }
     ],
@@ -18,64 +20,89 @@
                 {
                     "gradient": "linear-gradient(180deg, #6C080A 0%, #9D272D 100%)",
                     "name": "Gradient Accent",
-                    "slug": "blnt-gradient-accent"
+                    "slug": "insa-gradient-accent"
                 },
                 {
                     "gradient": "radial-gradient(164.05% 124.18% at 50% 124.18%, #000000 1.44%, #7A1E2B 10.58%, rgba(0, 0, 0, 0) 55.77%, rgba(0, 0, 0, 0) 100%)",
                     "name": "Gradient Background",
-                    "slug": "blnt-gradient-background"
+                    "slug": "insa-gradient-background"
                 },
                 {
                     "gradient": "radial-gradient(104.44% 357.81% at 6.11% 44.67%, rgba(0, 0, 0, 0.8) 45.67%, rgba(122, 30, 43, 0.8) 100%)",
                     "name": "Radial Gradient",
-                    "slug": "blnt-radial-gradient"
+                    "slug": "insa-radial-gradient"
                 },
                 {
                     "gradient": "radial-gradient(164.05% 124.18% at 50% 124.18%, #000000 1.44%, #7A1E2B 10.58%, rgba(0, 0, 0, 0) 55.77%, rgba(0, 0, 0, 0) 100%)",
                     "name": "Radial Gradient 2",
-                    "slug": "blnt-radial-gradient-2"
+                    "slug": "insa-radial-gradient-2"
                 },
                 {
                     "gradient": "linear-gradient(180deg, #9D272D 6.73%, #6C080A 54%, rgba(221, 66, 66, 0) 100%)",
                     "name": "Linear Gradient",
-                    "slug": "blnt-linear-gradient"
+                    "slug": "insa-linear-gradient"
                 },
                 {
                     "gradient": "linear-gradient(90.21deg, #191919 44.34%, #7A1E2B 99.76%)",
                     "name": "Linear Gradient 2",
-                    "slug": "blnt-linear-gradient-2"
+                    "slug": "insa-linear-gradient-2"
                 },
                 {
                     "gradient": "linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 0%, rgba(221, 66, 66, 0.20) 100%)",
                     "name": "Linear",
-                    "slug": "blnt-linear"
+                    "slug": "insa-linear"
                 }
             ],
             "palette": [
                 {
                     "color": "#FFFFFF",
                     "name": "White",
-                    "slug": "blnt-white"
+                    "slug": "insa-white"
                 },
                 {
-                    "color": "#f2f2f2",
+                    "color": "#f8f8f0",
                     "name": "Off White",
-                    "slug": "blnt-off-white"
+                    "slug": "insa-off-white"
                 },
                 {
-                    "color": "#e4e2df",
+                    "color": "#7f8081",
                     "name": "Light Gray",
-                    "slug": "blnt-light-gray"
+                    "slug": "insa-light-gray"
                 },
                 {
                     "color": "#000000",
                     "name": "Black",
-                    "slug": "blnt-black"
+                    "slug": "insa-black"
                 },
                 {
-                    "color": "#7a1e2b",
+                    "color": "#00323f",
                     "name": "Red",
-                    "slug": "blnt-red"
+                    "slug": "insa-red"
+                },
+                {
+                    "color": "#126464",
+                    "name": "Inline Highlight",
+                    "slug": "insa-inline-highlight"
+                },
+                {
+                    "color": "#05143e",
+                    "name": "Card Bg",
+                    "slug": "insa-card-bg"
+                },
+                {
+                    "color": "#000104",
+                    "name": "Body Color",
+                    "slug": "insa-body-color"
+                },
+                {
+                    "color": "#9dc767",
+                    "name": "Olive",
+                    "slug": "insa-olive"
+                },
+                {
+                    "color": "#002832",
+                    "name": "Cyprus Dark",
+                    "slug": "insa-cyprus-dark"
                 }
             ]
         },
@@ -89,176 +116,152 @@
                 {
                     "name": "Tiny",
                     "size": "10px",
-                    "slug": "blnt-10"
+                    "slug": "insa-10"
                 },
                 {
                     "name": "X-Small",
                     "size": "20px",
-                    "slug": "blnt-20"
+                    "slug": "insa-20"
                 },
                 {
                     "name": "Small",
                     "size": "30px",
-                    "slug": "blnt-30"
+                    "slug": "insa-30"
                 },
                 {
                     "name": "Regular",
                     "size": "clamp(30px, 5vw, 50px)",
-                    "slug": "blnt-50"
+                    "slug": "insa-50"
                 },
                 {
                     "name": "Large",
                     "size": "clamp(30px, 7vw, 70px)",
-                    "slug": "blnt-60"
+                    "slug": "insa-60"
                 },
                 {
                     "name": "X-Large",
                     "size": "clamp(70px, 7vw, 100px)",
-                    "slug": "blnt-100"
+                    "slug": "insa-100"
                 },
                 {
                     "name": "XX-Large",
                     "size": "clamp(70px, 10vw, 140px)",
-                    "slug": "blnt-140"
+                    "slug": "insa-140"
                 }
             ],
-            "units": ["%", "px", "em", "rem", "vh", "vw"]
+            "units": [
+                "%",
+                "px",
+                "em",
+                "rem",
+                "vh",
+                "vw"
+            ]
         },
         "typography": {
             "defaultFontSizes": false,
             "fluid": true,
             "fontFamilies": [
                 {
-                    "name": "Inter",
-                    "slug": "inter",
-                    "fontFamily": "Inter, sans-serif",
+                    "name": "Plus Jakarta Sans",
+                    "slug": "plus-jakarta-sans",
+                    "fontFamily": "\"Plus Jakarta Sans\", sans-serif",
                     "fontFace": [
                         {
-                            "src": ["file:./assets/fonts/inter/inter-300-normal.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-200-normal.woff2"
+                            ],
+                            "fontWeight": "200",
+                            "fontStyle": "normal",
+                            "fontFamily": "\"Plus Jakarta Sans\""
+                        },
+                        {
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-300-normal.woff2"
+                            ],
                             "fontWeight": "300",
                             "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-400-normal.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-400-normal.woff2"
+                            ],
                             "fontWeight": "400",
                             "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-500-normal.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-500-normal.woff2"
+                            ],
                             "fontWeight": "500",
                             "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-600-normal.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-600-normal.woff2"
+                            ],
                             "fontWeight": "600",
                             "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-700-normal.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-700-normal.woff2"
+                            ],
                             "fontWeight": "700",
                             "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-800-normal.woff2"],
-                            "fontWeight": "800",
-                            "fontStyle": "normal",
-                            "fontFamily": "Inter"
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-200-italic.woff2"
+                            ],
+                            "fontWeight": "200",
+                            "fontStyle": "italic",
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-300-italic.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-300-italic.woff2"
+                            ],
                             "fontWeight": "300",
                             "fontStyle": "italic",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-400-italic.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-400-italic.woff2"
+                            ],
                             "fontWeight": "400",
                             "fontStyle": "italic",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-500-italic.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-500-italic.woff2"
+                            ],
                             "fontWeight": "500",
                             "fontStyle": "italic",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-600-italic.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-600-italic.woff2"
+                            ],
                             "fontWeight": "600",
                             "fontStyle": "italic",
-                            "fontFamily": "Inter"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         },
                         {
-                            "src": ["file:./assets/fonts/inter/inter-700-italic.woff2"],
+                            "src": [
+                                "file:./assets/fonts/plus-jakarta-sans/plus-jakarta-sans-700-italic.woff2"
+                            ],
                             "fontWeight": "700",
                             "fontStyle": "italic",
-                            "fontFamily": "Inter"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/inter/inter-800-italic.woff2"],
-                            "fontWeight": "800",
-                            "fontStyle": "italic",
-                            "fontFamily": "Inter"
-                        }
-                    ]
-                },
-                {
-                    "name": "Baskervville",
-                    "slug": "baskervville",
-                    "fontFamily": "Baskervville, serif",
-                    "fontFace": [
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-400-normal.woff2"],
-                            "fontWeight": "400",
-                            "fontStyle": "normal",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-500-normal.woff2"],
-                            "fontWeight": "500",
-                            "fontStyle": "normal",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-600-normal.woff2"],
-                            "fontWeight": "600",
-                            "fontStyle": "normal",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-700-normal.woff2"],
-                            "fontWeight": "700",
-                            "fontStyle": "normal",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-400-italic.woff2"],
-                            "fontWeight": "400",
-                            "fontStyle": "italic",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-500-italic.woff2"],
-                            "fontWeight": "500",
-                            "fontStyle": "italic",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-600-italic.woff2"],
-                            "fontWeight": "600",
-                            "fontStyle": "italic",
-                            "fontFamily": "Baskervville"
-                        },
-                        {
-                            "src": ["file:./assets/fonts/baskervville/baskervville-700-italic.woff2"],
-                            "fontWeight": "700",
-                            "fontStyle": "italic",
-                            "fontFamily": "Baskervville"
+                            "fontFamily": "\"Plus Jakarta Sans\""
                         }
                     ]
                 }
@@ -268,43 +271,43 @@
                     "fluid": false,
                     "name": "Tiny",
                     "size": "0.75rem",
-                    "slug": "blnt-tiny"
+                    "slug": "insa-tiny"
                 },
                 {
                     "fluid": false,
                     "name": "Small",
-                    "size": "0.875rem",
-                    "slug": "blnt-small"
+                    "size": "0.88rem",
+                    "slug": "insa-small"
                 },
                 {
                     "fluid": false,
                     "name": "Regular",
                     "size": "1rem",
-                    "slug": "blnt-regular"
+                    "slug": "insa-regular"
                 },
                 {
                     "fluid": false,
                     "name": "Medium",
                     "size": "1.125rem",
-                    "slug": "blnt-medium"
+                    "slug": "insa-medium"
                 },
                 {
                     "fluid": {
-                        "max": "1.375rem",
+                        "max": "1.5rem",
                         "min": "1.125rem"
                     },
                     "name": "Large",
                     "size": "1.375rem",
-                    "slug": "blnt-large"
+                    "slug": "insa-large"
                 },
                 {
                     "fluid": {
-                        "max": "1.75rem",
+                        "max": "2rem",
                         "min": "1.25rem"
                     },
                     "name": "X Large",
                     "size": "1.75rem",
-                    "slug": "blnt-x-large"
+                    "slug": "insa-x-large"
                 },
                 {
                     "fluid": {
@@ -313,34 +316,43 @@
                     },
                     "name": "XX Large",
                     "size": "2.15rem",
-                    "slug": "blnt-xx-large"
+                    "slug": "insa-xx-large"
                 },
                 {
                     "fluid": {
-                        "max": "2.75rem",
+                        "max": "3rem",
                         "min": "2rem"
                     },
                     "name": "XXX Large",
                     "size": "2.75rem",
-                    "slug": "blnt-xxx-large"
+                    "slug": "insa-xxx-large"
                 },
                 {
                     "fluid": {
-                        "max": "3.25rem",
-                        "min": "2.5rem"
+                        "max": "3.75rem",
+                        "min": "2.75rem"
                     },
                     "name": "XXXX Large",
                     "size": "3.25rem",
-                    "slug": "blnt-xxxx-large"
+                    "slug": "insa-xxxx-large"
                 },
                 {
                     "fluid": {
-                        "max": "4.5rem",
-                        "min": "2.75rem"
+                        "max": "4.1rem",
+                        "min": "3rem"
                     },
                     "name": "Huge",
                     "size": "4.5rem",
-                    "slug": "blnt-huge"
+                    "slug": "insa-huge"
+                },
+                {
+                    "fluid": {
+                        "max": "127px",
+                        "min": "72px"
+                    },
+                    "name": "Super Title",
+                    "size": "127px",
+                    "slug": "insa-super-title"
                 }
             ],
             "writingMode": true
@@ -356,7 +368,7 @@
             },
             "core/button": {
                 "variations": {
-                    "link": {
+                    "arrow-link": {
                         "border": {
                             "color": "transparent",
                             "radius": "0",
@@ -364,9 +376,9 @@
                         },
                         "color": {
                             "background": "transparent",
-                            "text": "var(--wp--preset--color--blnt-red)"
+                            "text": "var(--wp--preset--color--insa-black)"
                         },
-                        "css": "&::after { content: ''; display: inline-block; width: 7px; height: 7px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); margin-left: 10px; vertical-align: middle; position: relative; top: -1px; } &:hover { background: transparent; color: var(--wp--preset--color--blnt-black); text-decoration: none; border-color: transparent; }",
+                        "css": "&::after { content: ''; display: inline-block; width: 16px; height: 16px; margin-left: 10px; vertical-align: middle; background-color: currentColor; -webkit-mask-image: url(\"data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.145.5c.07 0 .132.017.194.06L8.4.614l6.949 6.949a.4.4 0 0 1 .09.125.3.3 0 0 1 .024.125.3.3 0 0 1-.023.122.4.4 0 0 1-.091.126l-6.954 6.948c-.092.09-.17.116-.253.116-.081 0-.153-.025-.237-.11L7.9 15.01l-.051-.06a.3.3 0 0 1-.057-.183c0-.065.015-.123.057-.182l.051-.06 6.362-6.362H.852c-.123 0-.195-.035-.255-.096H.596C.535 8.006.5 7.933.5 7.811s.035-.195.096-.256a.33.33 0 0 1 .256-.096h13.41L7.906 1.104a.35.35 0 0 1-.105-.185L7.795.852A.32.32 0 0 1 7.9.607h.001A.31.31 0 0 1 8.145.5Z' fill='%23000' stroke='%23000'/%3E%3C/svg%3E\"); mask-image: url(\"data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.145.5c.07 0 .132.017.194.06L8.4.614l6.949 6.949a.4.4 0 0 1 .09.125.3.3 0 0 1 .024.125.3.3 0 0 1-.023.122.4.4 0 0 1-.091.126l-6.954 6.948c-.092.09-.17.116-.253.116-.081 0-.153-.025-.237-.11L7.9 15.01l-.051-.06a.3.3 0 0 1-.057-.183c0-.065.015-.123.057-.182l.051-.06 6.362-6.362H.852c-.123 0-.195-.035-.255-.096H.596C.535 8.006.5 7.933.5 7.811s.035-.195.096-.256a.33.33 0 0 1 .256-.096h13.41L7.906 1.104a.35.35 0 0 1-.105-.185L7.795.852A.32.32 0 0 1 7.9.607h.001A.31.31 0 0 1 8.145.5Z' fill='%23000' stroke='%23000'/%3E%3C/svg%3E\"); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; position: relative; top: -1px; transition: transform 0.2s ease; } &:hover { background: transparent; color: var(--wp--preset--color--insa-red); text-decoration: none; border-color: transparent; }",
                         "spacing": {
                             "padding": {
                                 "bottom": "0",
@@ -376,7 +388,7 @@
                             }
                         }
                     },
-                    "arrow-link": {
+                    "link": {
                         "border": {
                             "color": "transparent",
                             "radius": "0",
@@ -384,9 +396,9 @@
                         },
                         "color": {
                             "background": "transparent",
-                            "text": "var(--wp--preset--color--blnt-black)"
+                            "text": "var(--wp--preset--color--insa-red)"
                         },
-                        "css": "&::after { content: ''; display: inline-block; width: 16px; height: 16px; margin-left: 10px; vertical-align: middle; background-color: currentColor; -webkit-mask-image: url(\"data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.145.5c.07 0 .132.017.194.06L8.4.614l6.949 6.949a.4.4 0 0 1 .09.125.3.3 0 0 1 .024.125.3.3 0 0 1-.023.122.4.4 0 0 1-.091.126l-6.954 6.948c-.092.09-.17.116-.253.116-.081 0-.153-.025-.237-.11L7.9 15.01l-.051-.06a.3.3 0 0 1-.057-.183c0-.065.015-.123.057-.182l.051-.06 6.362-6.362H.852c-.123 0-.195-.035-.255-.096H.596C.535 8.006.5 7.933.5 7.811s.035-.195.096-.256a.33.33 0 0 1 .256-.096h13.41L7.906 1.104a.35.35 0 0 1-.105-.185L7.795.852A.32.32 0 0 1 7.9.607h.001A.31.31 0 0 1 8.145.5Z' fill='%23000' stroke='%23000'/%3E%3C/svg%3E\"); mask-image: url(\"data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.145.5c.07 0 .132.017.194.06L8.4.614l6.949 6.949a.4.4 0 0 1 .09.125.3.3 0 0 1 .024.125.3.3 0 0 1-.023.122.4.4 0 0 1-.091.126l-6.954 6.948c-.092.09-.17.116-.253.116-.081 0-.153-.025-.237-.11L7.9 15.01l-.051-.06a.3.3 0 0 1-.057-.183c0-.065.015-.123.057-.182l.051-.06 6.362-6.362H.852c-.123 0-.195-.035-.255-.096H.596C.535 8.006.5 7.933.5 7.811s.035-.195.096-.256a.33.33 0 0 1 .256-.096h13.41L7.906 1.104a.35.35 0 0 1-.105-.185L7.795.852A.32.32 0 0 1 7.9.607h.001A.31.31 0 0 1 8.145.5Z' fill='%23000' stroke='%23000'/%3E%3C/svg%3E\"); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; position: relative; top: -1px; transition: transform 0.2s ease; } &:hover { background: transparent; color: var(--wp--preset--color--blnt-red); text-decoration: none; border-color: transparent; }",
+                        "css": "&::after { content: ''; display: inline-block; width: 7px; height: 7px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); margin-left: 10px; vertical-align: middle; position: relative; top: -1px; } &:hover { background: transparent; color: var(--wp--preset--color--insa-black); text-decoration: none; border-color: transparent; }",
                         "spacing": {
                             "padding": {
                                 "bottom": "0",
@@ -398,14 +410,14 @@
                     },
                     "outline": {
                         "border": {
-                            "color": "var(--wp--preset--color--blnt-red)",
+                            "color": "var(--wp--preset--color--insa-red)",
                             "width": "1px"
                         },
                         "color": {
-                            "background": "var(--wp--preset--color--blnt-white)",
-                            "text": "var(--wp--preset--color--blnt-red)"
+                            "background": "var(--wp--preset--color--insa-white)",
+                            "text": "var(--wp--preset--color--insa-red)"
                         },
-                        "css": ".wp-block-button__link:not(.has-background):hover {background-color:var(--wp--preset--color--blnt-red);color:var(--wp--preset--color--blnt-white);}",
+                        "css": ".wp-block-button__link:not(.has-background):hover {background-color:var(--wp--preset--color--insa-red);color:var(--wp--preset--color--insa-white);}",
                         "spacing": {
                             "padding": {
                                 "bottom": "12px",
@@ -425,25 +437,25 @@
             "core/code": {
                 "color": {
                     "background": "var(--wp--preset--color--accent-5)",
-                    "text": "var(--wp--preset--color--blnt-black)"
+                    "text": "var(--wp--preset--color--insa-black)"
                 },
                 "spacing": {
                     "padding": {
-                        "bottom": "var(--wp--preset--spacing--blnt-40)",
-                        "left": "var(--wp--preset--spacing--blnt-40)",
-                        "right": "var(--wp--preset--spacing--blnt-40)",
-                        "top": "var(--wp--preset--spacing--blnt-40)"
+                        "bottom": "var(--wp--preset--spacing--insa-40)",
+                        "left": "var(--wp--preset--spacing--insa-40)",
+                        "right": "var(--wp--preset--spacing--insa-40)",
+                        "top": "var(--wp--preset--spacing--insa-40)"
                     }
                 },
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--fira-code)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)",
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)",
                     "fontWeight": "300"
                 }
             },
             "core/columns": {
                 "spacing": {
-                    "blockGap": "var(--wp--preset--spacing--blnt-50)"
+                    "blockGap": "var(--wp--preset--spacing--insa-50)"
                 }
             },
             "core/comment-author-name": {
@@ -472,83 +484,83 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)"
                 }
             },
             "core/comment-content": {
                 "spacing": {
                     "margin": {
-                        "bottom": "var(--wp--preset--spacing--blnt-30)",
-                        "top": "var(--wp--preset--spacing--blnt-30)"
+                        "bottom": "var(--wp--preset--spacing--insa-30)",
+                        "top": "var(--wp--preset--spacing--insa-30)"
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/comment-date": {
                 "color": {
-                    "text": "var(--wp--preset--color--blnt-black)"
+                    "text": "var(--wp--preset--color--insa-black)"
                 },
                 "elements": {
                     "link": {
                         "color": {
-                            "text": "var(--wp--preset--color--blnt-black)"
+                            "text": "var(--wp--preset--color--insa-black)"
                         }
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)"
                 }
             },
             "core/comment-edit-link": {
                 "elements": {
                     "link": {
                         "color": {
-                            "text": "var(--wp--preset--color--blnt-black)"
+                            "text": "var(--wp--preset--color--insa-black)"
                         }
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)"
                 }
             },
             "core/comment-reply-link": {
                 "elements": {
                     "link": {
                         "color": {
-                            "text": "var(--wp--preset--color--blnt-black)"
+                            "text": "var(--wp--preset--color--insa-black)"
                         }
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)"
                 }
             },
             "core/comments-pagination": {
                 "spacing": {
                     "margin": {
-                        "bottom": "var(--wp--preset--spacing--blnt-40)",
-                        "top": "var(--wp--preset--spacing--blnt-40)"
+                        "bottom": "var(--wp--preset--spacing--insa-40)",
+                        "top": "var(--wp--preset--spacing--insa-40)"
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/comments-pagination-next": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/comments-pagination-numbers": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/comments-pagination-previous": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/list": {
@@ -568,19 +580,19 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/post-comments-form": {
-                "css": "& textarea, input:not([type=submit]){border-radius:.25rem; border-color: var(--wp--preset--color--accent-6) !important;} & input[type=checkbox]{margin:0 .2rem 0 0 !important;} & label {font-size: var(--wp--preset--font-size--blnt-small); }",
+                "css": "& textarea, input:not([type=submit]){border-radius:.25rem; border-color: var(--wp--preset--color--accent-6) !important;} & input[type=checkbox]{margin:0 .2rem 0 0 !important;} & label {font-size: var(--wp--preset--font-size--insa-small); }",
                 "spacing": {
                     "padding": {
-                        "bottom": "var(--wp--preset--spacing--blnt-40)",
-                        "top": "var(--wp--preset--spacing--blnt-40)"
+                        "bottom": "var(--wp--preset--spacing--insa-40)",
+                        "top": "var(--wp--preset--spacing--insa-40)"
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/post-date": {
@@ -603,18 +615,18 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)"
                 }
             },
             "core/post-navigation-link": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/post-terms": {
                 "css": "& a { white-space: nowrap; }",
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)",
+                    "fontSize": "var(--wp--preset--font-size--insa-small)",
                     "fontWeight": "600"
                 }
             },
@@ -627,39 +639,39 @@
                             }
                         },
                         "typography": {
-                            "textDecoration": "none",
+                            "fontSize": "var(--wp--preset--font-size--insa-huge)",
                             "fontWeight": "400",
                             "lineHeight": "1.2",
-                            "fontSize": "var(--wp--preset--font-size--blnt-huge)"
+                            "textDecoration": "none"
                         }
                     }
                 }
             },
             "core/pullquote": {
-                "css": "& p:last-of-type {margin-bottom: var(--wp--preset--spacing--blnt-30);}",
+                "css": "& p:last-of-type {margin-bottom: var(--wp--preset--spacing--insa-30);}",
                 "elements": {
                     "cite": {
                         "typography": {
-                            "fontSize": "var(--wp--preset--font-size--blnt-small)",
+                            "fontSize": "var(--wp--preset--font-size--insa-small)",
                             "fontStyle": "normal"
                         }
                     }
                 },
                 "spacing": {
                     "padding": {
-                        "bottom": "var(--wp--preset--spacing--blnt-30)",
-                        "top": "var(--wp--preset--spacing--blnt-30)"
+                        "bottom": "var(--wp--preset--spacing--insa-30)",
+                        "top": "var(--wp--preset--spacing--insa-30)"
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-xx-large)",
+                    "fontSize": "var(--wp--preset--font-size--insa-xx-large)",
                     "fontWeight": "300",
                     "lineHeight": "1.2"
                 }
             },
             "core/query-pagination": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)",
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)",
                     "fontWeight": "500"
                 }
             },
@@ -674,27 +686,27 @@
                     "cite": {
                         "css": "& sub { font-size: 0.65em }",
                         "typography": {
-                            "fontSize": "var(--wp--preset--font-size--blnt-small)",
+                            "fontSize": "var(--wp--preset--font-size--insa-small)",
                             "fontStyle": "normal",
                             "fontWeight": "300"
                         }
                     }
                 },
                 "spacing": {
-                    "blockGap": "var(--wp--preset--spacing--blnt-30)",
+                    "blockGap": "var(--wp--preset--spacing--insa-30)",
                     "margin": {
                         "left": "0",
                         "right": "0"
                     },
                     "padding": {
-                        "bottom": "var(--wp--preset--spacing--blnt-30)",
-                        "left": "var(--wp--preset--spacing--blnt-40)",
-                        "right": "var(--wp--preset--spacing--blnt-40)",
-                        "top": "var(--wp--preset--spacing--blnt-30)"
+                        "bottom": "var(--wp--preset--spacing--insa-30)",
+                        "left": "var(--wp--preset--spacing--insa-40)",
+                        "right": "var(--wp--preset--spacing--insa-40)",
+                        "top": "var(--wp--preset--spacing--insa-30)"
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-large)",
+                    "fontSize": "var(--wp--preset--font-size--insa-large)",
                     "fontWeight": "300"
                 },
                 "variations": {
@@ -736,7 +748,7 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)",
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)",
                     "lineHeight": "1.6"
                 }
             },
@@ -757,7 +769,7 @@
             },
             "core/site-tagline": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             },
             "core/site-title": {
@@ -780,20 +792,16 @@
             },
             "core/term-description": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-medium)"
+                    "fontSize": "var(--wp--preset--font-size--insa-medium)"
                 }
             }
         },
         "color": {
-            "background": "var(--wp--preset--color--blnt-white)",
-            "text": "var(--wp--preset--color--blnt-black)"
+            "background": "var(--wp--preset--color--insa-white)",
+            "text": "var(--wp--preset--color--insa-black)"
         },
         "elements": {
             "button": {
-                "css": "transition: all 0.2s ease;",
-                "border": {
-                    "radius": "8px"
-                },
                 ":focus": {
                     "outline": {
                         "color": "var(--wp--preset--color--accent-4)",
@@ -805,14 +813,18 @@
                         "color": "transparent"
                     },
                     "color": {
-                        "background": "color-mix(in srgb, var(--wp--preset--color--blnt-black) 85%, transparent)",
-                        "text": "var(--wp--preset--color--blnt-white)"
+                        "background": "color-mix(in srgb, var(--wp--preset--color--insa-black) 85%, transparent)",
+                        "text": "var(--wp--preset--color--insa-white)"
                     }
                 },
-                "color": {
-                    "background": "var(--wp--preset--color--blnt-black)",
-                    "text": "var(--wp--preset--color--blnt-white)"
+                "border": {
+                    "radius": "8px"
                 },
+                "color": {
+                    "background": "var(--wp--preset--color--insa-black)",
+                    "text": "var(--wp--preset--color--insa-white)"
+                },
+                "css": "transition: all 0.2s ease;",
                 "spacing": {
                     "padding": {
                         "bottom": "12px",
@@ -822,67 +834,71 @@
                     }
                 },
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-regular)"
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-regular)",
+                    "fontStyle": "normal",
+                    "fontWeight": "700",
+                    "lineHeight": "1.5"
                 }
             },
             "caption": {
                 "typography": {
-                    "fontSize": "var(--wp--preset--font-size--blnt-small)",
-                    "lineHeight": "1.4"
+                    "fontSize": "var(--wp--preset--font-size--insa-small)",
+                    "lineHeight": "1.5"
                 }
             },
             "h1": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-huge)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-huge)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "lineHeight": "1.2"
                 }
             },
             "h2": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-xxxx-large)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-xxxx-large)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "lineHeight": "1.2"
                 }
             },
             "h3": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-xxx-large)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-xxx-large)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "lineHeight": "1.3"
                 }
             },
             "h4": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-xx-large)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-xx-large)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "lineHeight": "1.4"
                 }
             },
             "h5": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-x-large)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-x-large)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "letterSpacing": "0px",
                     "lineHeight": "1.4"
                 }
             },
             "h6": {
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
-                    "fontSize": "var(--wp--preset--font-size--blnt-regular)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-regular)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "letterSpacing": "0px",
                     "lineHeight": "1.5",
                     "textTransform": "none"
@@ -890,30 +906,35 @@
             },
             "heading": {
                 "color": {
-                    "text": "var(--wp--preset--color--blnt-black)"
+                    "text": "var(--wp--preset--color--insa-black)"
                 },
                 "typography": {
-                    "fontFamily": "var(--wp--preset--font-family--baskervville)",
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
                     "fontStyle": "normal",
-                    "fontWeight": "400",
+                    "fontWeight": "300",
                     "letterSpacing": "0px",
                     "lineHeight": "1.2"
                 }
             },
             "link": {
-                "css": "transition: all 0.2s ease;",
                 ":hover": {
                     "color": {
-                        "text": "var(--wp--preset--color--blnt-red)"
+                        "text": "var(--wp--preset--color--insa-red)"
                     },
                     "typography": {
                         "textDecoration": "none"
                     }
                 },
                 "color": {
-                    "text": "var(--wp--preset--color--blnt-black)"
+                    "text": "var(--wp--preset--color--insa-black)"
                 },
+                "css": "transition: all 0.2s ease;",
                 "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+                    "fontSize": "var(--wp--preset--font-size--insa-regular)",
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "lineHeight": "1.5",
                     "textDecoration": "none"
                 }
             }
@@ -922,14 +943,14 @@
             "blockGap": "1.2rem",
             "padding": {
                 "bottom": "0px",
-                "left": "0px",
-                "right": "0px",
+                "left": "15px",
+                "right": "15px",
                 "top": "0px"
             }
         },
         "typography": {
-            "fontFamily": "var(--wp--preset--font-family--inter)",
-            "fontSize": "var(--wp--preset--font-size--blnt-regular)",
+            "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
+            "fontSize": "var(--wp--preset--font-size--insa-regular)",
             "fontStyle": "normal",
             "fontWeight": "400",
             "letterSpacing": "0px",

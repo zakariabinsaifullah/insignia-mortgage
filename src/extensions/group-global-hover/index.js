@@ -94,7 +94,7 @@ addFilter(
 );
 
 /**
- * Apply `blnt-global-hover` class + CSS variables in the editor preview.
+ * Apply `insa-global-hover` class + CSS variables in the editor preview.
  */
 addFilter(
     'editor.BlockListBlock',
@@ -120,7 +120,7 @@ addFilter(
             const style = {};
 
             if (hasBg) {
-                style['--blnt-ghover-bg'] = globalHoverBgGradient
+                style['--insa-ghover-bg'] = globalHoverBgGradient
                     ? globalHoverBgGradient
                     : globalHoverBgColor
                     ? `var(--wp--preset--color--${globalHoverBgColor})`
@@ -128,7 +128,7 @@ addFilter(
             }
 
             if (hasColor) {
-                style['--blnt-ghover-color'] = globalHoverColor ? `var(--wp--preset--color--${globalHoverColor})` : customGlobalHoverColor;
+                style['--insa-ghover-color'] = globalHoverColor ? `var(--wp--preset--color--${globalHoverColor})` : customGlobalHoverColor;
             }
 
             const wrapperProps = {
@@ -139,7 +139,7 @@ addFilter(
                 }
             };
 
-            const classes = [props.className, 'blnt-global-hover'].filter(Boolean).join(' ');
+            const classes = [props.className, 'insa-global-hover'].filter(Boolean).join(' ');
 
             return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
         };

@@ -1,4 +1,4 @@
-.blnt-global-hover {
+.insa-global-hover {
 	// Container transitions (background + its own color).
 	transition: background 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 
@@ -16,14 +16,14 @@
 
 	&:hover {
 		// Covers both solid colours and gradients via a single variable.
-		background: var(--blnt-ghover-bg) !important;
+		background: var(--insa-ghover-bg) !important;
 
 		// Force colour on the wrapper itself …
-		color: var(--blnt-ghover-color) !important;
+		color: var(--insa-ghover-color) !important;
 
 		// … and every descendant element (links, headings, spans, etc.).
 		* {
-			color: var(--blnt-ghover-color) !important;
+			color: var(--insa-ghover-color) !important;
 		}
 
 		// SVG shape fills and strokes.
@@ -34,8 +34,8 @@
 		svg line,
 		svg polyline,
 		svg ellipse {
-			fill: var(--blnt-ghover-color) !important;
-			stroke: var(--blnt-ghover-color) !important;
+			fill: var(--insa-ghover-color) !important;
+			stroke: var(--insa-ghover-color) !important;
 		}
 	}
 }

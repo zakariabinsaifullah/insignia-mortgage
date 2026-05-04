@@ -46,8 +46,8 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 				'label'        => __( 'Gradient Fill', 'insignia' ),
 				'inline_style' => '
 				.wp-block-button.is-style-gradient-fill .wp-block-button__link {
-					background: var(--wp--preset--gradient--blnt-gradient-accent);
-					color: var(--wp--preset--color--blnt-white);
+					background: var(--wp--preset--gradient--insa-gradient-accent);
+					color: var(--wp--preset--color--insa-white);
 					border: none;
 				}
 				.wp-block-button.is-style-gradient-fill .wp-block-button__link:hover {
@@ -66,7 +66,7 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 				'inline_style' => '
 				.wp-block-heading.is-style-gradient-bar {
 					padding-left: 44px;
-					background-image: var(--wp--preset--gradient--blnt-linear-gradient);
+					background-image: var(--wp--preset--gradient--insa-linear-gradient);
 					background-size: 20px 100%;
 					background-position: left top;
 					background-repeat: no-repeat;
@@ -82,7 +82,7 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 				'inline_style' => '
 				.wp-block-heading.is-style-soft-bar {
 					padding-left: 44px;
-					background-image: var(--wp--preset--gradient--blnt-linear);
+					background-image: var(--wp--preset--gradient--insa-linear);
 					background-size: 20px 100%;
 					background-position: left top;
 					background-repeat: no-repeat;

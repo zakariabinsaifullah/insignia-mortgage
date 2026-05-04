@@ -342,7 +342,7 @@ add_action( 'enqueue_block_assets', 'insignia_enqueue_group_overlay_bg_frontend_
 
 if ( ! function_exists( 'insignia_render_group_overlay_bg' ) ) :
 	/**
-	 * Injects the `blnt-overlay-bg` class and `--blnt-overlay-bg` CSS custom property
+	 * Injects the `insa-overlay-bg` class and `--insa-overlay-bg` CSS custom property
 	 * into core/group blocks on the frontend when an overlay background is set.
 	 *
 	 * @param string $block_content The rendered block HTML.
@@ -377,14 +377,14 @@ if ( ! function_exists( 'insignia_render_group_overlay_bg' ) ) :
 
 		$processor = new WP_HTML_Tag_Processor( $block_content );
 		if ( $processor->next_tag() ) {
-			$processor->add_class( 'blnt-overlay-bg' );
+			$processor->add_class( 'insa-overlay-bg' );
 
 			$existing_style = $processor->get_attribute( 'style' ) ?? '';
 			$new_style      = rtrim( $existing_style, '; ' );
 			if ( $new_style ) {
 				$new_style .= ';';
 			}
-			$new_style .= '--blnt-overlay-bg:' . $bg_value;
+			$new_style .= '--insa-overlay-bg:' . $bg_value;
 			$processor->set_attribute( 'style', $new_style );
 
 			return $processor->get_updated_html();
@@ -464,7 +464,7 @@ add_action( 'enqueue_block_assets', 'insignia_enqueue_group_global_hover_fronten
 
 if ( ! function_exists( 'insignia_render_group_global_hover' ) ) :
 	/**
-	 * Injects `blnt-global-hover` class + CSS variables into core/group blocks on the
+	 * Injects `insa-global-hover` class + CSS variables into core/group blocks on the
 	 * frontend when the global hover feature is enabled.
 	 *
 	 * @param string $block_content The rendered block HTML.
@@ -509,19 +509,19 @@ if ( ! function_exists( 'insignia_render_group_global_hover' ) ) :
 			} else {
 				$bg_value = $custom_bg_color;
 			}
-			$css_vars[] = '--blnt-ghover-bg:' . $bg_value;
+			$css_vars[] = '--insa-ghover-bg:' . $bg_value;
 		}
 
 		if ( $has_color ) {
 			$color_value = $color
 				? 'var(--wp--preset--color--' . $color . ')'
 				: $custom_color;
-			$css_vars[] = '--blnt-ghover-color:' . $color_value;
+			$css_vars[] = '--insa-ghover-color:' . $color_value;
 		}
 
 		$processor = new WP_HTML_Tag_Processor( $block_content );
 		if ( $processor->next_tag() ) {
-			$processor->add_class( 'blnt-global-hover' );
+			$processor->add_class( 'insa-global-hover' );
 
 			$existing_style = $processor->get_attribute( 'style' ) ?? '';
 			$new_style      = rtrim( $existing_style, '; ' );
