@@ -1,0 +1,416 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Team Carousel Block
+// ─────────────────────────────────────────────────────────────────────────────
+
+.wp-block-insignia-team-carousel {
+    // CSS custom property defaults — overridden via blockStyle inline styles.
+    --card-bg: transparent;
+    --card-padding: 30px;
+    --card-radius: 0px;
+    --card-border-color: rgba(0, 0, 0, 0.4);
+    --card-border-width: 1px;
+    --name-color: inherit;
+    --designation-color: #000;
+    --icon-color: #7a1e2b;
+    --overlay-color: rgba(0, 0, 0, 0.35);
+
+    // ── Swiper wrapper ────────────────────────────────────────────────────────
+    position: relative; // needed for absolute-positioned nav arrows
+
+    .swiper {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .swiper-slide {
+        height: auto; // let each slide size to its content
+    }
+
+    .swiper-pagination {
+        .swiper-pagination-bullet.swiper-pagination-bullet-active {
+            background: #7a1e2b !important;
+        }
+        .swiper-pagination-bullet {
+            background: var(--pagination-color, rgba(122, 30, 43, 0.25)) !important;
+        }
+    }
+
+    // ── Empty state ───────────────────────────────────────────────────────────
+    .insignia-team-carousel__empty {
+        color: #9ca3af;
+        font-style: italic;
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Card  (identical to team-grid — only the layout wrapper changed)
+    // ─────────────────────────────────────────────────────────────────────────
+    .insignia-team-card {
+        background: var(--card-bg);
+        border-radius: var(--card-radius);
+        border: var(--card-border-width) solid var(--card-border-color);
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+            box-shadow 0.25s ease,
+            transform 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        padding: var(--card-padding);
+        box-sizing: border-box;
+        height: 100%; // fill the swiper-slide so cards in a row align
+
+        // ── Photo area ────────────────────────────────────────────────────────
+        &__image-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            background: #f3f4f6;
+
+            .insignia-team-card__image {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.4s ease;
+                border-radius: 8px;
+                overflow: hidden;
+                max-width: 100%;
+            }
+        }
+
+        &:hover .insignia-team-card__image {
+            transform: scale(1.04);
+        }
+
+        // ── Hover overlay ─────────────────────────────────────────────────────
+        &__overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--overlay-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover .insignia-team-card__overlay,
+        &:focus-visible .insignia-team-card__overlay {
+            opacity: 1;
+        }
+
+        &__overlay-icon {
+            width: 40px;
+            height: 40px;
+            color: #ffffff;
+        }
+
+        // ── Body ──────────────────────────────────────────────────────────────
+        &__body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 24px;
+        }
+
+        &__name {
+            margin: 0;
+            font-size: 22px;
+            color: var(--name-color);
+            line-height: 1.5;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        &__designation {
+            margin: 0;
+            font-size: 18px;
+            color: var(--designation-color);
+            line-height: 1.5;
+        }
+
+        // ── Contact icons ─────────────────────────────────────────────────────
+        &__contact {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+            align-items: center;
+        }
+
+        &__contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            color: var(--icon-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+            line-height: 0;
+
+            &:hover {
+                opacity: 0.7;
+            }
+
+            svg {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    // ── Navigation arrows ─────────────────────────────────────────────────────
+    .gu-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+            background 0.2s,
+            box-shadow 0.2s;
+        color: #111;
+
+        &:hover {
+            background: #f3f4f6;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .swiper-custom-prev {
+        left: -20px;
+    }
+    .swiper-custom-next {
+        right: -20px;
+    }
+
+    .swiper-button-disabled {
+        opacity: 0.35;
+        pointer-events: none;
+    }
+
+    // ── Pagination ────────────────────────────────────────────────────────────
+    .swiper-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 20px;
+        position: static; // override Swiper's absolute default
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.25);
+            opacity: 1;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &-active {
+                background: #111;
+            }
+        }
+    }
+
+    // ── Column on mobile ──────────────────────────────────────────────────────
+    &.column-on-mobile {
+        @media (max-width: 767px) {
+            .swiper-wrapper {
+                flex-direction: column !important;
+                transform: none !important;
+                gap: 30px;
+            }
+
+            .swiper-slide {
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 0 !important;
+            }
+
+            .gu-nav,
+            .swiper-custom-prev,
+            .swiper-custom-next,
+            .swiper-pagination {
+                display: none !important;
+            }
+        }
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Popup  (same markup/styles as team-grid, different prefix)
+    // ─────────────────────────────────────────────────────────────────────────
+    .insignia-team-carousel__popup {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+
+        &.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    .insignia-team-carousel__popup-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        cursor: pointer;
+    }
+
+    .insignia-team-carousel__popup-dialog {
+        position: relative;
+        z-index: 1;
+        background: #ffffff;
+        width: calc(100% - 32px);
+        max-width: 1280px;
+        max-height: calc(100dvh - 48px);
+        overflow-y: auto;
+        border-radius: 0;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        transform: translateY(12px);
+        transition: transform 0.25s ease;
+        box-sizing: border-box;
+
+        .insignia-team-carousel__popup.is-active & {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 767px) {
+            padding: 15px;
+            max-height: 90dvh;
+        }
+    }
+
+    .insignia-team-carousel__popup-close {
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #7a1e2b;
+        border-radius: 50%;
+        transition: background 0.2s;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    // ── Popup content (shared class names with team-grid popup) ───────────────
+    .insignia-team-popup__header {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        border: 1px solid #7a1e2b;
+        padding: 30px;
+        box-sizing: border-box;
+        margin-top: 30px;
+
+        @media (max-width: 767px) {
+            flex-direction: column;
+            gap: 20px;
+            padding: 15px;
+            margin-top: 50px;
+        }
+    }
+
+    .insignia-team-popup__photo {
+        flex: 0 0 250px;
+        width: 250px;
+        border-radius: 8px;
+        overflow: hidden;
+        align-self: flex-start;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        @media (max-width: 767px) {
+            flex: none;
+            width: 100%;
+        }
+    }
+
+    .insignia-team-popup__info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .insignia-team-popup__name {
+        margin: 0 0 8px;
+    }
+
+    .insignia-team-popup__meta {
+        color: #4c4c4c;
+        margin: 0;
+
+        strong {
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .insignia-team-popup__bio {
+        padding: 50px 30px 30px;
+        box-sizing: border-box;
+
+        @media (max-width: 767px) {
+            padding: 30px 15px 15px;
+        }
+    }
+
+    .insignia-team-popup__bio-content {
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ── Scroll lock (shared with team-grid) ──────────────────────────────────────
+body.insignia-popup-open {
+    overflow: hidden;
+}

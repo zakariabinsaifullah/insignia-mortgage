@@ -1,0 +1,85 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/team-grid",
+    "version": "1.0.0",
+    "title": "Team Grid",
+    "category": "insignia-blocks",
+    "icon": "groups",
+    "description": "Display team members from the Team post type in a responsive grid with a detail popup.",
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "__experimentalSkipSerialization": true,
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "resMode": {
+            "type": "string",
+            "default": "Desktop"
+        },
+        "columns": {
+            "type": "object",
+            "default": {
+                "Desktop": 2,
+                "Tablet": 2,
+                "Mobile": 1
+            }
+        },
+        "gap": {
+            "type": "string"
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "menu_order"
+        },
+        "cardBg": {
+            "type": "string"
+        },
+        "cardPadding": {
+            "type": "string"
+        },
+        "cardRadius": {
+            "type": "string"
+        },
+        "cardBorderColor": {
+            "type": "string"
+        },
+        "cardBorderWidth": {
+            "type": "string"
+        },
+        "nameColor": {
+            "type": "string"
+        },
+        "designationColor": {
+            "type": "string"
+        },
+        "iconColor": {
+            "type": "string"
+        },
+        "overlayColor": {
+            "type": "string"
+        },
+        "selectedIds": {
+            "type": "string",
+            "default": ""
+        },
+        "blockStyle": {
+            "type": "object"
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./view.js",
+    "render": "file:./render.php"
+}

@@ -1,0 +1,9 @@
+.wp-block-insignia-team-grid {
+	// Give the SSR preview breathing room while it loads.
+	.components-server-side-render__loading {
+		min-height: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}

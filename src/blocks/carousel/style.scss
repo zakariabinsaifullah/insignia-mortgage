@@ -1,0 +1,229 @@
+.wp-block-insignia-carousel {
+    border: none !important;
+    position: relative;
+
+    .swiper-slide {
+        box-sizing: border-box;
+    }
+
+    // Default "Adaptive" Equal Height behaviour
+    &:not(.fixed) {
+        .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .swiper-slide {
+            height: auto;
+        }
+    }
+
+    // Swiper slide height control
+    &.fixed {
+        .wp-block-insignia-slide {
+            height: var(--mheight);
+        }
+
+        // tablet view
+        @media (max-width: 1024px) and (min-width: 768px) {
+            .wp-block-insignia-slide {
+                height: var(--theight);
+            }
+        }
+
+        // desktop
+        @media (min-width: 1025px) {
+            .wp-block-insignia-slide {
+                height: var(--dheight);
+            }
+        }
+    }
+
+    // Slider container wrapper - flex to position arrows outside
+    .gu-slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    // Individual Arrow Overrides for Corner Positioning
+    &.nav-pos-top-left,
+    &.nav-pos-top-right,
+    &.nav-pos-bottom-left,
+    &.nav-pos-bottom-right {
+        .gu-nav {
+            top: auto;
+            transform: none;
+            left: auto !important;
+            right: auto !important;
+        }
+    }
+
+    // Top Left Grouping
+    &.nav-pos-top-left {
+        .swiper-custom-prev { top: var(--nav-gap, 15px) !important; left: var(--nav-gap, 15px) !important; }
+        .swiper-custom-next { top: var(--nav-gap, 15px) !important; left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+    }
+
+    // Top Right Grouping
+    &.nav-pos-top-right {
+        .swiper-custom-next { top: var(--nav-gap, 15px) !important; right: var(--nav-gap, 15px) !important; }
+        .swiper-custom-prev { top: var(--nav-gap, 15px) !important; right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+    }
+
+    // Bottom Left Grouping
+    &.nav-pos-bottom-left {
+        .swiper-custom-prev { bottom: var(--nav-gap, 15px) !important; left: var(--nav-gap, 15px) !important; }
+        .swiper-custom-next { bottom: var(--nav-gap, 15px) !important; left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+    }
+
+    // Bottom Right Grouping
+    &.nav-pos-bottom-right {
+        .swiper-custom-next { bottom: var(--nav-gap, 15px) !important; right: var(--nav-gap, 15px) !important; }
+        .swiper-custom-prev { bottom: var(--nav-gap, 15px) !important; right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+    }
+
+    // Adjustments for OUTSIDE corners (Places arrows above/below slider)
+    &.outside:not(.nav-pos-middle) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+        &.nav-pos-top-left, &.nav-pos-top-right {
+            .gu-nav { top: calc(-1 * (var(--nav-size, 36px) + 12px)) !important; }
+        }
+        &.nav-pos-bottom-left, &.nav-pos-bottom-right {
+            .gu-nav { bottom: calc(-1 * (var(--nav-size, 36px) + 12px)) !important; }
+        }
+
+        &.nav-pos-top-left, &.nav-pos-bottom-left {
+            .swiper-custom-prev { left: 0 !important; }
+            .swiper-custom-next { left: calc(var(--nav-size, 36px) + 5px) !important; }
+        }
+        &.nav-pos-top-right, &.nav-pos-bottom-right {
+            .swiper-custom-next { right: 0 !important; }
+            .swiper-custom-prev { right: calc(var(--nav-size, 36px) + 5px) !important; }
+        }
+    }
+
+    // Base Arrow Styles
+    .gu-nav {
+        width: var(--nav-size, 36px);
+        height: var(--nav-size, 36px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--nav-padding, 0);
+        border-width: var(--nav-border-width, 0);
+        border-style: var(--nav-border-style, solid);
+        border-color: var(--nborder-color, #2b2e83);
+        background-color: var(--nav-bg, rgba(255, 255, 255, 0.9));
+        border-radius: var(--nav-radius, 0px);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            font-size: var(--nicon-size, 16px);
+            color: var(--nav-color, #2b2e83);
+            fill: currentColor;
+
+            path, circle, rect, polygon, polyline, ellipse, line {
+                fill: currentColor;
+                stroke: currentColor;
+            }
+        }
+    }
+
+    .swiper-custom-prev {
+        left: var(--nav-gap, 8px);
+    }
+
+    .swiper-custom-next {
+        right: var(--nav-gap, 8px);
+    }
+
+    // Pagination - below slider, centered
+    .swiper-pagination {
+        align-items: center;
+        position: relative !important;
+        bottom: auto !important;
+        display: flex !important;
+        justify-content: center;
+        gap: 6px;
+        width: 100% !important;
+        margin-top: var(--pgap);
+    }
+
+    .swiper-pagination-bullet {
+        width: var(--psize, 10px);
+        height: var(--npagination-height, var(--psize, 10px));
+        min-width: var(--psize, 10px);
+        border-radius: var(--pradius, 50%);
+        background: var(--pagination-color, #2b2e83);
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        margin: 0 !important;
+
+        &.swiper-pagination-bullet-active {
+            opacity: 1;
+            width: var(--pasize, 10px);
+            height: var(--apagination-height, var(--pasize, 10px));
+            min-width: var(--pasize, 10px);
+            border-radius: var(--paradius, 50%);
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    // default outside nav arrows behavior
+    &.outside {
+        padding-left: calc(var(--nav-size, 36px) + var(--nav-gap, 8px));
+        padding-right: calc(var(--nav-size, 36px) + var(--nav-gap, 8px));
+        box-sizing: border-box;
+
+        .swiper-custom-prev {
+            left: 0;
+        }
+
+        .swiper-custom-next {
+            right: 0;
+        }
+    }
+
+    // Column on mobile behaviour
+    &.column-on-mobile {
+        @media (max-width: 767px) {
+            .swiper-wrapper {
+                flex-direction: column !important;
+                transform: none !important;
+                gap: 30px;
+            }
+
+            .swiper-slide {
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 0 !important;
+            }
+
+            .gu-nav,
+            .swiper-custom-prev,
+            .swiper-custom-next,
+            .swiper-pagination {
+                display: none !important;
+            }
+        }
+    }
+}

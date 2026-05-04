@@ -1,0 +1,114 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/team-carousel",
+    "version": "1.0.0",
+    "title": "Team Carousel",
+    "category": "insignia-blocks",
+    "icon": "groups",
+    "description": "Display team members from the Team post type in a Swiper carousel with a detail popup.",
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "__experimentalSkipSerialization": true,
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "resMode": {
+            "type": "string",
+            "default": "Desktop"
+        },
+        "columns": {
+            "type": "object",
+            "default": {
+                "Desktop": 3,
+                "Tablet": 2,
+                "Mobile": 1
+            }
+        },
+        "gaps": {
+            "type": "object",
+            "default": {
+                "Desktop": 30,
+                "Tablet": 15,
+                "Mobile": 0
+            }
+        },
+        "loop": {
+            "type": "boolean",
+            "default": true
+        },
+        "autoplay": {
+            "type": "boolean",
+            "default": false
+        },
+        "delay": {
+            "type": "number",
+            "default": 3000
+        },
+        "showArrows": {
+            "type": "boolean",
+            "default": false
+        },
+        "showPagination": {
+            "type": "boolean",
+            "default": true
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "menu_order"
+        },
+        "selectedIds": {
+            "type": "string",
+            "default": ""
+        },
+        "cardBg": {
+            "type": "string"
+        },
+        "cardPadding": {
+            "type": "string"
+        },
+        "cardRadius": {
+            "type": "string"
+        },
+        "cardBorderColor": {
+            "type": "string"
+        },
+        "cardBorderWidth": {
+            "type": "string"
+        },
+        "nameColor": {
+            "type": "string"
+        },
+        "designationColor": {
+            "type": "string"
+        },
+        "iconColor": {
+            "type": "string"
+        },
+        "overlayColor": {
+            "type": "string"
+        },
+        "columnOnMobile": {
+            "type": "boolean",
+            "default": false
+        },
+        "blockStyle": {
+            "type": "object"
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": ["file:./style-index.css", "insignia-swiper-style"],
+    "viewScript": ["file:./view.js", "insignia-swiper-script"],
+    "render": "file:./render.php"
+}

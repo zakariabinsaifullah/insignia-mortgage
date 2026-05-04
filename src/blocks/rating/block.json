@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/rating",
+    "version": "1.0.0",
+    "title": "Rating",
+    "category": "insignia-blocks",
+    "icon": "star-filled",
+    "description": "SVG-based star rating system with customizable values.",
+    "example": {},
+    "supports": {
+        "anchor": true,
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "blockStyle": {
+            "type": "object"
+        },
+        "rating": {
+            "type": "number",
+            "default": 4.5
+        },
+        "totalRating": {
+            "type": "number",
+            "default": 5
+        },
+        "enableRating": {
+            "type": "boolean",
+            "default": false
+        },
+        "nrPos": {
+            "type": "string",
+            "default": "nr_right"
+        },
+        "ratingSize": {
+            "type": "number"
+        },
+        "ratingNsize": {
+            "type": "number"
+        },
+        "ratingColor": {
+            "type": "string"
+        },
+        "nuRatColor": {
+            "type": "string"
+        },
+        "alignment": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css"
+}

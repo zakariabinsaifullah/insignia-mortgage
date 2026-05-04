@@ -1,0 +1,25 @@
+.wp-block-insignia-team-carousel {
+
+    @for $i from 1 through 6 {
+        &.columns-#{$i} {
+            .swiper-slide {
+                width: calc(100% / #{$i});
+                min-width: calc(100% / #{$i});
+            }
+        }
+    }
+
+    @for $i from 0 through 100 {
+        &.gap-#{$i} {
+            .swiper-wrapper {
+                gap: #{$i}px;
+            }
+        }
+    }
+
+	.swiper-wrapper {
+		display: flex;
+		overflow-x: scroll;
+
+	}
+}
