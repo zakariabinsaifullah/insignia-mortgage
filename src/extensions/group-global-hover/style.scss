@@ -1,6 +1,6 @@
 .insa-global-hover {
-	// Container transitions (background + its own color).
-	transition: background 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+	// Container transitions.
+	transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
 	// Pre-set transitions on every descendant so the colour change animates.
 	*,
@@ -11,12 +11,11 @@
 	svg line,
 	svg polyline,
 	svg ellipse {
-		transition: color 0.2s ease, fill 0.2s ease, stroke 0.2s ease;
+		transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), fill 0.2s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
 	&:hover {
-		// Covers both solid colours and gradients via a single variable.
-		background: var(--insa-ghover-bg) !important;
+		background-color: var(--insa-ghover-bg) !important;
 
 		// Force colour on the wrapper itself …
 		color: var(--insa-ghover-color) !important;

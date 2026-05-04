@@ -10,8 +10,6 @@ import {
 
 const HoverColorsControls = ({
     clientId,
-    attributes,
-    setAttributes,
     hoverTextColor,
     hoverBackgroundColor,
     hoverBorderColor,
@@ -19,12 +17,16 @@ const HoverColorsControls = ({
     setHoverBackgroundColor,
     setHoverBorderColor
 }) => {
-    const { hoverBackgroundGradient } = attributes;
+    const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
+    if (!colorGradientSettings.hasColorsOrGradients) {
+        return null;
+    }
 
     const colorSettings = [
         {
-            value: hoverTextColor?.color,
-            onChange: setHoverTextColor,
+            colorValue: hoverTextColor?.color,
+            onColorChange: setHoverTextColor,
             isShownByDefault: false,
             label: __('Hover Text', 'gl-layout-builder'),
             resetAllFilter: () => ({
@@ -33,34 +35,18 @@ const HoverColorsControls = ({
             })
         },
         {
-            value: hoverBackgroundColor?.color,
-            onChange: color => {
-                setHoverBackgroundColor(color);
-                // Clear gradient when a solid color is chosen.
-                if (color) {
-                    setAttributes({ hoverBackgroundGradient: undefined });
-                }
-            },
-            gradientValue: hoverBackgroundGradient || undefined,
-            onGradientChange: gradient => {
-                // Clear solid background color when a gradient is chosen.
-                setAttributes({
-                    hoverBackgroundGradient: gradient || undefined,
-                    hoverBackgroundColor: undefined,
-                    customHoverBackgroundColor: undefined
-                });
-            },
+            colorValue: hoverBackgroundColor?.color,
+            onColorChange: setHoverBackgroundColor,
             isShownByDefault: false,
             label: __('Hover Background', 'gl-layout-builder'),
             resetAllFilter: () => ({
                 hoverBackgroundColor: undefined,
-                customHoverBackgroundColor: undefined,
-                hoverBackgroundGradient: undefined
+                customHoverBackgroundColor: undefined
             })
         },
         {
-            value: hoverBorderColor?.color,
-            onChange: setHoverBorderColor,
+            colorValue: hoverBorderColor?.color,
+            onColorChange: setHoverBorderColor,
             isShownByDefault: false,
             label: __('Hover Border', 'gl-layout-builder'),
             resetAllFilter: () => ({
@@ -70,43 +56,19 @@ const HoverColorsControls = ({
         }
     ];
 
-    const colorGradientSettings = useMultipleOriginColorsAndGradients();
-
-    if (!colorGradientSettings.hasColorsOrGradients) {
-        return null;
-    }
-
     return (
         <>
-            {colorSettings.map(({ onChange, onGradientChange, label, isShownByDefault, value, gradientValue, resetAllFilter }) => {
-                const setting = {
-                    colorValue: value,
-                    onColorChange: onChange,
-                    label,
-                    resetAllFilter,
-                    isShownByDefault,
-                    enableAlpha: true,
-                    clearable: true
-                };
-
-                // Only add gradient props when the setting explicitly supports it,
-                // otherwise the GradientPicker mounts with no value and crashes on
-                // trying to read `.orientation` from a parsed undefined gradient.
-                if ( onGradientChange !== undefined ) {
-                    setting.gradientValue    = gradientValue;
-                    setting.onGradientChange = onGradientChange;
-                }
-
-                return (
-                    <ColorGradientSettingsDropdown
-                        key={`hover-color-${label}`}
-                        __experimentalIsRenderedInSidebar
-                        settings={[ setting ]}
-                        panelId={clientId}
-                        {...colorGradientSettings}
-                    />
-                );
-            })}
+            {colorSettings.map((setting) => (
+                <ColorGradientSettingsDropdown
+                    key={`hover-color-${setting.label}`}
+                    __experimentalIsRenderedInSidebar
+                    settings={[setting]}
+                    panelId={clientId}
+                    {...colorGradientSettings}
+                    gradients={[]}
+                    disableCustomGradients
+                />
+            ))}
         </>
     );
 };

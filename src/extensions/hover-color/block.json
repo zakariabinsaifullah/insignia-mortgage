@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "gutenlayouts/hover-color-extension",
+    "name": "insignia/hover-color-extension",
     "title": "Hover Color Extension",
     "editorScript": "file:./index.js",
     "style": "file:./style-index.css"

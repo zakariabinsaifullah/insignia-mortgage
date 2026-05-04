@@ -15,77 +15,31 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 
 		// ── Button block ───────────────────────────────────────────────────────
 
-		register_block_style(
-			'core/button',
-			array(
-				'name'  => 'link',
-				'label' => __( 'Link', 'insignia' ),
-			)
-		);
-
-		register_block_style(
-			'core/buttons',
-			array(
-				'name'  => 'full-width',
-				'label' => __( 'Full Width', 'insignia' ),
-			)
-		);
-
-		register_block_style(
-			'core/button',
-			array(
-				'name'  => 'arrow-link',
-				'label' => __( 'Arrow Link', 'insignia' ),
-			)
-		);
-
-		register_block_style(
-			'core/button',
-			array(
-				'name'         => 'gradient-fill',
-				'label'        => __( 'Gradient Fill', 'insignia' ),
-				'inline_style' => '
-				.wp-block-button.is-style-gradient-fill .wp-block-button__link {
-					background: var(--wp--preset--gradient--insa-gradient-accent);
-					color: var(--wp--preset--color--insa-white);
-					border: none;
-				}
-				.wp-block-button.is-style-gradient-fill .wp-block-button__link:hover {
-					opacity: 0.9;
-				}',
-			)
-		);
 
 		// ── Heading block ──────────────────────────────────────────────────────
 
 		register_block_style(
 			'core/heading',
 			array(
-				'name'         => 'gradient-bar',
-				'label'        => __( 'Gradient Bar', 'insignia' ),
+				'name'         => 'arrow',
+				'label'        => __( 'Arrow', 'insignia' ),
 				'inline_style' => '
-				.wp-block-heading.is-style-gradient-bar {
-					padding-left: 44px;
-					background-image: var(--wp--preset--gradient--insa-linear-gradient);
-					background-size: 20px 100%;
-					background-position: left top;
+				.wp-block-heading.is-style-arrow {
+					padding-top: calc(var(--arrow-size, 35px) * 0.629 + 12px);
+					position: relative;
+				}
+				.wp-block-heading.is-style-arrow::before {
+					content: "";
+					display: block;
+					background-image: url("data:image/svg+xml,%3Csvg width=\'35\' height=\'22\' viewBox=\'0 0 35 22\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M.271 8.1S0 8.23 0 8.616v3.472l17.5-8.1V0z\' fill=\'%2374af27\'/%3E%3Cpath d=\'M34.729 8.1s.271.13.271.515v3.472l-17.5-8.1V0z\' fill=\'%236a971f\'/%3E%3Cpath d=\'M.271 17.188S0 17.316 0 17.702v3.472l17.5-8.101V9.087z\' fill=\'%2374af27\'/%3E%3Cpath d=\'M34.729 17.188s.271.128.271.514v3.472l-17.5-8.1V9.086z\' fill=\'%236a971f\'/%3E%3C/svg%3E");
 					background-repeat: no-repeat;
-				}',
-			)
-		);
-
-		register_block_style(
-			'core/heading',
-			array(
-				'name'         => 'soft-bar',
-				'label'        => __( 'Soft Bar', 'insignia' ),
-				'inline_style' => '
-				.wp-block-heading.is-style-soft-bar {
-					padding-left: 44px;
-					background-image: var(--wp--preset--gradient--insa-linear);
-					background-size: 20px 100%;
-					background-position: left top;
-					background-repeat: no-repeat;
+					background-size: contain;
+					width: var(--arrow-size, 35px);
+					height: calc(var(--arrow-size, 35px) * 0.629);
+					position: absolute;
+					top: 0;
+					left: var(--arrow-align-x, 0);
+					transform: var(--arrow-align-transform, none);
 				}',
 			)
 		);

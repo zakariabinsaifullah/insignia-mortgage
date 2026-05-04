@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
-// import { RangeControl, SelectControl } from "@wordpress/components";
 import { NativeRangeControl, NativeSelectControl } from '../../../components';
 
 const HoverTransitionControls = ( { attributes, setAttributes } ) => {
@@ -11,7 +10,6 @@ const HoverTransitionControls = ( { attributes, setAttributes } ) => {
 		hoverTransitionTiming,
 		hoverTextColor,
 		hoverBackgroundColor,
-		hoverBackgroundGradient,
 		hoverBorderColor,
 		customHoverTextColor,
 		customHoverBackgroundColor,
@@ -24,7 +22,6 @@ const HoverTransitionControls = ( { attributes, setAttributes } ) => {
 		customHoverBackgroundColor ||
 		hoverTextColor ||
 		hoverBackgroundColor ||
-		hoverBackgroundGradient ||
 		hoverBorderColor;
 
 	if ( ! hasHoverColor ) {
@@ -32,6 +29,7 @@ const HoverTransitionControls = ( { attributes, setAttributes } ) => {
 	}
 
 	const timingOptions = [
+		{ label: __( "Standard", "gl-layout-builder" ), value: "cubic-bezier(0.4, 0, 0.2, 1)" },
 		{ label: __( "Ease", "gl-layout-builder" ), value: "ease" },
 		{ label: __( "Linear", "gl-layout-builder" ), value: "linear" },
 		{ label: __( "Ease In", "gl-layout-builder" ), value: "ease-in" },

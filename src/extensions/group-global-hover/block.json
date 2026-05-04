@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "gutenlayouts/group-global-hover-extension",
+    "name": "insignia/group-global-hover-extension",
     "title": "Group Global Hover Extension",
     "editorScript": "file:./index.js",
     "style": "file:./style-index.css"

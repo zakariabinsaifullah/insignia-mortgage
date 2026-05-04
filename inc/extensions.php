@@ -538,3 +538,178 @@ if ( ! function_exists( 'insignia_render_group_global_hover' ) ) :
 	}
 endif;
 add_filter( 'render_block', 'insignia_render_group_global_hover', 10, 2 );
+
+
+// =============================================================================
+// Heading – Arrow Style Extension
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_heading_arrow_editor_assets' ) ) :
+	/**
+	 * Enqueues the heading-arrow extension script in the editor.
+	 * Provides alignment + size controls when the "Arrow" block style is active.
+	 */
+	function insignia_enqueue_heading_arrow_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/heading-arrow/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-heading-arrow-extension',
+			get_theme_file_uri( 'build/extensions/heading-arrow/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_heading_arrow_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_render_heading_arrow' ) ) :
+	/**
+	 * Injects CSS custom properties for arrow size and alignment into heading blocks
+	 * on the frontend when the "Arrow" block style is active.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_heading_arrow( $block_content, $block ) {
+		if ( 'core/heading' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		$attrs      = $block['attrs'] ?? array();
+		$class_name = $attrs['className'] ?? '';
+
+		if ( false === strpos( $class_name, 'is-style-arrow' ) || empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$arrow_align = $attrs['arrowAlign'] ?? 'left';
+		$arrow_size  = isset( $attrs['arrowSize'] ) ? intval( $attrs['arrowSize'] ) : 35;
+		$is_center   = 'center' === $arrow_align;
+
+		$css_vars  = '--arrow-size:' . $arrow_size . 'px;';
+		$css_vars .= '--arrow-align-x:' . ( $is_center ? '50%' : '0' ) . ';';
+		$css_vars .= '--arrow-align-transform:' . ( $is_center ? 'translateX(-50%)' : 'none' );
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$existing_style = $processor->get_attribute( 'style' ) ?? '';
+			$new_style      = rtrim( $existing_style, '; ' );
+			if ( $new_style ) {
+				$new_style .= ';';
+			}
+			$new_style .= $css_vars;
+			$processor->set_attribute( 'style', $new_style );
+
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_heading_arrow', 10, 2 );
+
+
+// =============================================================================
+// Group – Overlay Ellipse Extension
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_group_overlay_ellipse_editor_assets' ) ) :
+	/**
+	 * Enqueues the group-overlay-ellipse extension script and editor stylesheet.
+	 */
+	function insignia_enqueue_group_overlay_ellipse_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/group-overlay-ellipse/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-group-overlay-ellipse-extension',
+			get_theme_file_uri( 'build/extensions/group-overlay-ellipse/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/group-overlay-ellipse/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-group-overlay-ellipse-extension',
+				get_theme_file_uri( 'build/extensions/group-overlay-ellipse/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_group_overlay_ellipse_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_group_overlay_ellipse_frontend_assets' ) ) :
+	/**
+	 * Enqueues the group-overlay-ellipse frontend stylesheet.
+	 */
+	function insignia_enqueue_group_overlay_ellipse_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/group-overlay-ellipse/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/group-overlay-ellipse/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-group-overlay-ellipse-extension-style',
+			get_theme_file_uri( 'build/extensions/group-overlay-ellipse/style-index.css' ),
+			array(),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_group_overlay_ellipse_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_render_group_overlay_ellipse' ) ) :
+	/**
+	 * Injects overlay ellipse classes into core/group blocks on the frontend.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_group_overlay_ellipse( $block_content, $block ) {
+		if ( 'core/group' !== $block['blockName'] || empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$attrs   = $block['attrs'] ?? array();
+		$ellipse = $attrs['overlayEllipse'] ?? 'none';
+
+		if ( 'none' === $ellipse || empty( $ellipse ) ) {
+			return $block_content;
+		}
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'has-overlay-ellipse' );
+			$processor->add_class( 'has-overlay-ellipse--' . sanitize_html_class( $ellipse ) );
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_group_overlay_ellipse', 10, 2 );

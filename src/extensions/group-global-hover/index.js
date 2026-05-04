@@ -20,7 +20,7 @@ const BLOCK_NAME = 'core/group';
 /**
  * Add global hover attributes to core/group.
  */
-addFilter('blocks.registerBlockType', 'gutenlayouts/group-global-hover-add-attributes', (settings, name) => {
+addFilter('blocks.registerBlockType', 'insignia/group-global-hover-add-attributes', (settings, name) => {
     if (name !== BLOCK_NAME) {
         return settings;
     }
@@ -39,9 +39,6 @@ addFilter('blocks.registerBlockType', 'gutenlayouts/group-global-hover-add-attri
             customGlobalHoverBgColor: {
                 type: 'string'
             },
-            globalHoverBgGradient: {
-                type: 'string'
-            },
             globalHoverColor: {
                 type: 'string'
             },
@@ -57,7 +54,7 @@ addFilter('blocks.registerBlockType', 'gutenlayouts/group-global-hover-add-attri
  */
 addFilter(
     'editor.BlockEdit',
-    'gutenlayouts/group-global-hover-add-inspector-controls',
+    'insignia/group-global-hover-add-inspector-controls',
     createHigherOrderComponent(BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
@@ -98,7 +95,7 @@ addFilter(
  */
 addFilter(
     'editor.BlockListBlock',
-    'gutenlayouts/group-global-hover-add-styles',
+    'insignia/group-global-hover-add-styles',
     createHigherOrderComponent(BlockListBlock => {
         return props => {
             const { name, attributes } = props;
@@ -107,10 +104,10 @@ addFilter(
                 return <BlockListBlock {...props} />;
             }
 
-            const { globalHoverBgColor, customGlobalHoverBgColor, globalHoverBgGradient, globalHoverColor, customGlobalHoverColor } =
+            const { globalHoverBgColor, customGlobalHoverBgColor, globalHoverColor, customGlobalHoverColor } =
                 attributes;
 
-            const hasBg = globalHoverBgColor || customGlobalHoverBgColor || globalHoverBgGradient;
+            const hasBg = globalHoverBgColor || customGlobalHoverBgColor;
             const hasColor = globalHoverColor || customGlobalHoverColor;
 
             if (!hasBg && !hasColor) {
@@ -120,9 +117,7 @@ addFilter(
             const style = {};
 
             if (hasBg) {
-                style['--insa-ghover-bg'] = globalHoverBgGradient
-                    ? globalHoverBgGradient
-                    : globalHoverBgColor
+                style['--insa-ghover-bg'] = globalHoverBgColor
                     ? `var(--wp--preset--color--${globalHoverBgColor})`
                     : customGlobalHoverBgColor;
             }

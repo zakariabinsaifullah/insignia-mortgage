@@ -19,7 +19,7 @@ const BLOCK_NAME = 'core/group';
  */
 addFilter(
     'blocks.registerBlockType',
-    'gutenlayouts/group-overlay-bg-add-attributes',
+    'insignia/group-overlay-bg-add-attributes',
     ( settings, name ) => {
         if ( name !== BLOCK_NAME ) {
             return settings;
@@ -48,7 +48,7 @@ addFilter(
  */
 addFilter(
     'editor.BlockEdit',
-    'gutenlayouts/group-overlay-bg-add-inspector-controls',
+    'insignia/group-overlay-bg-add-inspector-controls',
     createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
@@ -78,7 +78,7 @@ addFilter(
  */
 addFilter(
     'editor.BlockListBlock',
-    'gutenlayouts/group-overlay-bg-add-styles',
+    'insignia/group-overlay-bg-add-styles',
     createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;

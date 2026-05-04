@@ -30,7 +30,7 @@ const hasTextColorSupport = blockTypeOrSettings => {
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/filters/block-filters/#blocks-registerblocktype
  */
-addFilter('blocks.registerBlockType', 'gutenlayouts/hover-color-add-attributes', settings => {
+addFilter('blocks.registerBlockType', 'insignia/hover-color-add-attributes', settings => {
     if (!hasTextColorSupport(settings)) {
         return settings;
     }
@@ -51,9 +51,6 @@ addFilter('blocks.registerBlockType', 'gutenlayouts/hover-color-add-attributes',
             customHoverBackgroundColor: {
                 type: 'string'
             },
-            hoverBackgroundGradient: {
-                type: 'string'
-            },
             hoverBorderColor: {
                 type: 'string'
             },
@@ -66,7 +63,7 @@ addFilter('blocks.registerBlockType', 'gutenlayouts/hover-color-add-attributes',
             },
             hoverTransitionTiming: {
                 type: 'string',
-                default: 'ease'
+                default: 'cubic-bezier(0.4, 0, 0.2, 1)'
             }
         }
     };
@@ -79,7 +76,7 @@ addFilter('blocks.registerBlockType', 'gutenlayouts/hover-color-add-attributes',
  */
 addFilter(
     'editor.BlockEdit',
-    'gutenlayouts/hover-color-add-inspector-controls',
+    'insignia/hover-color-add-inspector-controls',
     createHigherOrderComponent(BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
@@ -109,7 +106,7 @@ addFilter(
  */
 addFilter(
     'editor.BlockListBlock',
-    'gutenlayouts/hover-color-add-styles',
+    'insignia/hover-color-add-styles',
     createHigherOrderComponent(BlockListBlock => {
         return props => {
             const { name, attributes } = props;
@@ -123,7 +120,6 @@ addFilter(
                 customHoverTextColor,
                 hoverBackgroundColor,
                 customHoverBackgroundColor,
-                hoverBackgroundGradient,
                 hoverBorderColor,
                 customHoverBorderColor,
                 hoverTransitionDuration,
@@ -131,11 +127,10 @@ addFilter(
             } = attributes;
 
             const hasHoverText = hoverTextColor || customHoverTextColor;
-            const hasHoverBgColor = hoverBackgroundColor || customHoverBackgroundColor;
-            const hasHoverBgGradient = !!hoverBackgroundGradient;
+            const hasHoverBg = hoverBackgroundColor || customHoverBackgroundColor;
             const hasHoverBorder = hoverBorderColor || customHoverBorderColor;
 
-            if (!hasHoverText && !hasHoverBgColor && !hasHoverBgGradient && !hasHoverBorder) {
+            if (!hasHoverText && !hasHoverBg && !hasHoverBorder) {
                 return <BlockListBlock {...props} />;
             }
 
@@ -148,7 +143,6 @@ addFilter(
                     ...props.wrapperProps?.style,
                     '--hover-color': getColorValue(hoverTextColor, customHoverTextColor),
                     '--hover-background-color': getColorValue(hoverBackgroundColor, customHoverBackgroundColor),
-                    '--hover-background-gradient': hoverBackgroundGradient || '',
                     '--hover-border-color': getColorValue(hoverBorderColor, customHoverBorderColor),
                     '--hover-transition-duration': hoverTransitionDuration + 'ms',
                     '--hover-transition-timing': hoverTransitionTiming
@@ -158,8 +152,7 @@ addFilter(
             const classes = [
                 props.className,
                 hasHoverText ? 'has-hover__color' : '',
-                hasHoverBgColor ? 'has-hover__background-color' : '',
-                hasHoverBgGradient ? 'has-hover__background-gradient' : '',
+                hasHoverBg ? 'has-hover__background-color' : '',
                 hasHoverBorder ? 'has-hover__border-color' : ''
             ]
                 .filter(Boolean)
