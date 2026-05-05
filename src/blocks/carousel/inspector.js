@@ -166,7 +166,8 @@ const Inspector = props => {
                                 { label: __('Top Left', 'insignia'), value: 'top-left' },
                                 { label: __('Top Right', 'insignia'), value: 'top-right' },
                                 { label: __('Bottom Left', 'insignia'), value: 'bottom-left' },
-                                { label: __('Bottom Right', 'insignia'), value: 'bottom-right' }
+                                { label: __('Bottom Right', 'insignia'), value: 'bottom-right' },
+                                { label: __('Bottom Split', 'insignia'), value: 'bottom-split' }
                             ]}
                         />
                     )}

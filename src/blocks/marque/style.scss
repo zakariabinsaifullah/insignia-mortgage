@@ -1,0 +1,67 @@
+/**
+ * Front-end styles for the marquee block
+ */
+.wp-block-insignia-marque {
+    overflow: hidden;
+    position: relative;
+
+    // Apply fade mask by default
+    &.marquee-horizontal {
+        mask-image: linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%);
+    }
+
+    .marquee-container {
+        display: flex;
+
+        // Horizontal marquee
+        &.marquee-horizontal {
+            flex-direction: row;
+            width: max-content;
+
+            .marquee-content {
+                will-change: transform;
+                animation-duration: var(--animation-duration, 30s);
+                animation-name: marquee-scroll-left;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                > * {
+                    flex-shrink: 0 !important;
+                    margin: 0 !important;
+                    max-width: none !important;
+                    width: max-content !important;
+                    min-width: max-content !important;
+                }
+                
+                p,
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin: 0;
+                    white-space: nowrap !important;
+                }
+            }
+        }
+    }
+}
+
+.pause-on-hover:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+// Horizontal animations
+@keyframes marquee-scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

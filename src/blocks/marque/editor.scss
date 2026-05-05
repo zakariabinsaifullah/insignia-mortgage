@@ -1,0 +1,38 @@
+/**
+ * Editor styles for the marquee block
+ */
+
+.wp-block-insignia-marque {
+    overflow: hidden;
+    display: flex;
+
+    // Horizontal orientation
+    &.marquee-horizontal {
+        mask-image: linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0, black 15%, black 85%, transparent 100%);
+        flex-direction: row;
+
+        .gutenlayouts-marquee-items {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            width: 100% !important;
+            flex-wrap: nowrap !important;
+            overflow-x: scroll !important;
+            > * {
+                flex-shrink: 0;
+                margin: 0;
+            }
+            > p,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin: 0;
+                white-space: nowrap;
+            }
+        }
+    }
+}
