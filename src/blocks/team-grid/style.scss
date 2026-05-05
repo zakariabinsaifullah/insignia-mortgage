@@ -7,13 +7,14 @@
     --dcols: 2;
     --tcols: 2;
     --mcols: 1;
+    --image-text-gap: 10.81px;
     --gap: 50px;
     --card-bg: transparent;
     --card-padding: 30px;
-    --card-radius: 0px;
+    --card-radius: 12px;
     --card-border-color: rgba(0, 0, 0, 0.4);
     --card-border-width: 1px;
-    --name-color: inherit;
+    --name-color: #1a1a1a;
     --designation-color: #000;
     --icon-color: #7a1e2b;
     --overlay-color: rgba(0, 0, 0, 0.35);
@@ -43,118 +44,89 @@
     // Card
     // ─────────────────────────────────────────────────────────────────────────
     .insignia-team-card {
-        background: var(--card-bg);
-        border-radius: var(--card-radius);
-        border: var(--card-border-width) solid var(--card-border-color);
+        background: #ffffff;
         overflow: hidden;
         cursor: pointer;
-        transition:
-            box-shadow 0.25s ease,
-            transform 0.25s ease;
-        display: flex;
-        flex-direction: column;
-        padding: var(--card-padding);
+        padding: 0;
         box-sizing: border-box;
 
-        &:hover,
-        &:focus-visible {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-            outline: none;
-        }
+       
 
         // ── Photo area ────────────────────────────────────────────────────────
         &__image-wrap {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 1 / 1;
-            background: #f3f4f6;
+            border-radius: var(--card-radius);
 
             .insignia-team-card__image {
                 display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                transition: transform 0.4s ease;
-                border-radius: 8px;
-                overflow: hidden;
             }
         }
 
-        &:hover .insignia-team-card__image {
-            transform: scale(1.04);
-        }
-
-        // ── Hover overlay ─────────────────────────────────────────────────────
-        &__overlay {
+        // ── Info overlay wrapper (gradient fade at bottom) ────────────────────
+        &__info-overlay {
             position: absolute;
-            inset: 0;
-            background: var(--overlay-color);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        // ── White info box (name + designation + linkedin together) ────────────
+        &__info-text {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+            min-height: 81px;
+            border-radius: 12px;
+            padding: 14px 22px;
+            background: #ffffff;
+            box-sizing: border-box;
         }
 
-        &:hover .insignia-team-card__overlay,
-        &:focus-visible .insignia-team-card__overlay {
-            opacity: 1;
-        }
-
-        &__overlay-icon {
-            width: 40px;
-            height: 40px;
-            color: #ffffff;
-        }
-
-        // ── Body ──────────────────────────────────────────────────────────────
-        &__body {
-            flex: 1;
+        &__info-left {
             display: flex;
             flex-direction: column;
-            gap: 0;
-            margin-top: 24px;
+            gap: 4px;
+            flex: 1;
+            min-width: 0;
         }
 
         &__name {
-            margin: 0;
-            font-size: 22px;
-            color: var(--name-color);
+            margin: 0!important;
             font-weight: 600;
-            line-height: 1.5;
-            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 18px;
+            line-height: 160%;
+            letter-spacing: 0;
+            color: var(--name-color);
         }
 
         &__designation {
-            margin: 0;
-            font-size: 18px;
+            margin: 0!important;
+            font-size: 14px;
             color: var(--designation-color);
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
-        // ── Contact icons ─────────────────────────────────────────────────────
-        &__contact {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-            align-items: center;
-        }
-
-        &__contact-link {
+        // ── LinkedIn icon ──────────────────────────────────────────────────────
+        &__linkedin-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
             width: 20px;
             height: 20px;
             color: var(--icon-color);
             text-decoration: none;
-            transition: opacity 0.2s;
             line-height: 0;
-
-            &:hover {
-                opacity: 0.7;
-            }
 
             svg {
                 display: block;
@@ -165,172 +137,60 @@
     }
 
     // ─────────────────────────────────────────────────────────────────────────
-    // Popup
+    // Style 2 — Image top, text below
     // ─────────────────────────────────────────────────────────────────────────
-    .insignia-team-grid__popup {
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
+    .insignia-team-card--style2 {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.25s ease;
+        flex-direction: column;
+        gap: var(--image-text-gap);
+        cursor: default;
 
-        &.is-active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-    }
-
-    .insignia-team-grid__popup-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.55);
-        cursor: pointer;
-    }
-
-    .insignia-team-grid__popup-dialog {
-        position: relative;
-        z-index: 1;
-        background: #ffffff;
-        width: calc(100% - 32px);
-        max-width: 1280px;
-        max-height: calc(100dvh - 48px);
-        overflow-y: auto;
-        border-radius: 0;
-        padding: 40px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        box-sizing: border-box;
-
-        // Smooth entrance
-        transform: translateY(12px);
-        transition: transform 0.25s ease;
-
-        .insignia-team-grid__popup.is-active & {
-            transform: translateY(0);
+        .insignia-team-card__image-wrap {
+            flex-shrink: 0;
         }
 
-        @media (max-width: 767px) {
-            padding: 15px;
-            max-height: 90dvh;
-        }
-    }
-
-    // ── Close button ──────────────────────────────────────────────────────────
-    .insignia-team-grid__popup-close {
-        position: absolute;
-        top: 15px;
-        right: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        color: #7a1e2b;
-        border-radius: 50%;
-        transition: background 0.2s;
-
-        &:focus-visible {
-            outline: none;
-        }
-
-        svg {
-            width: 20px;
-            height: 20px;
-        }
-    }
-
-    // ── Popup content ─────────────────────────────────────────────────────────
-    .insignia-team-popup__header {
-        display: flex;
-        gap: 50px;
-        align-items: center;
-        border: 1px solid #7a1e2b;
-        padding: 30px;
-        box-sizing: border-box;
-        margin-top: 30px;
-
-        @media (max-width: 767px) {
+        .insignia-team-card__body {
+            display: flex;
             flex-direction: column;
-            gap: 20px;
-            padding: 15px;
-            margin-top: 50px;
-        }
-    }
-
-    .insignia-team-popup__photo {
-        flex: 0 0 250px;
-        width: 250px;
-        border-radius: 8px;
-        overflow: hidden;
-        align-self: flex-start;
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
         }
 
-        @media (max-width: 767px) {
-            flex: none;
-            width: 100%;
-        }
-    }
-
-    .insignia-team-popup__info {
-        flex: 1;
-        min-width: 0;
-    }
-
-    .insignia-team-popup__name {
-        margin: 0 0 8px;
-    }
-
-    .insignia-team-popup__meta {
-        color: #4c4c4c;
-        margin: 0;
-
-        strong {
+        .insignia-team-card__name {
+            margin: 0;
             font-weight: 600;
-            margin-right: 4px;
+            font-style: normal;
+            font-size: 18px;
+            line-height: 160%;
+            letter-spacing: 0;
+            color: var(--name-color);
         }
 
-        a {
-            color: inherit;
+        .insignia-team-card__designation {
+            margin: 0;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 12px;
+            line-height: 150%;
+            letter-spacing: 0;
+            color: var(--designation-color);
+        }
+
+        .insignia-team-card__linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 16.22px;
+            width: 24px;
+            height: 24px;
+            color: var(--icon-color);
             text-decoration: none;
+            line-height: 0;
 
-            &:hover {
-                text-decoration: underline;
+            svg {
+                display: block;
+                width: 100%;
+                height: 100%;
             }
         }
     }
 
-    // ── Bio section ───────────────────────────────────────────────────────────
-    .insignia-team-popup__bio {
-        padding: 50px 30px 30px;
-        box-sizing: border-box;
-
-        @media (max-width: 767px) {
-            padding: 30px 15px 15px;
-        }
-    }
-
-    .insignia-team-popup__bio-content {
-        p {
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-}
-
-// ── Scroll lock applied to <body> when popup is open ─────────────────────────
-body.insignia-popup-open {
-    overflow: hidden;
 }

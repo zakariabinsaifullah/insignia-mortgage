@@ -49,7 +49,8 @@
     &.nav-pos-top-left,
     &.nav-pos-top-right,
     &.nav-pos-bottom-left,
-    &.nav-pos-bottom-right {
+    &.nav-pos-bottom-right,
+    &.nav-pos-bottom-split {
         .gu-nav {
             top: auto;
             transform: none;
@@ -82,6 +83,46 @@
         .swiper-custom-prev { bottom: var(--nav-gap, 15px) !important; right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
     }
 
+    // Bottom Split Grouping
+    &.nav-pos-bottom-split {
+        padding-bottom: var(--pgap, 60px);
+
+        .swiper-pagination {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: auto !important;
+            height: var(--nav-size, 36px) !important;
+            justify-content: flex-start;
+            align-items: center !important;
+            margin: 0 !important;
+            display: flex !important;
+        }
+
+        .gu-nav {
+            top: auto !important;
+            bottom: 0 !important;
+            transform: none !important;
+            left: auto !important;
+            right: auto !important;
+        }
+
+        .swiper-custom-next { 
+            right: 0 !important; 
+            left: auto !important;
+        }
+        .swiper-custom-prev { 
+            right: calc(var(--nav-size, 36px) + 10px) !important; 
+            left: auto !important;
+        }
+
+        &.outside {
+            .gu-nav {
+                bottom: 0 !important;
+            }
+        }
+    }
+
     // Adjustments for OUTSIDE corners (Places arrows above/below slider)
     &.outside:not(.nav-pos-middle) {
         padding-left: 0 !important;
@@ -98,7 +139,7 @@
             .swiper-custom-prev { left: 0 !important; }
             .swiper-custom-next { left: calc(var(--nav-size, 36px) + 5px) !important; }
         }
-        &.nav-pos-top-right, &.nav-pos-bottom-right {
+        &.nav-pos-top-right, &.nav-pos-bottom-right, &.nav-pos-bottom-split {
             .swiper-custom-next { right: 0 !important; }
             .swiper-custom-prev { right: calc(var(--nav-size, 36px) + 5px) !important; }
         }

@@ -54,7 +54,7 @@
         },
         "navPosition": {
             "type": "string",
-            "default": "middle"
+            "default": "bottom-split"
         },
         "heights": {
             "type": "object",
@@ -82,7 +82,7 @@
         },
         "showPagination": {
             "type": "boolean",
-            "default": false
+            "default": true
         },
         "paginationColor": {
             "type": "string"
@@ -106,7 +106,8 @@
             "type": "string"
         },
         "pgap": {
-            "type": "string"
+            "type": "string",
+            "default": "60px"
         },
         "navColor": {
             "type": "string"

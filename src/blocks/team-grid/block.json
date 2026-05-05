@@ -68,6 +68,14 @@
         "overlayColor": {
             "type": "string"
         },
+        "cardStyle": {
+            "type": "string",
+            "default": "style1"
+        },
+        "imageTextGap": {
+            "type": "string",
+            "default": "10.81px"
+        },
         "selectedIds": {
             "type": "string",
             "default": ""
