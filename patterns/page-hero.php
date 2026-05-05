@@ -2,7 +2,7 @@
 /**
  * Title: Page Hero
  * Slug: insignia/page-hero
- * Categories: insignia_fse
+ * Categories: insignia
  * Description: Page Hero.
  *
  * @package WordPress

@@ -2,7 +2,7 @@
 /**
  * Title: Header home
  * Slug: insignia/header-home
- * Categories: insignia_fse
+ * Categories: insignia
  * Description: Header home.
  *
  * @package WordPress

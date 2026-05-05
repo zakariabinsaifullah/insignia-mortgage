@@ -848,3 +848,242 @@ if ( ! function_exists( 'insignia_render_group_floating_border' ) ) :
 	}
 endif;
 add_filter( 'render_block', 'insignia_render_group_floating_border', 10, 2 );
+
+
+// =============================================================================
+// Query Carousel — Block Variation for core/query
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_query_carousel_editor_assets' ) ) :
+	/**
+	 * Enqueues the query-carousel extension script and editor stylesheet.
+	 * Runs on `enqueue_block_editor_assets` (editor only).
+	 */
+	function insignia_enqueue_query_carousel_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/query-carousel/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-query-carousel-extension',
+			get_theme_file_uri( 'build/extensions/query-carousel/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/query-carousel/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-query-carousel-extension',
+				get_theme_file_uri( 'build/extensions/query-carousel/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_query_carousel_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_query_carousel_frontend_assets' ) ) :
+	/**
+	 * Enqueues the query-carousel frontend stylesheet and Swiper assets
+	 * only when a Query Carousel variation is present on the page.
+	 * Runs on `wp_enqueue_scripts` with late priority so is_singular() etc. are available.
+	 */
+	function insignia_enqueue_query_carousel_frontend_assets() {
+		$asset_file  = get_theme_file_path( 'build/extensions/query-carousel/index.asset.php' );
+		$style_file  = get_theme_file_path( 'build/extensions/query-carousel/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-query-carousel-extension-style',
+			get_theme_file_uri( 'build/extensions/query-carousel/style-index.css' ),
+			array( 'insignia-swiper-style' ),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_query_carousel_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_query_carousel_view_script' ) ) :
+	/**
+	 * Enqueues the Swiper init script + Swiper library on the frontend
+	 * only when a Query Carousel block is rendered.
+	 */
+	function insignia_enqueue_query_carousel_view_script() {
+		if ( is_admin() ) {
+			return;
+		}
+
+		$asset_file = get_theme_file_path( 'build/extensions/query-carousel/view.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-swiper-script',
+			get_parent_theme_file_uri( 'assets/js/swiper-bundle.min.js' ),
+			array(),
+			wp_get_theme()->get( 'Version' ),
+			true
+		);
+
+		wp_enqueue_script(
+			'insignia-query-carousel-view',
+			get_theme_file_uri( 'build/extensions/query-carousel/view.js' ),
+			array( 'insignia-swiper-script' ),
+			$assets['version'],
+			true
+		);
+	}
+endif;
+
+
+if ( ! function_exists( 'insignia_render_query_carousel' ) ) :
+	/**
+	 * Transforms core/query Query Carousel variation output into Swiper markup.
+	 *
+	 * When the namespace attribute matches 'insignia/query-carousel', this filter:
+	 * 1. Wraps the post template items in Swiper markup
+	 * 2. Adds a controls wrapper containing pagination and navigation arrows
+	 * 3. Adds data attributes for Swiper configuration
+	 * 4. Enqueues Swiper assets
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_query_carousel( $block_content, $block ) {
+		if ( 'core/query' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		$attrs = $block['attrs'] ?? array();
+
+		if ( ( $attrs['namespace'] ?? '' ) !== 'insignia/query-carousel' ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		// Enqueue Swiper and view script.
+		insignia_enqueue_query_carousel_view_script();
+
+		// ── Extract carousel attributes ────────────────────────────────────
+		$columns   = $attrs['qcColumns'] ?? array( 'Desktop' => 3, 'Tablet' => 2, 'Mobile' => 1 );
+		$gaps      = $attrs['qcGaps'] ?? array( 'Desktop' => 20, 'Tablet' => 15, 'Mobile' => 0 );
+		$loop      = $attrs['qcLoop'] ?? true;
+		$autoplay  = $attrs['qcAutoplay'] ?? false;
+		$delay     = $attrs['qcDelay'] ?? 3000;
+		$show_arrows     = $attrs['qcShowArrows'] ?? true;
+		$show_pagination = $attrs['qcShowPagination'] ?? false;
+
+		// ── Build Swiper options data attribute ────────────────────────────
+		$swiper_options = wp_json_encode( array(
+			'loop'     => $loop,
+			'autoplay' => $autoplay ? array( 'delay' => $delay ) : false,
+			'columns'  => $columns,
+			'gaps'     => $gaps,
+		) );
+
+		// ── Build class names ───────────────────────────────────────────────
+		$classes = array( 'insignia-query-carousel' );
+
+		// ── Icon SVG ─────────────────────────────────────────────────────────
+		$svg_prev = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"/></svg>';
+		$svg_next = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>';
+
+		// ── Transform the HTML ──────────────────────────────────────────────
+		// Replace <ul with <div class="swiper"><div class="swiper-wrapper">
+		$transformed = preg_replace(
+			'/<ul([^>]*class=["\'][^"\']*wp-block-post-template[^"\']*["\'][^>]*)>/',
+			'<div class="swiper"><div class="swiper-wrapper">',
+			$block_content
+		);
+
+		// If the preg_replace didn't match, try a more lenient pattern
+		if ( $transformed === $block_content ) {
+			$transformed = preg_replace(
+				'/<ul([^>]*class=["\']([^"\']*)["\'][^>]*)>/',
+				'<div class="swiper"><div class="swiper-wrapper">',
+				$block_content
+			);
+		}
+
+		// Change <li> to <div class="swiper-slide">
+		$transformed = preg_replace(
+			'/<li([^>]*)>/',
+			'<div class="swiper-slide"$1>',
+			$transformed
+		);
+
+		// Change </li> to </div>
+		$transformed = str_replace( '</li>', '</div>', $transformed );
+
+		// Close </ul> becomes </div></div>
+		$transformed = preg_replace(
+			'/<\/ul>/',
+			'</div></div>',
+			$transformed
+		);
+
+		// ── Build controls wrapper (pagination + nav arrows) ────────────────
+		$controls_inner = '';
+		if ( $show_pagination ) {
+			$controls_inner .= '<div class="swiper-pagination"></div>';
+		}
+		if ( $show_arrows ) {
+			$controls_inner .= '<div class="insignia-qc-nav-group">';
+			$controls_inner .= '<div class="swiper-custom-prev gu-nav" aria-label="' . esc_attr__( 'Previous', 'insignia' ) . '">' . $svg_prev . '</div>';
+			$controls_inner .= '<div class="swiper-custom-next gu-nav" aria-label="' . esc_attr__( 'Next', 'insignia' ) . '">' . $svg_next . '</div>';
+			$controls_inner .= '</div>';
+		}
+
+		$controls_html = '';
+		if ( $show_arrows || $show_pagination ) {
+			$controls_html = '<div class="insignia-qc-controls">' . $controls_inner . '</div>';
+		}
+
+		// ── Add classes and data attribute to the outer wrapper ─────────────
+		$processor = new WP_HTML_Tag_Processor( $transformed );
+		if ( $processor->next_tag() ) {
+			foreach ( $classes as $class ) {
+				$processor->add_class( $class );
+			}
+
+			$processor->set_attribute( 'data-qc-options', $swiper_options );
+
+			$transformed = $processor->get_updated_html();
+		}
+
+		// ── Append controls wrapper before the closing tag ──────────────────
+		if ( $controls_html ) {
+			$transformed = preg_replace(
+				'/(<\/div>)\s*$/',
+				$controls_html . '$1',
+				$transformed,
+				1
+			);
+		}
+
+		return $transformed;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_query_carousel', 10, 2 );

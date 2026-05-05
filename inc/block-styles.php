@@ -61,6 +61,34 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 			)
 		);
 
+		// ── Excerpt block ─────────────────────────────────────────────────────
+
+		register_block_style(
+			'core/post-excerpt',
+			array(
+				'name'         => 'iconic-read-more',
+				'label'        => __( 'Iconic More', 'insignia' ),
+				'inline_style' => '
+				.wp-block-post-excerpt.is-style-iconic-read-more .wp-block-post-excerpt__more-link {
+					display: inline-flex;
+					align-items: center;
+					gap: 0.4em;
+				}
+				.wp-block-post-excerpt.is-style-iconic-read-more .wp-block-post-excerpt__more-link::after {
+					content: "";
+					display: inline-block;
+					width: 16px;
+					height: 12px;
+					background-image: url("data:image/svg+xml,%3Csvg width=%2716%27 height=%2712%27 viewBox=%270 0 16 12%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M15.61.316c.316.352.316.88 0 1.196l-9.282 9.281c-.351.352-.879.352-1.195 0L.352 6.012a.77.77 0 0 1 0-1.16.77.77 0 0 1 1.16 0l4.183 4.183 8.72-8.719a.83.83 0 0 1 1.16 0z%27 fill=%27currentColor%27/%3E%3C/svg%3E");
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-position: center;
+					flex-shrink: 0;
+				}
+				',
+			)
+		);
+
 		// ── Third-party blocks ─────────────────────────────────────────────────
 
 		// register_block_style(

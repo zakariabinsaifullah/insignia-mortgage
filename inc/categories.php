@@ -34,14 +34,14 @@ add_filter( 'block_categories_all', 'insigniafse_block_categories', 10, 2 );
 
 if ( ! function_exists( 'insigniafse_pattern_categories' ) ) :
 	/**
-	 * Registers the "Brilliant" block pattern category.
+	 * Registers the "Insignia" block pattern category.
 	 */
 	function insigniafse_pattern_categories() {
 		register_block_pattern_category(
 			'insignia_fse',
 			array(
-				'label'       => __( 'Brilliant', 'insignia' ),
-				'description' => __( 'A collection of Brilliant patterns.', 'insignia' ),
+				'label'       => __( 'Insignia', 'insignia' ),
+				'description' => __( 'A collection of Insignia patterns.', 'insignia' ),
 			)
 		);
 	}

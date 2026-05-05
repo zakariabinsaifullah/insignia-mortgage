@@ -2,7 +2,7 @@
 /**
  * Title: Footer
  * Slug: insignia/footer
- * Categories: insignia_fse
+ * Categories: insignia
  * Description: Footer.
  *
  * @package WordPress

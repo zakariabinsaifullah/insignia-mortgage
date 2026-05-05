@@ -20,10 +20,10 @@ function insignia_register_team_cpt() {
         'search_items'          => __( 'Search Team Member', 'insignia' ),
         'not_found'             => __( 'Not found', 'insignia' ),
         'not_found_in_trash'    => __( 'Not found in Trash', 'insignia' ),
-        'featured_image'        => __( 'Featured Image', 'insignia' ),
-        'set_featured_image'    => __( 'Set featured image', 'insignia' ),
-        'remove_featured_image' => __( 'Remove featured image', 'insignia' ),
-        'use_featured_image'    => __( 'Use as featured image', 'insignia' ),
+        'featured_image'        => __( 'Team Member Image', 'insignia' ),
+        'set_featured_image'    => __( 'Set Team Member Image', 'insignia' ),
+        'remove_featured_image' => __( 'Remove Team Member Image', 'insignia' ),
+        'use_featured_image'    => __( 'Use as Team Member Image', 'insignia' ),
         'insert_into_item'      => __( 'Insert into item', 'insignia' ),
         'uploaded_to_this_item' => __( 'Uploaded to this item', 'insignia' ),
         'items_list'            => __( 'Team list', 'insignia' ),
@@ -95,7 +95,7 @@ function insignia_team_meta_callback( $post ) {
 
     echo '<div style="margin-bottom: 15px;">';
     echo '<label for="team_linkedin" style="display:block; font-weight:bold; margin-bottom:5px;">' . __( 'LinkedIn Profile URL', 'insignia' ) . '</label>';
-    echo '<input type="url" id="team_linkedin" name="team_linkedin" value="' . esc_attr( $linkedin ) . '" style="width:100%;" placeholder="https://linkedin.com/in/username">';
+    echo '<input type="url" id="team_linkedin" name="team_linkedin" value="' . esc_attr( $linkedin ) . '" style="width:100%;">';
     echo '</div>';
 }
 

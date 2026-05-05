@@ -2,7 +2,7 @@
 /**
  * Title: Header Inner Pages
  * Slug: insignia/header-inner
- * Categories: insignia_fse
+ * Categories: insignia
  * Description: Header Inner Pages.
  *
  * @package WordPress
