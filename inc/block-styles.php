@@ -61,52 +61,23 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 			)
 		);
 
-		// ── Paragraph block ────────────────────────────────────────────────────
-
-		register_block_style(
-			'core/paragraph',
-			array(
-				'name'         => 'arrow',
-				'label'        => __( 'Arrow', 'insignia' ),
-				'inline_style' => '
-				p.is-style-arrow::after {
-					content: "";
-					display: inline-block;
-					width: 42px;
-					height: 20px;
-					margin-left: 15px;
-					background-color: currentColor;
-					-webkit-mask-image: url("data:image/svg+xml,%3Csvg width=\'60\' height=\'30\' viewBox=\'0 0 60 30\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 5H55V25\' stroke=\'black\' stroke-width=\'1.5\'/%3E%3Cpath d=\'M51 21L55 27L59 21Z\' fill=\'black\'/%3E%3C/svg%3E");
-					mask-image: url("data:image/svg+xml,%3Csvg width=\'60\' height=\'30\' viewBox=\'0 0 60 30\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M0 5H55V25\' stroke=\'black\' stroke-width=\'1.5\'/%3E%3Cpath d=\'M51 21L55 27L59 21Z\' fill=\'black\'/%3E%3C/svg%3E");
-					-webkit-mask-size: contain;
-					mask-size: contain;
-					-webkit-mask-repeat: no-repeat;
-					mask-repeat: no-repeat;
-					-webkit-mask-position: center;
-					mask-position: center;
-					vertical-align: middle;
-					transform: translateY(5px);
-				}',
-			)
-		);
-
 		// ── Third-party blocks ─────────────────────────────────────────────────
 
-		register_block_style(
-			'kadence/rowlayout',
-			array(
-				'name'  => 'radial-overlay',
-				'label' => __( 'Radial Overlay', 'insignia' ),
-			)
-		);
+		// register_block_style(
+		// 	'kadence/rowlayout',
+		// 	array(
+		// 		'name'  => 'radial-overlay',
+		// 		'label' => __( 'Radial Overlay', 'insignia' ),
+		// 	)
+		// );
 
-		register_block_style(
-			'kadence/rowlayout',
-			array(
-				'name'  => 'bottom-overlay',
-				'label' => __( 'Bottom Overlay', 'insignia' ),
-			)
-		);
+		// register_block_style(
+		// 	'kadence/rowlayout',
+		// 	array(
+		// 		'name'  => 'bottom-overlay',
+		// 		'label' => __( 'Bottom Overlay', 'insignia' ),
+		// 	)
+		// );
 	}
 endif;
 add_action( 'init', 'insigniafse_block_styles' );

@@ -377,7 +377,17 @@
             ],
             "writingMode": true
         },
-        "useRootPaddingAwareAlignments": true
+        "useRootPaddingAwareAlignments": true,
+        "shadow": {
+            "defaultPresets": false,
+            "presets": [
+                {
+                    "name": "Light Dark",
+                    "slug": "insa-light-dark",
+                    "shadow": "0px 5px 15px rgba(0, 0, 0, 0.4)"
+                }
+            ]
+        }
     },
     "styles": {
         "blocks": {

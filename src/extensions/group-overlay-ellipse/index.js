@@ -14,7 +14,7 @@ import { NativeSelectControl } from '../../components';
 
 import './style.scss';
 
-const BLOCK_NAME = 'core/group';
+const SUPPORTED_BLOCKS = [ 'core/group' ];
 
 const ELLIPSE_OPTIONS = [
     { label: __( 'None',          'insignia' ), value: 'none'  },
@@ -25,13 +25,13 @@ const ELLIPSE_OPTIONS = [
 ];
 
 /**
- * Add overlayEllipse attribute to core/group.
+ * Add overlayEllipse attribute to supported blocks.
  */
 addFilter(
     'blocks.registerBlockType',
     'insignia/group-overlay-ellipse-add-attributes',
     ( settings, name ) => {
-        if ( name !== BLOCK_NAME ) {
+        if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
             return settings;
         }
 
@@ -58,7 +58,7 @@ addFilter(
         return props => {
             const { name, attributes, setAttributes } = props;
 
-            if ( name !== BLOCK_NAME ) {
+            if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
                 return <BlockEdit { ...props } />;
             }
 
@@ -91,7 +91,7 @@ addFilter(
         return props => {
             const { name, attributes } = props;
 
-            if ( name !== BLOCK_NAME ) {
+            if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
                 return <BlockListBlock { ...props } />;
             }
 
