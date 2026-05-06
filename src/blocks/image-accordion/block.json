@@ -1,11 +1,13 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "insignia/marque",
-    "version": "0.1.0",
-    "title": "marque",
+    "name": "insignia/image-accordion",
+    "version": "1.0.0",
+    "title": "Image Accordion",
     "category": "insignia-blocks",
-    "description": "Create scrolling marquee or ticker with custom inner blocks.",
+    "icon": "star-filled",
+    "description": "Expandable image accordion panels.",
+    "example": {},
     "supports": {
         "anchor": true,
         "html": false,
@@ -20,28 +22,24 @@
         }
     },
     "attributes": {
-        "speed": {
-            "type": "number",
-            "default": 30
+        "uniqueId": {
+            "type": "string"
         },
-        "pauseOnHover": {
+        "newAccordionStatus": {
             "type": "boolean",
             "default": false
         },
-        "gap": {
+        "height": {
             "type": "number",
-            "default": 0
+            "default": 500
         },
-        "backgroundColor": {
-            "type": "string"
-        },
-        "textColor": {
-            "type": "string"
+        "overlayColor": {
+            "type": "string",
+            "default": "rgba(18, 100, 100, 0.6)"
         }
     },
-    "textdomain": "gl-layout-builder",
+    "textdomain": "insignia",
     "editorScript": "file:./index.js",
-    "editorStyle": "file:./index.css",
     "style": "file:./style-index.css",
-    "render": "file:./render.php"
+    "viewScript": "file:./view.js"
 }

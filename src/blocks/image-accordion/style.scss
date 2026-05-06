@@ -1,0 +1,263 @@
+.wp-block-insignia-image-accordion {
+    .insignia-image-accordion {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: var(--accordion-gap, 0px);
+    }
+    .img {
+        img,
+        figure,
+        figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 !important;
+        }
+    }
+}
+
+.wp-block-insignia-image-accordion-item {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    overflow: hidden;
+    cursor: pointer;
+    height: var(--accordion-height, 500px);
+    max-height: 100vw;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+
+    // solid teal overlay for inactive items
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--accordion-overlay, rgba(18, 100, 100, 0.6));
+        z-index: 10;
+        -webkit-transition: background 0.7s ease;
+        transition: background 0.7s ease;
+    }
+
+    // inactive: heading only visible
+    &:not(.active) .info {
+        background: transparent;
+
+        p,
+        .accordion-btn-wrap {
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            -webkit-transition: opacity 0.4s ease, visibility 0.4s ease, max-height 0.5s ease;
+            transition: opacity 0.4s ease, visibility 0.4s ease, max-height 0.5s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            -webkit-transition: font-size 0.5s ease;
+            transition: font-size 0.5s ease;
+        }
+    }
+
+    &.active {
+        -webkit-box-flex: 4;
+        -ms-flex: 4 0 0%;
+        flex: 4 0 0%;
+
+        &::before {
+            background: transparent;
+        }
+
+        .info {
+            background: linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%);
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-size: 40px;
+                white-space: normal;
+            }
+
+            p,
+            .accordion-btn-wrap {
+                opacity: 1;
+                visibility: visible;
+                max-height: 120px;
+                -webkit-transition-delay: 0.4s;
+                transition-delay: 0.4s;
+            }
+        }
+    }
+
+    .img {
+        height: 100%;
+
+        img,
+        figure,
+        figure img {
+            border-radius: 0 !important;
+        }
+    }
+
+    .info {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        -webkit-align-content: flex-end;
+        -ms-flex-line-pack: end;
+        align-content: flex-end;
+        padding: 40px 35px;
+        gap: 12px 20px;
+        background: linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%);
+        z-index: 20;
+        color: #fff;
+        text-align: left;
+        -webkit-transition: background 0.5s ease;
+        transition: background 0.5s ease;
+        box-sizing: border-box;
+        overflow: hidden;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #fff;
+            margin: 0;
+            width: 100%;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+        }
+
+        p {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
+            color: #fff;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .accordion-btn-wrap {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+
+            .accordion-btn {
+                display: inline-block;
+                background: transparent;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 11px 24px;
+                border-radius: 50px;
+                border: 2px solid #fff;
+                text-decoration: none;
+                line-height: 1;
+                white-space: nowrap;
+                -webkit-transition: background 0.3s ease, color 0.3s ease;
+                transition: background 0.3s ease, color 0.3s ease;
+
+                &:hover {
+                    background: #fff;
+                    color: #126464;
+                }
+
+                span {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+
+// tablet & mobile: vertical stack
+@media (max-width: 1024px) {
+    .wp-block-insignia-image-accordion {
+        .insignia-image-accordion {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+    }
+
+    .wp-block-insignia-image-accordion-item {
+        -webkit-box-flex: unset !important;
+        -ms-flex: unset !important;
+        flex: unset !important;
+        width: 100% !important;
+        height: 100px;
+        -webkit-transition: height 0.6s ease;
+        transition: height 0.6s ease;
+
+        &::before {
+            background: var(--accordion-overlay, rgba(18, 100, 100, 0.6)) !important;
+        }
+
+        &.active {
+            height: 420px;
+
+            &::before {
+                background: transparent !important;
+            }
+
+            .info {
+                padding: 25px 25px;
+
+                p,
+                .accordion-btn-wrap {
+                    opacity: 1;
+                    visibility: visible;
+                    max-height: 300px;
+                    -webkit-transition-delay: 0.3s;
+                    transition-delay: 0.3s;
+                }
+            }
+        }
+
+        .info {
+            padding: 20px 25px;
+        }
+    }
+}
+
+// mobile
+@media (max-width: 767px) {
+    .wp-block-insignia-image-accordion-item {
+        height: 80px;
+
+        &.active {
+            height: 360px;
+        }
+    }
+}

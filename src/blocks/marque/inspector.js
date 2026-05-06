@@ -25,7 +25,7 @@ const Inspector = props => {
                         label={__('Gap between items (px)', 'gl-layout-builder')}
                         value={gap}
                         onChange={value => setAttributes({ gap: value })}
-                        min={1}
+                        min={0}
                         max={100}
                         step={1}
                     />

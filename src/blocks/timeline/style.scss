@@ -1,0 +1,23 @@
+.wp-block-insignia-timeline {
+    .insignia-timeline {
+        position: relative;
+    }
+
+    // editor add button
+    .insignia-timeline-add-btn {
+        display: block;
+        margin-top: 20px;
+        padding: 10px 24px;
+        background: #126464;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+
+        &:hover {
+            background: #0e4f4f;
+        }
+    }
+}
