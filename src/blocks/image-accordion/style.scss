@@ -3,7 +3,7 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        gap: var(--accordion-gap, 5px);
+        gap: var(--accordion-gap, 0px);
     }
     .img {
         img {
