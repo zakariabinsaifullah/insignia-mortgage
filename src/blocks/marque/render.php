@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 
 $gllb_speed = isset($attributes['speed']) ? max(1, intval($attributes['speed'])) : 30;
 $gllb_pause_on_hover = !empty($attributes['pauseOnHover']);
-$gllb_gap = isset($attributes['gap']) ? max(0, intval($attributes['gap'])) : 40;
+$gllb_gap = isset($attributes['gap']) ? max(0, intval($attributes['gap'])) : 0;
 
 // Use $content which already contains the fully rendered InnerBlocks HTML.
 $gllb_inner_blocks_content = isset( $content ) ? $content : '';

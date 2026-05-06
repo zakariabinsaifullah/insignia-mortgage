@@ -1,0 +1,60 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/image-accordion",
+    "version": "1.0.0",
+    "title": "Image Accordion",
+    "category": "insignia-blocks",
+    "icon": "star-filled",
+    "description": "Expandable image accordion panels.",
+    "example": {},
+    "supports": {
+        "anchor": true,
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "uniqueId": {
+            "type": "string"
+        },
+        "newAccordionStatus": {
+            "type": "boolean",
+            "default": false
+        },
+        "height": {
+            "type": "number",
+            "default": 500
+        },
+        "gap": {
+            "type": "number"
+        },
+        "borderRadius": {
+            "type": "number",
+            "default": 0
+        },
+        "activeWidth": {
+            "type": "number",
+            "default": 50
+        },
+        "inactiveWidth": {
+            "type": "number",
+            "default": 5
+        },
+        "overlayColor": {
+            "type": "string",
+            "default": "rgba(18, 100, 100, 0.6)"
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css",
+    "viewScript": "file:./view.js"
+}

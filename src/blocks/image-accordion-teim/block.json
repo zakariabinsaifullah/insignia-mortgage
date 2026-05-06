@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/image-accordion-item",
+    "version": "1.0.0",
+    "title": "Image Accordion Item",
+    "category": "insignia-blocks",
+    "icon": "star-filled",
+    "description": "A single panel inside an Image Accordion block.",
+    "parent": ["insignia/image-accordion"],
+    "example": {},
+    "supports": {
+        "anchor": true,
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "uniqueId": {
+            "type": "string"
+        },
+        "preset": {
+            "type": "string",
+            "default": ""
+        },
+        "image": {
+            "type": "object",
+            "default": {}
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css"
+}

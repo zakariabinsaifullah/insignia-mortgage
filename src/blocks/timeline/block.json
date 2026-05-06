@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/timeline",
+    "version": "1.0.0",
+    "title": "Timeline",
+    "category": "insignia-blocks",
+    "icon": "star-filled",
+    "description": "Vertical timeline with customizable items.",
+    "example": {},
+    "supports": {
+        "anchor": true,
+        "html": false,
+        "align": ["wide", "full"],
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "__experimentalDefaultControls": {
+                "margin": false,
+                "padding": false
+            }
+        }
+    },
+    "attributes": {
+        "uniqueId": {
+            "type": "string"
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": "file:./index.js",
+    "style": "file:./style-index.css"
+}

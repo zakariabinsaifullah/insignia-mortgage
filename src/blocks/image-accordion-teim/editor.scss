@@ -1,0 +1,19 @@
+.wp-block-insignia-image-accordion-item {
+    // hide the teal overlay in editor so content is always editable
+    &::before {
+        display: none !important;
+    }
+
+    // always show info in editor for editing
+    .info {
+        opacity: 1 !important;
+        bottom: 0 !important;
+    }
+
+    // active state in editor - show full gradient
+    &.active {
+        &::before {
+            display: block !important;
+        }
+    }
+}

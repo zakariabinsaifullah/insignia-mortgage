@@ -30,7 +30,7 @@
         },
         "gap": {
             "type": "number",
-            "default": 40
+            "default": 0
         },
         "backgroundColor": {
             "type": "string"
