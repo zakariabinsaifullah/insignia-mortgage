@@ -51,13 +51,13 @@ addFilter(
                     <BlockEdit {...props} />
                     <InspectorControls>
                         <PanelBody title={__('Max Width', 'insignia')}>
-<NativeRangeControl
+                            <NativeRangeControl
                                 label={__('Maximum width (px)', 'insignia')}
                                 value={attributes[ATTRIBUTE]}
                                 onChange={value => setAttributes({ [ATTRIBUTE]: value })}
                                 min={200}
                                 max={1600}
-                                step={10}
+                                step={1}
                                 resetFallbackValue={null}
                             />
                         </PanelBody>

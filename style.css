@@ -6,7 +6,7 @@ Description: This Full Site Editing Theme is exclusively developed for Insignia 
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 7.4
-Version: 1.0.1
+Version: 1.0.3
 Text Domain: insignia
 */
 
@@ -85,4 +85,13 @@ p {
 :where(.wp-site-blocks) > * {
     margin-block-start: 0 !important;
     margin-block-end: 0 !important;
+}
+
+footer a,
+footer p {
+    font-size: 14px !important;
+}
+
+footer .wp-block-gallery.has-nested-images figure.wp-block-image {
+    max-width: 60px !important;
 }
