@@ -23,13 +23,6 @@ if ( ! function_exists( 'insigniafse_enqueue_styles' ) ) :
 			$theme_version
 		);
 
-		wp_enqueue_style(
-			'insignia-style',
-			get_parent_theme_file_uri( 'assets/css/insignia.css' ),
-			array(),
-			$theme_version
-		);
-
 		// Register Swiper so blocks can declare it as a dependency.
 		wp_register_style(
 			'insignia-swiper-style',

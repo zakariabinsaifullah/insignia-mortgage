@@ -58,6 +58,11 @@
                     "slug": "insa-white"
                 },
                 {
+                    "color": "#E6E7EB",
+                    "name": "Off White Light",
+                    "slug": "insa-off-white-light"
+                },
+                {
                     "color": "#f8f8f0",
                     "name": "Off White",
                     "slug": "insa-off-white"
@@ -325,11 +330,11 @@
                 },
                 {
                     "fluid": {
-                        "max": "4.1rem",
-                        "min": "3rem"
+                        "max": "4rem",
+                        "min": "2.75rem"
                     },
                     "name": "Huge",
-                    "size": "4.5rem",
+                    "size": "4rem",
                     "slug": "insa-huge"
                 },
                 {
