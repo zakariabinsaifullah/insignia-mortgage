@@ -21,16 +21,12 @@ import Inspector from './inspector';
 // block edit function
 const Edit = props => {
     const { attributes, setAttributes, clientId, isSelected } = props;
-    const { uniqueId, preset, newAccordionStatus, height, gap, borderRadius, activeWidth, inactiveWidth, overlayColor } = attributes;
+    const { uniqueId, preset, newAccordionStatus, height, overlayColor } = attributes;
 
     const blockProps = useBlockProps({
         className: classNames(uniqueId, preset),
         style: {
             '--accordion-height': `${height || 500}px`,
-            '--accordion-gap': `${gap ?? 5}px`,
-            '--accordion-radius': `${borderRadius ?? 15}px`,
-            '--accordion-active-width': `${activeWidth || 50}%`,
-            '--accordion-inactive-width': `${inactiveWidth || 2}%`,
             '--accordion-overlay': overlayColor || 'rgba(18, 100, 100, 0.6)'
         }
     });

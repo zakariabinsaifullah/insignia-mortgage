@@ -33,6 +33,26 @@
         "image": {
             "type": "object",
             "default": {}
+        },
+        "heading": {
+            "type": "string",
+            "default": "Heading"
+        },
+        "description": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Learn More"
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": "#"
+        },
+        "buttonNewTab": {
+            "type": "boolean",
+            "default": false
         }
     },
     "textdomain": "insignia",

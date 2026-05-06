@@ -1,10 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { PanelBody, Button } from '@wordpress/components';
+import { PanelBody, Button, TextControl, ToggleControl } from '@wordpress/components';
 
 const Inspector = props => {
     const { attributes, setAttributes } = props;
-    const { image } = attributes;
+    const { image, buttonText, buttonUrl, buttonNewTab } = attributes;
 
     return (
         <>
@@ -54,6 +54,26 @@ const Inspector = props => {
                             )}
                         />
                     </MediaUploadCheck>
+                </PanelBody>
+                <PanelBody title={__('Button', 'insignia')} initialOpen={true}>
+                    <TextControl
+                        label={__('Button Text', 'insignia')}
+                        value={buttonText || ''}
+                        onChange={value => setAttributes({ buttonText: value })}
+                        placeholder={__('Learn More', 'insignia')}
+                    />
+                    <TextControl
+                        label={__('Button URL', 'insignia')}
+                        value={buttonUrl || ''}
+                        onChange={value => setAttributes({ buttonUrl: value })}
+                        placeholder="https://"
+                        type="url"
+                    />
+                    <ToggleControl
+                        label={__('Open in new tab', 'insignia')}
+                        checked={buttonNewTab}
+                        onChange={value => setAttributes({ buttonNewTab: value })}
+                    />
                 </PanelBody>
             </InspectorControls>
         </>

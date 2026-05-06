@@ -4,8 +4,9 @@ import './editor.scss';
 /**
  * WordPress Dependencies
  */
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 import { Fragment } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 
 /**
  * External Dependencies
@@ -22,12 +23,10 @@ import placeholderImage from '../../../assets/images/placeholder.svg';
  */
 import Inspector from './inspector';
 
-const INNER_BLOCKS_TEMPLATE = [['core/paragraph', { placeholder: 'Add content here…' }]];
-
 // block edit function
 const Edit = props => {
     const { attributes, setAttributes, isSelected } = props;
-    const { uniqueId, preset, image } = attributes;
+    const { uniqueId, preset, image, heading, description, buttonText, buttonUrl } = attributes;
 
     const blockProps = useBlockProps({
         className: classNames(uniqueId, preset)
@@ -41,7 +40,23 @@ const Edit = props => {
                     <img src={image?.url || placeholderImage} alt={image?.alt || 'accordion'} className="img-cover" />
                 </div>
                 <div className="info">
-                    <InnerBlocks template={INNER_BLOCKS_TEMPLATE} templateLock={false} />
+                    <RichText
+                        tagName="h3"
+                        value={heading}
+                        onChange={value => setAttributes({ heading: value })}
+                        placeholder={__('Heading…', 'insignia')}
+                    />
+                    <RichText
+                        tagName="p"
+                        value={description}
+                        onChange={value => setAttributes({ description: value })}
+                        placeholder={__('Description…', 'insignia')}
+                    />
+                    <div className="accordion-btn-wrap">
+                        <span className="accordion-btn">
+                            {buttonText || __('Learn More', 'insignia')}
+                        </span>
+                    </div>
                 </div>
             </div>
         </Fragment>
