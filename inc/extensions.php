@@ -851,6 +851,219 @@ add_filter( 'render_block', 'insignia_render_group_floating_border', 10, 2 );
 
 
 // =============================================================================
+// Heading & Paragraph – Max Width Extension
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_text_max_width_editor_assets' ) ) :
+	/**
+	 * Enqueues the text-max-width extension script and editor stylesheet.
+	 * Runs on `enqueue_block_editor_assets` (editor only).
+	 */
+	function insignia_enqueue_text_max_width_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/text-max-width/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-text-max-width-extension',
+			get_theme_file_uri( 'build/extensions/text-max-width/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/text-max-width/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-text-max-width-extension',
+				get_theme_file_uri( 'build/extensions/text-max-width/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_text_max_width_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_text_max_width_frontend_assets' ) ) :
+	/**
+	 * Enqueues the text-max-width frontend stylesheet.
+	 * Runs on `enqueue_block_assets` (editor + front end).
+	 */
+	function insignia_enqueue_text_max_width_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/text-max-width/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/text-max-width/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-text-max-width-extension-style',
+			get_theme_file_uri( 'build/extensions/text-max-width/style-index.css' ),
+			array(),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_text_max_width_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_render_text_max_width' ) ) :
+	/**
+	 * Injects the `has-max-width` class and `--max-width` CSS custom property
+	 * into supported blocks on the frontend when the maxWidth attribute is set.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_text_max_width( $block_content, $block ) {
+		$supported = array( 'core/heading', 'core/paragraph' );
+
+		if ( ! in_array( $block['blockName'], $supported, true ) ) {
+			return $block_content;
+		}
+
+		$attrs = $block['attrs'] ?? array();
+
+		if ( empty( $attrs['maxWidth'] ) ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'has-max-width' );
+
+			$existing_style = $processor->get_attribute( 'style' ) ?? '';
+			$new_style      = rtrim( $existing_style, '; ' );
+			if ( $new_style ) {
+				$new_style .= ';';
+			}
+			$new_style .= '--max-width:' . intval( $attrs['maxWidth'] ) . 'px';
+			$processor->set_attribute( 'style', $new_style );
+
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_text_max_width', 10, 2 );
+
+
+// =============================================================================
+// Button – Full Width Mobile Extension
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_button_full_width_mobile_editor_assets' ) ) :
+	/**
+	 * Enqueues the button-full-width-mobile extension script and editor stylesheet.
+	 * Runs on `enqueue_block_editor_assets` (editor only).
+	 */
+	function insignia_enqueue_button_full_width_mobile_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-button-full-width-mobile-extension',
+			get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-button-full-width-mobile-extension',
+				get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_button_full_width_mobile_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_button_full_width_mobile_frontend_assets' ) ) :
+	/**
+	 * Enqueues the button-full-width-mobile frontend stylesheet.
+	 * Runs on `enqueue_block_assets` (editor + front end).
+	 */
+	function insignia_enqueue_button_full_width_mobile_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/button-full-width-mobile/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-button-full-width-mobile-extension-style',
+			get_theme_file_uri( 'build/extensions/button-full-width-mobile/style-index.css' ),
+			array(),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_button_full_width_mobile_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_render_button_full_width_mobile' ) ) :
+	/**
+	 * Injects the `has-full-width-mobile` class into core/button blocks on the frontend
+	 * when the `fullWidthMobile` attribute is enabled.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_button_full_width_mobile( $block_content, $block ) {
+		if ( 'core/button' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		if ( empty( $block['attrs']['fullWidthMobile'] ) ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'has-full-width-mobile' );
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_button_full_width_mobile', 10, 2 );
+
+
+// =============================================================================
 // Query Carousel — Block Variation for core/query
 // =============================================================================
 
