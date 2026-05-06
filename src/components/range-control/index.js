@@ -2,15 +2,15 @@ import { RangeControl } from '@wordpress/components';
 import classnames from 'classnames';
 
 const NativeRangeControl = ({ label, value, onChange, min, max, step, resetFallbackValue }) => {
+    const showReset = resetFallbackValue !== undefined;
     return (
         <div className="native-control-wrapper native-range-control">
-            {resetFallbackValue && (
+            {showReset && (
                 <button
                     type="button"
                     title="Reset"
                     className={classnames('reset', {
-                        'is-disabled':
-                            value === resetFallbackValue || resetFallbackValue === undefined || value === undefined || value === null
+                        'is-disabled': value === resetFallbackValue || value === undefined || value === null
                     })}
                     onClick={() => onChange(resetFallbackValue)}
                 >
