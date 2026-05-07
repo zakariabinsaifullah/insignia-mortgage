@@ -37,6 +37,9 @@
         "gap": {
             "type": "string"
         },
+        "rowGap": {
+            "type": "string"
+        },
         "orderBy": {
             "type": "string",
             "default": "menu_order"

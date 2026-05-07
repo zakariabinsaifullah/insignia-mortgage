@@ -24,6 +24,14 @@
     "attributes": {
         "uniqueId": {
             "type": "string"
+        },
+        "contentGap": {
+            "type": "number",
+            "default": 10
+        },
+        "itemsGap": {
+            "type": "number",
+            "default": 16
         }
     },
     "textdomain": "insignia",

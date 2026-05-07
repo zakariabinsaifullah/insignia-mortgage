@@ -3,10 +3,14 @@ import classNames from 'classnames';
 
 const Save = props => {
     const { attributes } = props;
-    const { uniqueId } = attributes;
+    const { uniqueId, contentGap, itemsGap } = attributes;
 
     const blockProps = useBlockProps.save({
-        className: classNames(uniqueId)
+        className: classNames(uniqueId),
+        style: {
+            ...(contentGap && { '--item-gap':  `${contentGap}px` }),
+            ...(itemsGap   && { '--items-gap': `${itemsGap}px`  }),
+        }
     });
 
     return (
