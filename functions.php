@@ -30,3 +30,6 @@ require_once get_theme_file_path( 'inc/categories.php' ); // Block & pattern cat
 
 // ── Block bindings ─────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/bindings.php' );   // Dynamic block data sources
+
+// ── Form panel ─────────────────────────────────────────────────────────────────
+require_once get_theme_file_path( 'inc/form.php' );       // Slide-in form panel & settings
