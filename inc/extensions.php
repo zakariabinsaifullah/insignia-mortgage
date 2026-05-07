@@ -1531,6 +1531,11 @@ if ( ! function_exists( 'insignia_render_query_filter_grid' ) ) :
 	 * @param array  $block         The block data including name and attributes.
 	 * @return string Modified block HTML.
 	 */
+	/**
+	 * Completely replaces the core/query block output with a custom AJAX-powered
+	 * post grid. Filtering and pagination are handled via admin-ajax.php, so the
+	 * output is never affected by page caching plugins.
+	 */
 	function insignia_render_query_filter_grid( $block_content, $block ) {
 		if ( 'core/query' !== $block['blockName'] ) {
 			return $block_content;
@@ -1542,145 +1547,242 @@ if ( ! function_exists( 'insignia_render_query_filter_grid' ) ) :
 			return $block_content;
 		}
 
-		if ( empty( $block_content ) ) {
-			return $block_content;
-		}
-
-		// Enqueue the view script when this block is rendered.
 		insignia_enqueue_query_filter_grid_view_script();
 
-		// Determine the taxonomy to filter by.
 		$post_type = $attrs['query']['postType'] ?? 'post';
-		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+		$per_page  = $attrs['qcPerPage'] ?? $attrs['query']['perPage'] ?? 6;
 
+		// Resolve the primary hierarchical taxonomy for this post type.
 		$taxonomy = 'category';
-		foreach ( $taxonomies as $tax ) {
+		foreach ( get_object_taxonomies( $post_type, 'objects' ) as $tax ) {
 			if ( $tax->public && $tax->hierarchical ) {
 				$taxonomy = $tax->name;
 				break;
 			}
 		}
 
-		// Get filter terms.
-		$terms = get_terms( array(
-			'taxonomy'   => $taxonomy,
-			'hide_empty' => true,
+		$terms = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => true ) );
+		if ( is_wp_error( $terms ) ) {
+			$terms = array();
+		}
+
+		// Render initial posts.
+		$initial_query = new WP_Query( array(
+			'post_type'      => $post_type,
+			'posts_per_page' => (int) $per_page,
+			'paged'          => 1,
+			'post_status'    => 'publish',
 		) );
 
-		if ( is_wp_error( $terms ) || empty( $terms ) ) {
-			return $block_content;
+		$config = wp_json_encode( array(
+			'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
+			'nonce'    => wp_create_nonce( 'insignia_filter_grid' ),
+			'perPage'  => (int) $per_page,
+			'postType' => $post_type,
+		) );
+
+		$html  = '<div class="insignia-query-filter-grid-wrapper" data-config="' . esc_attr( $config ) . '">';
+
+		// Filter nav.
+		if ( ! empty( $terms ) ) {
+			$html .= '<div class="insignia-filter-grid-nav">';
+			$html .= '<button class="insignia-filter-btn active" data-cat="0">' . esc_html__( 'All', 'insignia' ) . '</button>';
+			foreach ( $terms as $term ) {
+				$html .= '<button class="insignia-filter-btn" data-cat="' . esc_attr( $term->term_id ) . '">' . esc_html( $term->name ) . '</button>';
+			}
+			$html .= '</div>';
 		}
 
-		$active_cat = isset( $_GET['filter_cat'] ) ? absint( $_GET['filter_cat'] ) : 0;
+		$html .= '<div class="insignia-filter-grid-posts">';
+		$html .= insignia_filter_grid_render_posts( $initial_query );
+		$html .= '</div>';
 
-		// Build current URL base (without filter_cat).
-		$current_url = remove_query_arg( 'filter_cat' );
+		$html .= '<div class="insignia-filter-grid-pagination">';
+		$html .= insignia_filter_grid_render_pagination( (int) $initial_query->max_num_pages, 1 );
+		$html .= '</div>';
 
-		// Build filter buttons as links.
-		$filter_html = '<div class="insignia-filter-grid-nav">';
-		$filter_html .= '<a href="' . esc_url( $current_url ) . '" class="insignia-filter-btn' . ( 0 === $active_cat ? ' active' : '' ) . '" data-cat="0">' . esc_html__( 'All', 'insignia' ) . '</a>';
+		$html .= '</div>';
 
-		foreach ( $terms as $term ) {
-			$filter_url = add_query_arg( 'filter_cat', $term->term_id, $current_url );
-			$filter_html .= '<a href="' . esc_url( $filter_url ) . '" class="insignia-filter-btn' . ( $active_cat === $term->term_id ? ' active' : '' ) . '" data-cat="' . esc_attr( $term->term_id ) . '">' . esc_html( $term->name ) . '</a>';
-		}
+		wp_reset_postdata();
 
-		$filter_html .= '</div>';
-
-		// Add wrapper class and data attribute.
-		$processor = new WP_HTML_Tag_Processor( $block_content );
-		if ( $processor->next_tag() ) {
-			$processor->add_class( 'insignia-query-filter-grid-wrapper' );
-			$processor->set_attribute( 'data-filter-taxonomy', $taxonomy );
-			$block_content = $processor->get_updated_html();
-		}
-
-		// Insert filter HTML before the post template.
-		$block_content = preg_replace(
-			'/(<(?:ul|div)\b[^>]*\bclass="[^"]*wp-block-post-template[^"]*"[^>]*>)/i',
-			$filter_html . '$1',
-			$block_content,
-			1
-		);
-
-		return $block_content;
+		return $html;
 	}
 endif;
 add_filter( 'render_block', 'insignia_render_query_filter_grid', 10, 2 );
 
 
-if ( ! function_exists( 'insignia_filter_grid_query_vars' ) ) :
+if ( ! function_exists( 'insignia_filter_grid_render_posts' ) ) :
 	/**
-	 * Injects taxQuery into the core/query block's parsed attributes so the
-	 * category filter is applied when the filter_cat URL parameter is present.
+	 * Renders post grid items HTML for a given WP_Query.
 	 *
-	 * render_block_data fires on the outer core/query block, where namespace IS
-	 * available in attrs. The modified query attribute flows as context to the
-	 * inner core/post-template block, which build_query_vars_from_query_block()
-	 * then uses to build the WP_Query tax_query.
-	 *
-	 * @param array $parsed_block The parsed block data.
-	 * @return array Modified block data.
+	 * @param WP_Query $query A prepared WP_Query (already run).
+	 * @return string HTML string.
 	 */
-	function insignia_filter_grid_query_vars( $parsed_block ) {
-		if ( 'core/query' !== ( $parsed_block['blockName'] ?? '' ) ) {
-			return $parsed_block;
+	function insignia_filter_grid_render_posts( $query ) {
+		if ( ! $query->have_posts() ) {
+			return '<p class="insignia-no-posts">' . esc_html__( 'No posts found.', 'insignia' ) . '</p>';
 		}
 
-		if ( ( $parsed_block['attrs']['namespace'] ?? '' ) !== 'insignia/query-filter-grid' ) {
-			return $parsed_block;
+		$html = '<ul class="insignia-filter-grid-items">';
+
+		while ( $query->have_posts() ) {
+			$query->the_post();
+
+			$html .= '<li class="insignia-filter-grid-item">';
+
+			if ( has_post_thumbnail() ) {
+				$html .= '<a href="' . esc_url( get_permalink() ) . '" class="insignia-filter-grid-image" tabindex="-1" aria-hidden="true">';
+				$html .= get_the_post_thumbnail( null, 'large' );
+				$html .= '</a>';
+			}
+
+			$html .= '<h2 class="insignia-filter-grid-title">';
+			$html .= '<a href="' . esc_url( get_permalink() ) . '">' . esc_html( get_the_title() ) . '</a>';
+			$html .= '</h2>';
+
+			$html .= '</li>';
 		}
 
-		$filter_cat = isset( $_GET['filter_cat'] ) ? absint( wp_unslash( $_GET['filter_cat'] ) ) : 0;
+		$html .= '</ul>';
 
-		if ( $filter_cat <= 0 ) {
-			return $parsed_block;
+		wp_reset_postdata();
+
+		return $html;
+	}
+endif;
+
+
+if ( ! function_exists( 'insignia_filter_grid_pagination_range' ) ) :
+	/**
+	 * Returns an array of page numbers and '...' placeholders for the pagination.
+	 * Always shows first/last page, current page, and 1 neighbour on each side.
+	 *
+	 * @param int $total_pages
+	 * @param int $current_page
+	 * @return array<int|string>
+	 */
+	function insignia_filter_grid_pagination_range( $total_pages, $current_page ) {
+		$current_page = (int) $current_page;
+		$total_pages  = (int) $total_pages;
+
+		if ( $total_pages <= 7 ) {
+			return range( 1, $total_pages );
 		}
 
-		$post_type  = $parsed_block['attrs']['query']['postType'] ?? 'post';
-		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+		$left  = max( 2, $current_page - 1 );
+		$right = min( $total_pages - 1, $current_page + 1 );
+		$pages = array( 1 );
 
-		$taxonomy = 'category';
-		foreach ( $taxonomies as $tax ) {
-			if ( $tax->public && $tax->hierarchical ) {
-				$taxonomy = $tax->name;
-				break;
+		if ( $left > 2 ) {
+			$pages[] = '...';
+		}
+
+		for ( $i = $left; $i <= $right; $i++ ) {
+			$pages[] = $i;
+		}
+
+		if ( $right < $total_pages - 1 ) {
+			$pages[] = '...';
+		}
+
+		$pages[] = $total_pages;
+
+		return $pages;
+	}
+endif;
+
+
+if ( ! function_exists( 'insignia_filter_grid_render_pagination' ) ) :
+	/**
+	 * Renders the styled pagination bar: prev arrow, page numbers with ellipsis, next arrow.
+	 *
+	 * @param int $total_pages   Total number of pages.
+	 * @param int $current_page  Currently active page.
+	 * @return string HTML string.
+	 */
+	function insignia_filter_grid_render_pagination( $total_pages, $current_page ) {
+		$total_pages  = (int) $total_pages;
+		$current_page = (int) $current_page;
+
+		if ( $total_pages <= 1 ) {
+			return '';
+		}
+
+		$html = '<div class="insignia-filter-pagination">';
+
+		// Prev button.
+		$prev_page = max( 1, $current_page - 1 );
+		$html .= '<button class="insignia-page-btn insignia-page-arrow"'
+			. ( 1 === $current_page ? ' disabled' : '' )
+			. ' data-page="' . $prev_page . '" aria-label="' . esc_attr__( 'Previous page', 'insignia' ) . '">'
+			. '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+			. '</button>';
+
+		// Page numbers with ellipsis.
+		foreach ( insignia_filter_grid_pagination_range( $total_pages, $current_page ) as $page ) {
+			if ( '...' === $page ) {
+				$html .= '<span class="insignia-page-ellipsis">&hellip;</span>';
+			} else {
+				$active = ( (int) $page === $current_page ) ? ' active' : '';
+				$html  .= '<button class="insignia-page-btn' . $active . '" data-page="' . (int) $page . '" aria-label="' . sprintf( esc_attr__( 'Page %d', 'insignia' ), (int) $page ) . '">' . (int) $page . '</button>';
 			}
 		}
 
-		$term = get_term( $filter_cat, $taxonomy );
+		// Next button.
+		$next_page = min( $total_pages, $current_page + 1 );
+		$html .= '<button class="insignia-page-btn insignia-page-arrow"'
+			. ( $current_page === $total_pages ? ' disabled' : '' )
+			. ' data-page="' . $next_page . '" aria-label="' . esc_attr__( 'Next page', 'insignia' ) . '">'
+			. '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>'
+			. '</button>';
 
-		if ( ! $term || is_wp_error( $term ) ) {
-			return $parsed_block;
-		}
+		$html .= '</div>';
 
-		if ( ! is_array( $parsed_block['attrs']['query'] ?? null ) ) {
-			$parsed_block['attrs']['query'] = array();
-		}
-
-		$parsed_block['attrs']['query']['taxQuery'][ $taxonomy ] = array( $filter_cat );
-
-		return $parsed_block;
+		return $html;
 	}
 endif;
-add_filter( 'render_block_data', 'insignia_filter_grid_query_vars', 10, 1 );
 
 
-if ( ! function_exists( 'insignia_filter_grid_paginate_links' ) ) :
+if ( ! function_exists( 'insignia_filter_grid_ajax_handler' ) ) :
 	/**
-	 * Preserves the filter_cat URL parameter in pagination links.
-	 *
-	 * @param string $link The pagination link URL.
-	 * @return string Modified URL.
+	 * AJAX handler for filter grid filtering and pagination.
+	 * Registered for both logged-in and logged-out users.
 	 */
-	function insignia_filter_grid_paginate_links( $link ) {
-		if ( isset( $_GET['filter_cat'] ) && absint( $_GET['filter_cat'] ) > 0 ) {
-			$link = add_query_arg( 'filter_cat', absint( wp_unslash( $_GET['filter_cat'] ) ), $link );
+	function insignia_filter_grid_ajax_handler() {
+		check_ajax_referer( 'insignia_filter_grid', 'nonce' );
+
+		$cat       = isset( $_POST['cat'] )       ? absint( $_POST['cat'] )                                       : 0;
+		$page      = isset( $_POST['page'] )      ? max( 1, absint( $_POST['page'] ) )                            : 1;
+		$per_page  = isset( $_POST['per_page'] )  ? min( 50, max( 1, absint( $_POST['per_page'] ) ) )             : 6;
+		$post_type = isset( $_POST['post_type'] ) ? sanitize_text_field( wp_unslash( $_POST['post_type'] ) )      : 'post';
+
+		if ( ! post_type_exists( $post_type ) ) {
+			$post_type = 'post';
 		}
-		return $link;
+
+		$args = array(
+			'post_type'      => $post_type,
+			'posts_per_page' => $per_page,
+			'paged'          => $page,
+			'post_status'    => 'publish',
+		);
+
+		if ( $cat > 0 ) {
+			$args['cat'] = $cat;
+		}
+
+		$query = new WP_Query( $args );
+
+		wp_send_json_success( array(
+			'html'         => insignia_filter_grid_render_posts( $query ),
+			'pagination'   => insignia_filter_grid_render_pagination( (int) $query->max_num_pages, $page ),
+			'total_pages'  => (int) $query->max_num_pages,
+			'current_page' => $page,
+		) );
 	}
 endif;
-add_filter( 'paginate_links', 'insignia_filter_grid_paginate_links' );
+add_action( 'wp_ajax_insignia_filter_grid', 'insignia_filter_grid_ajax_handler' );
+add_action( 'wp_ajax_nopriv_insignia_filter_grid', 'insignia_filter_grid_ajax_handler' );
 
 
 // =============================================================================
