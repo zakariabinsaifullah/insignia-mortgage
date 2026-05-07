@@ -23,14 +23,14 @@ function brilliant_fse_form_panel_assets() {
 	$version = wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_style(
-		'blnt-form-panel',
+		'insi-form-panel',
 		get_theme_file_uri( 'assets/css/form-panel.css' ),
 		array(),
 		$version
 	);
 
 	wp_enqueue_script(
-		'blnt-form-panel',
+		'insi-form-panel',
 		get_theme_file_uri( 'assets/js/form-panel.js' ),
 		array(),
 		$version,
@@ -53,19 +53,19 @@ function brilliant_fse_form_panel_html() {
 		return;
 	}
 	?>
-	<div id="blnt-form-overlay" class="blnt-form-overlay" aria-hidden="true"></div>
+	<div id="insi-form-overlay" class="insi-form-overlay" aria-hidden="true"></div>
 
 	<div
-		id="blnt-form-panel"
-		class="blnt-form-panel"
+		id="insi-form-panel"
+		class="insi-form-panel"
 		role="dialog"
 		aria-modal="true"
 		aria-label="<?php echo esc_attr( $title ? $title : __( 'Contact us', 'insignia' ) ); ?>"
 		aria-hidden="true"
 	>
-		<div class="blnt-form-panel__header">
+		<div class="insi-form-panel__header">
 			<?php if ( $phone ) : ?>
-			<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $phone ) ); ?>" class="blnt-form-panel__phone">
+			<a href="tel:<?php echo esc_attr( preg_replace( '/[^\d+]/', '', $phone ) ); ?>" class="insi-form-panel__phone">
 				<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M3.62 7.79C5.06 10.62 7.38 12.93 10.21 14.38L12.41 12.18C12.68 11.91 13.08 11.82 13.43 11.94C14.55 12.31 15.76 12.51 17 12.51C17.55 12.51 18 12.96 18 13.51V17C18 17.55 17.55 18 17 18C7.61 18 0 10.39 0 1C0 0.45 0.45 0 1 0H4.5C5.05 0 5.5 0.45 5.5 1C5.5 2.25 5.7 3.45 6.07 4.57C6.18 4.92 6.1 5.31 5.82 5.59L3.62 7.79Z" fill="currentColor"/>
 				</svg>
@@ -75,20 +75,20 @@ function brilliant_fse_form_panel_html() {
 			<span></span>
 			<?php endif; ?>
 
-			<button class="blnt-form-panel__close" aria-label="<?php esc_attr_e( 'Close form', 'insignia' ); ?>">
+			<button class="insi-form-panel__close" aria-label="<?php esc_attr_e( 'Close form', 'insignia' ); ?>">
 				<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 					<path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 				</svg>
 			</button>
 		</div>
 
-		<div class="blnt-form-panel__body">
+		<div class="insi-form-panel__body">
 			<?php if ( $title ) : ?>
-				<h2 class="blnt-form-panel__title"><?php echo esc_html( $title ); ?></h2>
+				<h2 class="insi-form-panel__title"><?php echo esc_html( $title ); ?></h2>
 			<?php endif; ?>
 
 			<?php if ( $description ) : ?>
-				<p class="blnt-form-panel__desc"><?php echo esc_html( $description ); ?></p>
+				<p class="insi-form-panel__desc"><?php echo esc_html( $description ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $shortcode ) : ?>
@@ -187,7 +187,7 @@ function brilliant_fse_form_render_page() {
 				<?php esc_html_e( 'Add the following ID as the href value on any link or button to open the slide-in form:', 'insignia' ); ?>
 			</p>
 			<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-				<code id="blnt-trigger-id" style="
+				<code id="insi-trigger-id" style="
 					background: #1d2327;
 					color: #7dd3fc;
 					padding: 6px 14px;
@@ -196,11 +196,11 @@ function brilliant_fse_form_render_page() {
 					font-family: monospace;
 					letter-spacing: 0.5px;
 					user-select: all;
-				">#blnt-form-panel</code>
+				">#insi-form-panel</code>
 				<button
 					type="button"
 					onclick="
-						navigator.clipboard.writeText('#blnt-form-panel');
+						navigator.clipboard.writeText('#insi-form-panel');
 						this.textContent = '✓ Copied!';
 						setTimeout(() => this.textContent = 'Copy', 2000);
 					"
@@ -217,7 +217,7 @@ function brilliant_fse_form_render_page() {
 			</div>
 			<p style="margin: 10px 0 0; color: #646970; font-size: 12px;">
 				<?php esc_html_e( 'Example:', 'insignia' ); ?>
-				<code style="background:#eee; padding: 2px 6px; border-radius: 3px;">&lt;a href="#blnt-form-panel"&gt;Get in Touch&lt;/a&gt;</code>
+				<code style="background:#eee; padding: 2px 6px; border-radius: 3px;">&lt;a href="#insi-form-panel"&gt;Get in Touch&lt;/a&gt;</code>
 			</p>
 		</div>
 

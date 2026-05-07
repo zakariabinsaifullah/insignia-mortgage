@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    var PANEL_ID   = 'blnt-form-panel';
-    var OVERLAY_ID = 'blnt-form-overlay';
+    var PANEL_ID   = 'insi-form-panel';
+    var OVERLAY_ID = 'insi-form-overlay';
     var OPEN_CLASS = 'is-open';
-    var LOCK_CLASS = 'blnt-panel-open';
+    var LOCK_CLASS = 'insi-panel-open';
 
     var lastTrigger = null;
 
@@ -20,7 +20,7 @@
         document.body.classList.add( LOCK_CLASS );
         p.setAttribute( 'aria-hidden', 'false' );
 
-        var closeBtn = p.querySelector( '.blnt-form-panel__close' );
+        var closeBtn = p.querySelector( '.insi-form-panel__close' );
         if ( closeBtn ) closeBtn.focus();
     }
 
@@ -37,7 +37,7 @@
         lastTrigger = null;
     }
 
-    // Trigger: <a href="#blnt-form-panel"> or [data-open="blnt-form-panel"]
+    // Trigger: <a href="#insi-form-panel"> or [data-open="insi-form-panel"]
     document.addEventListener( 'click', function ( e ) {
         var trigger = e.target.closest(
             'a[href="#' + PANEL_ID + '"], [data-open="' + PANEL_ID + '"]'
@@ -51,7 +51,7 @@
         }
 
         // Close button inside panel
-        if ( e.target.closest( '.blnt-form-panel__close' ) ) {
+        if ( e.target.closest( '.insi-form-panel__close' ) ) {
             closePanel();
             return;
         }

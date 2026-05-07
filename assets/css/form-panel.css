@@ -1,6 +1,6 @@
 /* ── Slide-in Form Panel ───────────────────────────────────────────────────── */
 
-.blnt-form-overlay {
+.insi-form-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
@@ -12,12 +12,12 @@
         visibility 0.35s ease;
 }
 
-.blnt-form-overlay.is-open {
+.insi-form-overlay.is-open {
     opacity: 1;
     visibility: visible;
 }
 
-.blnt-form-panel {
+.insi-form-panel {
     position: fixed;
     top: 0;
     right: 0;
@@ -33,13 +33,13 @@
     box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
 }
 
-.blnt-form-panel.is-open {
+.insi-form-panel.is-open {
     transform: translateX(0);
 }
 
 /* ── Header ──────────────────────────────────────────────────────────────────── */
 
-.blnt-form-panel__header {
+.insi-form-panel__header {
     background: #126464;
     color: #ffffff;
     display: flex;
@@ -49,7 +49,7 @@
     flex-shrink: 0;
 }
 
-.blnt-form-panel__phone {
+.insi-form-panel__phone {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -60,13 +60,13 @@
     transition: opacity 0.2s ease;
 }
 
-.blnt-form-panel__phone:hover {
+.insi-form-panel__phone:hover {
     color: #ffffff;
     opacity: 0.85;
     text-decoration: none;
 }
 
-.blnt-form-panel__close {
+.insi-form-panel__close {
     background: none;
     border: none;
     color: #ffffff;
@@ -80,7 +80,7 @@
     border-radius: 0;
 }
 
-.blnt-form-panel__close:hover {
+.insi-form-panel__close:hover {
     background: none;
     color: #ffffff;
     opacity: 0.7;
@@ -88,14 +88,14 @@
 
 /* ── Body ────────────────────────────────────────────────────────────────────── */
 
-.blnt-form-panel__body {
+.insi-form-panel__body {
     flex: 1;
     overflow-y: auto;
     padding: 40px 32px 52px;
     -webkit-overflow-scrolling: touch;
 }
 
-.blnt-form-panel__title {
+.insi-form-panel__title {
     font-size: clamp(32px, 6vw, 48px);
     font-weight: 400;
     line-height: 1.15;
@@ -103,7 +103,7 @@
     margin: 0 0 16px;
 }
 
-.blnt-form-panel__desc {
+.insi-form-panel__desc {
     font-size: 15px;
     color: #4b5563;
     line-height: 1.65;
@@ -112,27 +112,27 @@
 
 /* ── Body scroll lock ────────────────────────────────────────────────────────── */
 
-body.blnt-panel-open {
+body.insi-panel-open {
     overflow: hidden;
 }
 
 /* ── Generic form fields inside the panel ────────────────────────────────────── */
 
-.blnt-form-panel .insignia-cf,
-.blnt-form-panel form {
+.insi-form-panel .insignia-cf,
+.insi-form-panel form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.blnt-form-panel .insignia-cf__field {
+.insi-form-panel .insignia-cf__field {
     display: flex;
     flex-direction: column;
     gap: 7px;
 }
 
-.blnt-form-panel .insignia-cf__field label,
-.blnt-form-panel .gform_wrapper .gfield_label {
+.insi-form-panel .insignia-cf__field label,
+.insi-form-panel .gform_wrapper .gfield_label {
     font-size: 15px;
     font-weight: 600;
     color: #000104;
@@ -141,13 +141,13 @@ body.blnt-panel-open {
     margin-bottom: 0;
 }
 
-.blnt-form-panel input[type='text'],
-.blnt-form-panel input[type='email'],
-.blnt-form-panel input[type='tel'],
-.blnt-form-panel input[type='number'],
-.blnt-form-panel input[type='url'],
-.blnt-form-panel textarea,
-.blnt-form-panel select {
+.insi-form-panel input[type='text'],
+.insi-form-panel input[type='email'],
+.insi-form-panel input[type='tel'],
+.insi-form-panel input[type='number'],
+.insi-form-panel input[type='url'],
+.insi-form-panel textarea,
+.insi-form-panel select {
     width: 100%;
     border: 1px solid #d1d5db;
     border-radius: 6px;
@@ -166,20 +166,20 @@ body.blnt-panel-open {
     appearance: none;
 }
 
-.blnt-form-panel input::placeholder,
-.blnt-form-panel textarea::placeholder {
+.insi-form-panel input::placeholder,
+.insi-form-panel textarea::placeholder {
     color: #9ca3af;
 }
 
-.blnt-form-panel input:focus,
-.blnt-form-panel textarea:focus,
-.blnt-form-panel select:focus {
+.insi-form-panel input:focus,
+.insi-form-panel textarea:focus,
+.insi-form-panel select:focus {
     border-color: #00323f;
     box-shadow: 0 0 0 3px rgba(0, 50, 63, 0.12);
     outline: none;
 }
 
-.blnt-form-panel textarea {
+.insi-form-panel textarea {
     resize: vertical;
     min-height: 128px;
 }
@@ -210,8 +210,8 @@ body.blnt-panel-open {
 
 /* Submit button */
 .insignia-cf__submit,
-.blnt-form-panel input[type='submit'],
-.blnt-form-panel button[type='submit'] {
+.insi-form-panel input[type='submit'],
+.insi-form-panel button[type='submit'] {
     background: #071a4e !important;
     color: #ffffff !important;
     border: 2px solid transparent !important;
@@ -232,8 +232,8 @@ body.blnt-panel-open {
 }
 
 .insignia-cf__submit:hover,
-.blnt-form-panel input[type='submit']:hover,
-.blnt-form-panel button[type='submit']:hover {
+.insi-form-panel input[type='submit']:hover,
+.insi-form-panel button[type='submit']:hover {
     background: #ffffff !important;
     color: #071a4e !important;
     border-color: #071a4e !important;
@@ -270,36 +270,36 @@ body.blnt-panel-open {
 
 /* ── Gravity Forms overrides ─────────────────────────────────────────────────── */
 
-.blnt-form-panel .gform_wrapper {
+.insi-form-panel .gform_wrapper {
     margin: 0;
 }
 
-.blnt-form-panel .gform_wrapper .gform_body {
+.insi-form-panel .gform_wrapper .gform_body {
     margin: 0;
 }
 
-.blnt-form-panel .gform_wrapper .gfield {
+.insi-form-panel .gform_wrapper .gfield {
     padding: 0;
 }
 
-.blnt-form-panel .gform_wrapper .gfields {
+.insi-form-panel .gform_wrapper .gfields {
     row-gap: 20px !important;
 }
 
-.blnt-form-panel .gform_wrapper .gform_footer,
-.blnt-form-panel .gform_wrapper .gform_page_footer {
+.insi-form-panel .gform_wrapper .gform_footer,
+.insi-form-panel .gform_wrapper .gform_page_footer {
     margin: 8px 0 0;
     padding: 0;
 }
 
-.blnt-form-panel .gform_wrapper .validation_message,
-.blnt-form-panel .gform_wrapper .gfield_description.validation_message {
+.insi-form-panel .gform_wrapper .validation_message,
+.insi-form-panel .gform_wrapper .gfield_description.validation_message {
     font-size: 13px;
     color: #991b1b;
     margin-top: 4px;
 }
 
-.blnt-form-panel .gform_wrapper .gform_confirmation_message {
+.insi-form-panel .gform_wrapper .gform_confirmation_message {
     font-size: 15px;
     color: #000104;
     padding: 20px 0;
