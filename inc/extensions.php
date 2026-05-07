@@ -789,7 +789,7 @@ if ( ! function_exists( 'insignia_render_group_floating_border' ) ) :
 	 * @return string Modified block HTML.
 	 */
 	function insignia_render_group_floating_border( $block_content, $block ) {
-		$supported = array( 'core/group', 'kadence/rowlayout' );
+		$supported = array( 'core/group', 'kadence/rowlayout', 'kadence/column' );
 		if ( ! in_array( $block['blockName'], $supported, true ) || empty( $block_content ) ) {
 			return $block_content;
 		}
@@ -1300,3 +1300,391 @@ if ( ! function_exists( 'insignia_render_query_carousel' ) ) :
 	}
 endif;
 add_filter( 'render_block', 'insignia_render_query_carousel', 10, 2 );
+
+
+// =============================================================================
+// Group – Responsive Grid Columns Extension
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_group_grid_columns_editor_assets' ) ) :
+	/**
+	 * Enqueues the group-grid-columns extension script and editor stylesheet.
+	 */
+	function insignia_enqueue_group_grid_columns_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/group-grid-columns/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-group-grid-columns-extension',
+			get_theme_file_uri( 'build/extensions/group-grid-columns/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/group-grid-columns/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-group-grid-columns-extension',
+				get_theme_file_uri( 'build/extensions/group-grid-columns/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_group_grid_columns_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_group_grid_columns_frontend_assets' ) ) :
+	/**
+	 * Enqueues the group-grid-columns frontend stylesheet.
+	 */
+	function insignia_enqueue_group_grid_columns_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/group-grid-columns/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/group-grid-columns/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-group-grid-columns-extension-style',
+			get_theme_file_uri( 'build/extensions/group-grid-columns/style-index.css' ),
+			array(),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_group_grid_columns_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_render_group_grid_columns' ) ) :
+	/**
+	 * Injects responsive grid column CSS custom properties and classes into
+	 * core/group blocks on the frontend when grid layout with responsive
+	 * columns is configured.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_group_grid_columns( $block_content, $block ) {
+		if ( 'core/group' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		$attrs = $block['attrs'] ?? array();
+
+		$layout_type = $attrs['layout']['type'] ?? '';
+
+		if ( 'grid' !== $layout_type ) {
+			return $block_content;
+		}
+
+		$desktop_columns  = $attrs['layout']['columnCount'] ?? 2;
+		$tablet_columns   = $attrs['gridColumnsTablet'] ?? null;
+		$mobile_columns   = $attrs['gridColumnsMobile'] ?? null;
+
+		$has_tablet = ! empty( $tablet_columns );
+		$has_mobile = ! empty( $mobile_columns );
+
+		if ( ! $has_tablet && ! $has_mobile ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		$css_vars = array();
+
+		$css_vars[] = '--grid-columns-tablet:' . intval( $has_tablet ? $tablet_columns : $desktop_columns );
+		$css_vars[] = '--grid-columns-mobile:' . intval( $has_mobile ? $mobile_columns : ( $has_tablet ? $tablet_columns : 1 ) );
+
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'has-responsive-grid-columns' );
+
+			$existing_style = $processor->get_attribute( 'style' ) ?? '';
+			$new_style      = rtrim( $existing_style, '; ' );
+			if ( $new_style ) {
+				$new_style .= ';';
+			}
+			$new_style .= implode( ';', $css_vars );
+			$processor->set_attribute( 'style', $new_style );
+
+			return $processor->get_updated_html();
+		}
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_group_grid_columns', 10, 2 );
+
+
+// =============================================================================
+// Query Filter Grid — Block Variation for core/query
+// =============================================================================
+
+if ( ! function_exists( 'insignia_enqueue_query_filter_grid_editor_assets' ) ) :
+	/**
+	 * Enqueues the query-filter-grid extension script and editor stylesheet.
+	 */
+	function insignia_enqueue_query_filter_grid_editor_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/query-filter-grid/index.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-query-filter-grid-extension',
+			get_theme_file_uri( 'build/extensions/query-filter-grid/index.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+
+		$editor_css = get_theme_file_path( 'build/extensions/query-filter-grid/index.css' );
+		if ( file_exists( $editor_css ) ) {
+			wp_enqueue_style(
+				'insignia-query-filter-grid-extension',
+				get_theme_file_uri( 'build/extensions/query-filter-grid/index.css' ),
+				array(),
+				$assets['version']
+			);
+		}
+	}
+endif;
+add_action( 'enqueue_block_editor_assets', 'insignia_enqueue_query_filter_grid_editor_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_query_filter_grid_frontend_assets' ) ) :
+	/**
+	 * Enqueues the query-filter-grid frontend stylesheet.
+	 */
+	function insignia_enqueue_query_filter_grid_frontend_assets() {
+		$asset_file = get_theme_file_path( 'build/extensions/query-filter-grid/index.asset.php' );
+		$style_file = get_theme_file_path( 'build/extensions/query-filter-grid/style-index.css' );
+
+		if ( ! file_exists( $asset_file ) || ! file_exists( $style_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_style(
+			'insignia-query-filter-grid-extension-style',
+			get_theme_file_uri( 'build/extensions/query-filter-grid/style-index.css' ),
+			array(),
+			$assets['version']
+		);
+	}
+endif;
+add_action( 'enqueue_block_assets', 'insignia_enqueue_query_filter_grid_frontend_assets' );
+
+
+if ( ! function_exists( 'insignia_enqueue_query_filter_grid_view_script' ) ) :
+	/**
+	 * Enqueues the category filter view script on the frontend.
+	 */
+	function insignia_enqueue_query_filter_grid_view_script() {
+		if ( is_admin() ) {
+			return;
+		}
+
+		$asset_file = get_theme_file_path( 'build/extensions/query-filter-grid/view.asset.php' );
+
+		if ( ! file_exists( $asset_file ) ) {
+			return;
+		}
+
+		$assets = require $asset_file;
+
+		wp_enqueue_script(
+			'insignia-query-filter-grid-view',
+			get_theme_file_uri( 'build/extensions/query-filter-grid/view.js' ),
+			$assets['dependencies'],
+			$assets['version'],
+			true
+		);
+	}
+endif;
+
+
+if ( ! function_exists( 'insignia_render_query_filter_grid' ) ) :
+	/**
+	 * Injects category filter buttons and data attributes into core/query
+	 * Query Filter Grid variation output.
+	 *
+	 * @param string $block_content The rendered block HTML.
+	 * @param array  $block         The block data including name and attributes.
+	 * @return string Modified block HTML.
+	 */
+	function insignia_render_query_filter_grid( $block_content, $block ) {
+		if ( 'core/query' !== $block['blockName'] ) {
+			return $block_content;
+		}
+
+		$attrs = $block['attrs'] ?? array();
+
+		if ( ( $attrs['namespace'] ?? '' ) !== 'insignia/query-filter-grid' ) {
+			return $block_content;
+		}
+
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		// Enqueue the view script when this block is rendered.
+		insignia_enqueue_query_filter_grid_view_script();
+
+		// Determine the taxonomy to filter by.
+		$post_type = $attrs['query']['postType'] ?? 'post';
+		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+
+		$taxonomy = 'category';
+		foreach ( $taxonomies as $tax ) {
+			if ( $tax->public && $tax->hierarchical ) {
+				$taxonomy = $tax->name;
+				break;
+			}
+		}
+
+		// Get filter terms.
+		$terms = get_terms( array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => true,
+		) );
+
+		if ( is_wp_error( $terms ) || empty( $terms ) ) {
+			return $block_content;
+		}
+
+		$active_cat = isset( $_GET['filter_cat'] ) ? absint( $_GET['filter_cat'] ) : 0;
+
+		// Build current URL base (without filter_cat).
+		$current_url = remove_query_arg( 'filter_cat' );
+
+		// Build filter buttons as links.
+		$filter_html = '<div class="insignia-filter-grid-nav">';
+		$filter_html .= '<a href="' . esc_url( $current_url ) . '" class="insignia-filter-btn' . ( 0 === $active_cat ? ' active' : '' ) . '" data-cat="0">' . esc_html__( 'All', 'insignia' ) . '</a>';
+
+		foreach ( $terms as $term ) {
+			$filter_url = add_query_arg( 'filter_cat', $term->term_id, $current_url );
+			$filter_html .= '<a href="' . esc_url( $filter_url ) . '" class="insignia-filter-btn' . ( $active_cat === $term->term_id ? ' active' : '' ) . '" data-cat="' . esc_attr( $term->term_id ) . '">' . esc_html( $term->name ) . '</a>';
+		}
+
+		$filter_html .= '</div>';
+
+		// Add wrapper class and data attribute.
+		$processor = new WP_HTML_Tag_Processor( $block_content );
+		if ( $processor->next_tag() ) {
+			$processor->add_class( 'insignia-query-filter-grid-wrapper' );
+			$processor->set_attribute( 'data-filter-taxonomy', $taxonomy );
+			$block_content = $processor->get_updated_html();
+		}
+
+		// Insert filter HTML before the post template.
+		$block_content = preg_replace(
+			'/(<(?:ul|div)\b[^>]*\bclass="[^"]*wp-block-post-template[^"]*"[^>]*>)/i',
+			$filter_html . '$1',
+			$block_content,
+			1
+		);
+
+		return $block_content;
+	}
+endif;
+add_filter( 'render_block', 'insignia_render_query_filter_grid', 10, 2 );
+
+
+if ( ! function_exists( 'insignia_filter_grid_query_vars' ) ) :
+	/**
+	 * Modifies the core/query block attributes before rendering to apply
+	 * category filtering when the filter_cat URL parameter is present.
+	 *
+	 * Uses the render_block_data filter which runs before the block is rendered,
+	 * allowing us to inject a taxQuery directly into the block attributes.
+	 *
+	 * @param array $block The parsed block data.
+	 * @return array Modified block data.
+	 */
+	function insignia_filter_grid_query_vars( $block ) {
+		if ( 'core/query' !== $block['blockName'] ) {
+			return $block;
+		}
+
+		$namespace = $block['attrs']['namespace'] ?? '';
+
+		if ( 'insignia/query-filter-grid' !== $namespace ) {
+			return $block;
+		}
+
+		$filter_cat = isset( $_GET['filter_cat'] ) ? absint( wp_unslash( $_GET['filter_cat'] ) ) : 0;
+
+		if ( $filter_cat <= 0 ) {
+			return $block;
+		}
+
+		// Determine the taxonomy for this post type.
+		$post_type  = $block['attrs']['query']['postType'] ?? 'post';
+		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+
+		$taxonomy = 'category';
+		foreach ( $taxonomies as $tax ) {
+			if ( $tax->public && $tax->hierarchical ) {
+				$taxonomy = $tax->name;
+				break;
+			}
+		}
+
+		// Verify the term exists in this taxonomy.
+		$term = get_term( $filter_cat, $taxonomy );
+
+		if ( ! $term || is_wp_error( $term ) ) {
+			return $block;
+		}
+
+		// Inject taxQuery into the block's query attribute.
+		if ( ! isset( $block['attrs']['query'] ) || ! is_array( $block['attrs']['query'] ) ) {
+			$block['attrs']['query'] = array();
+		}
+
+		if ( ! isset( $block['attrs']['query']['taxQuery'] ) || ! is_array( $block['attrs']['query']['taxQuery'] ) ) {
+			$block['attrs']['query']['taxQuery'] = array();
+		}
+
+		$block['attrs']['query']['taxQuery'][ $taxonomy ] = array( $filter_cat );
+
+		return $block;
+	}
+endif;
+add_filter( 'render_block_data', 'insignia_filter_grid_query_vars' );
+
+
+if ( ! function_exists( 'insignia_filter_grid_paginate_links' ) ) :
+	/**
+	 * Preserves the filter_cat URL parameter in pagination links.
+	 *
+	 * @param string $link The pagination link URL.
+	 * @return string Modified URL.
+	 */
+	function insignia_filter_grid_paginate_links( $link ) {
+		if ( isset( $_GET['filter_cat'] ) && absint( $_GET['filter_cat'] ) > 0 ) {
+			$link = add_query_arg( 'filter_cat', absint( wp_unslash( $_GET['filter_cat'] ) ), $link );
+		}
+		return $link;
+	}
+endif;
+add_filter( 'paginate_links', 'insignia_filter_grid_paginate_links' );

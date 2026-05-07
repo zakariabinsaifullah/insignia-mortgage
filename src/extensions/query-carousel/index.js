@@ -22,6 +22,10 @@ import './style.scss';
 const VARIATION_NAME = 'insignia/query-carousel';
 
 const CAROUSEL_ATTRIBUTES = {
+    qcTotalPosts: {
+        type: 'number',
+        default: 6
+    },
     qcColumns: {
         type: 'object',
         default: { Desktop: 3, Tablet: 2, Mobile: 1 }

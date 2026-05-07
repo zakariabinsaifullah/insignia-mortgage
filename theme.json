@@ -637,11 +637,10 @@
                     "link": {
                         ":hover": {
                             "typography": {
-                                "textDecoration": "underline"
+                                "textDecoration": "none"
                             }
                         },
                         "typography": {
-                            "fontSize": "var(--wp--preset--font-size--insa-huge)",
                             "fontWeight": "400",
                             "lineHeight": "1.2",
                             "textDecoration": "none"
@@ -933,7 +932,6 @@
                 "css": "transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);",
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--plus-jakarta-sans)",
-                    "fontSize": "var(--wp--preset--font-size--insa-regular)",
                     "fontStyle": "normal",
                     "fontWeight": "400",
                     "lineHeight": "1.5",

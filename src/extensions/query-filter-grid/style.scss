@@ -1,0 +1,28 @@
+.insignia-query-filter-grid-wrapper {
+    .insignia-filter-grid-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 50px;
+
+        .insignia-filter-btn {
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: #7f8081;
+            background: transparent;
+            font-size: 18px;
+            border-radius: 12px;
+            padding: 8px 24px;
+
+            &:hover {
+                color: #126464;
+            }
+
+            &.active {
+                color: #fff;
+                background: #126464;
+            }
+        }
+    }
+}
