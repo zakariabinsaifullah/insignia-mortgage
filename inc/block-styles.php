@@ -89,23 +89,14 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 			)
 		);
 
-		// ── Third-party blocks ─────────────────────────────────────────────────
 
-		// register_block_style(
-		// 	'kadence/rowlayout',
-		// 	array(
-		// 		'name'  => 'radial-overlay',
-		// 		'label' => __( 'Radial Overlay', 'insignia' ),
-		// 	)
-		// );
-
-		// register_block_style(
-		// 	'kadence/rowlayout',
-		// 	array(
-		// 		'name'  => 'bottom-overlay',
-		// 		'label' => __( 'Bottom Overlay', 'insignia' ),
-		// 	)
-		// );
+		register_block_style(
+			'core/post-content',
+			array(
+				'name'  => 'post-typo',
+				'label' => __( 'Post Typography', 'insignia' ),
+			)
+		);
 	}
 endif;
 add_action( 'init', 'insigniafse_block_styles' );

@@ -1611,34 +1611,33 @@ add_filter( 'render_block', 'insignia_render_query_filter_grid', 10, 2 );
 
 if ( ! function_exists( 'insignia_filter_grid_query_vars' ) ) :
 	/**
-	 * Modifies the core/query block attributes before rendering to apply
-	 * category filtering when the filter_cat URL parameter is present.
+	 * Injects taxQuery into the core/query block's parsed attributes so the
+	 * category filter is applied when the filter_cat URL parameter is present.
 	 *
-	 * Uses the render_block_data filter which runs before the block is rendered,
-	 * allowing us to inject a taxQuery directly into the block attributes.
+	 * render_block_data fires on the outer core/query block, where namespace IS
+	 * available in attrs. The modified query attribute flows as context to the
+	 * inner core/post-template block, which build_query_vars_from_query_block()
+	 * then uses to build the WP_Query tax_query.
 	 *
-	 * @param array $block The parsed block data.
+	 * @param array $parsed_block The parsed block data.
 	 * @return array Modified block data.
 	 */
-	function insignia_filter_grid_query_vars( $block ) {
-		if ( 'core/query' !== $block['blockName'] ) {
-			return $block;
+	function insignia_filter_grid_query_vars( $parsed_block ) {
+		if ( 'core/query' !== ( $parsed_block['blockName'] ?? '' ) ) {
+			return $parsed_block;
 		}
 
-		$namespace = $block['attrs']['namespace'] ?? '';
-
-		if ( 'insignia/query-filter-grid' !== $namespace ) {
-			return $block;
+		if ( ( $parsed_block['attrs']['namespace'] ?? '' ) !== 'insignia/query-filter-grid' ) {
+			return $parsed_block;
 		}
 
 		$filter_cat = isset( $_GET['filter_cat'] ) ? absint( wp_unslash( $_GET['filter_cat'] ) ) : 0;
 
 		if ( $filter_cat <= 0 ) {
-			return $block;
+			return $parsed_block;
 		}
 
-		// Determine the taxonomy for this post type.
-		$post_type  = $block['attrs']['query']['postType'] ?? 'post';
+		$post_type  = $parsed_block['attrs']['query']['postType'] ?? 'post';
 		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
 
 		$taxonomy = 'category';
@@ -1649,28 +1648,22 @@ if ( ! function_exists( 'insignia_filter_grid_query_vars' ) ) :
 			}
 		}
 
-		// Verify the term exists in this taxonomy.
 		$term = get_term( $filter_cat, $taxonomy );
 
 		if ( ! $term || is_wp_error( $term ) ) {
-			return $block;
+			return $parsed_block;
 		}
 
-		// Inject taxQuery into the block's query attribute.
-		if ( ! isset( $block['attrs']['query'] ) || ! is_array( $block['attrs']['query'] ) ) {
-			$block['attrs']['query'] = array();
+		if ( ! is_array( $parsed_block['attrs']['query'] ?? null ) ) {
+			$parsed_block['attrs']['query'] = array();
 		}
 
-		if ( ! isset( $block['attrs']['query']['taxQuery'] ) || ! is_array( $block['attrs']['query']['taxQuery'] ) ) {
-			$block['attrs']['query']['taxQuery'] = array();
-		}
+		$parsed_block['attrs']['query']['taxQuery'][ $taxonomy ] = array( $filter_cat );
 
-		$block['attrs']['query']['taxQuery'][ $taxonomy ] = array( $filter_cat );
-
-		return $block;
+		return $parsed_block;
 	}
 endif;
-add_filter( 'render_block_data', 'insignia_filter_grid_query_vars' );
+add_filter( 'render_block_data', 'insignia_filter_grid_query_vars', 10, 1 );
 
 
 if ( ! function_exists( 'insignia_filter_grid_paginate_links' ) ) :
