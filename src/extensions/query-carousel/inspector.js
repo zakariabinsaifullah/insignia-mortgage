@@ -17,6 +17,7 @@ import {
 const Inspector = props => {
     const { attributes, setAttributes } = props;
     const {
+        qcTotalPosts,
         qcColumns,
         qcGaps,
         qcAutoplay,
@@ -33,6 +34,19 @@ const Inspector = props => {
         <>
             <InspectorControls group="settings">
                 <PanelBody title={__('Carousel Settings', 'insignia')} initialOpen={true}>
+                    <NativeRangeControl
+                        label={__('Total Posts', 'insignia')}
+                        value={qcTotalPosts || 6}
+                        onChange={value => {
+                            setAttributes({
+                                qcTotalPosts: value,
+                                query: { ...attributes.query, perPage: value }
+                            });
+                        }}
+                        min={1}
+                        max={50}
+                        step={1}
+                    />
                     <NativeResponsiveControl label={__('Columns', 'insignia')} props={props}>
                         <NativeRangeControl
                             value={qcColumns?.[currentResMode] ?? 3}

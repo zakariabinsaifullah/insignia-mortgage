@@ -2,9 +2,9 @@
     margin: 0 !important;
 }
 
-.wp-block-post-title a {
+/* .wp-block-post-title a {
     font-size: var(--wp--preset--font-size--insa-x-large) !important;
-}
+} */
 
 .wp-block-group {
     overflow: hidden;
