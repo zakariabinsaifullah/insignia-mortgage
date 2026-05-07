@@ -25,6 +25,7 @@ const Inspector = props => {
         qcLoop,
         qcShowArrows,
         qcShowPagination,
+        qcExcludeCurrentPost,
         resMode
     } = attributes;
 
@@ -46,6 +47,11 @@ const Inspector = props => {
                         min={1}
                         max={50}
                         step={1}
+                    />
+                    <NativeToggleControl
+                        label={__('Exclude Current Post', 'insignia')}
+                        checked={qcExcludeCurrentPost}
+                        onChange={value => setAttributes({ qcExcludeCurrentPost: value })}
                     />
                     <NativeResponsiveControl label={__('Columns', 'insignia')} props={props}>
                         <NativeRangeControl

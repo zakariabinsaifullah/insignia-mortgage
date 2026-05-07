@@ -53,6 +53,10 @@ const CAROUSEL_ATTRIBUTES = {
     qcShowPagination: {
         type: 'boolean',
         default: false
+    },
+    qcExcludeCurrentPost: {
+        type: 'boolean',
+        default: false
     }
 };
 

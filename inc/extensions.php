@@ -1302,6 +1302,54 @@ endif;
 add_filter( 'render_block', 'insignia_render_query_carousel', 10, 2 );
 
 
+if ( ! function_exists( 'insignia_query_carousel_exclude_current' ) ) :
+	/**
+	 * When "Exclude Current Post" is enabled, injects the current post ID into
+	 * the query block's exclude array before rendering.
+	 *
+	 * Uses render_block_data so the modification reaches the core/post-template
+	 * inner block via context and is picked up by build_query_vars_from_query_block.
+	 *
+	 * @param array $parsed_block The parsed block data.
+	 * @return array Modified block data.
+	 */
+	function insignia_query_carousel_exclude_current( $parsed_block ) {
+		if ( 'core/query' !== ( $parsed_block['blockName'] ?? '' ) ) {
+			return $parsed_block;
+		}
+
+		if ( ( $parsed_block['attrs']['namespace'] ?? '' ) !== 'insignia/query-carousel' ) {
+			return $parsed_block;
+		}
+
+		if ( empty( $parsed_block['attrs']['qcExcludeCurrentPost'] ) ) {
+			return $parsed_block;
+		}
+
+		$current_id = get_the_ID();
+
+		if ( ! $current_id ) {
+			return $parsed_block;
+		}
+
+		if ( ! is_array( $parsed_block['attrs']['query'] ?? null ) ) {
+			$parsed_block['attrs']['query'] = array();
+		}
+
+		$exclude = array_map( 'intval', $parsed_block['attrs']['query']['exclude'] ?? array() );
+
+		if ( ! in_array( (int) $current_id, $exclude, true ) ) {
+			$exclude[] = (int) $current_id;
+		}
+
+		$parsed_block['attrs']['query']['exclude'] = $exclude;
+
+		return $parsed_block;
+	}
+endif;
+add_filter( 'render_block_data', 'insignia_query_carousel_exclude_current' );
+
+
 // =============================================================================
 // Group – Responsive Grid Columns Extension
 // =============================================================================
