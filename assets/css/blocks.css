@@ -7,7 +7,7 @@
 } */
 
 .wp-block-group {
-    overflow: hidden;
+    overflow: clip;
 }
 
 /* Kadence Blocks */
