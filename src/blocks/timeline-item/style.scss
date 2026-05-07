@@ -43,6 +43,25 @@
             object-fit: contain;
         }
 
+        svg {
+            width: 26px;
+            height: 26px;
+            color: #fff;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        .insignia-custom-svg-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
         // editor click-to-upload button
         .timeline-icon-btn {
             width: 100%;

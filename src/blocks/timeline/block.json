@@ -30,8 +30,7 @@
             "default": 10
         },
         "itemsGap": {
-            "type": "number",
-            "default": 16
+            "type": "number"
         }
     },
     "textdomain": "insignia",

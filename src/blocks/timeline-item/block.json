@@ -17,9 +17,13 @@
         "blockStyle": {
             "type": "object"
         },
-        "icon": {
-            "type": "object",
-            "default": {}
+        "iconName": {
+            "type": "string",
+            "default": ""
+        },
+        "customSvgCode": {
+            "type": "string",
+            "default": ""
         },
         "iconBgColor": {
             "type": "string"
