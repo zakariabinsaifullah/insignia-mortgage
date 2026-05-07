@@ -9,6 +9,7 @@
     --mcols: 1;
     --image-text-gap: 10.81px;
     --gap: 50px;
+    --row-gap: 0px;
     --card-bg: transparent;
     --card-padding: 30px;
     --card-radius: 12px;
@@ -16,13 +17,14 @@
     --card-border-width: 1px;
     --name-color: #1a1a1a;
     --designation-color: #000;
-    --icon-color: #7a1e2b;
+    --icon-color: #000104;
     --overlay-color: rgba(0, 0, 0, 0.35);
 
     // ── Grid layout ──────────────────────────────────────────────────────────
     .insignia-team-grid__grid {
         display: grid;
-        gap: var(--gap);
+        row-gap: var(--row-gap);
+        column-gap: var(--gap);
         grid-template-columns: repeat(var(--mcols), 1fr); // mobile-first
 
         @media (min-width: 768px) {
@@ -127,6 +129,11 @@
             color: var(--icon-color);
             text-decoration: none;
             line-height: 0;
+            transition: color 0.25s ease;
+
+            &:hover {
+                color: #74AF27;
+            }
 
             svg {
                 display: block;
@@ -184,6 +191,11 @@
             color: var(--icon-color);
             text-decoration: none;
             line-height: 0;
+            transition: color 0.25s ease;
+
+            &:hover {
+                color: #74AF27;
+            }
 
             svg {
                 display: block;

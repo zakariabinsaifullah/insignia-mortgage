@@ -16,6 +16,7 @@ export default function Inspector(props) {
         columns,
         resMode,
         gap,
+        rowGap,
         orderBy,
         selectedIds,
         cardStyle,
@@ -29,10 +30,11 @@ export default function Inspector(props) {
                 ...(columns.Tablet !== 2  && { '--tcols': String(columns.Tablet) }),
                 ...(columns.Mobile !== 1  && { '--mcols': String(columns.Mobile) }),
                 ...(gap          && { '--gap': gap }),
+                ...(rowGap       && { '--row-gap': rowGap }),
                 ...(imageTextGap && { '--image-text-gap': imageTextGap }),
             }
         });
-    }, [ columns, gap, imageTextGap ]);
+    }, [ columns, gap, rowGap, imageTextGap ]);
 
     return (
         <>
@@ -64,6 +66,12 @@ export default function Inspector(props) {
                         label={__('Gap', 'insignia')}
                         value={gap}
                         onChange={value => setAttributes({ gap: value })}
+                        mb={0}
+                    />
+                    <NativeUnitControl
+                        label={__('Row Gap', 'insignia')}
+                        value={rowGap}
+                        onChange={value => setAttributes({ rowGap: value })}
                         mb={0}
                     />
                 </PanelBody>

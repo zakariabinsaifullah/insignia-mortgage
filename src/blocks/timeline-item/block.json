@@ -21,9 +21,6 @@
             "type": "object",
             "default": {}
         },
-        "contentGap": {
-            "type": "number"
-        },
         "iconBgColor": {
             "type": "string"
         }

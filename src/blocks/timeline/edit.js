@@ -12,10 +12,16 @@ const TEMPLATE = [
 
 const Edit = props => {
     const { attributes, clientId, isSelected } = props;
-    const { uniqueId } = attributes;
+    const { uniqueId, contentGap, itemsGap } = attributes;
+
+    const cssCustomProperties = {
+        ...(contentGap && { '--item-gap':  `${contentGap}px` }),
+        ...(itemsGap   && { '--items-gap': `${itemsGap}px`  }),
+    };
 
     const blockProps = useBlockProps({
-        className: classNames(uniqueId)
+        className: classNames(uniqueId),
+        style: cssCustomProperties
     });
 
     const innerBlockProps = useInnerBlocksProps(

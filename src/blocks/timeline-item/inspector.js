@@ -1,26 +1,15 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { PanelBody, Button } from '@wordpress/components';
-import { NativeRangeControl, PanelColorControl } from '../../components';
+import { PanelColorControl } from '../../components';
 
 const Inspector = props => {
     const { attributes, setAttributes } = props;
-    const { icon, contentGap, iconBgColor } = attributes;
+    const { icon, iconBgColor } = attributes;
 
     return (
         <>
             <InspectorControls group="settings">
-                <PanelBody title={__('Layout', 'insignia')} initialOpen={true}>
-                    <NativeRangeControl
-                        label={__('Gap (icon → content)', 'insignia')}
-                        value={contentGap}
-                        onChange={value => setAttributes({ contentGap: value })}
-                        min={0}
-                        max={100}
-                        step={1}
-                        resetFallbackValue={28}
-                    />
-                </PanelBody>
                 <PanelBody title={__('Icon Image', 'insignia')} initialOpen={false}>
                     <MediaUploadCheck>
                         <MediaUpload
