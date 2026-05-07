@@ -1,0 +1,237 @@
+/* =============================================================================
+   Posts Grid Shortcode — shortcode.css
+   ============================================================================= */
+
+/* Wrapper */
+.ipg-wrapper {
+    transition: opacity 0.2s ease;
+}
+
+.ipg-wrapper.is-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* =============================================================================
+   Filter Nav
+   ============================================================================= */
+
+.ipg-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 48px;
+    justify-content: center;
+}
+
+.ipg-filter-btn {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4b5563;
+    padding: 8px 22px;
+    border-radius: 100px;
+    transition: all 0.25s ease;
+    line-height: 1.4;
+}
+
+.ipg-filter-btn:hover {
+    color: #126464;
+}
+
+.ipg-filter-btn.active {
+    background: #126464;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.ipg-filter-btn.active:hover {
+    color: #ffffff !important;
+}
+
+/* =============================================================================
+   Post Grid
+   ============================================================================= */
+
+.ipg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 50px;
+}
+
+@media (max-width: 900px) {
+    .ipg-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .ipg-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ipg-no-posts {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+/* =============================================================================
+   Post Card
+   ============================================================================= */
+
+.ipg-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.ipg-card__image {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 16px;
+}
+
+.ipg-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.ipg-card__image:hover img {
+    transform: scale(1.04);
+}
+
+.ipg-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.ipg-card__title {
+    margin: 0 0 16px;
+}
+
+.ipg-card__title a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.ipg-card__title a:hover {
+    color: #126464;
+}
+
+.ipg-card__excerpt {
+    margin: 0 0 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ipg-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.ipg-card__avatar {
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.ipg-card__avatar-img {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.ipg-card__author {
+    font-size: 14px;
+}
+
+.ipg-card__sep {
+    font-size: 14px;
+}
+
+.ipg-card__date {
+    font-size: 14px;
+}
+
+/* =============================================================================
+   Pagination
+   ============================================================================= */
+
+.ipg-pagination-wrap {
+    margin-top: 50px;
+}
+
+.ipg-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.ipg-page-btn {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 6px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+
+.ipg-page-btn:hover:not(:disabled) {
+    border-color: #126464;
+    color: #126464;
+}
+
+.ipg-page-btn.active {
+    background: #126464;
+    border-color: #126464;
+    color: #ffffff;
+}
+
+.ipg-page-btn:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+.ipg-page-btn.ipg-page-arrow svg {
+    display: block;
+    pointer-events: none;
+}
+
+.ipg-page-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    color: #94a3b8;
+    font-size: 14px;
+    user-select: none;
+    letter-spacing: 0.05em;
+}
