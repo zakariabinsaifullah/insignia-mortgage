@@ -1,0 +1,50 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "insignia/frame",
+    "version": "1.0.0",
+    "title": "Frame",
+    "category": "insignia-blocks",
+    "icon": "screenoptions",
+    "description": "A decorative frame with a badge title, inner content blocks, and a footer note",
+    "example": {},
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "badgeText": {
+            "type": "string",
+            "default": "Private Banking"
+        },
+        "footerNote": {
+            "type": "string",
+            "default": "Interest Only $1,000,000 – $25,000,000"
+        },
+        "badgeColor": {
+            "type": "string"
+        },
+        "badgeBgColor": {
+            "type": "string"
+        },
+        "borderColor": {
+            "type": "string"
+        },
+        "badgeFontSize": {
+            "type": "number"
+        },
+        "footerColor": {
+            "type": "string"
+        },
+        "footerFontSize": {
+            "type": "number"
+        },
+        "blockStyle": {
+            "type": "object"
+        }
+    },
+    "textdomain": "insignia",
+    "editorScript": ["file:./index.js"],
+    "editorStyle": ["file:./index.css"],
+    "style": ["file:./style-index.css"]
+}

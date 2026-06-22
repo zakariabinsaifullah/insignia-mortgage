@@ -1,0 +1,61 @@
+.wp-block-insignia-frame {
+    position: relative;
+    overflow: visible;
+    border: 1px solid var(--frame-border-color, #d1d5db);
+    padding: 40px 40px 40px;
+    margin-top: 20px;
+
+    .insignia-frame__badge {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--frame-badge-bg, #fff);
+        border: 1px solid var(--frame-border-color, #d1d5db);
+        border-radius: 999px;
+        padding: 6px 24px;
+        white-space: nowrap;
+        z-index: 2;
+
+        span {
+            display: block;
+            color: var(--frame-badge-color, #6a8a3b);
+            font-size: var(--frame-badge-size, 14px);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+    }
+
+    .insignia-frame__inner {
+        width: 100%;
+    }
+
+    .insignia-frame__footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: translateY(50%);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: #fff;
+        color: var(--frame-footer-color, #9ca3af);
+        font-size: var(--frame-footer-size, 13px);
+        line-height: 1.4;
+        z-index: 2;
+
+        &::before,
+        &::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--frame-border-color, #d1d5db);
+        }
+
+        span {
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+    }
+}
