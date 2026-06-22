@@ -1,0 +1,12 @@
+.wp-block-insignia-frame {
+    overflow: visible !important;
+
+    .insignia-frame__badge,
+    .insignia-frame__footer {
+        cursor: text;
+
+        .rich-text:focus {
+            outline: none;
+        }
+    }
+}
