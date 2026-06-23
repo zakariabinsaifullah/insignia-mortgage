@@ -15,6 +15,21 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 
 		// ── Button block ───────────────────────────────────────────────────────
 
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => 'link',
+				'label' => __( 'Link', 'insignia' ),
+			)
+		);
+
+		register_block_style(
+			'core/button',
+			array(
+				'name'  => 'outline',
+				'label' => __( 'Outline', 'insignia' ),
+			)
+		);
 
 		// ── Heading block ──────────────────────────────────────────────────────
 
@@ -73,13 +88,15 @@ if ( ! function_exists( 'insigniafse_block_styles' ) ) :
 					display: inline-flex;
 					align-items: center;
 					gap: 0.4em;
+					font-weight: 600;
+					font-size: 16px;
 				}
 				.wp-block-post-excerpt.is-style-iconic-read-more .wp-block-post-excerpt__more-link::after {
 					content: "";
 					display: inline-block;
 					width: 16px;
 					height: 12px;
-					background-image: url("data:image/svg+xml,%3Csvg width=%2716%27 height=%2712%27 viewBox=%270 0 16 12%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cpath d=%27M15.61.316c.316.352.316.88 0 1.196l-9.282 9.281c-.351.352-.879.352-1.195 0L.352 6.012a.77.77 0 0 1 0-1.16.77.77 0 0 1 1.16 0l4.183 4.183 8.72-8.719a.83.83 0 0 1 1.16 0z%27 fill=%27currentColor%27/%3E%3C/svg%3E");
+					background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTUuNDY5IDcuNDUzIDkuMjggMTMuMzZjLS4zNTEuMzE3LS44NzkuMzE3LTEuMTk1LS4wMzUtLjMxNi0uMzUxLS4zMTYtLjg3OS4wMzUtMS4xOTVsNC42NzYtNC40NjVILjg0NEMuMzUyIDcuNjY0IDAgNy4zMTMgMCA2LjgyYzAtLjQ1Ny4zNTItLjg0My44NDQtLjg0M2gxMS45NTNMOC4xMiAxLjU0N0EuODQuODQgMCAwIDEgOC4wODYuMzUyLjg0Ljg0IDAgMCAxIDkuMjguMzE2bDYuMTg4IDUuOTA3Yy4xNzYuMTc1LjI4MS4zODYuMjgxLjU5N2EuODguODggMCAwIDEtLjI4MS42MzMiIGZpbGw9IiM1YzhjMWYiLz48L3N2Zz4=");
 					background-repeat: no-repeat;
 					background-size: contain;
 					background-position: center;

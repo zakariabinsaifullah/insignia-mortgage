@@ -46,13 +46,10 @@
     // Card
     // ─────────────────────────────────────────────────────────────────────────
     .insignia-team-card {
-        background: #ffffff;
         overflow: hidden;
         cursor: pointer;
         padding: 0;
         box-sizing: border-box;
-
-       
 
         // ── Photo area ────────────────────────────────────────────────────────
         &__image-wrap {
@@ -102,7 +99,7 @@
         }
 
         &__name {
-            margin: 0!important;
+            margin: 0 !important;
             font-weight: 600;
             font-style: normal;
             font-size: 18px;
@@ -112,7 +109,7 @@
         }
 
         &__designation {
-            margin: 0!important;
+            margin: 0 !important;
             font-size: 14px;
             color: var(--designation-color);
             line-height: 1.4;
@@ -132,7 +129,7 @@
             transition: color 0.25s ease;
 
             &:hover {
-                color: #74AF27;
+                color: #74af27;
             }
 
             svg {
@@ -194,7 +191,7 @@
             transition: color 0.25s ease;
 
             &:hover {
-                color: #74AF27;
+                color: #74af27;
             }
 
             svg {
@@ -204,5 +201,4 @@
             }
         }
     }
-
 }

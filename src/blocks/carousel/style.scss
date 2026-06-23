@@ -61,26 +61,50 @@
 
     // Top Left Grouping
     &.nav-pos-top-left {
-        .swiper-custom-prev { top: var(--nav-gap, 15px) !important; left: var(--nav-gap, 15px) !important; }
-        .swiper-custom-next { top: var(--nav-gap, 15px) !important; left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+        .swiper-custom-prev {
+            top: var(--nav-gap, 15px) !important;
+            left: var(--nav-gap, 15px) !important;
+        }
+        .swiper-custom-next {
+            top: var(--nav-gap, 15px) !important;
+            left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important;
+        }
     }
 
     // Top Right Grouping
     &.nav-pos-top-right {
-        .swiper-custom-next { top: var(--nav-gap, 15px) !important; right: var(--nav-gap, 15px) !important; }
-        .swiper-custom-prev { top: var(--nav-gap, 15px) !important; right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+        .swiper-custom-next {
+            top: var(--nav-gap, 15px) !important;
+            right: var(--nav-gap, 15px) !important;
+        }
+        .swiper-custom-prev {
+            top: var(--nav-gap, 15px) !important;
+            right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important;
+        }
     }
 
     // Bottom Left Grouping
     &.nav-pos-bottom-left {
-        .swiper-custom-prev { bottom: var(--nav-gap, 15px) !important; left: var(--nav-gap, 15px) !important; }
-        .swiper-custom-next { bottom: var(--nav-gap, 15px) !important; left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+        .swiper-custom-prev {
+            bottom: var(--nav-gap, 15px) !important;
+            left: var(--nav-gap, 15px) !important;
+        }
+        .swiper-custom-next {
+            bottom: var(--nav-gap, 15px) !important;
+            left: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important;
+        }
     }
 
     // Bottom Right Grouping
     &.nav-pos-bottom-right {
-        .swiper-custom-next { bottom: var(--nav-gap, 15px) !important; right: var(--nav-gap, 15px) !important; }
-        .swiper-custom-prev { bottom: var(--nav-gap, 15px) !important; right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important; }
+        .swiper-custom-next {
+            bottom: var(--nav-gap, 15px) !important;
+            right: var(--nav-gap, 15px) !important;
+        }
+        .swiper-custom-prev {
+            bottom: var(--nav-gap, 15px) !important;
+            right: calc(var(--nav-gap, 15px) + var(--nav-size, 36px) + 5px) !important;
+        }
     }
 
     // Bottom Split Grouping
@@ -107,12 +131,12 @@
             right: auto !important;
         }
 
-        .swiper-custom-next { 
-            right: 0 !important; 
+        .swiper-custom-next {
+            right: 0 !important;
             left: auto !important;
         }
-        .swiper-custom-prev { 
-            right: calc(var(--nav-size, 36px) + 10px) !important; 
+        .swiper-custom-prev {
+            right: calc(var(--nav-size, 36px) + 10px) !important;
             left: auto !important;
         }
 
@@ -128,20 +152,37 @@
         padding-left: 0 !important;
         padding-right: 0 !important;
 
-        &.nav-pos-top-left, &.nav-pos-top-right {
-            .gu-nav { top: calc(-1 * (var(--nav-size, 36px) + 12px)) !important; }
+        &.nav-pos-top-left,
+        &.nav-pos-top-right {
+            .gu-nav {
+                top: calc(-1 * (var(--nav-size, 36px) + 12px)) !important;
+            }
         }
-        &.nav-pos-bottom-left, &.nav-pos-bottom-right {
-            .gu-nav { bottom: calc(-1 * (var(--nav-size, 36px) + 12px)) !important; }
+        &.nav-pos-bottom-left,
+        &.nav-pos-bottom-right {
+            .gu-nav {
+                bottom: calc(-1 * (var(--nav-size, 36px) + 12px)) !important;
+            }
         }
 
-        &.nav-pos-top-left, &.nav-pos-bottom-left {
-            .swiper-custom-prev { left: 0 !important; }
-            .swiper-custom-next { left: calc(var(--nav-size, 36px) + 5px) !important; }
+        &.nav-pos-top-left,
+        &.nav-pos-bottom-left {
+            .swiper-custom-prev {
+                left: 0 !important;
+            }
+            .swiper-custom-next {
+                left: calc(var(--nav-size, 36px) + 5px) !important;
+            }
         }
-        &.nav-pos-top-right, &.nav-pos-bottom-right, &.nav-pos-bottom-split {
-            .swiper-custom-next { right: 0 !important; }
-            .swiper-custom-prev { right: calc(var(--nav-size, 36px) + 5px) !important; }
+        &.nav-pos-top-right,
+        &.nav-pos-bottom-right,
+        &.nav-pos-bottom-split {
+            .swiper-custom-next {
+                right: 0 !important;
+            }
+            .swiper-custom-prev {
+                right: calc(var(--nav-size, 36px) + 5px) !important;
+            }
         }
     }
 
@@ -153,11 +194,11 @@
         align-items: center;
         justify-content: center;
         padding: var(--nav-padding, 0);
-        border-width: var(--nav-border-width, 0);
+        border-width: var(--nav-border-width, 1px);
         border-style: var(--nav-border-style, solid);
-        border-color: var(--nborder-color, #2b2e83);
-        background-color: var(--nav-bg, rgba(255, 255, 255, 0.9));
-        border-radius: var(--nav-radius, 0px);
+        border-color: var(--nborder-color, #d8d8d9);
+        background-color: var(--nav-bg);
+        border-radius: var(--nav-radius, 50px);
         cursor: pointer;
         transition: all 0.3s ease;
         flex-shrink: 0;
@@ -174,11 +215,17 @@
         svg {
             width: 1em;
             height: 1em;
-            font-size: var(--nicon-size, 16px);
-            color: var(--nav-color, #2b2e83);
+            font-size: var(--nicon-size, 24px);
+            color: var(--nav-color, #000f12);
             fill: currentColor;
 
-            path, circle, rect, polygon, polyline, ellipse, line {
+            path,
+            circle,
+            rect,
+            polygon,
+            polyline,
+            ellipse,
+            line {
                 fill: currentColor;
                 stroke: currentColor;
             }
@@ -210,7 +257,7 @@
         height: var(--npagination-height, var(--psize, 10px));
         min-width: var(--psize, 10px);
         border-radius: var(--pradius, 50%);
-        background: var(--pagination-color, #2b2e83);
+        background: var(--pagination-color, #000104);
         opacity: 0.5;
         transition: all 0.3s ease;
         margin: 0 !important;

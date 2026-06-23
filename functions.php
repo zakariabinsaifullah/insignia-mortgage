@@ -12,7 +12,6 @@
 
 // ── Existing features ──────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/cpt.php' );        // Custom post types
-require_once get_theme_file_path( 'inc/duplicate.php' );  // Post duplication
 
 // ── Theme setup ────────────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/setup.php' );      // Post formats, editor style
