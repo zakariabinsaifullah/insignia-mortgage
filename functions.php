@@ -10,6 +10,16 @@
  * @since   1.0
  */
 
+// ── Theme version constant ─────────────────────────────────────────────────────
+//
+// Cached once at boot from the active theme's `style.css` header and reused
+// as the cache-buster for every style and script the theme enqueues. Keeping
+// a single source of truth means version bumps only need to be edited in
+// style.css.
+if ( ! defined( 'INSA_THEME_VERSION' ) ) {
+	define( 'INSA_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
+}
+
 // ── Existing features ──────────────────────────────────────────────────────────
 require_once get_theme_file_path( 'inc/cpt.php' );        // Custom post types
 

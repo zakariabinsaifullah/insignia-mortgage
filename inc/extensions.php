@@ -27,7 +27,7 @@ if ( ! function_exists( 'insignia_enqueue_hover_color_editor_assets' ) ) :
 			'insignia-hover-color-extension',
 			get_theme_file_uri( 'build/extensions/hover-color/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -37,7 +37,7 @@ if ( ! function_exists( 'insignia_enqueue_hover_color_editor_assets' ) ) :
 				'insignia-hover-color-extension',
 				get_theme_file_uri( 'build/extensions/hover-color/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -64,7 +64,7 @@ if ( ! function_exists( 'insignia_enqueue_hover_color_frontend_assets' ) ) :
 			'insignia-hover-color-extension-style',
 			get_theme_file_uri( 'build/extensions/hover-color/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -196,7 +196,7 @@ if ( ! function_exists( 'insignia_enqueue_group_full_height_editor_assets' ) ) :
 			'insignia-group-full-height-extension',
 			get_theme_file_uri( 'build/extensions/group-full-height/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -206,7 +206,7 @@ if ( ! function_exists( 'insignia_enqueue_group_full_height_editor_assets' ) ) :
 				'insignia-group-full-height-extension',
 				get_theme_file_uri( 'build/extensions/group-full-height/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -233,7 +233,7 @@ if ( ! function_exists( 'insignia_enqueue_group_full_height_frontend_assets' ) )
 			'insignia-group-full-height-extension-style',
 			get_theme_file_uri( 'build/extensions/group-full-height/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -296,7 +296,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_bg_editor_assets' ) ) :
 			'insignia-group-overlay-bg-extension',
 			get_theme_file_uri( 'build/extensions/group-overlay-bg/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -306,7 +306,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_bg_editor_assets' ) ) :
 				'insignia-group-overlay-bg-extension',
 				get_theme_file_uri( 'build/extensions/group-overlay-bg/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -333,7 +333,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_bg_frontend_assets' ) ) 
 			'insignia-group-overlay-bg-extension-style',
 			get_theme_file_uri( 'build/extensions/group-overlay-bg/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -418,7 +418,7 @@ if ( ! function_exists( 'insignia_enqueue_group_global_hover_editor_assets' ) ) 
 			'insignia-group-global-hover-extension',
 			get_theme_file_uri( 'build/extensions/group-global-hover/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -428,7 +428,7 @@ if ( ! function_exists( 'insignia_enqueue_group_global_hover_editor_assets' ) ) 
 				'insignia-group-global-hover-extension',
 				get_theme_file_uri( 'build/extensions/group-global-hover/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -455,7 +455,7 @@ if ( ! function_exists( 'insignia_enqueue_group_global_hover_frontend_assets' ) 
 			'insignia-group-global-hover-extension-style',
 			get_theme_file_uri( 'build/extensions/group-global-hover/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -562,7 +562,7 @@ if ( ! function_exists( 'insignia_enqueue_heading_arrow_editor_assets' ) ) :
 			'insignia-heading-arrow-extension',
 			get_theme_file_uri( 'build/extensions/heading-arrow/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 	}
@@ -639,7 +639,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_ellipse_editor_assets' )
 			'insignia-group-overlay-ellipse-extension',
 			get_theme_file_uri( 'build/extensions/group-overlay-ellipse/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -649,7 +649,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_ellipse_editor_assets' )
 				'insignia-group-overlay-ellipse-extension',
 				get_theme_file_uri( 'build/extensions/group-overlay-ellipse/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -675,7 +675,7 @@ if ( ! function_exists( 'insignia_enqueue_group_overlay_ellipse_frontend_assets'
 			'insignia-group-overlay-ellipse-extension-style',
 			get_theme_file_uri( 'build/extensions/group-overlay-ellipse/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -737,7 +737,7 @@ if ( ! function_exists( 'insignia_enqueue_text_max_width_editor_assets' ) ) :
 			'insignia-text-max-width-extension',
 			get_theme_file_uri( 'build/extensions/text-max-width/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -747,7 +747,7 @@ if ( ! function_exists( 'insignia_enqueue_text_max_width_editor_assets' ) ) :
 				'insignia-text-max-width-extension',
 				get_theme_file_uri( 'build/extensions/text-max-width/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -774,7 +774,7 @@ if ( ! function_exists( 'insignia_enqueue_text_max_width_frontend_assets' ) ) :
 			'insignia-text-max-width-extension-style',
 			get_theme_file_uri( 'build/extensions/text-max-width/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -850,7 +850,7 @@ if ( ! function_exists( 'insignia_enqueue_button_full_width_mobile_editor_assets
 			'insignia-button-full-width-mobile-extension',
 			get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -860,7 +860,7 @@ if ( ! function_exists( 'insignia_enqueue_button_full_width_mobile_editor_assets
 				'insignia-button-full-width-mobile-extension',
 				get_theme_file_uri( 'build/extensions/button-full-width-mobile/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -887,7 +887,7 @@ if ( ! function_exists( 'insignia_enqueue_button_full_width_mobile_frontend_asse
 			'insignia-button-full-width-mobile-extension-style',
 			get_theme_file_uri( 'build/extensions/button-full-width-mobile/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -950,7 +950,7 @@ if ( ! function_exists( 'insignia_enqueue_query_carousel_editor_assets' ) ) :
 			'insignia-query-carousel-extension',
 			get_theme_file_uri( 'build/extensions/query-carousel/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -960,7 +960,7 @@ if ( ! function_exists( 'insignia_enqueue_query_carousel_editor_assets' ) ) :
 				'insignia-query-carousel-extension',
 				get_theme_file_uri( 'build/extensions/query-carousel/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -988,7 +988,7 @@ if ( ! function_exists( 'insignia_enqueue_query_carousel_frontend_assets' ) ) :
 			'insignia-query-carousel-extension-style',
 			get_theme_file_uri( 'build/extensions/query-carousel/style-index.css' ),
 			array( 'insignia-swiper-style' ),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;
@@ -1017,7 +1017,7 @@ if ( ! function_exists( 'insignia_enqueue_query_carousel_view_script' ) ) :
 			'insignia-swiper-script',
 			get_parent_theme_file_uri( 'assets/js/swiper-bundle.min.js' ),
 			array(),
-			wp_get_theme()->get( 'Version' ),
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -1025,7 +1025,7 @@ if ( ! function_exists( 'insignia_enqueue_query_carousel_view_script' ) ) :
 			'insignia-query-carousel-view',
 			get_theme_file_uri( 'build/extensions/query-carousel/view.js' ),
 			array( 'insignia-swiper-script' ),
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 	}
@@ -1236,7 +1236,7 @@ if ( ! function_exists( 'insignia_enqueue_group_grid_columns_editor_assets' ) ) 
 			'insignia-group-grid-columns-extension',
 			get_theme_file_uri( 'build/extensions/group-grid-columns/index.js' ),
 			$assets['dependencies'],
-			$assets['version'],
+			INSA_THEME_VERSION,
 			true
 		);
 
@@ -1246,7 +1246,7 @@ if ( ! function_exists( 'insignia_enqueue_group_grid_columns_editor_assets' ) ) 
 				'insignia-group-grid-columns-extension',
 				get_theme_file_uri( 'build/extensions/group-grid-columns/index.css' ),
 				array(),
-				$assets['version']
+				INSA_THEME_VERSION
 			);
 		}
 	}
@@ -1272,7 +1272,7 @@ if ( ! function_exists( 'insignia_enqueue_group_grid_columns_frontend_assets' ) 
 			'insignia-group-grid-columns-extension-style',
 			get_theme_file_uri( 'build/extensions/group-grid-columns/style-index.css' ),
 			array(),
-			$assets['version']
+			INSA_THEME_VERSION
 		);
 	}
 endif;

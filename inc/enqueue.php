@@ -14,7 +14,7 @@ if ( ! function_exists( 'insigniafse_enqueue_styles' ) ) :
 	 * shared vendor assets (Swiper) that blocks can depend on.
 	 */
 	function insigniafse_enqueue_styles() {
-		$theme_version = wp_get_theme()->get( 'Version' );
+		$theme_version = INSA_THEME_VERSION;
 
 		wp_enqueue_style(
 			'insignia-root-style',
@@ -52,7 +52,7 @@ if ( ! function_exists( 'insigniafse_enqueue_block_styles' ) ) :
 			'insignia-block-style',
 			get_parent_theme_file_uri( 'assets/css/blocks.css' ),
 			array(),
-			wp_get_theme()->get( 'Version' )
+			INSA_THEME_VERSION
 		);
 	}
 endif;
