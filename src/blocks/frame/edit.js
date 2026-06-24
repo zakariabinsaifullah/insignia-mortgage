@@ -13,7 +13,7 @@ const Edit = props => {
     const cssCustomProperties = {
         ...(badgeColor && { '--frame-badge-color': badgeColor }),
         ...(badgeBgColor && { '--frame-badge-bg': badgeBgColor }),
-        ...(borderColor && { '--frame-border-color': borderColor }),
+        ...(borderColor && { '--frame-br-color': borderColor }),
         ...(badgeFontSize && { '--frame-badge-size': `${badgeFontSize}px` }),
         ...(footerColor && { '--frame-footer-color': footerColor }),
         ...(footerFontSize && { '--frame-footer-size': `${footerFontSize}px` })

@@ -143,7 +143,7 @@ addFilter(
                     ...props.wrapperProps?.style,
                     '--hover-color': getColorValue(hoverTextColor, customHoverTextColor),
                     '--hover-background-color': getColorValue(hoverBackgroundColor, customHoverBackgroundColor),
-                    '--hover-border-color': getColorValue(hoverBorderColor, customHoverBorderColor),
+                    '--hover-br-color': getColorValue(hoverBorderColor, customHoverBorderColor),
                     '--hover-transition-duration': hoverTransitionDuration + 'ms',
                     '--hover-transition-timing': hoverTransitionTiming
                 }

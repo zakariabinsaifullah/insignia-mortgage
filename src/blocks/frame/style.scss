@@ -1,7 +1,7 @@
 .wp-block-insignia-frame {
     position: relative;
     overflow: visible;
-    border: 1px solid var(--frame-border-color, #d1d5db);
+    border: 1px solid var(--frame-br-color, #d1d5db);
     padding: 40px 40px 40px;
     margin-top: 20px;
 
@@ -11,7 +11,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background: var(--frame-badge-bg, #fff);
-        border: 1px solid var(--frame-border-color, #d1d5db);
+        border: 1px solid var(--frame-br-color, #d1d5db);
         border-radius: 999px;
         padding: 6px 24px;
         white-space: nowrap;
@@ -50,7 +50,7 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: var(--frame-border-color, #d1d5db);
+            background: var(--frame-br-color, #d1d5db);
         }
 
         span {

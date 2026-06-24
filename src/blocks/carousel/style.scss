@@ -194,9 +194,9 @@
         align-items: center;
         justify-content: center;
         padding: var(--nav-padding, 0);
-        border-width: var(--nav-border-width, 1px);
-        border-style: var(--nav-border-style, solid);
-        border-color: var(--nborder-color, #d8d8d9);
+        border-width: var(--nav-br-width, 1px);
+        border-style: var(--nav-br-style, solid);
+        border-color: var(--nbr-color, #d8d8d9);
         background-color: var(--nav-bg);
         border-radius: var(--nav-radius, 50px);
         cursor: pointer;
