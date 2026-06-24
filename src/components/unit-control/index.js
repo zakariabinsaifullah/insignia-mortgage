@@ -5,7 +5,7 @@ const NativeUnitControl = ({
     label,
     value,
     onChange,
-    mb = '',
+    mb = '16px',
     placeholder = '',
     units = [
         {
@@ -27,7 +27,7 @@ const NativeUnitControl = ({
     return (
         <div
             className={classnames('native-control-wrapper', {
-                [`mb-0`]: labelPosition === 'edge' && ! mb,
+                [`mb-0`]: labelPosition === 'edge' && !mb
             })}
             {...(labelPosition === 'edge' && {
                 style: {
