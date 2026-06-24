@@ -37,7 +37,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        background: #fff;
+        background: var(--frame-badge-bg, #fff);
         color: var(--frame-footer-color, #9ca3af);
         font-size: var(--frame-footer-size, 13px);
         line-height: 1.4;
