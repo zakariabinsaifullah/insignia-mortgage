@@ -343,6 +343,15 @@
                 },
                 {
                     "fluid": {
+                        "max": "56px",
+                        "min": "28px"
+                    },
+                    "name": "Title",
+                    "size": "56px",
+                    "slug": "insa-title"
+                },
+                {
+                    "fluid": {
                         "max": "80px",
                         "min": "56px"
                     },
