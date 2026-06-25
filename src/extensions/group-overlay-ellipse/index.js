@@ -17,36 +17,32 @@ import './style.scss';
 const SUPPORTED_BLOCKS = [ 'core/group' ];
 
 const ELLIPSE_OPTIONS = [
-    { label: __( 'None',          'insignia' ), value: 'none'  },
+    { label: __( 'None', 'insignia' ), value: 'none' },
     { label: __( 'Olive Ellipse', 'insignia' ), value: 'olive' },
     { label: __( 'Brown Ellipse', 'insignia' ), value: 'brown' },
-    { label: __( 'Navy Ellipse',      'insignia' ), value: 'navy'      },
+    { label: __( 'Navy Ellipse', 'insignia' ), value: 'navy' },
     { label: __( 'Dark Plum Ellipse', 'insignia' ), value: 'dark-plum' }
 ];
 
 /**
  * Add overlayEllipse attribute to supported blocks.
  */
-addFilter(
-    'blocks.registerBlockType',
-    'insignia/group-overlay-ellipse-add-attributes',
-    ( settings, name ) => {
-        if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
-            return settings;
-        }
-
-        return {
-            ...settings,
-            attributes: {
-                ...settings.attributes,
-                overlayEllipse: {
-                    type: 'string',
-                    default: 'none'
-                }
-            }
-        };
+addFilter( 'blocks.registerBlockType', 'insignia/group-overlay-ellipse-add-attributes', ( settings, name ) => {
+    if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
+        return settings;
     }
-);
+
+    return {
+        ...settings,
+        attributes: {
+            ...settings.attributes,
+            overlayEllipse: {
+                type: 'string',
+                default: 'none'
+            }
+        }
+    };
+} );
 
 /**
  * Add "Overlay Ellipse" select to the core/group inspector.
@@ -101,11 +97,7 @@ addFilter(
                 return <BlockListBlock { ...props } />;
             }
 
-            const classes = [
-                props.className,
-                'has-overlay-ellipse',
-                `has-overlay-ellipse--${ ellipse }`
-            ].filter( Boolean ).join( ' ' );
+            const classes = [ props.className, 'has-overlay-ellipse', `has-overlay-ellipse--${ ellipse }` ].filter( Boolean ).join( ' ' );
 
             return <BlockListBlock { ...props } className={ classes } />;
         };

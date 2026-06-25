@@ -8,26 +8,26 @@ const Save = props => {
     const { attributes } = props;
     const { uniqueId, image, heading, description, buttonText, buttonUrl, buttonNewTab } = attributes;
 
-    const blockProps = useBlockProps.save({
+    const blockProps = useBlockProps.save( {
         className: uniqueId
-    });
+    } );
 
     return (
-        <div {...blockProps}>
+        <div { ...blockProps }>
             <div className="img">
-                <img src={image?.url} alt={image?.alt || 'accordion'} className="img-cover" />
+                <img src={ image?.url } alt={ image?.alt || 'accordion' } className="img-cover" />
             </div>
             <div className="info">
-                <RichText.Content tagName="h3" value={heading} />
-                <RichText.Content tagName="p" value={description} />
+                <RichText.Content tagName="h3" value={ heading } />
+                <RichText.Content tagName="p" value={ description } />
                 <div className="accordion-btn-wrap">
                     <a
-                        href={buttonUrl || '#'}
+                        href={ buttonUrl || '#' }
                         className="accordion-btn"
-                        target={buttonNewTab ? '_blank' : '_self'}
-                        rel={buttonNewTab ? 'noopener noreferrer' : undefined}
+                        target={ buttonNewTab ? '_blank' : '_self' }
+                        rel={ buttonNewTab ? 'noopener noreferrer' : undefined }
                     >
-                        <span>{buttonText || 'Learn More'}</span>
+                        <span>{ buttonText || 'Learn More' }</span>
                     </a>
                 </div>
             </div>

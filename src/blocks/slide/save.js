@@ -7,16 +7,16 @@ import {
     __experimentalGetShadowClassesAndStyles as getShadowClassesAndStyles
 } from '@wordpress/block-editor';
 
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
     // Get block support props
-    const borderProps = getBorderClassesAndStyles(attributes);
-    const colorProps = getColorClassesAndStyles(attributes);
-    const spacingProps = getSpacingClassesAndStyles(attributes);
-    const shadowProps = getShadowClassesAndStyles(attributes);
+    const borderProps = getBorderClassesAndStyles( attributes );
+    const colorProps = getColorClassesAndStyles( attributes );
+    const spacingProps = getSpacingClassesAndStyles( attributes );
+    const shadowProps = getShadowClassesAndStyles( attributes );
 
     return (
         <div
-            {...useBlockProps.save({
+            { ...useBlockProps.save( {
                 className: 'swiper-slide',
                 style: {
                     ...borderProps.style,
@@ -24,7 +24,7 @@ export default function save({ attributes }) {
                     ...spacingProps.style,
                     ...shadowProps.style
                 }
-            })}
+            } ) }
         >
             <InnerBlocks.Content />
         </div>

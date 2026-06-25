@@ -13,101 +13,103 @@ const folderOpen = (
     </svg>
 );
 
-const NativeIconPicker = ({
-    label = __('Icon', 'insignia'),
+const NativeIconPicker = ( {
+    label = __( 'Icon', 'insignia' ),
     onIconSelect,
     onCustomSvgInsert,
     iconName,
     customSvgCode,
     iconSize,
     strokeWidth
-}) => {
+} ) => {
     // states
-    const [modalState, setModalState] = useState({
+    const [ modalState, setModalState ] = useState( {
         isOpen: false,
         activeTab: 'library'
-    });
+    } );
 
-    const openModal = (tab = 'library') => {
-        setModalState({
+    const openModal = ( tab = 'library' ) => {
+        setModalState( {
             isOpen: true,
             activeTab: tab
-        });
+        } );
     };
 
     const closeModal = () => {
-        setModalState(prev => ({
+        setModalState( prev => ( {
             ...prev,
             isOpen: false
-        }));
+        } ) );
     };
 
     const handleIconSelect = iconData => {
-        onIconSelect(iconData.name, getIconType(iconData.icon), iconData.icon);
+        onIconSelect( iconData.name, getIconType( iconData.icon ), iconData.icon );
     };
 
-    const handleCustomSvgInsert = ({ customSvgCode, iconType, strokeWidth }) => {
-        onCustomSvgInsert({ customSvgCode, iconType, strokeWidth });
+    const handleCustomSvgInsert = ( { customSvgCode, iconType, strokeWidth } ) => {
+        onCustomSvgInsert( { customSvgCode, iconType, strokeWidth } );
     };
 
     return (
         <>
             <Library
-                onClose={closeModal}
-                onIconSelect={handleIconSelect}
-                onCustomSvgInsert={handleCustomSvgInsert}
-                currentIconName={iconName}
-                currentCustomSvg={customSvgCode}
-                currentIconSize={iconSize}
-                currentStrokeWidth={strokeWidth}
-                modalState={modalState}
-                setModalState={setModalState}
+                onClose={ closeModal }
+                onIconSelect={ handleIconSelect }
+                onCustomSvgInsert={ handleCustomSvgInsert }
+                currentIconName={ iconName }
+                currentCustomSvg={ customSvgCode }
+                currentIconSize={ iconSize }
+                currentStrokeWidth={ strokeWidth }
+                modalState={ modalState }
+                setModalState={ setModalState }
             />
-            <BaseControl id="insignia-icon-settings" label={label} __nextHasNoMarginBottom>
+            <BaseControl id="insignia-icon-settings" label={ label } __nextHasNoMarginBottom>
                 <Dropdown
-                    popoverProps={{
+                    popoverProps={ {
                         placement: 'left-start',
                         offset: 36,
                         shift: true
-                    }}
+                    } }
                     className="insignia-icon-settings"
-                    renderToggle={({ isOpen, onToggle, onClose }) => (
+                    renderToggle={ ( { isOpen, onToggle, onClose } ) => (
                         <div className="insignia-icon-settings__dropdown">
                             <Button
-                                onClick={onToggle}
-                                aria-expanded={isOpen}
+                                onClick={ onToggle }
+                                aria-expanded={ isOpen }
                                 className="insignia-icon-settings__dropdown-toggle"
                                 __next40pxDefaultSize
                                 __nextHasNoMarginBottom
                             >
-                                {!!(iconName || customSvgCode) ? (
+                                { !! ( iconName || customSvgCode ) ? (
                                     <span className="insignia-icon-settings__indicator">
-                                        <RenderIcon customSvgCode={customSvgCode} iconName={iconName} size={20} />
+                                        <RenderIcon customSvgCode={ customSvgCode } iconName={ iconName } size={ 20 } />
                                     </span>
                                 ) : (
                                     <span className="insignia-icon-settings__indicator disabled"></span>
-                                )}
+                                ) }
 
                                 <span className="insignia-icon-settings__dropdown-label">
-                                    {__(iconName || (customSvgCode ? 'Custom SVG' : 'Select Icon', 'insignia'))}
+                                    { __( iconName || ( customSvgCode ? 'Custom SVG' : 'Select Icon', 'insignia' ) ) }
                                 </span>
                             </Button>
                             <Button
-                                label={__('Browse library', 'insignia')}
-                                onClick={() => {
+                                label={ __( 'Browse library', 'insignia' ) }
+                                onClick={ () => {
                                     onClose();
-                                    openModal('library');
-                                }}
-                                iconSize={18}
+                                    openModal( 'library' );
+                                } }
+                                iconSize={ 18 }
                                 size="small"
-                                icon={folderOpen}
+                                icon={ folderOpen }
                                 className="insignia-icon-settings__dropdown-more"
                                 __next40pxDefaultSize
                                 __nextHasNoMarginBottom
                             />
                         </div>
-                    )}
-                    renderContent={({ onClose }) => <QuickInserter setIcon={handleIconSelect} onClose={onClose} openModal={openModal} />}
+                    ) }
+                    renderContent={ ( { onClose } ) => (
+                        <QuickInserter setIcon={ handleIconSelect } onClose={ onClose } openModal={ openModal } />
+                    ) }
                 />
             </BaseControl>
         </>

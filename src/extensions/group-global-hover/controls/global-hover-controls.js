@@ -8,13 +8,7 @@ import {
     __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
 } from '@wordpress/block-editor';
 
-const GlobalHoverControls = ( {
-    clientId,
-    globalHoverBgColor,
-    setGlobalHoverBgColor,
-    globalHoverColor,
-    setGlobalHoverColor
-} ) => {
+const GlobalHoverControls = ( { clientId, globalHoverBgColor, setGlobalHoverBgColor, globalHoverColor, setGlobalHoverColor } ) => {
     const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
     if ( ! colorGradientSettings.hasColorsOrGradients ) {
@@ -24,7 +18,7 @@ const GlobalHoverControls = ( {
     const colorSettings = [
         {
             colorValue: globalHoverBgColor?.color,
-            onColorChange: ( color ) => setGlobalHoverBgColor( color ),
+            onColorChange: color => setGlobalHoverBgColor( color ),
             label: __( 'Hover Background', 'gl-layout-builder' ),
             isShownByDefault: true,
             enableAlpha: true,
@@ -50,7 +44,7 @@ const GlobalHoverControls = ( {
 
     return (
         <>
-            { colorSettings.map( ( setting ) => (
+            { colorSettings.map( setting => (
                 <ColorGradientSettingsDropdown
                     key={ `global-hover-${ setting.label }` }
                     __experimentalIsRenderedInSidebar
@@ -65,7 +59,4 @@ const GlobalHoverControls = ( {
     );
 };
 
-export default withColors(
-    { globalHoverBgColor: 'background-color' },
-    { globalHoverColor: 'color' }
-)( GlobalHoverControls );
+export default withColors( { globalHoverBgColor: 'background-color' }, { globalHoverColor: 'color' } )( GlobalHoverControls );

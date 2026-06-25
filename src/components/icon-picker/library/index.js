@@ -19,8 +19,18 @@ import './editor.scss';
 /**
  * Library Component
  * Main icon library modal component
+ * @param root0
+ * @param root0.onClose
+ * @param root0.onIconSelect
+ * @param root0.onCustomSvgInsert
+ * @param root0.currentIconName
+ * @param root0.currentCustomSvg
+ * @param root0.currentIconSize
+ * @param root0.currentStrokeWidth
+ * @param root0.modalState
+ * @param root0.setModalState
  */
-export default function Library({
+export default function Library( {
     onClose,
     onIconSelect,
     onCustomSvgInsert,
@@ -30,129 +40,129 @@ export default function Library({
     currentStrokeWidth = 1,
     modalState,
     setModalState
-}) {
+} ) {
     const { isOpen, activeTab } = modalState;
 
     // Get icon categories
     const categories = getCategories();
 
     // Preview state
-    const [previewIconSize, setPreviewIconSize] = useState(currentIconSize);
-    const [previewStrokeWidth, setPreviewStrokeWidth] = useState(currentStrokeWidth);
-    const [tempCustomSvgCode, setTempCustomSvgCode] = useState(currentCustomSvg);
+    const [ previewIconSize, setPreviewIconSize ] = useState( currentIconSize );
+    const [ previewStrokeWidth, setPreviewStrokeWidth ] = useState( currentStrokeWidth );
+    const [ tempCustomSvgCode, setTempCustomSvgCode ] = useState( currentCustomSvg );
 
     // Icon library state
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('all');
-    const [filteredIcons, setFilteredIcons] = useState(icons);
+    const [ searchTerm, setSearchTerm ] = useState( '' );
+    const [ selectedCategory, setSelectedCategory ] = useState( 'all' );
+    const [ filteredIcons, setFilteredIcons ] = useState( icons );
 
     // Handle tab changes
     const onTabChange = tabValue => {
-        setModalState(prev => ({
+        setModalState( prev => ( {
             ...prev,
             activeTab: tabValue
-        }));
-        setSelectedCategory('all');
+        } ) );
+        setSelectedCategory( 'all' );
     };
 
     // Effect to filter icons when search term or category changes
-    useEffect(() => {
-        if (activeTab === 'library') {
-            let result = searchIcons(searchTerm);
+    useEffect( () => {
+        if ( activeTab === 'library' ) {
+            let result = searchIcons( searchTerm );
 
-            if (selectedCategory !== 'all') {
-                result = result.filter(icon => icon.categories.includes(selectedCategory));
+            if ( selectedCategory !== 'all' ) {
+                result = result.filter( icon => icon.categories.includes( selectedCategory ) );
             }
 
-            setFilteredIcons(result);
+            setFilteredIcons( result );
         }
-    }, [searchTerm, selectedCategory, activeTab]);
+    }, [ searchTerm, selectedCategory, activeTab ] );
 
     // Reset state when modal closes
-    useEffect(() => {
-        if (!isOpen) {
-            setSearchTerm('');
-            setSelectedCategory('all');
+    useEffect( () => {
+        if ( ! isOpen ) {
+            setSearchTerm( '' );
+            setSelectedCategory( 'all' );
         }
-    }, [isOpen]);
+    }, [ isOpen ] );
 
     // Handle icon selection
     const handleIconSelect = iconData => {
-        if (onIconSelect) {
-            onIconSelect(iconData);
+        if ( onIconSelect ) {
+            onIconSelect( iconData );
         }
         onClose();
     };
 
     // Handle custom SVG operations
     const clearCustomSVG = () => {
-        setTempCustomSvgCode('');
+        setTempCustomSvgCode( '' );
     };
 
     const insertCustomSVG = () => {
         let finalSvgCode = tempCustomSvgCode;
-        const type = getIconType(tempCustomSvgCode);
+        const type = getIconType( tempCustomSvgCode );
 
         // Apply stroke width modifications if it's a line icon
-        if (type === 'line' && previewStrokeWidth !== 1) {
-            finalSvgCode = tempCustomSvgCode.replace(/stroke-width="([^"]*)"/g, `stroke-width="${previewStrokeWidth}"`);
+        if ( type === 'line' && previewStrokeWidth !== 1 ) {
+            finalSvgCode = tempCustomSvgCode.replace( /stroke-width="([^"]*)"/g, `stroke-width="${ previewStrokeWidth }"` );
         }
 
-        if (onCustomSvgInsert) {
-            onCustomSvgInsert({
+        if ( onCustomSvgInsert ) {
+            onCustomSvgInsert( {
                 customSvgCode: finalSvgCode,
                 iconType: type,
                 strokeWidth: type === 'line' ? previewStrokeWidth : 1
-            });
+            } );
         }
         onClose();
     };
 
-    if (!isOpen) {
+    if ( ! isOpen ) {
         return null;
     }
 
     return (
         <Modal
             overlayClassName="insignia-modal__overlay"
-            className={`insignia-modal is-${activeTab}`}
-            title={__('Icons Library', 'insignia')}
-            onRequestClose={onClose}
-            isFullScreen={true}
-            headerActions={<Header activeTab={activeTab} onTabChange={onTabChange} />}
+            className={ `insignia-modal is-${ activeTab }` }
+            title={ __( 'Icons Library', 'insignia' ) }
+            onRequestClose={ onClose }
+            isFullScreen={ true }
+            headerActions={ <Header activeTab={ activeTab } onTabChange={ onTabChange } /> }
         >
             <div className="insignia-modal__container">
                 <Sidebar
-                    categories={categories}
-                    category={selectedCategory}
-                    setCategory={setSelectedCategory}
-                    isCustomTab={activeTab === 'custom'}
+                    categories={ categories }
+                    category={ selectedCategory }
+                    setCategory={ setSelectedCategory }
+                    isCustomTab={ activeTab === 'custom' }
                 />
                 <div className="insignia-modal__content">
                     <Scrollable className="insignia-modal__scrollable">
-                        {activeTab === 'library' && (
+                        { activeTab === 'library' && (
                             <ContentIcons
-                                searchTerm={searchTerm}
-                                setSearchTerm={setSearchTerm}
-                                filteredIcons={filteredIcons}
-                                currentIconName={currentIconName}
-                                handleIconSelect={handleIconSelect}
+                                searchTerm={ searchTerm }
+                                setSearchTerm={ setSearchTerm }
+                                filteredIcons={ filteredIcons }
+                                currentIconName={ currentIconName }
+                                handleIconSelect={ handleIconSelect }
                             />
-                        )}
-                        {activeTab === 'custom' && (
+                        ) }
+                        { activeTab === 'custom' && (
                             <ContentCustom
-                                tempCustomSvgCode={tempCustomSvgCode}
-                                setTempCustomSvgCode={setTempCustomSvgCode}
-                                previewIconSize={previewIconSize}
-                                setPreviewIconSize={setPreviewIconSize}
-                                previewStrokeWidth={previewStrokeWidth}
-                                setPreviewStrokeWidth={setPreviewStrokeWidth}
-                                currentCustomSvg={currentCustomSvg}
-                                currentIconName={currentIconName}
-                                insertCustomSVG={insertCustomSVG}
-                                clearCustomSVG={clearCustomSVG}
+                                tempCustomSvgCode={ tempCustomSvgCode }
+                                setTempCustomSvgCode={ setTempCustomSvgCode }
+                                previewIconSize={ previewIconSize }
+                                setPreviewIconSize={ setPreviewIconSize }
+                                previewStrokeWidth={ previewStrokeWidth }
+                                setPreviewStrokeWidth={ setPreviewStrokeWidth }
+                                currentCustomSvg={ currentCustomSvg }
+                                currentIconName={ currentIconName }
+                                insertCustomSVG={ insertCustomSVG }
+                                clearCustomSVG={ clearCustomSVG }
                             />
-                        )}
+                        ) }
                     </Scrollable>
                 </div>
             </div>

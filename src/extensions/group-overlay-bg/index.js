@@ -17,31 +17,27 @@ const BLOCK_NAME = 'core/group';
 /**
  * Add overlay background attributes to core/group.
  */
-addFilter(
-    'blocks.registerBlockType',
-    'insignia/group-overlay-bg-add-attributes',
-    ( settings, name ) => {
-        if ( name !== BLOCK_NAME ) {
-            return settings;
-        }
-
-        return {
-            ...settings,
-            attributes: {
-                ...settings.attributes,
-                overlayBgColor: {
-                    type: 'string'
-                },
-                customOverlayBgColor: {
-                    type: 'string'
-                },
-                overlayBgGradient: {
-                    type: 'string'
-                }
-            }
-        };
+addFilter( 'blocks.registerBlockType', 'insignia/group-overlay-bg-add-attributes', ( settings, name ) => {
+    if ( name !== BLOCK_NAME ) {
+        return settings;
     }
-);
+
+    return {
+        ...settings,
+        attributes: {
+            ...settings.attributes,
+            overlayBgColor: {
+                type: 'string'
+            },
+            customOverlayBgColor: {
+                type: 'string'
+            },
+            overlayBgGradient: {
+                type: 'string'
+            }
+        }
+    };
+} );
 
 /**
  * Add "Overlay Background" control to core/group inspector (Color panel).
@@ -61,11 +57,7 @@ addFilter(
                 <>
                     <BlockEdit { ...props } />
                     <InspectorControls group="color">
-                        <OverlayBgControl
-                            attributes={ attributes }
-                            setAttributes={ setAttributes }
-                            clientId={ clientId }
-                        />
+                        <OverlayBgControl attributes={ attributes } setAttributes={ setAttributes } clientId={ clientId } />
                     </InspectorControls>
                 </>
             );
@@ -98,8 +90,8 @@ addFilter(
             const bgValue = overlayBgGradient
                 ? overlayBgGradient
                 : overlayBgColor
-                    ? `var(--wp--preset--color--${ overlayBgColor })`
-                    : customOverlayBgColor || '';
+                ? `var(--wp--preset--color--${ overlayBgColor })`
+                : customOverlayBgColor || '';
 
             const wrapperProps = {
                 ...props.wrapperProps,
@@ -109,17 +101,9 @@ addFilter(
                 }
             };
 
-            const classes = [ props.className, 'insa-overlay-bg' ]
-                .filter( Boolean )
-                .join( ' ' );
+            const classes = [ props.className, 'insa-overlay-bg' ].filter( Boolean ).join( ' ' );
 
-            return (
-                <BlockListBlock
-                    { ...props }
-                    className={ classes }
-                    wrapperProps={ wrapperProps }
-                />
-            );
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
     } )
 );

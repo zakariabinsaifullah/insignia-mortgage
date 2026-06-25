@@ -13,7 +13,7 @@ const inlineIcon = (
     </svg>
 );
 
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
     icon: inlineIcon,
     /**
      * @see ./edit.js
@@ -24,4 +24,4 @@ registerBlockType(metadata.name, {
      * @see ./save.js
      */
     save
-});
+} );

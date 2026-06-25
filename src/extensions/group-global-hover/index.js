@@ -20,8 +20,8 @@ const BLOCK_NAME = 'core/group';
 /**
  * Add global hover attributes to core/group.
  */
-addFilter('blocks.registerBlockType', 'insignia/group-global-hover-add-attributes', (settings, name) => {
-    if (name !== BLOCK_NAME) {
+addFilter( 'blocks.registerBlockType', 'insignia/group-global-hover-add-attributes', ( settings, name ) => {
+    if ( name !== BLOCK_NAME ) {
         return settings;
     }
 
@@ -47,7 +47,7 @@ addFilter('blocks.registerBlockType', 'insignia/group-global-hover-add-attribute
             }
         }
     };
-});
+} );
 
 /**
  * Add "Enable global hover" toggle + "Global Hover" color panel to core/group inspector.
@@ -55,39 +55,39 @@ addFilter('blocks.registerBlockType', 'insignia/group-global-hover-add-attribute
 addFilter(
     'editor.BlockEdit',
     'insignia/group-global-hover-add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
 
-            if (name !== BLOCK_NAME) {
-                return <BlockEdit {...props} />;
+            if ( name !== BLOCK_NAME ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
 
-                    {/* Toggle lives in the default (settings) panel */}
+                    { /* Toggle lives in the default (settings) panel */ }
                     <InspectorControls>
                         <PanelBody>
                             <NativeToggleControl
-                                label={__('Enable global hover', 'gl-layout-builder')}
-                                checked={!!attributes.globalHoverEnabled}
-                                onChange={value => setAttributes({ globalHoverEnabled: value })}
+                                label={ __( 'Enable global hover', 'gl-layout-builder' ) }
+                                checked={ !! attributes.globalHoverEnabled }
+                                onChange={ value => setAttributes( { globalHoverEnabled: value } ) }
                             />
                         </PanelBody>
                     </InspectorControls>
 
-                    {/* Color pickers only shown when the feature is enabled */}
-                    {attributes.globalHoverEnabled && (
+                    { /* Color pickers only shown when the feature is enabled */ }
+                    { attributes.globalHoverEnabled && (
                         <InspectorControls group="color">
-                            <GlobalHoverControls attributes={attributes} setAttributes={setAttributes} clientId={clientId} />
+                            <GlobalHoverControls attributes={ attributes } setAttributes={ setAttributes } clientId={ clientId } />
                         </InspectorControls>
-                    )}
+                    ) }
                 </>
             );
         };
-    })
+    } )
 );
 
 /**
@@ -96,34 +96,35 @@ addFilter(
 addFilter(
     'editor.BlockListBlock',
     'insignia/group-global-hover-add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (name !== BLOCK_NAME || !attributes.globalHoverEnabled) {
-                return <BlockListBlock {...props} />;
+            if ( name !== BLOCK_NAME || ! attributes.globalHoverEnabled ) {
+                return <BlockListBlock { ...props } />;
             }
 
-            const { globalHoverBgColor, customGlobalHoverBgColor, globalHoverColor, customGlobalHoverColor } =
-                attributes;
+            const { globalHoverBgColor, customGlobalHoverBgColor, globalHoverColor, customGlobalHoverColor } = attributes;
 
             const hasBg = globalHoverBgColor || customGlobalHoverBgColor;
             const hasColor = globalHoverColor || customGlobalHoverColor;
 
-            if (!hasBg && !hasColor) {
-                return <BlockListBlock {...props} />;
+            if ( ! hasBg && ! hasColor ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const style = {};
 
-            if (hasBg) {
-                style['--insa-ghover-bg'] = globalHoverBgColor
-                    ? `var(--wp--preset--color--${globalHoverBgColor})`
+            if ( hasBg ) {
+                style[ '--insa-ghover-bg' ] = globalHoverBgColor
+                    ? `var(--wp--preset--color--${ globalHoverBgColor })`
                     : customGlobalHoverBgColor;
             }
 
-            if (hasColor) {
-                style['--insa-ghover-color'] = globalHoverColor ? `var(--wp--preset--color--${globalHoverColor})` : customGlobalHoverColor;
+            if ( hasColor ) {
+                style[ '--insa-ghover-color' ] = globalHoverColor
+                    ? `var(--wp--preset--color--${ globalHoverColor })`
+                    : customGlobalHoverColor;
             }
 
             const wrapperProps = {
@@ -134,9 +135,9 @@ addFilter(
                 }
             };
 
-            const classes = [props.className, 'insa-global-hover'].filter(Boolean).join(' ');
+            const classes = [ props.className, 'insa-global-hover' ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
-    })
+    } )
 );

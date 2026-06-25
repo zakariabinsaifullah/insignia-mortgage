@@ -18,8 +18,8 @@ const BLOCK_NAME = 'core/button';
 const ATTRIBUTE = 'fullWidthMobile';
 const CLASS_NAME = 'has-full-width-mobile';
 
-addFilter('blocks.registerBlockType', 'insignia/button-full-width-mobile-add-attribute', (settings, name) => {
-    if (name !== BLOCK_NAME) {
+addFilter( 'blocks.registerBlockType', 'insignia/button-full-width-mobile-add-attribute', ( settings, name ) => {
+    if ( name !== BLOCK_NAME ) {
         return settings;
     }
 
@@ -27,57 +27,57 @@ addFilter('blocks.registerBlockType', 'insignia/button-full-width-mobile-add-att
         ...settings,
         attributes: {
             ...settings.attributes,
-            [ATTRIBUTE]: {
+            [ ATTRIBUTE ]: {
                 type: 'boolean',
                 default: false
             }
         }
     };
-});
+} );
 
 addFilter(
     'editor.BlockEdit',
     'insignia/button-full-width-mobile-add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes } = props;
 
-            if (name !== BLOCK_NAME) {
-                return <BlockEdit {...props} />;
+            if ( name !== BLOCK_NAME ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
                     <InspectorControls>
                         <PanelBody>
                             <NativeToggleControl
-                                label={__('Full Width on mobile', 'insignia')}
-                                checked={!!attributes[ATTRIBUTE]}
-                                onChange={value => setAttributes({ [ATTRIBUTE]: value })}
+                                label={ __( 'Full Width on mobile', 'insignia' ) }
+                                checked={ !! attributes[ ATTRIBUTE ] }
+                                onChange={ value => setAttributes( { [ ATTRIBUTE ]: value } ) }
                             />
                         </PanelBody>
                     </InspectorControls>
                 </>
             );
         };
-    })
+    } )
 );
 
 addFilter(
     'editor.BlockListBlock',
     'insignia/button-full-width-mobile-add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (name !== BLOCK_NAME || !attributes[ATTRIBUTE]) {
-                return <BlockListBlock {...props} />;
+            if ( name !== BLOCK_NAME || ! attributes[ ATTRIBUTE ] ) {
+                return <BlockListBlock { ...props } />;
             }
 
-            const classes = [props.className, CLASS_NAME].filter(Boolean).join(' ');
+            const classes = [ props.className, CLASS_NAME ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} />;
+            return <BlockListBlock { ...props } className={ classes } />;
         };
-    })
+    } )
 );

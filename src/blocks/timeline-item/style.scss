@@ -11,7 +11,7 @@
     align-items: flex-start;
     gap: var(--item-gap, 10px);
     position: relative;
-    padding-bottom: var(--items-gap, 16px );
+    padding-bottom: var(--items-gap, 16px);
 
     // vertical line — 8px gap below icon, 8px gap before next icon
     &::before {
@@ -21,7 +21,7 @@
         top: 56px;
         bottom: 8px;
         width: 3px;
-        background: #af8b0c;
+        background: rgba(0, 0, 0, 0.1);
         z-index: 0;
     }
 
@@ -29,7 +29,7 @@
         width: 48px;
         height: 48px;
         margin-top: 0;
-        border: none!important;
+        border: none !important;
         margin-block-start: 0;
         border-radius: 40px;
         background: var(--icon-bg, #af8b0c);
@@ -72,7 +72,7 @@
             display: -ms-flexbox;
             display: flex;
             align-items: center;
-        
+
             justify-content: center;
             cursor: pointer;
             padding: 0;

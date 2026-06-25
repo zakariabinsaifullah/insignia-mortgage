@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import Inspector from './inspector';
 
 const TEMPLATE = [
-    ['insignia/timeline-item', {}],
-    ['insignia/timeline-item', {}],
-    ['insignia/timeline-item', {}]
+    [ 'insignia/timeline-item', {} ],
+    [ 'insignia/timeline-item', {} ],
+    [ 'insignia/timeline-item', {} ]
 ];
 
 const Edit = props => {
@@ -15,34 +15,32 @@ const Edit = props => {
     const { uniqueId, contentGap, itemsGap } = attributes;
 
     const cssCustomProperties = {
-        ...(contentGap && { '--item-gap':  `${contentGap}px` }),
-        ...(itemsGap   && { '--items-gap': `${itemsGap}px`  }),
+        ...( contentGap && { '--item-gap': `${ contentGap }px` } ),
+        ...( itemsGap && { '--items-gap': `${ itemsGap }px` } )
     };
 
-    const blockProps = useBlockProps({
-        className: classNames(uniqueId),
+    const blockProps = useBlockProps( {
+        className: classNames( uniqueId ),
         style: cssCustomProperties
-    });
+    } );
 
     const innerBlockProps = useInnerBlocksProps(
         { className: 'insignia-timeline' },
         {
-            allowedBlocks: ['insignia/timeline-item'],
+            allowedBlocks: [ 'insignia/timeline-item' ],
             template: TEMPLATE,
             templateLock: false,
             renderAppender: () => {
-                const childBlocks = wp.data.select('core/block-editor').getBlocks(clientId);
+                const childBlocks = wp.data.select( 'core/block-editor' ).getBlocks( clientId );
                 return (
                     <button
                         className="insignia-timeline-add-btn"
-                        onClick={() => {
-                            const newBlock = wp.blocks.createBlock('insignia/timeline-item', {});
-                            wp.data
-                                .dispatch('core/block-editor')
-                                .insertBlocks(newBlock, childBlocks.length, clientId);
-                        }}
+                        onClick={ () => {
+                            const newBlock = wp.blocks.createBlock( 'insignia/timeline-item', {} );
+                            wp.data.dispatch( 'core/block-editor' ).insertBlocks( newBlock, childBlocks.length, clientId );
+                        } }
                     >
-                        {__('+ Add Timeline Item', 'insignia')}
+                        { __( '+ Add Timeline Item', 'insignia' ) }
                     </button>
                 );
             }
@@ -51,9 +49,9 @@ const Edit = props => {
 
     return (
         <Fragment>
-            {isSelected && <Inspector {...props} />}
-            <div {...blockProps}>
-                <div {...innerBlockProps} />
+            { isSelected && <Inspector { ...props } /> }
+            <div { ...blockProps }>
+                <div { ...innerBlockProps } />
             </div>
         </Fragment>
     );

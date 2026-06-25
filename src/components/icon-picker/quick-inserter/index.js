@@ -17,91 +17,91 @@ import { Icon } from '@wordpress/icons';
 import { icons, searchIcons } from '../../../utils/icons';
 import './editor.scss';
 
-export default function QuickInserter({ setIcon, onClose, openModal, withCustomSvg = true }) {
-    const [searchInput, setSearchInput] = useState('');
+export default function QuickInserter( { setIcon, onClose, openModal, withCustomSvg = true } ) {
+    const [ searchInput, setSearchInput ] = useState( '' );
 
     let shownIcons = [];
 
-    if (searchInput) {
-        shownIcons = searchIcons(searchInput);
+    if ( searchInput ) {
+        shownIcons = searchIcons( searchInput );
     }
 
-    if (!searchInput) {
+    if ( ! searchInput ) {
         // See if there is a default icon(s) set.
-        const defaultIcons = icons.filter(i => i.isDefault) ?? [];
+        const defaultIcons = icons.filter( i => i.isDefault ) ?? [];
 
         // Get the rest of the icons in the type excluding the default ones.
-        const nonDefaultIcons = icons.filter(i => !i.isDefault) ?? [];
+        const nonDefaultIcons = icons.filter( i => ! i.isDefault ) ?? [];
 
         // First show the default icons, then the rest.
-        shownIcons = shownIcons.concat(defaultIcons, nonDefaultIcons);
+        shownIcons = shownIcons.concat( defaultIcons, nonDefaultIcons );
     }
 
     // Only want to display 8 icons.
-    shownIcons = shownIcons.slice(0, 8);
+    shownIcons = shownIcons.slice( 0, 8 );
 
     const searchResults = (
         <div className="insignia-icon-settings__icons">
-            {shownIcons.map(icon => {
-                let renderedIcon = icon.icon;
+            { shownIcons.map( icon => {
+                const renderedIcon = icon.icon;
 
                 return (
                     <Button
-                        key={`icon-${icon.name}`}
-                        label={__(icon.title)}
-                        className={`insignia-icon-settings__icons-button`}
-                        onClick={() => {
-                            setIcon(icon);
+                        key={ `icon-${ icon.name }` }
+                        label={ __( icon.title ) }
+                        className={ `insignia-icon-settings__icons-button` }
+                        onClick={ () => {
+                            setIcon( icon );
                             onClose();
-                        }}
+                        } }
                     >
-                        <Icon size={26} icon={renderedIcon} />
-                        {/* <span className="icon-title">{icon.title}</span> */}
+                        <Icon size={ 26 } icon={ renderedIcon } />
+                        { /* <span className="icon-title">{icon.title}</span> */ }
                     </Button>
                 );
-            })}
+            } ) }
         </div>
     );
 
-    const noResults = <p>{__('No results found.')}</p>;
+    const noResults = <p>{ __( 'No results found.' ) }</p>;
 
     return (
-        <div className="insignia-icon-settings__quick-inserter" style={{ width: '280px', padding: '8px' }}>
+        <div className="insignia-icon-settings__quick-inserter" style={ { width: '280px', padding: '8px' } }>
             <SearchControl
-                label={__('Search icons')}
-                hideLabelFromVision={true}
-                value={searchInput}
-                onChange={value => setSearchInput(value)}
+                label={ __( 'Search icons' ) }
+                hideLabelFromVision={ true }
+                value={ searchInput }
+                onChange={ value => setSearchInput( value ) }
                 __nextHasNoMarginBottom
             />
             <div className="insignia-icon-settings__quick-inserter-results">
-                {[isEmpty(shownIcons) && noResults, !isEmpty(shownIcons) && searchResults]}
+                { [ isEmpty( shownIcons ) && noResults, ! isEmpty( shownIcons ) && searchResults ] }
             </div>
-            <Flex gap={1}>
+            <Flex gap={ 1 }>
                 <Button
-                    style={{ flex: '1', justifyContent: 'center' }}
+                    style={ { flex: '1', justifyContent: 'center' } }
                     variant="primary"
-                    onClick={() => {
-                        openModal('library');
+                    onClick={ () => {
+                        openModal( 'library' );
                         onClose();
-                    }}
+                    } }
                     __next40pxDefaultSize
                 >
-                    {__('Browse all')}
+                    { __( 'Browse all' ) }
                 </Button>
-                {withCustomSvg && (
+                { withCustomSvg && (
                     <Button
-                        style={{ flex: '1', justifyContent: 'center' }}
+                        style={ { flex: '1', justifyContent: 'center' } }
                         variant="secondary"
-                        onClick={() => {
-                            openModal('custom');
+                        onClick={ () => {
+                            openModal( 'custom' );
                             onClose();
-                        }}
+                        } }
                         __next40pxDefaultSize
                     >
-                        {__('Custom SVG')}
+                        { __( 'Custom SVG' ) }
                     </Button>
-                )}
+                ) }
             </Flex>
         </div>
     );

@@ -5,14 +5,14 @@ const Save = props => {
     const { attributes } = props;
     const { iconName, customSvgCode, blockStyle } = attributes;
 
-    const blockProps = useBlockProps.save({
+    const blockProps = useBlockProps.save( {
         style: blockStyle
-    });
+    } );
 
     return (
-        <div {...blockProps}>
+        <div { ...blockProps }>
             <div className="timeline-icon">
-                <RenderIcon customSvgCode={customSvgCode} iconName={iconName} size={48} />
+                <RenderIcon customSvgCode={ customSvgCode } iconName={ iconName } size={ 48 } />
             </div>
             <div className="timeline-content">
                 <InnerBlocks.Content />

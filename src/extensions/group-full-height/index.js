@@ -21,8 +21,8 @@ const CLASS_NAME = 'has-force-full-height';
 /**
  * Add `forceFullHeight` attribute to core/group.
  */
-addFilter('blocks.registerBlockType', 'insignia/group-full-height-add-attribute', (settings, name) => {
-    if (name !== BLOCK_NAME) {
+addFilter( 'blocks.registerBlockType', 'insignia/group-full-height-add-attribute', ( settings, name ) => {
+    if ( name !== BLOCK_NAME ) {
         return settings;
     }
 
@@ -30,13 +30,13 @@ addFilter('blocks.registerBlockType', 'insignia/group-full-height-add-attribute'
         ...settings,
         attributes: {
             ...settings.attributes,
-            [ATTRIBUTE]: {
+            [ ATTRIBUTE ]: {
                 type: 'boolean',
                 default: false
             }
         }
     };
-});
+} );
 
 /**
  * Add "Force full height" toggle to the core/group inspector (Dimensions panel).
@@ -44,30 +44,30 @@ addFilter('blocks.registerBlockType', 'insignia/group-full-height-add-attribute'
 addFilter(
     'editor.BlockEdit',
     'insignia/group-full-height-add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes } = props;
 
-            if (name !== BLOCK_NAME) {
-                return <BlockEdit {...props} />;
+            if ( name !== BLOCK_NAME ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
                     <InspectorControls>
                         <PanelBody>
                             <NativeToggleControl
-                                label={__('Force full height', 'gl-layout-builder')}
-                                checked={!!attributes[ATTRIBUTE]}
-                                onChange={value => setAttributes({ [ATTRIBUTE]: value })}
+                                label={ __( 'Force full height', 'gl-layout-builder' ) }
+                                checked={ !! attributes[ ATTRIBUTE ] }
+                                onChange={ value => setAttributes( { [ ATTRIBUTE ]: value } ) }
                             />
                         </PanelBody>
                     </InspectorControls>
                 </>
             );
         };
-    })
+    } )
 );
 
 /**
@@ -76,12 +76,12 @@ addFilter(
 addFilter(
     'editor.BlockListBlock',
     'insignia/group-full-height-add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (name !== BLOCK_NAME || !attributes[ATTRIBUTE]) {
-                return <BlockListBlock {...props} />;
+            if ( name !== BLOCK_NAME || ! attributes[ ATTRIBUTE ] ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const wrapperProps = {
@@ -92,9 +92,9 @@ addFilter(
                 }
             };
 
-            const classes = [props.className, CLASS_NAME].filter(Boolean).join(' ');
+            const classes = [ props.className, CLASS_NAME ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
-    })
+    } )
 );

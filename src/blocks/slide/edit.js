@@ -12,14 +12,14 @@ import {
 } from '@wordpress/block-editor';
 
 // Block edit function
-const Edit = ({ attributes }) => {
+const Edit = ( { attributes } ) => {
     // Get block support props
-    const borderProps = getBorderClassesAndStyles(attributes);
-    const colorProps = getColorClassesAndStyles(attributes);
-    const spacingProps = getSpacingClassesAndStyles(attributes);
-    const shadowProps = getShadowClassesAndStyles(attributes);
+    const borderProps = getBorderClassesAndStyles( attributes );
+    const colorProps = getColorClassesAndStyles( attributes );
+    const spacingProps = getSpacingClassesAndStyles( attributes );
+    const shadowProps = getShadowClassesAndStyles( attributes );
 
-    const blockProps = useBlockProps({
+    const blockProps = useBlockProps( {
         className: 'swiper-slide',
         style: {
             ...borderProps.style,
@@ -27,11 +27,11 @@ const Edit = ({ attributes }) => {
             ...spacingProps.style,
             ...shadowProps.style
         }
-    });
+    } );
 
     return (
-        <div {...blockProps}>
-            <InnerBlocks renderAppender={() => <InnerBlocks.ButtonBlockAppender />} />
+        <div { ...blockProps }>
+            <InnerBlocks renderAppender={ () => <InnerBlocks.ButtonBlockAppender /> } />
         </div>
     );
 };

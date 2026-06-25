@@ -17,11 +17,11 @@ import './style.scss';
 /**
  * Check if a block supports text color.
  *
- * @param {object} blockTypeOrSettings Block type or settings object.
- * @returns {boolean}
+ * @param {Object} blockTypeOrSettings Block type or settings object.
+ * @return {boolean}
  */
 const hasTextColorSupport = blockTypeOrSettings => {
-    const colorSupport = getBlockSupport(blockTypeOrSettings, 'color');
+    const colorSupport = getBlockSupport( blockTypeOrSettings, 'color' );
     return colorSupport && colorSupport.text !== false;
 };
 
@@ -30,8 +30,8 @@ const hasTextColorSupport = blockTypeOrSettings => {
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/filters/block-filters/#blocks-registerblocktype
  */
-addFilter('blocks.registerBlockType', 'insignia/hover-color-add-attributes', settings => {
-    if (!hasTextColorSupport(settings)) {
+addFilter( 'blocks.registerBlockType', 'insignia/hover-color-add-attributes', settings => {
+    if ( ! hasTextColorSupport( settings ) ) {
         return settings;
     }
 
@@ -67,7 +67,7 @@ addFilter('blocks.registerBlockType', 'insignia/hover-color-add-attributes', set
             }
         }
     };
-});
+} );
 
 /**
  * Add hover color controls to the block inspector sidebar.
@@ -77,26 +77,26 @@ addFilter('blocks.registerBlockType', 'insignia/hover-color-add-attributes', set
 addFilter(
     'editor.BlockEdit',
     'insignia/hover-color-add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
 
-            if (!hasTextColorSupport(getBlockType(name))) {
-                return <BlockEdit {...props} />;
+            if ( ! hasTextColorSupport( getBlockType( name ) ) ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
                     <InspectorControls group="color">
-                        {props.children}
-                        <HoverColorsControls attributes={attributes} setAttributes={setAttributes} clientId={clientId} />
-                        <HoverTransitionControls attributes={attributes} setAttributes={setAttributes} clientId={clientId} />
+                        { props.children }
+                        <HoverColorsControls attributes={ attributes } setAttributes={ setAttributes } clientId={ clientId } />
+                        <HoverTransitionControls attributes={ attributes } setAttributes={ setAttributes } clientId={ clientId } />
                     </InspectorControls>
                 </>
             );
         };
-    })
+    } )
 );
 
 /**
@@ -107,12 +107,12 @@ addFilter(
 addFilter(
     'editor.BlockListBlock',
     'insignia/hover-color-add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (!hasTextColorSupport(getBlockType(name))) {
-                return <BlockListBlock {...props} />;
+            if ( ! hasTextColorSupport( getBlockType( name ) ) ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const {
@@ -130,20 +130,20 @@ addFilter(
             const hasHoverBg = hoverBackgroundColor || customHoverBackgroundColor;
             const hasHoverBorder = hoverBorderColor || customHoverBorderColor;
 
-            if (!hasHoverText && !hasHoverBg && !hasHoverBorder) {
-                return <BlockListBlock {...props} />;
+            if ( ! hasHoverText && ! hasHoverBg && ! hasHoverBorder ) {
+                return <BlockListBlock { ...props } />;
             }
 
-            const getColorValue = (presetColor, customColor) =>
-                presetColor ? `var(--wp--preset--color--${presetColor})` : customColor || '';
+            const getColorValue = ( presetColor, customColor ) =>
+                presetColor ? `var(--wp--preset--color--${ presetColor })` : customColor || '';
 
             const wrapperProps = {
                 ...props.wrapperProps,
                 style: {
                     ...props.wrapperProps?.style,
-                    '--hover-color': getColorValue(hoverTextColor, customHoverTextColor),
-                    '--hover-background-color': getColorValue(hoverBackgroundColor, customHoverBackgroundColor),
-                    '--hover-br-color': getColorValue(hoverBorderColor, customHoverBorderColor),
+                    '--hover-color': getColorValue( hoverTextColor, customHoverTextColor ),
+                    '--hover-background-color': getColorValue( hoverBackgroundColor, customHoverBackgroundColor ),
+                    '--hover-br-color': getColorValue( hoverBorderColor, customHoverBorderColor ),
                     '--hover-transition-duration': hoverTransitionDuration + 'ms',
                     '--hover-transition-timing': hoverTransitionTiming
                 }
@@ -155,10 +155,10 @@ addFilter(
                 hasHoverBg ? 'has-hover__background-color' : '',
                 hasHoverBorder ? 'has-hover__border-color' : ''
             ]
-                .filter(Boolean)
-                .join(' ');
+                .filter( Boolean )
+                .join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
-    })
+    } )
 );

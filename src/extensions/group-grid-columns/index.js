@@ -11,10 +11,7 @@ import { PanelBody } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { useSelect } from '@wordpress/data';
 
-import {
-    NativeRangeControl,
-    NativeResponsiveControl
-} from '../../components';
+import { NativeRangeControl, NativeResponsiveControl } from '../../components';
 
 import './style.scss';
 
@@ -23,8 +20,8 @@ const BLOCK_NAME = 'core/group';
 /**
  * Add custom attributes for responsive grid columns.
  */
-addFilter('blocks.registerBlockType', 'insignia/group-grid-columns/add-attributes', (settings, name) => {
-    if (name !== BLOCK_NAME) {
+addFilter( 'blocks.registerBlockType', 'insignia/group-grid-columns/add-attributes', ( settings, name ) => {
+    if ( name !== BLOCK_NAME ) {
         return settings;
     }
 
@@ -42,7 +39,7 @@ addFilter('blocks.registerBlockType', 'insignia/group-grid-columns/add-attribute
             }
         }
     };
-});
+} );
 
 /**
  * Add responsive columns controls to core/group inspector when grid layout is active.
@@ -50,79 +47,83 @@ addFilter('blocks.registerBlockType', 'insignia/group-grid-columns/add-attribute
 addFilter(
     'editor.BlockEdit',
     'insignia/group-grid-columns/add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes, clientId } = props;
 
-            if (name !== BLOCK_NAME) {
-                return <BlockEdit {...props} />;
+            if ( name !== BLOCK_NAME ) {
+                return <BlockEdit { ...props } />;
             }
 
             const layoutType = attributes?.layout?.type;
 
-            if (layoutType !== 'grid') {
-                return <BlockEdit {...props} />;
+            if ( layoutType !== 'grid' ) {
+                return <BlockEdit { ...props } />;
             }
 
             const desktopColumns = attributes?.layout?.columnCount || 2;
             const tabletColumns = attributes.gridColumnsTablet ?? desktopColumns;
             const mobileColumns = attributes.gridColumnsMobile ?? 1;
 
-            const deviceType = useSelect(select => {
-                return select('core/editor').getDeviceType();
-            }, []);
+            const deviceType = useSelect( select => {
+                return select( 'core/editor' ).getDeviceType();
+            }, [] );
 
             let currentColumns;
-            if (deviceType === 'Tablet') {
+            if ( deviceType === 'Tablet' ) {
                 currentColumns = tabletColumns;
-            } else if (deviceType === 'Mobile') {
+            } else if ( deviceType === 'Mobile' ) {
                 currentColumns = mobileColumns;
             } else {
                 currentColumns = desktopColumns;
             }
 
             const handleChange = value => {
-                if (deviceType === 'Tablet') {
-                    setAttributes({ gridColumnsTablet: value });
-                } else if (deviceType === 'Mobile') {
-                    setAttributes({ gridColumnsMobile: value });
+                if ( deviceType === 'Tablet' ) {
+                    setAttributes( { gridColumnsTablet: value } );
+                } else if ( deviceType === 'Mobile' ) {
+                    setAttributes( { gridColumnsMobile: value } );
                 }
             };
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
                     <InspectorControls>
-                        <PanelBody title={__('Responsive Grid Columns', 'insignia')}>
-                            <NativeResponsiveControl label={__('Columns', 'insignia')} props={props}>
-                                {deviceType === 'Desktop' ? (
-                                    <div style={{ opacity: 0.5, pointerEvents: 'none' }}>
+                        <PanelBody title={ __( 'Responsive Grid Columns', 'insignia' ) }>
+                            <NativeResponsiveControl label={ __( 'Columns', 'insignia' ) } props={ props }>
+                                { deviceType === 'Desktop' ? (
+                                    <div style={ { opacity: 0.5, pointerEvents: 'none' } }>
                                         <NativeRangeControl
-                                            label={__('Desktop Columns', 'insignia')}
-                                            value={desktopColumns}
-                                            min={1}
-                                            max={12}
-                                            step={1}
+                                            label={ __( 'Desktop Columns', 'insignia' ) }
+                                            value={ desktopColumns }
+                                            min={ 1 }
+                                            max={ 12 }
+                                            step={ 1 }
                                         />
                                     </div>
                                 ) : (
                                     <NativeRangeControl
-                                        label={deviceType === 'Tablet' ? __('Tablet Columns', 'insignia') : __('Mobile Columns', 'insignia')}
-                                        value={currentColumns}
-                                        onChange={handleChange}
-                                        min={1}
-                                        max={12}
-                                        step={1}
-                                        resetFallbackValue={deviceType === 'Tablet' ? desktopColumns : 1}
+                                        label={
+                                            deviceType === 'Tablet'
+                                                ? __( 'Tablet Columns', 'insignia' )
+                                                : __( 'Mobile Columns', 'insignia' )
+                                        }
+                                        value={ currentColumns }
+                                        onChange={ handleChange }
+                                        min={ 1 }
+                                        max={ 12 }
+                                        step={ 1 }
+                                        resetFallbackValue={ deviceType === 'Tablet' ? desktopColumns : 1 }
                                     />
-                                )}
+                                ) }
                             </NativeResponsiveControl>
                         </PanelBody>
                     </InspectorControls>
                 </>
             );
         };
-    })
+    } )
 );
 
 /**
@@ -131,18 +132,18 @@ addFilter(
 addFilter(
     'editor.BlockListBlock',
     'insignia/group-grid-columns/add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (name !== BLOCK_NAME) {
-                return <BlockListBlock {...props} />;
+            if ( name !== BLOCK_NAME ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const layoutType = attributes?.layout?.type;
 
-            if (layoutType !== 'grid') {
-                return <BlockListBlock {...props} />;
+            if ( layoutType !== 'grid' ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const desktopColumns = attributes?.layout?.columnCount || 2;
@@ -152,16 +153,16 @@ addFilter(
             const hasTablet = tabletColumns !== undefined;
             const hasMobile = mobileColumns !== undefined;
 
-            if (!hasTablet && !hasMobile) {
-                return <BlockListBlock {...props} />;
+            if ( ! hasTablet && ! hasMobile ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const styleObj = { ...props.wrapperProps?.style };
 
-            styleObj['--grid-columns-tablet'] = hasTablet ? tabletColumns : desktopColumns;
+            styleObj[ '--grid-columns-tablet' ] = hasTablet ? tabletColumns : desktopColumns;
 
-            if (hasMobile) {
-                styleObj['--grid-columns-mobile'] = mobileColumns;
+            if ( hasMobile ) {
+                styleObj[ '--grid-columns-mobile' ] = mobileColumns;
             }
 
             const wrapperProps = {
@@ -169,9 +170,9 @@ addFilter(
                 style: styleObj
             };
 
-            const classes = [props.className, 'has-responsive-grid-columns'].filter(Boolean).join(' ');
+            const classes = [ props.className, 'has-responsive-grid-columns' ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
-    })
+    } )
 );

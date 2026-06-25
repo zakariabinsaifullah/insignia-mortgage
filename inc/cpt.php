@@ -33,7 +33,7 @@ function insignia_register_team_cpt() {
     $args = [
         'label'                 => __( 'Team Member', 'insignia' ),
         'labels'                => $labels,
-        'supports'              => [ 'title', 'thumbnail' ],
+        'supports'              => [ 'title', 'editor', 'thumbnail' ],
         'hierarchical'          => false,
         'public'                => false,
         'show_ui'               => true,

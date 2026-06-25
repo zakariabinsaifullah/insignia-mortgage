@@ -3,202 +3,389 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 .wp-block-insignia-team-grid {
-    // CSS custom property defaults — overridden via blockStyle inline styles.
-    --dcols: 2;
-    --tcols: 2;
-    --mcols: 1;
-    --image-text-gap: 10.81px;
-    --gap: 50px;
-    --row-gap: 0px;
-    --card-bg: transparent;
-    --card-padding: 30px;
-    --card-radius: 12px;
-    --card-br-color: rgba(0, 0, 0, 0.4);
-    --card-br-width: 1px;
-    --name-color: #1a1a1a;
-    --designation-color: #000;
-    --icon-color: #000104;
-    --overlay-color: rgba(0, 0, 0, 0.35);
+	// CSS custom property defaults — overridden via blockStyle inline styles.
+	--dcols: 2;
+	--tcols: 2;
+	--mcols: 1;
+	--image-text-gap: 10.81px;
+	--gap: 50px;
+	--row-gap: 0;
+	--card-bg: transparent;
+	--card-padding: 30px;
+	--card-radius: 12px;
+	--card-br-color: rgba(0, 0, 0, 0.4);
+	--card-br-width: 1px;
+	--name-color: #1a1a1a;
+	--designation-color: #000;
+	--icon-color: #000104;
+	--overlay-color: rgba(0, 0, 0, 0.35);
 
-    // ── Grid layout ──────────────────────────────────────────────────────────
-    .insignia-team-grid__grid {
-        display: grid;
-        row-gap: var(--row-gap);
-        column-gap: var(--gap);
-        grid-template-columns: repeat(var(--mcols), 1fr); // mobile-first
+	// ── Grid layout ──────────────────────────────────────────────────────────
+	.insignia-team-grid__grid {
+		display: grid;
+		row-gap: var(--row-gap);
+		column-gap: var(--gap);
+		grid-template-columns: repeat(var(--mcols), 1fr); // mobile-first
 
-        @media (min-width: 768px) {
-            grid-template-columns: repeat(var(--tcols), 1fr);
-        }
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(var(--tcols), 1fr);
+		}
 
-        @media (min-width: 1025px) {
-            grid-template-columns: repeat(var(--dcols), 1fr);
-        }
-    }
+		@media (min-width: 1025px) {
+			grid-template-columns: repeat(var(--dcols), 1fr);
+		}
+	}
 
-    // ── Empty state ───────────────────────────────────────────────────────────
-    .insignia-team-grid__empty {
-        color: #9ca3af;
-        font-style: italic;
-    }
+	// ── Empty state ───────────────────────────────────────────────────────────
+	.insignia-team-grid__empty {
+		color: #9ca3af;
+		font-style: italic;
+	}
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // Card
-    // ─────────────────────────────────────────────────────────────────────────
-    .insignia-team-card {
-        overflow: hidden;
-        cursor: pointer;
-        padding: 0;
-        box-sizing: border-box;
+	// ─────────────────────────────────────────────────────────────────────────
+	// Card
+	// ─────────────────────────────────────────────────────────────────────────
+	.insignia-team-card {
+		overflow: hidden;
+		cursor: pointer;
+		padding: 0;
+		box-sizing: border-box;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-        // ── Photo area ────────────────────────────────────────────────────────
-        &__image-wrap {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--card-radius);
+		@media (hover: hover) {
 
-            .insignia-team-card__image {
-                display: block;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
+			&:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+			}
+		}
 
-        // ── Info overlay wrapper (gradient fade at bottom) ────────────────────
-        &__info-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+		// ── Photo area ────────────────────────────────────────────────────────
+		&__image-wrap {
+			position: relative;
+			overflow: hidden;
+			border-radius: var(--card-radius);
 
-        // ── White info box (name + designation + linkedin together) ────────────
-        &__info-text {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 10px;
-            width: 100%;
-            min-height: 81px;
-            border-radius: 12px;
-            padding: 14px 22px;
-            background: #ffffff;
-            box-sizing: border-box;
-        }
+			.insignia-team-card__image {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
 
-        &__info-left {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            flex: 1;
-            min-width: 0;
-        }
+		// ── Info overlay wrapper (gradient fade at bottom) ────────────────────
+		&__info-overlay {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 20px;
+			box-sizing: border-box;
+		}
 
-        &__name {
-            margin: 0 !important;
-            font-weight: 600;
-            font-style: normal;
-            font-size: 18px;
-            line-height: 160%;
-            letter-spacing: 0;
-            color: var(--name-color);
-        }
+		// ── White info box (name + designation + linkedin together) ────────────
+		&__info-text {
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: 10px;
+			width: 100%;
+			min-height: 81px;
+			border-radius: 12px;
+			padding: 14px 22px;
+			background: #fff;
+			box-sizing: border-box;
+		}
 
-        &__designation {
-            margin: 0 !important;
-            font-size: 14px;
-            color: var(--designation-color);
-            line-height: 1.4;
-        }
+		&__info-left {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			flex: 1;
+			min-width: 0;
+		}
 
-        // ── LinkedIn icon ──────────────────────────────────────────────────────
-        &__linkedin-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 20px;
-            height: 20px;
-            color: var(--icon-color);
-            text-decoration: none;
-            line-height: 0;
-            transition: color 0.25s ease;
+		&__name {
+			margin: 0 !important;
+			font-weight: 600;
+			font-style: normal;
+			font-size: 18px;
+			line-height: 160%;
+			letter-spacing: 0;
+			color: var(--name-color);
+		}
 
-            &:hover {
-                color: #74af27;
-            }
+		&__designation {
+			margin: 0 !important;
+			font-size: 14px;
+			color: var(--designation-color);
+			line-height: 1.4;
+		}
 
-            svg {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
+		// ── LinkedIn icon ──────────────────────────────────────────────────────
+		&__linkedin-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			width: 20px;
+			height: 20px;
+			color: var(--icon-color);
+			text-decoration: none;
+			line-height: 0;
+			transition: color 0.25s ease;
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // Style 2 — Image top, text below
-    // ─────────────────────────────────────────────────────────────────────────
-    .insignia-team-card--style2 {
-        display: flex;
-        flex-direction: column;
-        gap: var(--image-text-gap);
-        cursor: default;
+			&:hover {
+				color: #74af27;
+			}
 
-        .insignia-team-card__image-wrap {
-            flex-shrink: 0;
-        }
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
 
-        .insignia-team-card__body {
-            display: flex;
-            flex-direction: column;
-        }
+	// ─────────────────────────────────────────────────────────────────────────
+	// Style 2 — Image top, text below
+	// ─────────────────────────────────────────────────────────────────────────
+	.insignia-team-card--style2 {
+		display: flex;
+		flex-direction: column;
+		gap: var(--image-text-gap);
+		cursor: pointer;
 
-        .insignia-team-card__name {
-            margin: 0;
-            font-weight: 600;
-            font-style: normal;
-            font-size: 18px;
-            line-height: 160%;
-            letter-spacing: 0;
-            color: var(--name-color);
-        }
+		.insignia-team-card__image-wrap {
+			flex-shrink: 0;
+		}
 
-        .insignia-team-card__designation {
-            margin: 0;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 12px;
-            line-height: 150%;
-            letter-spacing: 0;
-            color: var(--designation-color);
-        }
+		.insignia-team-card__body {
+			display: flex;
+			flex-direction: column;
+		}
 
-        .insignia-team-card__linkedin-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 16.22px;
-            width: 24px;
-            height: 24px;
-            color: var(--icon-color);
-            text-decoration: none;
-            line-height: 0;
-            transition: color 0.25s ease;
+		.insignia-team-card__name {
+			margin: 0;
+			font-weight: 600;
+			font-style: normal;
+			font-size: 18px;
+			line-height: 160%;
+			letter-spacing: 0;
+			color: var(--name-color);
+		}
 
-            &:hover {
-                color: #74af27;
-            }
+		.insignia-team-card__designation {
+			margin: 0;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 12px;
+			line-height: 150%;
+			letter-spacing: 0;
+			color: var(--designation-color);
+		}
 
-            svg {
-                display: block;
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
+		.insignia-team-card__linkedin-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 16.22px;
+			width: 24px;
+			height: 24px;
+			color: var(--icon-color);
+			text-decoration: none;
+			line-height: 0;
+			transition: color 0.25s ease;
+
+			&:hover {
+				color: #74af27;
+			}
+
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+
+	// ─────────────────────────────────────────────────────────────────────────
+	// Popup — opens when a team card is clicked
+	// ─────────────────────────────────────────────────────────────────────────
+	.insignia-team-popup {
+		--popup-bg: #f5f7f9;
+		--popup-radius: 12px;
+		--popup-max-width: 960px;
+
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 16px;
+
+		&.is-open {
+			display: flex;
+		}
+
+		&__backdrop {
+			position: absolute;
+			inset: 0;
+			background: rgba(0, 0, 0, 0.5);
+		}
+
+		&__dialog {
+			position: relative;
+			background: var(--popup-bg);
+			border-radius: var(--popup-radius);
+			max-width: var(--popup-max-width);
+			width: 100%;
+			max-height: 90vh;
+			overflow: auto;
+			display: grid;
+			grid-template-columns: 1fr;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+			@media (min-width: 768px) {
+				grid-template-columns: 5fr 6fr;
+			}
+		}
+
+		&__close {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			width: 40px;
+			height: 40px;
+			background: transparent;
+			border: 0;
+			padding: 0;
+			cursor: pointer;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 2;
+			color: #1a1a1a;
+			border-radius: 50%;
+			transition: background-color 0.2s ease;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.06);
+			}
+
+			// stylelint-disable-next-line no-descending-specificity
+			svg {
+				width: 24px;
+				height: 24px;
+			}
+		}
+
+		&__image-wrap {
+			overflow: hidden;
+			border-top-left-radius: var(--popup-radius);
+			border-top-right-radius: var(--popup-radius);
+			aspect-ratio: 4 / 3;
+			background: #e5e7eb;
+
+			@media (min-width: 768px) {
+				border-top-right-radius: 0;
+				border-bottom-left-radius: var(--popup-radius);
+				aspect-ratio: 4 / 5;
+			}
+
+			&[hidden] {
+				display: none;
+			}
+		}
+
+		&__image {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center 25%;
+		}
+
+		&__content {
+			padding: 32px 28px;
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+
+			@media (min-width: 768px) {
+				padding: 40px;
+			}
+		}
+
+		&__name {
+			margin: 0;
+			font-size: 28px;
+			line-height: 1.2;
+			font-weight: 600;
+			color: #1a1a1a;
+
+			@media (min-width: 768px) {
+				font-size: 32px;
+			}
+		}
+
+		&__designation {
+			margin: 0;
+			font-size: 16px;
+			color: #6b7280;
+			line-height: 1.4;
+		}
+
+		&__linkedin-link {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 28px;
+			height: 28px;
+			color: #1a1a1a;
+			text-decoration: none;
+			line-height: 0;
+			transition: color 0.2s ease;
+
+			&:hover {
+				color: #0a66c2;
+			}
+
+			// stylelint-disable-next-line no-descending-specificity
+			svg {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		&__bio {
+			line-height: 1.6;
+			color: #374151;
+			font-size: 15px;
+
+			p:first-child {
+				margin-top: 0;
+			}
+
+			p:last-child {
+				margin-bottom: 0;
+			}
+
+			// Override Gutenberg alignment classes that would break the layout.
+			.alignwide,
+			.alignfull {
+				margin-left: 0;
+				margin-right: 0;
+				max-width: 100%;
+			}
+		}
+	}
+}
+
+body.is-locked {
+	overflow: hidden;
 }

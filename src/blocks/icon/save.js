@@ -22,12 +22,12 @@ import { getIconByName } from '../../utils/icons';
 /**
  * Save function for the block.
  *
- * @param {Object}   props
- * @param {Object}   props.attributes - Block attributes.
- * @param {string}   props.className  - Additional class name.
+ * @param {Object} props
+ * @param {Object} props.attributes - Block attributes.
+ * @param {string} props.className  - Additional class name.
  * @return {WPElement} Element to render.
  */
-export default function save({ attributes, className }) {
+export default function save( { attributes, className } ) {
     const {
         iconName,
         iconSize,
@@ -47,19 +47,19 @@ export default function save({ attributes, className }) {
     } = attributes;
 
     // Get block support props
-    const borderProps = getBorderClassesAndStyles(attributes);
-    const colorProps = getColorClassesAndStyles(attributes);
-    const spacingProps = getSpacingClassesAndStyles(attributes);
-    const shadowProps = getShadowClassesAndStyles(attributes);
+    const borderProps = getBorderClassesAndStyles( attributes );
+    const colorProps = getColorClassesAndStyles( attributes );
+    const spacingProps = getSpacingClassesAndStyles( attributes );
+    const shadowProps = getShadowClassesAndStyles( attributes );
 
     // Outer wrapper block props (only className for alignment or custom classes)
-    const blockProps = useBlockProps.save({
+    const blockProps = useBlockProps.save( {
         style: blockStyle,
-        className: classNames(className, {
-            [`is-${iconType}`]: iconType,
-            [`justify-${justifyContent}`]: justifyContent
-        })
-    });
+        className: classNames( className, {
+            [ `is-${ iconType }` ]: iconType,
+            [ `justify-${ justifyContent }` ]: justifyContent
+        } )
+    } );
 
     // Inner icon container classes and styles
     const iconClasses = classNames(
@@ -70,7 +70,7 @@ export default function save({ attributes, className }) {
         shadowProps.className,
         {
             'no-border-radius': style?.border?.radius === 0,
-            'has-padding': style?.spacing?.padding && Object.keys(style.spacing.padding).length > 0
+            'has-padding': style?.spacing?.padding && Object.keys( style.spacing.padding ).length > 0
         }
     );
 
@@ -79,44 +79,44 @@ export default function save({ attributes, className }) {
         ...colorProps.style,
         ...spacingProps.style,
         ...shadowProps.style,
-        ...(sizes && sizes?.Desktop && sizes?.Desktop !== 60 && { '--dsize': `${sizes.Desktop}px` }),
-        ...(sizes && sizes?.Tablet && sizes?.Tablet !== 48 && { '--tsize': `${sizes.Tablet}px` }),
-        ...(sizes && sizes?.Mobile && sizes?.Mobile !== 32 && { '--msize': `${sizes.Mobile}px` })
+        ...( sizes && sizes?.Desktop && sizes?.Desktop !== 60 && { '--dsize': `${ sizes.Desktop }px` } ),
+        ...( sizes && sizes?.Tablet && sizes?.Tablet !== 48 && { '--tsize': `${ sizes.Tablet }px` } ),
+        ...( sizes && sizes?.Mobile && sizes?.Mobile !== 32 && { '--msize': `${ sizes.Mobile }px` } )
     };
 
     // Render custom SVG if available
-    if (customSvgCode) {
+    if ( customSvgCode ) {
         return (
-            <Tag {...blockProps} {...(href && { href, target: linkTarget, rel: linkRel })}>
+            <Tag { ...blockProps } { ...( href && { href, target: linkTarget, rel: linkRel } ) }>
                 <div className="insignia-icon-block-wrapper">
-                    <div className={iconClasses} style={iconStyle} dangerouslySetInnerHTML={{ __html: customSvgCode }} />
-                    {showTitle && (
+                    <div className={ iconClasses } style={ iconStyle } dangerouslySetInnerHTML={ { __html: customSvgCode } } />
+                    { showTitle && (
                         <div className="icon-content">
-                            <RichText.Content tagName={headingTag} value={heading} className="icon-heading" />
+                            <RichText.Content tagName={ headingTag } value={ heading } className="icon-heading" />
                         </div>
-                    )}
+                    ) }
                 </div>
             </Tag>
         );
     }
 
     // Fallback to default icon
-    const selectedIcon = getIconByName(iconName);
-    if (!selectedIcon) {
+    const selectedIcon = getIconByName( iconName );
+    if ( ! selectedIcon ) {
         return null;
     }
 
     return (
-        <Tag {...blockProps} {...(href && { href, target: linkTarget, rel: linkRel })}>
+        <Tag { ...blockProps } { ...( href && { href, target: linkTarget, rel: linkRel } ) }>
             <div className="insignia-icon-block-wrapper">
-                <div className={iconClasses} style={iconStyle}>
-                    <Icon icon={selectedIcon.icon} size={iconSize} />
+                <div className={ iconClasses } style={ iconStyle }>
+                    <Icon icon={ selectedIcon.icon } size={ iconSize } />
                 </div>
-                {showTitle && (
+                { showTitle && (
                     <div className="icon-content">
-                        <RichText.Content tagName={headingTag} value={heading} className="icon-heading" />
+                        <RichText.Content tagName={ headingTag } value={ heading } className="icon-heading" />
                     </div>
-                )}
+                ) }
             </div>
         </Tag>
     );

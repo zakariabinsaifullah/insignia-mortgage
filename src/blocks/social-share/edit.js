@@ -4,28 +4,28 @@ import ServerSideRender from '@wordpress/server-side-render';
 import Inspector from './inspector';
 import './editor.scss';
 
-export default function Edit(props) {
+export default function Edit( props ) {
     const { attributes } = props;
     const { justifyContent } = attributes;
 
-    const blockProps = useBlockProps({
+    const blockProps = useBlockProps( {
         className: {
-            [`justify-${justifyContent}`]: justifyContent
+            [ `justify-${ justifyContent }` ]: justifyContent
         }
-    });
+    } );
 
     return (
         <>
-            <Inspector {...props} />
+            <Inspector { ...props } />
             <BlockControls group="block">
                 <JustifyToolbar
-                    allowedControls={['left', 'center', 'right']}
-                    value={justifyContent}
-                    onChange={value => props.setAttributes({ justifyContent: value })}
+                    allowedControls={ [ 'left', 'center', 'right' ] }
+                    value={ justifyContent }
+                    onChange={ value => props.setAttributes( { justifyContent: value } ) }
                 />
             </BlockControls>
-            <div {...blockProps}>
-                <ServerSideRender block="insignia/social-share" attributes={props.attributes} />
+            <div { ...blockProps }>
+                <ServerSideRender block="insignia/social-share" attributes={ props.attributes } />
             </div>
         </>
     );

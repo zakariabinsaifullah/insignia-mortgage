@@ -12,83 +12,83 @@ const iconResources = [
     {
         name: 'Heroicons',
         url: 'https://heroicons.com/',
-        description: __('Beautiful hand-crafted SVG icons by Tailwind CSS', 'insignia')
+        description: __( 'Beautiful hand-crafted SVG icons by Tailwind CSS', 'insignia' )
     },
     {
         name: 'Google Fonts Icons',
         url: 'https://fonts.google.com/icons',
-        description: __('Material icons and symbols', 'insignia')
+        description: __( 'Material icons and symbols', 'insignia' )
     },
     {
         name: 'Remix Icon',
         url: 'https://remixicon.com/',
-        description: __('Open-source icon library', 'insignia')
+        description: __( 'Open-source icon library', 'insignia' )
     },
     {
         name: 'Basicons',
         url: 'https://basicons.xyz/',
-        description: __('Basic icons for your projects', 'insignia')
+        description: __( 'Basic icons for your projects', 'insignia' )
     }
 ];
 
-export const Sidebar = ({ categories = [], category, setCategory, isCustomTab }) => {
+export const Sidebar = ( { categories = [], category, setCategory, isCustomTab } ) => {
     return (
         <div className="insignia-modal__sidebar">
-            {isCustomTab ? (
+            { isCustomTab ? (
                 <>
-                    <h4 className="icons-heading">{__('Resources', 'insignia')}</h4>
+                    <h4 className="icons-heading">{ __( 'Resources', 'insignia' ) }</h4>
                     <p
-                        style={{
+                        style={ {
                             fontSize: '12px',
                             lineHeight: '1.5',
                             color: '#757575',
                             marginBottom: '16px',
                             marginTop: '0'
-                        }}
+                        } }
                     >
-                        {__(
+                        { __(
                             'Want to try a different icon? Maybe find one from these resources, Copy the SVG code and paste it in the editor.',
                             'insignia'
-                        )}
+                        ) }
                     </p>
                     <Scrollable className="insignia-modal__scrollable">
                         <div className="insignia-modal__sidebar-buttons">
-                            {iconResources.map(resource => (
-                                <ExternalLink href={resource.url} className="insignia-modal__sidebar-link">
-                                    {resource.name}
+                            { iconResources.map( resource => (
+                                <ExternalLink href={ resource.url } className="insignia-modal__sidebar-link">
+                                    { resource.name }
                                 </ExternalLink>
-                            ))}
+                            ) ) }
                         </div>
                     </Scrollable>
                 </>
             ) : (
                 <>
-                    <h4 className="icons-heading">{__('Categories', 'insignia')}</h4>
+                    <h4 className="icons-heading">{ __( 'Categories', 'insignia' ) }</h4>
                     <Scrollable className="insignia-modal__scrollable">
                         <div className="insignia-modal__sidebar-buttons">
-                            {categories.map(cat => (
+                            { categories.map( cat => (
                                 <Button
-                                    key={cat.slug}
-                                    icon={file}
-                                    iconSize={20}
-                                    className={`insignia-modal__sidebar-button ${category === cat.slug ? 'is-selected' : ''}`}
-                                    onClick={() => setCategory(cat.slug)}
+                                    key={ cat.slug }
+                                    icon={ file }
+                                    iconSize={ 20 }
+                                    className={ `insignia-modal__sidebar-button ${ category === cat.slug ? 'is-selected' : '' }` }
+                                    onClick={ () => setCategory( cat.slug ) }
                                 >
-                                    {cat.name}
+                                    { cat.name }
                                     <span
-                                        style={{
+                                        style={ {
                                             flex: '1',
                                             textAlign: 'right'
-                                        }}
+                                        } }
                                     >
-                                        {cat.count || '0'}
+                                        { cat.count || '0' }
                                     </span>
                                 </Button>
-                            ))}
+                            ) ) }
                         </div>
                     </Scrollable>
                 </>
-            )}
+            ) }
         </div>
     );
 };

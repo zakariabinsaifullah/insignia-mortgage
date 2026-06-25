@@ -14,8 +14,8 @@ const inlineIcon = (
     </svg>
 );
 
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
     icon: inlineIcon,
     edit: Edit,
     save
-});
+} );

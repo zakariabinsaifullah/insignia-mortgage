@@ -28,34 +28,32 @@ const Edit = props => {
     const { attributes, setAttributes, isSelected } = props;
     const { uniqueId, preset, image, heading, description, buttonText, buttonUrl } = attributes;
 
-    const blockProps = useBlockProps({
-        className: classNames(uniqueId, preset)
-    });
+    const blockProps = useBlockProps( {
+        className: classNames( uniqueId, preset )
+    } );
 
     return (
         <Fragment>
-            {isSelected && <Inspector {...props} />}
-            <div {...blockProps}>
+            { isSelected && <Inspector { ...props } /> }
+            <div { ...blockProps }>
                 <div className="img">
-                    <img src={image?.url || placeholderImage} alt={image?.alt || 'accordion'} className="img-cover" />
+                    <img src={ image?.url || placeholderImage } alt={ image?.alt || 'accordion' } className="img-cover" />
                 </div>
                 <div className="info">
                     <RichText
                         tagName="h3"
-                        value={heading}
-                        onChange={value => setAttributes({ heading: value })}
-                        placeholder={__('Heading…', 'insignia')}
+                        value={ heading }
+                        onChange={ value => setAttributes( { heading: value } ) }
+                        placeholder={ __( 'Heading…', 'insignia' ) }
                     />
                     <RichText
                         tagName="p"
-                        value={description}
-                        onChange={value => setAttributes({ description: value })}
-                        placeholder={__('Description…', 'insignia')}
+                        value={ description }
+                        onChange={ value => setAttributes( { description: value } ) }
+                        placeholder={ __( 'Description…', 'insignia' ) }
                     />
                     <div className="accordion-btn-wrap">
-                        <span className="accordion-btn">
-                            {buttonText || __('Learn More', 'insignia')}
-                        </span>
+                        <span className="accordion-btn">{ buttonText || __( 'Learn More', 'insignia' ) }</span>
                     </div>
                 </div>
             </div>

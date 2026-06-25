@@ -4,34 +4,34 @@ import { __ } from '@wordpress/i18n';
 
 import defaultIcons from './icons.json';
 
-const IconPicker = ({ iconsPanel = false, setIconsPanel, value, onChange, customIcons = null }) => {
-    const [filterIcons, setFilterIcons] = useState([]);
-    const [searchText, setSearchText] = useState('');
+const IconPicker = ( { iconsPanel = false, setIconsPanel, value, onChange, customIcons = null } ) => {
+    const [ filterIcons, setFilterIcons ] = useState( [] );
+    const [ searchText, setSearchText ] = useState( '' );
 
     const iconsSource = customIcons || defaultIcons;
 
-    const allSvgItems = useMemo(() => {
-        return iconsSource.map(icon => ({
+    const allSvgItems = useMemo( () => {
+        return iconsSource.map( icon => ( {
             label: icon.label,
             svg: icon.svg,
             terms: icon.terms
-        }));
-    }, [iconsSource]);
+        } ) );
+    }, [ iconsSource ] );
 
-    useEffect(() => {
+    useEffect( () => {
         let displayIcons = allSvgItems;
 
-        if (searchText) {
+        if ( searchText ) {
             displayIcons = displayIcons.filter(
                 item =>
-                    item.label.toLowerCase().includes(searchText.toLowerCase()) ||
-                    item.terms.some(term => term.toLowerCase().includes(searchText.toLowerCase()))
+                    item.label.toLowerCase().includes( searchText.toLowerCase() ) ||
+                    item.terms.some( term => term.toLowerCase().includes( searchText.toLowerCase() ) )
             );
 
-            if (displayIcons.length === 0) {
+            if ( displayIcons.length === 0 ) {
                 displayIcons = [
                     {
-                        label: __('No Icons Found', 'svg-icon-block'),
+                        label: __( 'No Icons Found', 'svg-icon-block' ),
                         svg: {
                             solid: {
                                 width: 512,
@@ -44,67 +44,71 @@ const IconPicker = ({ iconsPanel = false, setIconsPanel, value, onChange, custom
             }
         }
 
-        setFilterIcons(displayIcons);
-    }, [allSvgItems, searchText]);
+        setFilterIcons( displayIcons );
+    }, [ allSvgItems, searchText ] );
 
     const generateIcon = icon => {
         let iconCat;
-        if (icon.svg.solid) {
+        if ( icon.svg.solid ) {
             iconCat = 'solid';
-        } else if (icon.svg.brands) {
+        } else if ( icon.svg.brands ) {
             iconCat = 'brands';
-        } else if (icon.svg.regular) {
+        } else if ( icon.svg.regular ) {
             iconCat = 'regular';
         }
 
-        const svgData = icon.svg[iconCat];
+        const svgData = icon.svg[ iconCat ];
         const width = svgData.width || 16;
         const height = svgData.height || width; // height না থাকলে width use করবে
 
         // viewBox সঠিকভাবে set করা
-        const viewBox = `0 0 ${width} ${height}`;
+        const viewBox = `0 0 ${ width } ${ height }`;
 
-        const svgRaw = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}" fill="currentColor"><path d="${svgData.path}" /></svg>`;
+        const svgRaw = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${ viewBox }" fill="currentColor"><path d="${ svgData.path }" /></svg>`;
         return svgRaw;
     };
 
     return (
         <>
             <div className="svgib-icon-picker">
-                {iconsPanel && (
-                    <Modal className="svgib__modal" title={__('Select Icon', 'svg-icon-block')} onRequestClose={() => setIconsPanel(false)}>
+                { iconsPanel && (
+                    <Modal
+                        className="svgib__modal"
+                        title={ __( 'Select Icon', 'svg-icon-block' ) }
+                        onRequestClose={ () => setIconsPanel( false ) }
+                    >
                         <div className="search__input">
                             <SearchControl
                                 __nextHasNoMarginBottom
-                                placeholder={__('Search Icon', 'svg-icon-block')}
-                                onChange={e => setSearchText(e)}
-                                value={searchText}
+                                placeholder={ __( 'Search Icon', 'svg-icon-block' ) }
+                                onChange={ e => setSearchText( e ) }
+                                value={ searchText }
                             />
                         </div>
                         <div className="svgib-modal__wrapper">
                             <div className="svgib-icons-wrap">
                                 <div className="svgib__icons-container">
-                                    {filterIcons.map((item, index) => {
-                                        const generatedIcon = generateIcon(item);
+                                    { filterIcons.map( ( item, index ) => {
+                                        const generatedIcon = generateIcon( item );
                                         return (
                                             <Button
-                                                key={index}
-                                                className={`single__icon ${value === generatedIcon ? 'active' : ''}`}
-                                                onClick={() => {
-                                                    onChange(generatedIcon);
-                                                    setIconsPanel(false); // modal close করার জন্য
-                                                }}
-                                                title={item.label}
+                                                key={ index }
+                                                className={ `single__icon ${ value === generatedIcon ? 'active' : '' }` }
+                                                onClick={ () => {
+                                                    onChange( generatedIcon );
+                                                    setIconsPanel( false ); // modal close করার জন্য
+                                                } }
+                                                title={ item.label }
                                             >
-                                                <RawHTML className="single__icon_svg" children={generatedIcon} />
+                                                <RawHTML className="single__icon_svg" children={ generatedIcon } />
                                             </Button>
                                         );
-                                    })}
+                                    } ) }
                                 </div>
                             </div>
                         </div>
                     </Modal>
-                )}
+                ) }
             </div>
         </>
     );

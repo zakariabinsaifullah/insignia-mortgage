@@ -15,7 +15,7 @@ import { NativeToggleGroupControl, NativeRangeControl } from '../../components';
 const BLOCK_NAME = 'core/heading';
 const STYLE_CLASS = 'is-style-arrow';
 
-const isArrowHeading = ( attributes ) => !! attributes.className?.includes( STYLE_CLASS );
+const isArrowHeading = attributes => !! attributes.className?.includes( STYLE_CLASS );
 
 /**
  * Add arrowAlign and arrowSize attributes to core/heading.
@@ -30,7 +30,7 @@ addFilter( 'blocks.registerBlockType', 'insignia/heading-arrow-add-attributes', 
         attributes: {
             ...settings.attributes,
             arrowAlign: { type: 'string', default: 'left' },
-            arrowSize:  { type: 'number', default: 35 }
+            arrowSize: { type: 'number', default: 35 }
         }
     };
 } );
@@ -58,7 +58,7 @@ addFilter(
                             value={ arrowAlign }
                             onChange={ v => props.setAttributes( { arrowAlign: v } ) }
                             options={ [
-                                { label: __( 'Left',   'insignia' ), value: 'left'   },
+                                { label: __( 'Left', 'insignia' ), value: 'left' },
                                 { label: __( 'Center', 'insignia' ), value: 'center' }
                             ] }
                         />
@@ -97,8 +97,8 @@ addFilter(
             ...props.wrapperProps,
             style: {
                 ...props.wrapperProps?.style,
-                '--arrow-size':            arrowSize + 'px',
-                '--arrow-align-x':         isCenter ? '50%' : '0',
+                '--arrow-size': arrowSize + 'px',
+                '--arrow-align-x': isCenter ? '50%' : '0',
                 '--arrow-align-transform': isCenter ? 'translateX(-50%)' : 'none'
             }
         };

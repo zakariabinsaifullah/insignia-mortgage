@@ -14,12 +14,12 @@ import { NativeRangeControl } from '../../components';
 
 import './style.scss';
 
-const SUPPORTED_BLOCKS = ['core/heading', 'core/paragraph'];
+const SUPPORTED_BLOCKS = [ 'core/heading', 'core/paragraph' ];
 const ATTRIBUTE = 'maxWidth';
 const CLASS_NAME = 'has-max-width';
 
-addFilter('blocks.registerBlockType', 'insignia/text-max-width-add-attribute', (settings, name) => {
-    if (!SUPPORTED_BLOCKS.includes(name)) {
+addFilter( 'blocks.registerBlockType', 'insignia/text-max-width-add-attribute', ( settings, name ) => {
+    if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
         return settings;
     }
 
@@ -27,69 +27,69 @@ addFilter('blocks.registerBlockType', 'insignia/text-max-width-add-attribute', (
         ...settings,
         attributes: {
             ...settings.attributes,
-            [ATTRIBUTE]: {
+            [ ATTRIBUTE ]: {
                 type: 'number',
                 default: undefined
             }
         }
     };
-});
+} );
 
 addFilter(
     'editor.BlockEdit',
     'insignia/text-max-width-add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
             const { name, attributes, setAttributes } = props;
 
-            if (!SUPPORTED_BLOCKS.includes(name)) {
-                return <BlockEdit {...props} />;
+            if ( ! SUPPORTED_BLOCKS.includes( name ) ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
+                    <BlockEdit { ...props } />
                     <InspectorControls>
-                        <PanelBody title={__('Max Width', 'insignia')}>
+                        <PanelBody title={ __( 'Max Width', 'insignia' ) }>
                             <NativeRangeControl
-                                label={__('Maximum width (px)', 'insignia')}
-                                value={attributes[ATTRIBUTE]}
-                                onChange={value => setAttributes({ [ATTRIBUTE]: value })}
-                                min={200}
-                                max={1600}
-                                step={1}
-                                resetFallbackValue={null}
+                                label={ __( 'Maximum width (px)', 'insignia' ) }
+                                value={ attributes[ ATTRIBUTE ] }
+                                onChange={ value => setAttributes( { [ ATTRIBUTE ]: value } ) }
+                                min={ 200 }
+                                max={ 1600 }
+                                step={ 1 }
+                                resetFallbackValue={ null }
                             />
                         </PanelBody>
                     </InspectorControls>
                 </>
             );
         };
-    })
+    } )
 );
 
 addFilter(
     'editor.BlockListBlock',
     'insignia/text-max-width-add-styles',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
             const { name, attributes } = props;
 
-            if (!SUPPORTED_BLOCKS.includes(name) || !attributes[ATTRIBUTE]) {
-                return <BlockListBlock {...props} />;
+            if ( ! SUPPORTED_BLOCKS.includes( name ) || ! attributes[ ATTRIBUTE ] ) {
+                return <BlockListBlock { ...props } />;
             }
 
             const wrapperProps = {
                 ...props.wrapperProps,
                 style: {
                     ...props.wrapperProps?.style,
-                    maxWidth: attributes[ATTRIBUTE] + 'px'
+                    maxWidth: attributes[ ATTRIBUTE ] + 'px'
                 }
             };
 
-            const classes = [props.className, CLASS_NAME].filter(Boolean).join(' ');
+            const classes = [ props.className, CLASS_NAME ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} wrapperProps={wrapperProps} />;
+            return <BlockListBlock { ...props } className={ classes } wrapperProps={ wrapperProps } />;
         };
-    })
+    } )
 );

@@ -53,43 +53,43 @@ const Edit = props => {
         nextCustomSvg
     } = attributes;
     // tab nav
-    const navPaddingStyles = generateBoxStyles(navPadding);
-    const navBorderWidth = generateBorderWidth(navBorder);
-    const navBorderStyle = generateBorderStyle(navBorder);
-    const navBorderColorValue = generateBorderColor(navBorder);
-    const navBorderRadiusStyle = generateBoxStyles(navBorderRadius);
+    const navPaddingStyles = generateBoxStyles( navPadding );
+    const navBorderWidth = generateBorderWidth( navBorder );
+    const navBorderStyle = generateBorderStyle( navBorder );
+    const navBorderColorValue = generateBorderColor( navBorder );
+    const navBorderRadiusStyle = generateBoxStyles( navBorderRadius );
 
     // CSS Custom Properties
     const cssCustomProperties = {
-        ...(heightType === 'fixed' && heights?.Desktop && { '--dheight': `${heights['Desktop']}` }),
-        ...(heightType === 'fixed' && heights?.Tablet && { '--theight': `${heights['Tablet']}` }),
-        ...(heightType === 'fixed' && heights?.Mobile && { '--mheight': `${heights['Mobile']}` }),
-        ...(paginationColor && { '--pagination-color': paginationColor }),
-        ...(apaginationHeight && { '--apagination-height': `${apaginationHeight}` }),
-        ...(npaginationHeight && { '--npagination-height': `${npaginationHeight}` }),
-        ...(pnSize && { '--psize': `${pnSize}` }),
-        ...(paSize && { '--pasize': `${paSize}` }),
-        ...(pRadius && { '--pradius': `${pRadius}` }),
-        ...(paRadius && { '--paradius': `${paRadius}` }),
-        ...(navBorderRadiusStyle && { '--nav-radius': navBorderRadiusStyle }),
-        ...(navPaddingStyles && { '--nav-padding': navPaddingStyles }),
-        ...(navBorderWidth && { '--nav-br-width': navBorderWidth }),
-        ...(navBorderStyle && { '--nav-br-style': navBorderStyle }),
-        ...(navBorderColorValue && { '--nbr-color': navBorderColorValue }),
-        ...(!navBorderColorValue && navBorderColor && { '--nbr-color': navBorderColor }),
-        ...(navSize && { '--nav-size': `${navSize}` }),
-        ...(navIconSize && { '--nicon-size': `${navIconSize}` }),
-        ...(navColor && { '--nav-color': navColor }),
-        ...(navbgColor && { '--nav-bg': navbgColor }),
-        ...(navEdgeGap && { '--nav-gap': `${navEdgeGap}` }),
-        ...(pgap && { '--pgap': `${pgap}` })
+        ...( heightType === 'fixed' && heights?.Desktop && { '--dheight': `${ heights.Desktop }` } ),
+        ...( heightType === 'fixed' && heights?.Tablet && { '--theight': `${ heights.Tablet }` } ),
+        ...( heightType === 'fixed' && heights?.Mobile && { '--mheight': `${ heights.Mobile }` } ),
+        ...( paginationColor && { '--pagination-color': paginationColor } ),
+        ...( apaginationHeight && { '--apagination-height': `${ apaginationHeight }` } ),
+        ...( npaginationHeight && { '--npagination-height': `${ npaginationHeight }` } ),
+        ...( pnSize && { '--psize': `${ pnSize }` } ),
+        ...( paSize && { '--pasize': `${ paSize }` } ),
+        ...( pRadius && { '--pradius': `${ pRadius }` } ),
+        ...( paRadius && { '--paradius': `${ paRadius }` } ),
+        ...( navBorderRadiusStyle && { '--nav-radius': navBorderRadiusStyle } ),
+        ...( navPaddingStyles && { '--nav-padding': navPaddingStyles } ),
+        ...( navBorderWidth && { '--nav-br-width': navBorderWidth } ),
+        ...( navBorderStyle && { '--nav-br-style': navBorderStyle } ),
+        ...( navBorderColorValue && { '--nbr-color': navBorderColorValue } ),
+        ...( ! navBorderColorValue && navBorderColor && { '--nbr-color': navBorderColor } ),
+        ...( navSize && { '--nav-size': `${ navSize }` } ),
+        ...( navIconSize && { '--nicon-size': `${ navIconSize }` } ),
+        ...( navColor && { '--nav-color': navColor } ),
+        ...( navbgColor && { '--nav-bg': navbgColor } ),
+        ...( navEdgeGap && { '--nav-gap': `${ navEdgeGap }` } ),
+        ...( pgap && { '--pgap': `${ pgap }` } )
     };
 
     // Update block style when CSS properties change
-    useEffect(() => {
-        setAttributes({
+    useEffect( () => {
+        setAttributes( {
             blockStyle: cssCustomProperties
-        });
+        } );
     }, [
         heightType,
         heights,
@@ -111,33 +111,33 @@ const Edit = props => {
         navEdgeGap,
         pgap,
         columnOnMobile
-    ]);
+    ] );
 
     // Inner blocks configuration
     const innerBlocksProps = useInnerBlocksProps(
         {
-            className: classNames('insignia-editor-slides', {
-                [`columns-${columns[resMode]}`]: columns[resMode],
-                [`gap-${gaps[resMode]}`]: gaps[resMode]
-            })
+            className: classNames( 'insignia-editor-slides', {
+                [ `columns-${ columns[ resMode ] }` ]: columns[ resMode ],
+                [ `gap-${ gaps[ resMode ] }` ]: gaps[ resMode ]
+            } )
         },
         {
-            allowedBlocks: ['insignia/slide'],
-            template: [['insignia/slide'], ['insignia/slide']],
+            allowedBlocks: [ 'insignia/slide' ],
+            template: [ [ 'insignia/slide' ], [ 'insignia/slide' ] ],
             templateLock: false
         }
     );
 
     // Block Props
-    const blockProps = useBlockProps({
+    const blockProps = useBlockProps( {
         style: cssCustomProperties,
-        className: classNames({
+        className: classNames( {
             fixed: heightType === 'fixed',
             outside: navType === 'outside' && showArrows,
-            [`nav-pos-${navPosition}`]: navPosition,
+            [ `nav-pos-${ navPosition }` ]: navPosition,
             'column-on-mobile': columnOnMobile
-        })
-    });
+        } )
+    } );
 
     return (
         <>
@@ -145,30 +145,40 @@ const Edit = props => {
                 <ToolbarGroup>
                     <ToolbarButton
                         icon="insert"
-                        label={__('Add Slide', 'insignia')}
-                        onClick={() => {
-                            const innerBlocks = wp.data.select('core/block-editor').getBlocks(clientId);
-                            const newBlock = wp.blocks.createBlock('insignia/slide');
-                            wp.data.dispatch('core/block-editor').insertBlock(newBlock, innerBlocks.length, clientId);
-                        }}
+                        label={ __( 'Add Slide', 'insignia' ) }
+                        onClick={ () => {
+                            const innerBlocks = wp.data.select( 'core/block-editor' ).getBlocks( clientId );
+                            const newBlock = wp.blocks.createBlock( 'insignia/slide' );
+                            wp.data.dispatch( 'core/block-editor' ).insertBlock( newBlock, innerBlocks.length, clientId );
+                        } }
                     />
                 </ToolbarGroup>
             </BlockControls>
 
-            {isSelected && <Inspector {...props} />}
+            { isSelected && <Inspector { ...props } /> }
 
-            <div {...blockProps}>
-                <div {...innerBlocksProps} />
-                {showArrows && (
+            <div { ...blockProps }>
+                <div { ...innerBlocksProps } />
+                { showArrows && (
                     <>
                         <div className="swiper-custom-prev gu-nav">
-                            <RenderIcon customSvgCode={prevCustomSvg} iconName={prevIconName} iconType={prevIconType} size={navIconSize} />
+                            <RenderIcon
+                                customSvgCode={ prevCustomSvg }
+                                iconName={ prevIconName }
+                                iconType={ prevIconType }
+                                size={ navIconSize }
+                            />
                         </div>
                         <div className="swiper-custom-next gu-nav">
-                            <RenderIcon customSvgCode={nextCustomSvg} iconName={nextIconName} iconType={nextIconType} size={navIconSize} />
+                            <RenderIcon
+                                customSvgCode={ nextCustomSvg }
+                                iconName={ nextIconName }
+                                iconType={ nextIconType }
+                                size={ navIconSize }
+                            />
                         </div>
                     </>
-                )}
+                ) }
             </div>
         </>
     );

@@ -8,13 +8,7 @@ import {
     __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
 } from '@wordpress/block-editor';
 
-const OverlayBgControl = ({
-    clientId,
-    attributes,
-    setAttributes,
-    overlayBgColor,
-    setOverlayBgColor
-}) => {
+const OverlayBgControl = ( { clientId, attributes, setAttributes, overlayBgColor, setOverlayBgColor } ) => {
     const { overlayBgGradient } = attributes;
 
     const colorGradientSettings = useMultipleOriginColorsAndGradients();
@@ -25,7 +19,7 @@ const OverlayBgControl = ({
 
     const setting = {
         colorValue: overlayBgColor?.color,
-        onColorChange: ( color ) => {
+        onColorChange: color => {
             setOverlayBgColor( color );
             // Clear gradient when a solid color is chosen.
             if ( color ) {
@@ -33,7 +27,7 @@ const OverlayBgControl = ({
             }
         },
         gradientValue: overlayBgGradient || undefined,
-        onGradientChange: ( gradient ) => {
+        onGradientChange: gradient => {
             // Clear solid color when a gradient is chosen.
             setAttributes( {
                 overlayBgGradient: gradient || undefined,
@@ -62,6 +56,4 @@ const OverlayBgControl = ({
     );
 };
 
-export default withColors(
-    { overlayBgColor: 'background-color' }
-)( OverlayBgControl );
+export default withColors( { overlayBgColor: 'background-color' } )( OverlayBgControl );

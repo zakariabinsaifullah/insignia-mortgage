@@ -1,31 +1,35 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var carousels = document.querySelectorAll('.insignia-query-carousel');
-    carousels.forEach(function (carousel) {
-        var optionsAttr = carousel.getAttribute('data-qc-options');
-        if (!optionsAttr) return;
-
-        var options;
-        try {
-            options = JSON.parse(optionsAttr);
-        } catch (e) {
+document.addEventListener( 'DOMContentLoaded', function () {
+    const carousels = document.querySelectorAll( '.insignia-query-carousel' );
+    carousels.forEach( function ( carousel ) {
+        const optionsAttr = carousel.getAttribute( 'data-qc-options' );
+        if ( ! optionsAttr ) {
             return;
         }
 
-        var loop = options.loop !== undefined ? options.loop : true;
-        var autoplay = options.autoplay || false;
-        var columns = options.columns || { Desktop: 3, Tablet: 2, Mobile: 1 };
-        var gaps = options.gaps || { Desktop: 20, Tablet: 15, Mobile: 0 };
+        let options;
+        try {
+            options = JSON.parse( optionsAttr );
+        } catch ( e ) {
+            return;
+        }
 
-        var swiperEl = carousel.querySelector('.swiper');
-        if (!swiperEl) return;
+        const loop = options.loop !== undefined ? options.loop : true;
+        const autoplay = options.autoplay || false;
+        const columns = options.columns || { Desktop: 3, Tablet: 2, Mobile: 1 };
+        const gaps = options.gaps || { Desktop: 20, Tablet: 15, Mobile: 0 };
 
-        var prevEl = carousel.querySelector('.swiper-custom-prev');
-        var nextEl = carousel.querySelector('.swiper-custom-next');
-        var paginationEl = carousel.querySelector('.swiper-pagination');
+        const swiperEl = carousel.querySelector( '.swiper' );
+        if ( ! swiperEl ) {
+            return;
+        }
 
-        var swiperConfig = {
-            loop: loop,
-            autoplay: autoplay,
+        const prevEl = carousel.querySelector( '.swiper-custom-prev' );
+        const nextEl = carousel.querySelector( '.swiper-custom-next' );
+        const paginationEl = carousel.querySelector( '.swiper-pagination' );
+
+        const swiperConfig = {
+            loop,
+            autoplay,
             navigation: {},
             pagination: {},
             touchRatio: 1,
@@ -54,17 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        if (prevEl) {
+        if ( prevEl ) {
             swiperConfig.navigation.prevEl = prevEl;
         }
-        if (nextEl) {
+        if ( nextEl ) {
             swiperConfig.navigation.nextEl = nextEl;
         }
-        if (paginationEl) {
+        if ( paginationEl ) {
             swiperConfig.pagination.el = paginationEl;
             swiperConfig.pagination.clickable = true;
         }
 
-        new Swiper(swiperEl, swiperConfig);
-    });
-});
+        new Swiper( swiperEl, swiperConfig );
+    } );
+} );

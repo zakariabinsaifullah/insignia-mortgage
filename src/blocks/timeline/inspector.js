@@ -10,23 +10,23 @@ const Inspector = props => {
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Timeline Settings', 'insignia')} initialOpen={true}>
+                <PanelBody title={ __( 'Timeline Settings', 'insignia' ) } initialOpen={ true }>
                     <NativeRangeControl
-                        label={__('Gap (icon → content)', 'insignia')}
-                        value={contentGap}
-                        onChange={value => setAttributes({ contentGap: value })}
-                        min={0}
-                        max={100}
-                        step={1}
-                        resetFallbackValue={28}
+                        label={ __( 'Gap (icon → content)', 'insignia' ) }
+                        value={ contentGap }
+                        onChange={ value => setAttributes( { contentGap: value } ) }
+                        min={ 0 }
+                        max={ 100 }
+                        step={ 1 }
+                        resetFallbackValue={ 28 }
                     />
                     <NativeRangeControl
-                        label={__('Gap Between Items', 'insignia')}
-                        value={itemsGap}
-                        onChange={value => setAttributes({ itemsGap: value })}
-                        min={0}
-                        max={100}
-                        step={1}
+                        label={ __( 'Gap Between Items', 'insignia' ) }
+                        value={ itemsGap }
+                        onChange={ value => setAttributes( { itemsGap: value } ) }
+                        min={ 0 }
+                        max={ 100 }
+                        step={ 1 }
                     />
                 </PanelBody>
             </InspectorControls>

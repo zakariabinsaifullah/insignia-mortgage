@@ -11,117 +11,121 @@ import { useEffect } from '@wordpress/element';
  */
 import { NativeToggleControl, NativeUnitControl, PanelColorControl } from '../../components';
 
-export default function Inspector(props) {
+export default function Inspector( props ) {
     const { attributes, setAttributes } = props;
     const { showCopyLink, showLinkedIn, showTwitter, showFacebook, iconSize, gap, iconColor, iconBgColor, iconRadius, iconPadding } =
         attributes;
 
-    useEffect(() => {
-        setAttributes({
+    useEffect( () => {
+        setAttributes( {
             blockStyle: {
-                ...(iconSize && { '--icon-size': iconSize }),
-                ...(gap && { '--gap': gap }),
-                ...(iconColor && { '--icon-color': iconColor }),
-                ...(iconBgColor && { '--icon-bg': iconBgColor }),
-                ...(iconRadius && { '--icon-radius': iconRadius }),
-                ...(iconPadding && { '--icon-padding': iconPadding })
+                ...( iconSize && { '--icon-size': iconSize } ),
+                ...( gap && { '--gap': gap } ),
+                ...( iconColor && { '--icon-color': iconColor } ),
+                ...( iconBgColor && { '--icon-bg': iconBgColor } ),
+                ...( iconRadius && { '--icon-radius': iconRadius } ),
+                ...( iconPadding && { '--icon-padding': iconPadding } )
             }
-        });
-    }, [iconSize, gap, iconColor, iconBgColor, iconRadius, iconPadding]);
+        } );
+    }, [ iconSize, gap, iconColor, iconBgColor, iconRadius, iconPadding ] );
 
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Platforms', 'insignia')}>
+                <PanelBody title={ __( 'Platforms', 'insignia' ) }>
                     <NativeToggleControl
-                        label={__('Copy Link', 'insignia')}
-                        checked={showCopyLink}
-                        onChange={value => setAttributes({ showCopyLink: value })}
+                        label={ __( 'Copy Link', 'insignia' ) }
+                        checked={ showCopyLink }
+                        onChange={ value => setAttributes( { showCopyLink: value } ) }
                     />
                     <NativeToggleControl
-                        label={__('LinkedIn', 'insignia')}
-                        checked={showLinkedIn}
-                        onChange={value => setAttributes({ showLinkedIn: value })}
+                        label={ __( 'LinkedIn', 'insignia' ) }
+                        checked={ showLinkedIn }
+                        onChange={ value => setAttributes( { showLinkedIn: value } ) }
                     />
                     <NativeToggleControl
-                        label={__('X (Twitter)', 'insignia')}
-                        checked={showTwitter}
-                        onChange={value => setAttributes({ showTwitter: value })}
+                        label={ __( 'X (Twitter)', 'insignia' ) }
+                        checked={ showTwitter }
+                        onChange={ value => setAttributes( { showTwitter: value } ) }
                     />
                     <NativeToggleControl
-                        label={__('Facebook', 'insignia')}
-                        checked={showFacebook}
-                        onChange={value => setAttributes({ showFacebook: value })}
+                        label={ __( 'Facebook', 'insignia' ) }
+                        checked={ showFacebook }
+                        onChange={ value => setAttributes( { showFacebook: value } ) }
                     />
                 </PanelBody>
-                <PanelBody title={__('Layout', 'insignia')} initialOpen={false}>
+                <PanelBody title={ __( 'Layout', 'insignia' ) } initialOpen={ false }>
                     <NativeUnitControl
-                        label={__('Icon Size', 'insignia')}
-                        value={iconSize}
-                        onChange={value => setAttributes({ iconSize: value })}
-                        mb={16}
+                        label={ __( 'Icon Size', 'insignia' ) }
+                        value={ iconSize }
+                        onChange={ value => setAttributes( { iconSize: value } ) }
+                        mb={ 16 }
                     />
-                    <NativeUnitControl label={__('Gap', 'insignia')} value={gap} onChange={value => setAttributes({ gap: value })} />
+                    <NativeUnitControl
+                        label={ __( 'Gap', 'insignia' ) }
+                        value={ gap }
+                        onChange={ value => setAttributes( { gap: value } ) }
+                    />
                 </PanelBody>
             </InspectorControls>
             <InspectorControls group="styles">
                 <ToolsPanel
-                    label={__('Icon Style', 'insignia')}
-                    resetAll={() =>
-                        setAttributes({
+                    label={ __( 'Icon Style', 'insignia' ) }
+                    resetAll={ () =>
+                        setAttributes( {
                             iconColor: undefined,
                             iconBgColor: undefined,
                             iconRadius: undefined,
                             iconPadding: undefined
-                        })
+                        } )
                     }
                 >
                     <ToolsPanelItem
-                        hasValue={() => !!iconBgColor || !!iconColor}
-                        label={__('Colors', 'insignia')}
-                        onDeselect={() => setAttributes({ iconBgColor: undefined })}
-                        onSelect={() => {}}
+                        hasValue={ () => !! iconBgColor || !! iconColor }
+                        label={ __( 'Colors', 'insignia' ) }
+                        onDeselect={ () => setAttributes( { iconBgColor: undefined } ) }
+                        onSelect={ () => {} }
                     >
                         <PanelColorControl
-                            label={__('Colors', 'insignia')}
-                            colorSettings={[
+                            label={ __( 'Colors', 'insignia' ) }
+                            colorSettings={ [
                                 {
                                     value: iconColor,
-                                    onChange: color => setAttributes({ iconColor: color }),
-                                    label: __('Color', 'insignia')
+                                    onChange: color => setAttributes( { iconColor: color } ),
+                                    label: __( 'Color', 'insignia' )
                                 },
                                 {
                                     value: iconBgColor,
-                                    onChange: color => setAttributes({ iconBgColor: color }),
-                                    label: __('Background', 'insignia')
+                                    onChange: color => setAttributes( { iconBgColor: color } ),
+                                    label: __( 'Background', 'insignia' )
                                 }
-                            ]}
+                            ] }
                         />
                     </ToolsPanelItem>
 
                     <ToolsPanelItem
-                        hasValue={() => !!iconRadius}
-                        label={__('Radius', 'insignia')}
-                        onDeselect={() => setAttributes({ iconRadius: undefined })}
-                        onSelect={() => {}}
+                        hasValue={ () => !! iconRadius }
+                        label={ __( 'Radius', 'insignia' ) }
+                        onDeselect={ () => setAttributes( { iconRadius: undefined } ) }
+                        onSelect={ () => {} }
                     >
                         <NativeUnitControl
-                            label={__('Radius', 'insignia')}
-                            value={iconRadius}
-                            onChange={value => setAttributes({ iconRadius: value })}
+                            label={ __( 'Radius', 'insignia' ) }
+                            value={ iconRadius }
+                            onChange={ value => setAttributes( { iconRadius: value } ) }
                         />
                     </ToolsPanelItem>
 
                     <ToolsPanelItem
-                        hasValue={() => !!iconPadding}
-                        label={__('Padding', 'insignia')}
-                        onDeselect={() => setAttributes({ iconPadding: undefined })}
-                        onSelect={() => {}}
+                        hasValue={ () => !! iconPadding }
+                        label={ __( 'Padding', 'insignia' ) }
+                        onDeselect={ () => setAttributes( { iconPadding: undefined } ) }
+                        onSelect={ () => {} }
                     >
                         <NativeUnitControl
-                            label={__('Padding', 'insignia')}
-                            value={iconPadding}
-                            onChange={value => setAttributes({ iconPadding: value })}
+                            label={ __( 'Padding', 'insignia' ) }
+                            value={ iconPadding }
+                            onChange={ value => setAttributes( { iconPadding: value } ) }
                         />
                     </ToolsPanelItem>
                 </ToolsPanel>

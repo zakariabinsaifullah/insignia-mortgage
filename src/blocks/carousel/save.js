@@ -2,7 +2,7 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import classNames from 'classnames';
 import { RenderIcon } from '../../helpers';
 
-export default function save({ attributes }) {
+export default function save( { attributes } ) {
     const {
         blockStyle,
         heightType,
@@ -34,43 +34,43 @@ export default function save({ attributes }) {
 
     return (
         <div
-            {...useBlockProps.save({
+            { ...useBlockProps.save( {
                 style: blockStyle,
-                className: classNames({
+                className: classNames( {
                     fixed: heightType === 'fixed',
                     outside: navType === 'outside' && showArrows,
-                    [`nav-pos-${navPosition}`]: navPosition,
+                    [ `nav-pos-${ navPosition }` ]: navPosition,
                     'column-on-mobile': columnOnMobile
-                })
-            })}
-            data-options={JSON.stringify(options)}
+                } )
+            } ) }
+            data-options={ JSON.stringify( options ) }
         >
             <div className="swiper">
                 <div className="swiper-wrapper">
                     <InnerBlocks.Content />
                 </div>
             </div>
-            {showArrows && (
+            { showArrows && (
                 <>
                     <div className="swiper-custom-prev gu-nav">
                         <RenderIcon
-                            customSvgCode={prevCustomSvg}
-                            iconName={prevIconName}
-                            iconType={prevIconType}
-                            size={navIconSize}
+                            customSvgCode={ prevCustomSvg }
+                            iconName={ prevIconName }
+                            iconType={ prevIconType }
+                            size={ navIconSize }
                         />
                     </div>
                     <div className="swiper-custom-next gu-nav">
                         <RenderIcon
-                            customSvgCode={nextCustomSvg}
-                            iconName={nextIconName}
-                            iconType={nextIconType}
-                            size={navIconSize}
+                            customSvgCode={ nextCustomSvg }
+                            iconName={ nextIconName }
+                            iconType={ nextIconType }
+                            size={ navIconSize }
                         />
                     </div>
                 </>
-            )}
-            {showPagination && <div className="swiper-pagination"></div>}
+            ) }
+            { showPagination && <div className="swiper-pagination"></div> }
         </div>
     );
 }

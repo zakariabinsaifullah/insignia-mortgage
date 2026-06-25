@@ -265,59 +265,59 @@ import {
 const categories = [
     {
         slug: 'all',
-        name: __('All Icons', 'insignia')
+        name: __( 'All Icons', 'insignia' )
     },
     {
         slug: 'arrows',
-        name: __('Arrows', 'insignia')
+        name: __( 'Arrows', 'insignia' )
     },
     {
         slug: 'editor',
-        name: __('Editor', 'insignia')
+        name: __( 'Editor', 'insignia' )
     },
     {
         slug: 'actions',
-        name: __('Actions', 'insignia')
+        name: __( 'Actions', 'insignia' )
     },
     {
         slug: 'devices',
-        name: __('Devices', 'insignia')
+        name: __( 'Devices', 'insignia' )
     },
     {
         slug: 'interface',
-        name: __('Interface', 'insignia')
+        name: __( 'Interface', 'insignia' )
     },
     {
         slug: 'media',
-        name: __('Media', 'insignia')
+        name: __( 'Media', 'insignia' )
     },
     {
         slug: 'format',
-        name: __('Formatting', 'insignia')
+        name: __( 'Formatting', 'insignia' )
     },
     {
         slug: 'layout',
-        name: __('Layout', 'insignia')
+        name: __( 'Layout', 'insignia' )
     },
     {
         slug: 'tables',
-        name: __('Tables', 'insignia')
+        name: __( 'Tables', 'insignia' )
     },
     {
         slug: 'posts',
-        name: __('Posts & Pages', 'insignia')
+        name: __( 'Posts & Pages', 'insignia' )
     },
     {
         slug: 'comments',
-        name: __('Comments', 'insignia')
+        name: __( 'Comments', 'insignia' )
     },
     {
         slug: 'ecommerce',
-        name: __('E-Commerce', 'insignia')
+        name: __( 'E-Commerce', 'insignia' )
     },
     {
         slug: 'misc',
-        name: __('Miscellaneous', 'insignia')
+        name: __( 'Miscellaneous', 'insignia' )
     }
 ];
 
@@ -328,66 +328,66 @@ const icons = [
     // Original icons
     {
         name: 'wordpress',
-        title: __('WordPress', 'insignia'),
+        title: __( 'WordPress', 'insignia' ),
         icon: wordpress,
-        categories: ['misc'],
+        categories: [ 'misc' ],
         isDefault: true
     },
     {
         name: 'paragraph',
-        title: __('Paragraph', 'insignia'),
+        title: __( 'Paragraph', 'insignia' ),
         icon: paragraph,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'share',
-        title: __('Share', 'insignia'),
+        title: __( 'Share', 'insignia' ),
         icon: share,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'star-filled',
-        title: __('Star Filled', 'insignia'),
+        title: __( 'Star Filled', 'insignia' ),
         icon: starFilled,
-        categories: ['interface'],
+        categories: [ 'interface' ],
         isDefault: true
     },
     {
         name: 'star-empty',
-        title: __('Star Empty', 'insignia'),
+        title: __( 'Star Empty', 'insignia' ),
         icon: starEmpty,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'check',
-        title: __('Check', 'insignia'),
+        title: __( 'Check', 'insignia' ),
         icon: check,
-        categories: ['interface'],
+        categories: [ 'interface' ],
         isDefault: true
     },
     {
         name: 'menu',
-        title: __('Menu', 'insignia'),
+        title: __( 'Menu', 'insignia' ),
         icon: menu,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'help',
-        title: __('Help', 'insignia'),
+        title: __( 'Help', 'insignia' ),
         icon: help,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'globe',
-        title: __('Globe', 'insignia'),
+        title: __( 'Globe', 'insignia' ),
         icon: globe,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'gallery',
-        title: __('Gallery', 'insignia'),
+        title: __( 'Gallery', 'insignia' ),
         icon: gallery,
-        categories: ['editor', 'media']
+        categories: [ 'editor', 'media' ]
     },
     // {
     //     name: 'edit',
@@ -397,27 +397,27 @@ const icons = [
     // },
     {
         name: 'cloud',
-        title: __('Cloud', 'insignia'),
+        title: __( 'Cloud', 'insignia' ),
         icon: cloud,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'archive',
-        title: __('Archive', 'insignia'),
+        title: __( 'Archive', 'insignia' ),
         icon: archive,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'settings',
-        title: __('Settings', 'insignia'),
+        title: __( 'Settings', 'insignia' ),
         icon: settings,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'home',
-        title: __('Home', 'insignia'),
+        title: __( 'Home', 'insignia' ),
         icon: home,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     // {
     //     name: 'warning',
@@ -427,324 +427,324 @@ const icons = [
     // },
     {
         name: 'info',
-        title: __('Info', 'insignia'),
+        title: __( 'Info', 'insignia' ),
         icon: info,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'search',
-        title: __('Search', 'insignia'),
+        title: __( 'Search', 'insignia' ),
         icon: search,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'calendar',
-        title: __('Calendar', 'insignia'),
+        title: __( 'Calendar', 'insignia' ),
         icon: calendar,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'desktop',
-        title: __('Desktop', 'insignia'),
+        title: __( 'Desktop', 'insignia' ),
         icon: desktop,
-        categories: ['devices']
+        categories: [ 'devices' ]
     },
     {
         name: 'mobile',
-        title: __('Mobile', 'insignia'),
+        title: __( 'Mobile', 'insignia' ),
         icon: mobile,
-        categories: ['devices']
+        categories: [ 'devices' ]
     },
     {
         name: 'tablet',
-        title: __('Tablet', 'insignia'),
+        title: __( 'Tablet', 'insignia' ),
         icon: tablet,
-        categories: ['devices']
+        categories: [ 'devices' ]
     },
     {
         name: 'download',
-        title: __('Download', 'insignia'),
+        title: __( 'Download', 'insignia' ),
         icon: download,
-        categories: ['actions'],
+        categories: [ 'actions' ],
         isDefault: true
     },
     {
         name: 'pencil',
-        title: __('Pencil', 'insignia'),
+        title: __( 'Pencil', 'insignia' ),
         icon: pencil,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'external',
-        title: __('External', 'insignia'),
+        title: __( 'External', 'insignia' ),
         icon: external,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'trash',
-        title: __('Trash', 'insignia'),
+        title: __( 'Trash', 'insignia' ),
         icon: trash,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'upload',
-        title: __('Upload', 'insignia'),
+        title: __( 'Upload', 'insignia' ),
         icon: upload,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'plus',
-        title: __('Plus', 'insignia'),
+        title: __( 'Plus', 'insignia' ),
         icon: plus,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'close',
-        title: __('Close', 'insignia'),
+        title: __( 'Close', 'insignia' ),
         icon: close,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'update',
-        title: __('Update', 'insignia'),
+        title: __( 'Update', 'insignia' ),
         icon: update,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'arrow-up',
-        title: __('Arrow Up', 'insignia'),
+        title: __( 'Arrow Up', 'insignia' ),
         icon: arrowUp,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'arrow-down',
-        title: __('Arrow Down', 'insignia'),
+        title: __( 'Arrow Down', 'insignia' ),
         icon: arrowDown,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'arrow-left',
-        title: __('Arrow Left', 'insignia'),
+        title: __( 'Arrow Left', 'insignia' ),
         icon: arrowLeft,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'arrow-right',
-        title: __('Arrow Right', 'insignia'),
+        title: __( 'Arrow Right', 'insignia' ),
         icon: arrowRight,
-        categories: ['arrows'],
+        categories: [ 'arrows' ],
         isDefault: true
     },
 
     // Additional icons - Arrows
     {
         name: 'chevron-down',
-        title: __('Chevron Down', 'insignia'),
+        title: __( 'Chevron Down', 'insignia' ),
         icon: chevronDown,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'chevron-up',
-        title: __('Chevron Up', 'insignia'),
+        title: __( 'Chevron Up', 'insignia' ),
         icon: chevronUp,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'chevron-left',
-        title: __('Chevron Left', 'insignia'),
+        title: __( 'Chevron Left', 'insignia' ),
         icon: chevronLeft,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'chevron-right',
-        title: __('Chevron Right', 'insignia'),
+        title: __( 'Chevron Right', 'insignia' ),
         icon: chevronRight,
-        categories: ['arrows'],
+        categories: [ 'arrows' ],
         isDefault: true
     },
     {
         name: 'chevron-right-small',
-        title: __('Chevron Right Small', 'insignia'),
+        title: __( 'Chevron Right Small', 'insignia' ),
         icon: chevronRightSmall,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'chevron-up-down',
-        title: __('Chevron Up Down', 'insignia'),
+        title: __( 'Chevron Up Down', 'insignia' ),
         icon: chevronUpDown,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'previous',
-        title: __('Previous', 'insignia'),
+        title: __( 'Previous', 'insignia' ),
         icon: previous,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
     {
         name: 'next',
-        title: __('Next', 'insignia'),
+        title: __( 'Next', 'insignia' ),
         icon: next,
-        categories: ['arrows']
+        categories: [ 'arrows' ]
     },
 
     // Editor
     {
         name: 'heading',
-        title: __('Heading', 'insignia'),
+        title: __( 'Heading', 'insignia' ),
         icon: heading,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'quote',
-        title: __('Quote', 'insignia'),
+        title: __( 'Quote', 'insignia' ),
         icon: quote,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'list',
-        title: __('List', 'insignia'),
+        title: __( 'List', 'insignia' ),
         icon: list,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'list-item',
-        title: __('List Item', 'insignia'),
+        title: __( 'List Item', 'insignia' ),
         icon: listItem,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'code',
-        title: __('Code', 'insignia'),
+        title: __( 'Code', 'insignia' ),
         icon: code,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'image',
-        title: __('Image', 'insignia'),
+        title: __( 'Image', 'insignia' ),
         icon: image,
-        categories: ['editor', 'media']
+        categories: [ 'editor', 'media' ]
     },
     {
         name: 'video',
-        title: __('Video', 'insignia'),
+        title: __( 'Video', 'insignia' ),
         icon: video,
-        categories: ['editor', 'media']
+        categories: [ 'editor', 'media' ]
     },
     {
         name: 'audio',
-        title: __('Audio', 'insignia'),
+        title: __( 'Audio', 'insignia' ),
         icon: audio,
-        categories: ['editor', 'media']
+        categories: [ 'editor', 'media' ]
     },
     {
         name: 'media',
-        title: __('Media', 'insignia'),
+        title: __( 'Media', 'insignia' ),
         icon: media,
-        categories: ['editor', 'media']
+        categories: [ 'editor', 'media' ]
     },
     {
         name: 'cover',
-        title: __('Cover', 'insignia'),
+        title: __( 'Cover', 'insignia' ),
         icon: cover,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'verse',
-        title: __('Verse', 'insignia'),
+        title: __( 'Verse', 'insignia' ),
         icon: verse,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'preformatted',
-        title: __('Preformatted', 'insignia'),
+        title: __( 'Preformatted', 'insignia' ),
         icon: preformatted,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'shortcode',
-        title: __('Shortcode', 'insignia'),
+        title: __( 'Shortcode', 'insignia' ),
         icon: shortcode,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'html',
-        title: __('HTML', 'insignia'),
+        title: __( 'HTML', 'insignia' ),
         icon: html,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'pullquote',
-        title: __('Pullquote', 'insignia'),
+        title: __( 'Pullquote', 'insignia' ),
         icon: pullquote,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'button',
-        title: __('Button', 'insignia'),
+        title: __( 'Button', 'insignia' ),
         icon: button,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'buttons',
-        title: __('Buttons', 'insignia'),
+        title: __( 'Buttons', 'insignia' ),
         icon: buttons,
-        categories: ['editor']
+        categories: [ 'editor' ]
     },
     {
         name: 'media-and-text',
-        title: __('Media & Text', 'insignia'),
+        title: __( 'Media & Text', 'insignia' ),
         icon: mediaAndText,
-        categories: ['editor', 'layout']
+        categories: [ 'editor', 'layout' ]
     },
 
     // Format
     {
         name: 'format-bold',
-        title: __('Format Bold', 'insignia'),
+        title: __( 'Format Bold', 'insignia' ),
         icon: formatBold,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-italic',
-        title: __('Format Italic', 'insignia'),
+        title: __( 'Format Italic', 'insignia' ),
         icon: formatItalic,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-strikethrough',
-        title: __('Format Strikethrough', 'insignia'),
+        title: __( 'Format Strikethrough', 'insignia' ),
         icon: formatStrikethrough,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-underline',
-        title: __('Format Underline', 'insignia'),
+        title: __( 'Format Underline', 'insignia' ),
         icon: formatUnderline,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-capitalize',
-        title: __('Format Capitalize', 'insignia'),
+        title: __( 'Format Capitalize', 'insignia' ),
         icon: formatCapitalize,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-uppercase',
-        title: __('Format Uppercase', 'insignia'),
+        title: __( 'Format Uppercase', 'insignia' ),
         icon: formatUppercase,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-lowercase',
-        title: __('Format Lowercase', 'insignia'),
+        title: __( 'Format Lowercase', 'insignia' ),
         icon: formatLowercase,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-ltr',
-        title: __('Format LTR', 'insignia'),
+        title: __( 'Format LTR', 'insignia' ),
         icon: formatLTR,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     // {
     //     name: 'format-rtl',
@@ -754,75 +754,75 @@ const icons = [
     // },
     {
         name: 'format-indent',
-        title: __('Format Indent', 'insignia'),
+        title: __( 'Format Indent', 'insignia' ),
         icon: formatIndent,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-indent-rtl',
-        title: __('Format Indent RTL', 'insignia'),
+        title: __( 'Format Indent RTL', 'insignia' ),
         icon: formatIndentRTL,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-outdent',
-        title: __('Format Outdent', 'insignia'),
+        title: __( 'Format Outdent', 'insignia' ),
         icon: formatOutdent,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-outdent-rtl',
-        title: __('Format Outdent RTL', 'insignia'),
+        title: __( 'Format Outdent RTL', 'insignia' ),
         icon: formatOutdentRTL,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-list-bullets',
-        title: __('Format List Bullets', 'insignia'),
+        title: __( 'Format List Bullets', 'insignia' ),
         icon: formatListBullets,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-list-bullets-rtl',
-        title: __('Format List Bullets RTL', 'insignia'),
+        title: __( 'Format List Bullets RTL', 'insignia' ),
         icon: formatListBulletsRTL,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-list-numbered',
-        title: __('Format List Numbered', 'insignia'),
+        title: __( 'Format List Numbered', 'insignia' ),
         icon: formatListNumbered,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'format-list-numbered-rtl',
-        title: __('Format List Numbered RTL', 'insignia'),
+        title: __( 'Format List Numbered RTL', 'insignia' ),
         icon: formatListNumberedRTL,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'text-color',
-        title: __('Text Color', 'insignia'),
+        title: __( 'Text Color', 'insignia' ),
         icon: textColor,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'subscript',
-        title: __('Subscript', 'insignia'),
+        title: __( 'Subscript', 'insignia' ),
         icon: subscript,
-        categories: ['format']
+        categories: [ 'format' ]
     },
     {
         name: 'superscript',
-        title: __('Superscript', 'insignia'),
+        title: __( 'Superscript', 'insignia' ),
         icon: superscript,
-        categories: ['format']
+        categories: [ 'format' ]
     },
 
     // Layout
     {
         name: 'layouts',
-        title: __('Layouts', 'insignia'),
+        title: __( 'Layouts', 'insignia' ),
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -839,1046 +839,1046 @@ const icons = [
                 />
             </svg>
         ),
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'align-left',
-        title: __('Align Left', 'insignia'),
+        title: __( 'Align Left', 'insignia' ),
         icon: alignLeft,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'align-center',
-        title: __('Align Center', 'insignia'),
+        title: __( 'Align Center', 'insignia' ),
         icon: alignCenter,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'align-right',
-        title: __('Align Right', 'insignia'),
+        title: __( 'Align Right', 'insignia' ),
         icon: alignRight,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'align-justify',
-        title: __('Align Justify', 'insignia'),
+        title: __( 'Align Justify', 'insignia' ),
         icon: alignJustify,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'align-none',
-        title: __('Align None', 'insignia'),
+        title: __( 'Align None', 'insignia' ),
         icon: alignNone,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'columns',
-        title: __('Columns', 'insignia'),
+        title: __( 'Columns', 'insignia' ),
         icon: columns,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'column',
-        title: __('Column', 'insignia'),
+        title: __( 'Column', 'insignia' ),
         icon: column,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'row',
-        title: __('Row', 'insignia'),
+        title: __( 'Row', 'insignia' ),
         icon: row,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'group',
-        title: __('Group', 'insignia'),
+        title: __( 'Group', 'insignia' ),
         icon: group,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'ungroup',
-        title: __('Ungroup', 'insignia'),
+        title: __( 'Ungroup', 'insignia' ),
         icon: ungroup,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'stretch-wide',
-        title: __('Stretch Wide', 'insignia'),
+        title: __( 'Stretch Wide', 'insignia' ),
         icon: stretchWide,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'stretch-full-width',
-        title: __('Stretch Full Width', 'insignia'),
+        title: __( 'Stretch Full Width', 'insignia' ),
         icon: stretchFullWidth,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'position-left',
-        title: __('Position Left', 'insignia'),
+        title: __( 'Position Left', 'insignia' ),
         icon: positionLeft,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'position-center',
-        title: __('Position Center', 'insignia'),
+        title: __( 'Position Center', 'insignia' ),
         icon: positionCenter,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'position-right',
-        title: __('Position Right', 'insignia'),
+        title: __( 'Position Right', 'insignia' ),
         icon: positionRight,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'justify-left',
-        title: __('Justify Left', 'insignia'),
+        title: __( 'Justify Left', 'insignia' ),
         icon: justifyLeft,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'justify-center',
-        title: __('Justify Center', 'insignia'),
+        title: __( 'Justify Center', 'insignia' ),
         icon: justifyCenter,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'justify-right',
-        title: __('Justify Right', 'insignia'),
+        title: __( 'Justify Right', 'insignia' ),
         icon: justifyRight,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'justify-space-between',
-        title: __('Justify Space Between', 'insignia'),
+        title: __( 'Justify Space Between', 'insignia' ),
         icon: justifySpaceBetween,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'justify-stretch',
-        title: __('Justify Stretch', 'insignia'),
+        title: __( 'Justify Stretch', 'insignia' ),
         icon: justifyStretch,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'header',
-        title: __('Header', 'insignia'),
+        title: __( 'Header', 'insignia' ),
         icon: header,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'footer',
-        title: __('Footer', 'insignia'),
+        title: __( 'Footer', 'insignia' ),
         icon: footer,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'sidebar',
-        title: __('Sidebar', 'insignia'),
+        title: __( 'Sidebar', 'insignia' ),
         icon: sidebar,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
     {
         name: 'layout',
-        title: __('Layout', 'insignia'),
+        title: __( 'Layout', 'insignia' ),
         icon: layout,
-        categories: ['layout']
+        categories: [ 'layout' ]
     },
 
     // Tables
     {
         name: 'table',
-        title: __('Table', 'insignia'),
+        title: __( 'Table', 'insignia' ),
         icon: table,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'block-table',
-        title: __('Block Table', 'insignia'),
+        title: __( 'Block Table', 'insignia' ),
         icon: blockTable,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-column-after',
-        title: __('Table Column After', 'insignia'),
+        title: __( 'Table Column After', 'insignia' ),
         icon: tableColumnAfter,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-column-before',
-        title: __('Table Column Before', 'insignia'),
+        title: __( 'Table Column Before', 'insignia' ),
         icon: tableColumnBefore,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-column-delete',
-        title: __('Table Column Delete', 'insignia'),
+        title: __( 'Table Column Delete', 'insignia' ),
         icon: tableColumnDelete,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-row-after',
-        title: __('Table Row After', 'insignia'),
+        title: __( 'Table Row After', 'insignia' ),
         icon: tableRowAfter,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-row-before',
-        title: __('Table Row Before', 'insignia'),
+        title: __( 'Table Row Before', 'insignia' ),
         icon: tableRowBefore,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
     {
         name: 'table-row-delete',
-        title: __('Table Row Delete', 'insignia'),
+        title: __( 'Table Row Delete', 'insignia' ),
         icon: tableRowDelete,
-        categories: ['tables']
+        categories: [ 'tables' ]
     },
 
     // Actions
     {
         name: 'copy',
-        title: __('Copy', 'insignia'),
+        title: __( 'Copy', 'insignia' ),
         icon: copy,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
 
     {
         name: 'redo',
-        title: __('Redo', 'insignia'),
+        title: __( 'Redo', 'insignia' ),
         icon: redo,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'undo',
-        title: __('Undo', 'insignia'),
+        title: __( 'Undo', 'insignia' ),
         icon: undo,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'create',
-        title: __('Create', 'insignia'),
+        title: __( 'Create', 'insignia' ),
         icon: create,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'lock',
-        title: __('Lock', 'insignia'),
+        title: __( 'Lock', 'insignia' ),
         icon: lock,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'unlock',
-        title: __('Unlock', 'insignia'),
+        title: __( 'Unlock', 'insignia' ),
         icon: unlock,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'lock-outline',
-        title: __('Lock Outline', 'insignia'),
+        title: __( 'Lock Outline', 'insignia' ),
         icon: lockOutline,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'lock-small',
-        title: __('Lock Small', 'insignia'),
+        title: __( 'Lock Small', 'insignia' ),
         icon: lockSmall,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'login',
-        title: __('Login', 'insignia'),
+        title: __( 'Login', 'insignia' ),
         icon: login,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'reset',
-        title: __('Reset', 'insignia'),
+        title: __( 'Reset', 'insignia' ),
         icon: reset,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'rotate-left',
-        title: __('Rotate Left', 'insignia'),
+        title: __( 'Rotate Left', 'insignia' ),
         icon: rotateLeft,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'rotate-right',
-        title: __('Rotate Right', 'insignia'),
+        title: __( 'Rotate Right', 'insignia' ),
         icon: rotateRight,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'flip-horizontal',
-        title: __('Flip Horizontal', 'insignia'),
+        title: __( 'Flip Horizontal', 'insignia' ),
         icon: flipHorizontal,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'flip-vertical',
-        title: __('Flip Vertical', 'insignia'),
+        title: __( 'Flip Vertical', 'insignia' ),
         icon: flipVertical,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'replace',
-        title: __('Replace', 'insignia'),
+        title: __( 'Replace', 'insignia' ),
         icon: replace,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'fullscreen',
-        title: __('Fullscreen', 'insignia'),
+        title: __( 'Fullscreen', 'insignia' ),
         icon: fullscreen,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
 
     // Interface
     {
         name: 'close-small',
-        title: __('Close Small', 'insignia'),
+        title: __( 'Close Small', 'insignia' ),
         icon: closeSmall,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'more',
-        title: __('More', 'insignia'),
+        title: __( 'More', 'insignia' ),
         icon: more,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'more-horizontal',
-        title: __('More Horizontal', 'insignia'),
+        title: __( 'More Horizontal', 'insignia' ),
         icon: moreHorizontal,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'more-vertical',
-        title: __('More Vertical', 'insignia'),
+        title: __( 'More Vertical', 'insignia' ),
         icon: moreVertical,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'star-half',
-        title: __('Star Half', 'insignia'),
+        title: __( 'Star Half', 'insignia' ),
         icon: starHalf,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'help-filled',
-        title: __('Help Filled', 'insignia'),
+        title: __( 'Help Filled', 'insignia' ),
         icon: helpFilled,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'cog',
-        title: __('Cog', 'insignia'),
+        title: __( 'Cog', 'insignia' ),
         icon: cog,
-        categories: ['interface'],
+        categories: [ 'interface' ],
         isDefault: true
     },
     {
         name: 'plus-circle',
-        title: __('Plus Circle', 'insignia'),
+        title: __( 'Plus Circle', 'insignia' ),
         icon: plusCircle,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'plus-circle-filled',
-        title: __('Plus Circle Filled', 'insignia'),
+        title: __( 'Plus Circle Filled', 'insignia' ),
         icon: plusCircleFilled,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'cancel-circle-filled',
-        title: __('Cancel Circle Filled', 'insignia'),
+        title: __( 'Cancel Circle Filled', 'insignia' ),
         icon: cancelCircleFilled,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'plugins',
-        title: __('Plugins', 'insignia'),
+        title: __( 'Plugins', 'insignia' ),
         icon: plugins,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'filter',
-        title: __('Filter', 'insignia'),
+        title: __( 'Filter', 'insignia' ),
         icon: filter,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'list-view',
-        title: __('List View', 'insignia'),
+        title: __( 'List View', 'insignia' ),
         icon: listView,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'drag-handle',
-        title: __('Drag Handle', 'insignia'),
+        title: __( 'Drag Handle', 'insignia' ),
         icon: dragHandle,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'handle',
-        title: __('Handle', 'insignia'),
+        title: __( 'Handle', 'insignia' ),
         icon: handle,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'seen',
-        title: __('Seen', 'insignia'),
+        title: __( 'Seen', 'insignia' ),
         icon: seen,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'unseen',
-        title: __('Unseen', 'insignia'),
+        title: __( 'Unseen', 'insignia' ),
         icon: unseen,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'keyboard-close',
-        title: __('Keyboard Close', 'insignia'),
+        title: __( 'Keyboard Close', 'insignia' ),
         icon: keyboardClose,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'keyboard-return',
-        title: __('Keyboard Return', 'insignia'),
+        title: __( 'Keyboard Return', 'insignia' ),
         icon: keyboardReturn,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
     {
         name: 'styles',
-        title: __('Styles', 'insignia'),
+        title: __( 'Styles', 'insignia' ),
         icon: styles,
-        categories: ['interface']
+        categories: [ 'interface' ]
     },
 
     // Posts & Pages
     {
         name: 'page',
-        title: __('Page', 'insignia'),
+        title: __( 'Page', 'insignia' ),
         icon: page,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'pages',
-        title: __('Pages', 'insignia'),
+        title: __( 'Pages', 'insignia' ),
         icon: pages,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post',
-        title: __('Post', 'insignia'),
+        title: __( 'Post', 'insignia' ),
         icon: post,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-author',
-        title: __('Post Author', 'insignia'),
+        title: __( 'Post Author', 'insignia' ),
         icon: postAuthor,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-categories',
-        title: __('Post Categories', 'insignia'),
+        title: __( 'Post Categories', 'insignia' ),
         icon: postCategories,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-content',
-        title: __('Post Content', 'insignia'),
+        title: __( 'Post Content', 'insignia' ),
         icon: postContent,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-date',
-        title: __('Post Date', 'insignia'),
+        title: __( 'Post Date', 'insignia' ),
         icon: postDate,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-excerpt',
-        title: __('Post Excerpt', 'insignia'),
+        title: __( 'Post Excerpt', 'insignia' ),
         icon: postExcerpt,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-featured-image',
-        title: __('Post Featured Image', 'insignia'),
+        title: __( 'Post Featured Image', 'insignia' ),
         icon: postFeaturedImage,
-        categories: ['posts', 'media']
+        categories: [ 'posts', 'media' ]
     },
     {
         name: 'post-list',
-        title: __('Post List', 'insignia'),
+        title: __( 'Post List', 'insignia' ),
         icon: postList,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'post-terms',
-        title: __('Post Terms', 'insignia'),
+        title: __( 'Post Terms', 'insignia' ),
         icon: postTerms,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'page-break',
-        title: __('Page Break', 'insignia'),
+        title: __( 'Page Break', 'insignia' ),
         icon: pageBreak,
-        categories: ['posts', 'editor']
+        categories: [ 'posts', 'editor' ]
     },
     {
         name: 'custom-post-type',
-        title: __('Custom Post Type', 'insignia'),
+        title: __( 'Custom Post Type', 'insignia' ),
         icon: customPostType,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'term-description',
-        title: __('Term Description', 'insignia'),
+        title: __( 'Term Description', 'insignia' ),
         icon: termDescription,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'category',
-        title: __('Category', 'insignia'),
+        title: __( 'Category', 'insignia' ),
         icon: category,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'tag',
-        title: __('Tag', 'insignia'),
+        title: __( 'Tag', 'insignia' ),
         icon: tag,
-        categories: ['posts']
+        categories: [ 'posts' ]
     },
     {
         name: 'title',
-        title: __('Title', 'insignia'),
+        title: __( 'Title', 'insignia' ),
         icon: title,
-        categories: ['posts', 'editor']
+        categories: [ 'posts', 'editor' ]
     },
 
     // Comments
     {
         name: 'comment',
-        title: __('Comment', 'insignia'),
+        title: __( 'Comment', 'insignia' ),
         icon: comment,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
     {
         name: 'post-comments',
-        title: __('Post Comments', 'insignia'),
+        title: __( 'Post Comments', 'insignia' ),
         icon: postComments,
-        categories: ['comments', 'posts']
+        categories: [ 'comments', 'posts' ]
     },
     {
         name: 'post-comments-count',
-        title: __('Post Comments Count', 'insignia'),
+        title: __( 'Post Comments Count', 'insignia' ),
         icon: postCommentsCount,
-        categories: ['comments', 'posts']
+        categories: [ 'comments', 'posts' ]
     },
     {
         name: 'post-comments-form',
-        title: __('Post Comments Form', 'insignia'),
+        title: __( 'Post Comments Form', 'insignia' ),
         icon: postCommentsForm,
-        categories: ['comments', 'posts']
+        categories: [ 'comments', 'posts' ]
     },
     {
         name: 'comment-author-avatar',
-        title: __('Comment Author Avatar', 'insignia'),
+        title: __( 'Comment Author Avatar', 'insignia' ),
         icon: commentAuthorAvatar,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
     {
         name: 'comment-author-name',
-        title: __('Comment Author Name', 'insignia'),
+        title: __( 'Comment Author Name', 'insignia' ),
         icon: commentAuthorName,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
     {
         name: 'comment-content',
-        title: __('Comment Content', 'insignia'),
+        title: __( 'Comment Content', 'insignia' ),
         icon: commentContent,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
     {
         name: 'comment-edit-link',
-        title: __('Comment Edit Link', 'insignia'),
+        title: __( 'Comment Edit Link', 'insignia' ),
         icon: commentEditLink,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
     {
         name: 'comment-reply-link',
-        title: __('Comment Reply Link', 'insignia'),
+        title: __( 'Comment Reply Link', 'insignia' ),
         icon: commentReplyLink,
-        categories: ['comments']
+        categories: [ 'comments' ]
     },
 
     // Media
     {
         name: 'caption',
-        title: __('Caption', 'insignia'),
+        title: __( 'Caption', 'insignia' ),
         icon: caption,
-        categories: ['media']
+        categories: [ 'media' ]
     },
     {
         name: 'capture-photo',
-        title: __('Capture Photo', 'insignia'),
+        title: __( 'Capture Photo', 'insignia' ),
         icon: capturePhoto,
-        categories: ['media']
+        categories: [ 'media' ]
     },
     {
         name: 'capture-video',
-        title: __('Capture Video', 'insignia'),
+        title: __( 'Capture Video', 'insignia' ),
         icon: captureVideo,
-        categories: ['media']
+        categories: [ 'media' ]
     },
     {
         name: 'aspect-ratio',
-        title: __('Aspect Ratio', 'insignia'),
+        title: __( 'Aspect Ratio', 'insignia' ),
         icon: aspectRatio,
-        categories: ['media']
+        categories: [ 'media' ]
     },
     {
         name: 'crop',
-        title: __('Crop', 'insignia'),
+        title: __( 'Crop', 'insignia' ),
         icon: crop,
-        categories: ['media', 'actions']
+        categories: [ 'media', 'actions' ]
     },
     {
         name: 'file',
-        title: __('File', 'insignia'),
+        title: __( 'File', 'insignia' ),
         icon: file,
-        categories: ['media']
+        categories: [ 'media' ]
     },
 
     // E-commerce
     {
         name: 'currency-dollar',
-        title: __('Currency Dollar', 'insignia'),
+        title: __( 'Currency Dollar', 'insignia' ),
         icon: currencyDollar,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'currency-euro',
-        title: __('Currency Euro', 'insignia'),
+        title: __( 'Currency Euro', 'insignia' ),
         icon: currencyEuro,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'currency-pound',
-        title: __('Currency Pound', 'insignia'),
+        title: __( 'Currency Pound', 'insignia' ),
         icon: currencyPound,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'payment',
-        title: __('Payment', 'insignia'),
+        title: __( 'Payment', 'insignia' ),
         icon: payment,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'percent',
-        title: __('Percent', 'insignia'),
+        title: __( 'Percent', 'insignia' ),
         icon: percent,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'receipt',
-        title: __('Receipt', 'insignia'),
+        title: __( 'Receipt', 'insignia' ),
         icon: receipt,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'shipping',
-        title: __('Shipping', 'insignia'),
+        title: __( 'Shipping', 'insignia' ),
         icon: shipping,
-        categories: ['ecommerce'],
+        categories: [ 'ecommerce' ],
         isDefault: true
     },
     {
         name: 'store',
-        title: __('Store', 'insignia'),
+        title: __( 'Store', 'insignia' ),
         icon: store,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'chart-bar',
-        title: __('Chart Bar', 'insignia'),
+        title: __( 'Chart Bar', 'insignia' ),
         icon: chartBar,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'trending-down',
-        title: __('Trending Down', 'insignia'),
+        title: __( 'Trending Down', 'insignia' ),
         icon: trendingDown,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
     {
         name: 'trending-up',
-        title: __('Trending Up', 'insignia'),
+        title: __( 'Trending Up', 'insignia' ),
         icon: trendingUp,
-        categories: ['ecommerce']
+        categories: [ 'ecommerce' ]
     },
 
     // Miscellaneous
     {
         name: 'at-symbol',
-        title: __('At Symbol', 'insignia'),
+        title: __( 'At Symbol', 'insignia' ),
         icon: atSymbol,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'backup',
-        title: __('Backup', 'insignia'),
+        title: __( 'Backup', 'insignia' ),
         icon: backup,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'block-default',
-        title: __('Block Default', 'insignia'),
+        title: __( 'Block Default', 'insignia' ),
         icon: blockDefault,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'border',
-        title: __('Border', 'insignia'),
+        title: __( 'Border', 'insignia' ),
         icon: border,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'box',
-        title: __('Box', 'insignia'),
+        title: __( 'Box', 'insignia' ),
         icon: box,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'brush',
-        title: __('Brush', 'insignia'),
+        title: __( 'Brush', 'insignia' ),
         icon: brush,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'bug',
-        title: __('Bug', 'insignia'),
+        title: __( 'Bug', 'insignia' ),
         icon: bug,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'remove-bug',
-        title: __('Remove Bug', 'insignia'),
+        title: __( 'Remove Bug', 'insignia' ),
         icon: removeBug,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'classic',
-        title: __('Classic', 'insignia'),
+        title: __( 'Classic', 'insignia' ),
         icon: classic,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'cloud-upload',
-        title: __('Cloud Upload', 'insignia'),
+        title: __( 'Cloud Upload', 'insignia' ),
         icon: cloudUpload,
-        categories: ['misc', 'actions']
+        categories: [ 'misc', 'actions' ]
     },
     {
         name: 'color',
-        title: __('Color', 'insignia'),
+        title: __( 'Color', 'insignia' ),
         icon: color,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'custom-link',
-        title: __('Custom Link', 'insignia'),
+        title: __( 'Custom Link', 'insignia' ),
         icon: customLink,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'drawer-left',
-        title: __('Drawer Left', 'insignia'),
+        title: __( 'Drawer Left', 'insignia' ),
         icon: drawerLeft,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'drawer-right',
-        title: __('Drawer Right', 'insignia'),
+        title: __( 'Drawer Right', 'insignia' ),
         icon: drawerRight,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'grid',
-        title: __('Grid', 'insignia'),
+        title: __( 'Grid', 'insignia' ),
         icon: grid,
-        categories: ['misc', 'layout']
+        categories: [ 'misc', 'layout' ]
     },
     {
         name: 'inbox',
-        title: __('Inbox', 'insignia'),
+        title: __( 'Inbox', 'insignia' ),
         icon: inbox,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'institution',
-        title: __('Institution', 'insignia'),
+        title: __( 'Institution', 'insignia' ),
         icon: institution,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'insert-after',
-        title: __('Insert After', 'insignia'),
+        title: __( 'Insert After', 'insignia' ),
         icon: insertAfter,
-        categories: ['misc', 'actions']
+        categories: [ 'misc', 'actions' ]
     },
     {
         name: 'insert-before',
-        title: __('Insert Before', 'insignia'),
+        title: __( 'Insert Before', 'insignia' ),
         icon: insertBefore,
-        categories: ['misc', 'actions']
+        categories: [ 'misc', 'actions' ]
     },
     {
         name: 'key',
-        title: __('Key', 'insignia'),
+        title: __( 'Key', 'insignia' ),
         icon: key,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'lifesaver',
-        title: __('Lifesaver', 'insignia'),
+        title: __( 'Lifesaver', 'insignia' ),
         icon: lifesaver,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'line-dashed',
-        title: __('Line Dashed', 'insignia'),
+        title: __( 'Line Dashed', 'insignia' ),
         icon: lineDashed,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'line-dotted',
-        title: __('Line Dotted', 'insignia'),
+        title: __( 'Line Dotted', 'insignia' ),
         icon: lineDotted,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'line-solid',
-        title: __('Line Solid', 'insignia'),
+        title: __( 'Line Solid', 'insignia' ),
         icon: lineSolid,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'link',
-        title: __('Link', 'insignia'),
+        title: __( 'Link', 'insignia' ),
         icon: link,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'link-off',
-        title: __('Link Off', 'insignia'),
+        title: __( 'Link Off', 'insignia' ),
         icon: linkOff,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'loop',
-        title: __('Loop', 'insignia'),
+        title: __( 'Loop', 'insignia' ),
         icon: loop,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'map-marker',
-        title: __('Map Marker', 'insignia'),
+        title: __( 'Map Marker', 'insignia' ),
         icon: mapMarker,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'megaphone',
-        title: __('Megaphone', 'insignia'),
+        title: __( 'Megaphone', 'insignia' ),
         icon: megaphone,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'move-to',
-        title: __('Move To', 'insignia'),
+        title: __( 'Move To', 'insignia' ),
         icon: moveTo,
-        categories: ['misc', 'actions']
+        categories: [ 'misc', 'actions' ]
     },
     {
         name: 'navigation',
-        title: __('Navigation', 'insignia'),
+        title: __( 'Navigation', 'insignia' ),
         icon: navigation,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'overlay-text',
-        title: __('Overlay Text', 'insignia'),
+        title: __( 'Overlay Text', 'insignia' ),
         icon: overlayText,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'people',
-        title: __('People', 'insignia'),
+        title: __( 'People', 'insignia' ),
         icon: people,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'pin',
-        title: __('Pin', 'insignia'),
+        title: __( 'Pin', 'insignia' ),
         icon: pin,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'pull-left',
-        title: __('Pull Left', 'insignia'),
+        title: __( 'Pull Left', 'insignia' ),
         icon: pullLeft,
-        categories: ['misc', 'layout']
+        categories: [ 'misc', 'layout' ]
     },
     {
         name: 'pull-right',
-        title: __('Pull Right', 'insignia'),
+        title: __( 'Pull Right', 'insignia' ),
         icon: pullRight,
-        categories: ['misc', 'layout']
+        categories: [ 'misc', 'layout' ]
     },
     {
         name: 'query-pagination',
-        title: __('Query Pagination', 'insignia'),
+        title: __( 'Query Pagination', 'insignia' ),
         icon: queryPagination,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'query-pagination-next',
-        title: __('Query Pagination Next', 'insignia'),
+        title: __( 'Query Pagination Next', 'insignia' ),
         icon: queryPaginationNext,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'query-pagination-numbers',
-        title: __('Query Pagination Numbers', 'insignia'),
+        title: __( 'Query Pagination Numbers', 'insignia' ),
         icon: queryPaginationNumbers,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'query-pagination-previous',
-        title: __('Query Pagination Previous', 'insignia'),
+        title: __( 'Query Pagination Previous', 'insignia' ),
         icon: queryPaginationPrevious,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'resize-corner-ne',
-        title: __('Resize Corner NE', 'insignia'),
+        title: __( 'Resize Corner NE', 'insignia' ),
         icon: resizeCornerNE,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'reusable-block',
-        title: __('Reusable Block', 'insignia'),
+        title: __( 'Reusable Block', 'insignia' ),
         icon: reusableBlock,
-        categories: ['misc', 'editor']
+        categories: [ 'misc', 'editor' ]
     },
     {
         name: 'rss',
-        title: __('RSS', 'insignia'),
+        title: __( 'RSS', 'insignia' ),
         icon: rss,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'separator',
-        title: __('Separator', 'insignia'),
+        title: __( 'Separator', 'insignia' ),
         icon: separator,
-        categories: ['misc', 'editor']
+        categories: [ 'misc', 'editor' ]
     },
     {
         name: 'shadow',
-        title: __('Shadow', 'insignia'),
+        title: __( 'Shadow', 'insignia' ),
         icon: shadow,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'shield',
-        title: __('Shield', 'insignia'),
+        title: __( 'Shield', 'insignia' ),
         icon: shield,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'shuffle',
-        title: __('Shuffle', 'insignia'),
+        title: __( 'Shuffle', 'insignia' ),
         icon: shuffle,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'site-logo',
-        title: __('Site Logo', 'insignia'),
+        title: __( 'Site Logo', 'insignia' ),
         icon: siteLogo,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'stack',
-        title: __('Stack', 'insignia'),
+        title: __( 'Stack', 'insignia' ),
         icon: stack,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'swatch',
-        title: __('Swatch', 'insignia'),
+        title: __( 'Swatch', 'insignia' ),
         icon: swatch,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'symbol',
-        title: __('Symbol', 'insignia'),
+        title: __( 'Symbol', 'insignia' ),
         icon: symbol,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'symbol-filled',
-        title: __('Symbol Filled', 'insignia'),
+        title: __( 'Symbol Filled', 'insignia' ),
         icon: symbolFilled,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'tip',
-        title: __('Tip', 'insignia'),
+        title: __( 'Tip', 'insignia' ),
         icon: tip,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'tool',
-        title: __('Tool', 'insignia'),
+        title: __( 'Tool', 'insignia' ),
         icon: tool,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'typography',
-        title: __('Typography', 'insignia'),
+        title: __( 'Typography', 'insignia' ),
         icon: typography,
-        categories: ['misc', 'format']
+        categories: [ 'misc', 'format' ]
     },
     {
         name: 'widget',
-        title: __('Widget', 'insignia'),
+        title: __( 'Widget', 'insignia' ),
         icon: widget,
-        categories: ['misc']
+        categories: [ 'misc' ]
     },
     {
         name: 'add-card',
-        title: __('Add Card', 'insignia'),
+        title: __( 'Add Card', 'insignia' ),
         icon: addCard,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'add-submenu',
-        title: __('Add Submenu', 'insignia'),
+        title: __( 'Add Submenu', 'insignia' ),
         icon: addSubmenu,
-        categories: ['actions']
+        categories: [ 'actions' ]
     },
     {
         name: 'remove-submenu',
-        title: __('Remove Submenu', 'insignia'),
+        title: __( 'Remove Submenu', 'insignia' ),
         icon: removeSubmenu,
-        categories: ['actions']
+        categories: [ 'actions' ]
     }
 ];
 
@@ -1921,8 +1921,8 @@ export const PremiumAccountIcon = (
             fill="#000000"
         />
         <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M11.5 5.75C12.4129 5.75006 13.1828 6.06382 13.8096 6.69043C14.4364 7.31722 14.75 8.08712 14.75 9C14.7499 9.91289 14.4362 10.6828 13.8096 11.3096C13.1828 11.9364 12.4129 12.25 11.5 12.25C10.5871 12.2499 9.81721 11.9362 9.19043 11.3096C8.5636 10.6828 8.25 9.91288 8.25 9C8.25006 8.08711 8.56382 7.31721 9.19043 6.69043C9.81722 6.0636 10.5871 5.75 11.5 5.75ZM11.5 7.25C11.0025 7.25 10.5865 7.41729 10.252 7.75195C9.91729 8.08645 9.75 8.5025 9.75 9C9.75 9.4975 9.91729 9.91355 10.252 10.248C10.5865 10.5827 11.0025 10.75 11.5 10.75C11.9975 10.75 12.4135 10.5827 12.748 10.248C13.0827 9.91355 13.25 9.4975 13.25 9C13.25 8.5025 13.0827 8.08645 12.748 7.75195C12.4135 7.41729 11.9975 7.25 11.5 7.25Z"
             fill="#000000"
         />
@@ -1958,42 +1958,47 @@ export { categories, icons };
 
 /**
  * Helper function to get icon by name
+ * @param name
  */
 export const getIconByName = name => {
-    return icons.find(icon => icon.name === name);
+    return icons.find( icon => icon.name === name );
 };
 
 /**
  * Helper function to get icons by category
+ * @param category
  */
 export const getIconsByCategory = category => {
-    if (category === 'all') {
+    if ( category === 'all' ) {
         return icons;
     }
 
-    return icons.filter(icon => icon.categories.includes(category));
+    return icons.filter( icon => icon.categories.includes( category ) );
 };
 
 /**
  * Helper function to search icons by term
+ * @param searchTerm
  */
 export const searchIcons = searchTerm => {
-    if (!searchTerm) {
+    if ( ! searchTerm ) {
         return icons;
     }
 
     const lowerSearchTerm = searchTerm.toLowerCase();
-    return icons.filter(icon => icon.name.toLowerCase().includes(lowerSearchTerm) || icon.title.toLowerCase().includes(lowerSearchTerm));
+    return icons.filter(
+        icon => icon.name.toLowerCase().includes( lowerSearchTerm ) || icon.title.toLowerCase().includes( lowerSearchTerm )
+    );
 };
 
 /**
  * Returns categories with icon counts
  */
 export const getCategories = () => {
-    return categories.map(cat => ({
+    return categories.map( cat => ( {
         ...cat,
-        count: cat.slug === 'all' ? icons.length : icons.filter(icon => icon.categories.includes(cat.slug)).length
-    }));
+        count: cat.slug === 'all' ? icons.length : icons.filter( icon => icon.categories.includes( cat.slug ) ).length
+    } ) );
 };
 
 /**
@@ -2011,59 +2016,59 @@ export const getIconType = icon => {
         // Handle different input types
         let svgString = '';
 
-        if (typeof icon === 'string') {
+        if ( typeof icon === 'string' ) {
             // Custom SVG input as string
             svgString = icon;
-        } else if (typeof icon === 'object') {
+        } else if ( typeof icon === 'object' ) {
             // WordPress icon object
-            if (icon.src) {
+            if ( icon.src ) {
                 svgString = icon.src;
-            } else if (Array.isArray(icon)) {
+            } else if ( Array.isArray( icon ) ) {
                 // Handle array notation that WordPress sometimes uses for icons
                 // Convert the array to a string representation
-                svgString = Array.isArray(icon) ? icon.join('') : icon;
+                svgString = Array.isArray( icon ) ? icon.join( '' ) : icon;
             }
         }
 
-        if (!svgString) {
+        if ( ! svgString ) {
             return iconType; // Return default "line" if we couldn't extract SVG
         }
 
         // Check for fill attributes or fill style that would indicate a "fill" type icon
         const hasFillAttribute =
-            svgString.includes('fill="') && !svgString.includes('fill="none"') && !svgString.includes('fill="transparent"');
+            svgString.includes( 'fill="' ) && ! svgString.includes( 'fill="none"' ) && ! svgString.includes( 'fill="transparent"' );
 
         const hasFillStyle =
-            svgString.includes('style=') &&
-            svgString.includes('fill:') &&
-            !svgString.includes('fill:none') &&
-            !svgString.includes('fill:transparent');
+            svgString.includes( 'style=' ) &&
+            svgString.includes( 'fill:' ) &&
+            ! svgString.includes( 'fill:none' ) &&
+            ! svgString.includes( 'fill:transparent' );
 
         // Check for filled shapes that would indicate a "fill" type
         const hasFilledShapes =
-            svgString.includes('<rect') ||
-            svgString.includes('<circle') ||
-            svgString.includes('<ellipse') ||
-            svgString.includes('<polygon') ||
-            svgString.includes('<path');
+            svgString.includes( '<rect' ) ||
+            svgString.includes( '<circle' ) ||
+            svgString.includes( '<ellipse' ) ||
+            svgString.includes( '<polygon' ) ||
+            svgString.includes( '<path' );
 
         // If it has explicit fill attributes/styles that aren't "none" or has typical filled shapes
-        if ((hasFillAttribute || hasFillStyle) && hasFilledShapes) {
+        if ( ( hasFillAttribute || hasFillStyle ) && hasFilledShapes ) {
             iconType = 'fill';
         }
 
         // Additional check for stroke attributes that would indicate a "line" type
         const hasStrokeAttributes =
-            svgString.includes('stroke="') && !svgString.includes('stroke="none"') && !svgString.includes('stroke-width="0"');
+            svgString.includes( 'stroke="' ) && ! svgString.includes( 'stroke="none"' ) && ! svgString.includes( 'stroke-width="0"' );
 
-        const hasStrokeStyle = svgString.includes('style=') && svgString.includes('stroke:') && !svgString.includes('stroke:none');
+        const hasStrokeStyle = svgString.includes( 'style=' ) && svgString.includes( 'stroke:' ) && ! svgString.includes( 'stroke:none' );
 
         // If it has stroke attributes but no fill, it's likely a line icon
-        if ((hasStrokeAttributes || hasStrokeStyle) && !hasFillAttribute && !hasFillStyle) {
+        if ( ( hasStrokeAttributes || hasStrokeStyle ) && ! hasFillAttribute && ! hasFillStyle ) {
             iconType = 'line';
         }
-    } catch (error) {
-        console.error('Error detecting icon type:', error);
+    } catch ( error ) {
+        console.error( 'Error detecting icon type:', error );
     }
 
     return iconType;

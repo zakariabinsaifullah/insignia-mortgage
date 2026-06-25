@@ -1,7 +1,7 @@
 import { __experimentalUnitControl as UnitControl } from '@wordpress/components';
 import classnames from 'classnames';
 
-const NativeUnitControl = ({
+const NativeUnitControl = ( {
     label,
     value,
     onChange,
@@ -23,27 +23,27 @@ const NativeUnitControl = ({
     ],
     disableUnits = false,
     labelPosition = 'edge'
-}) => {
+} ) => {
     return (
         <div
-            className={classnames('native-control-wrapper', {
-                [`mb-0`]: labelPosition === 'edge' && !mb
-            })}
-            {...(labelPosition === 'edge' && {
+            className={ classnames( 'native-control-wrapper', {
+                [ `mb-0` ]: labelPosition === 'edge' && ! mb
+            } ) }
+            { ...( labelPosition === 'edge' && {
                 style: {
                     '--max-width': '80px'
                 }
-            })}
+            } ) }
         >
             <UnitControl
-                label={label}
-                value={value}
-                onChange={value => onChange(value)}
-                labelPosition={labelPosition}
-                placeholder={placeholder}
+                label={ label }
+                value={ value }
+                onChange={ value => onChange( value ) }
+                labelPosition={ labelPosition }
+                placeholder={ placeholder }
                 __next40pxDefaultSize
-                units={units}
-                disableUnits={disableUnits}
+                units={ units }
+                disableUnits={ disableUnits }
             />
         </div>
     );

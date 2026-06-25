@@ -26,35 +26,35 @@ import classnames from 'classnames';
  * @param {Array}         colorGradientSettings - the array you get from useMultipleOriginColorsAndGradients()
  * @return {{ color: string|undefined, slug: string|undefined }} Object containing the selected color value and its slug if it matches a preset otherwise, both properties are undefined.
  */
-function resolveColorSelection(rawColor, colorGradientSettings) {
+function resolveColorSelection( rawColor, colorGradientSettings ) {
     let pickedColor = '';
 
-    if (typeof rawColor === 'object') {
+    if ( typeof rawColor === 'object' ) {
         pickedColor = rawColor.color || rawColor;
-    } else if (typeof rawColor === 'string') {
+    } else if ( typeof rawColor === 'string' ) {
         pickedColor = rawColor;
     }
 
-    if (!pickedColor) {
+    if ( ! pickedColor ) {
         return { color: undefined, slug: undefined };
     }
 
-    const normalize = c => String(c).trim().toLowerCase();
-    const target = normalize(pickedColor);
+    const normalize = c => String( c ).trim().toLowerCase();
+    const target = normalize( pickedColor );
 
-    const palettes = Array.isArray(colorGradientSettings?.colors) ? colorGradientSettings.colors : [];
+    const palettes = Array.isArray( colorGradientSettings?.colors ) ? colorGradientSettings.colors : [];
 
-    for (const palette of palettes) {
-        if (!Array.isArray(palette.colors)) {
+    for ( const palette of palettes ) {
+        if ( ! Array.isArray( palette.colors ) ) {
             continue;
         }
 
-        for (const entry of palette.colors) {
-            if (!entry || !entry.color) {
+        for ( const entry of palette.colors ) {
+            if ( ! entry || ! entry.color ) {
                 continue;
             }
 
-            if (normalize(entry.color) === target) {
+            if ( normalize( entry.color ) === target ) {
                 return {
                     color: pickedColor,
                     slug: entry.slug
@@ -62,7 +62,7 @@ function resolveColorSelection(rawColor, colorGradientSettings) {
             }
 
             // crude handling for function-style colors like color-mix
-            if (entry.color.includes('color-mix') && target.includes(entry.color.replace(/\s+/g, '').toLowerCase())) {
+            if ( entry.color.includes( 'color-mix' ) && target.includes( entry.color.replace( /\s+/g, '' ).toLowerCase() ) ) {
                 return {
                     color: pickedColor,
                     slug: entry.slug
@@ -89,15 +89,15 @@ function resolveColorSelection(rawColor, colorGradientSettings) {
  *
  * @return {JSX.Element} The rendered ColorControlDropdown component.
  */
-function ColorControlDropdown({ label, colorValue = {}, onChangeColor, hasHover = false, hasActive = false }) {
+function ColorControlDropdown( { label, colorValue = {}, onChangeColor, hasHover = false, hasActive = false } ) {
     const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
-    const handleChange = (tabName, rawColor) => {
-        const normalized = resolveColorSelection(rawColor, colorGradientSettings);
-        onChangeColor({
+    const handleChange = ( tabName, rawColor ) => {
+        const normalized = resolveColorSelection( rawColor, colorGradientSettings );
+        onChangeColor( {
             ...colorValue,
-            [tabName]: normalized
-        });
+            [ tabName ]: normalized
+        } );
     };
 
     const defaultIndicator = colorValue.default || '';
@@ -106,67 +106,67 @@ function ColorControlDropdown({ label, colorValue = {}, onChangeColor, hasHover 
 
     return (
         <Dropdown
-            popoverProps={{
+            popoverProps={ {
                 placement: 'left-start',
                 offset: 36,
                 shift: true
-            }}
+            } }
             contentClassName="native-dropdown"
-            renderToggle={({ isOpen, onToggle }) => (
+            renderToggle={ ( { isOpen, onToggle } ) => (
                 <Button
-                    className={classnames('native-color-btn', {
-                        ['isOpen']: isOpen
-                    })}
-                    aria-expanded={isOpen}
-                    onClick={onToggle}
+                    className={ classnames( 'native-color-btn', {
+                        isOpen
+                    } ) }
+                    aria-expanded={ isOpen }
+                    onClick={ onToggle }
                 >
                     <HStack justify="left">
-                        <ZStack offset={10}>
-                            <ColorIndicator colorValue={defaultIndicator} />
-                            {hasHover && <ColorIndicator colorValue={hoverIndicator} />}
-                            {hasActive && <ColorIndicator colorValue={activeIndicator} />}
+                        <ZStack offset={ 10 }>
+                            <ColorIndicator colorValue={ defaultIndicator } />
+                            { hasHover && <ColorIndicator colorValue={ hoverIndicator } /> }
+                            { hasActive && <ColorIndicator colorValue={ activeIndicator } /> }
                         </ZStack>
-                        <Text>{label}</Text>
+                        <Text>{ label }</Text>
                     </HStack>
                 </Button>
-            )}
-            renderContent={() =>
+            ) }
+            renderContent={ () =>
                 hasHover || hasActive ? (
                     <TabPanel
-                        tabs={[
+                        tabs={ [
                             {
                                 name: 'default',
-                                title: __('Default', 'insignia')
+                                title: __( 'Default', 'insignia' )
                             },
                             {
                                 name: 'hover',
-                                title: __('Hover', 'insignia')
+                                title: __( 'Hover', 'insignia' )
                             },
                             {
                                 name: 'active',
-                                title: __('Active', 'insignia')
+                                title: __( 'Active', 'insignia' )
                             }
-                        ]}
+                        ] }
                     >
-                        {tab => (
+                        { tab => (
                             <ColorPalette
                                 __experimentalIsRenderedInSidebar
-                                value={colorValue[tab.name] || ''}
-                                onChange={color => handleChange(tab.name, color)}
-                                {...colorGradientSettings}
+                                value={ colorValue[ tab.name ] || '' }
+                                onChange={ color => handleChange( tab.name, color ) }
+                                { ...colorGradientSettings }
                                 enableAlpha
                             />
-                        )}
+                        ) }
                     </TabPanel>
                 ) : (
                     <ColorPalette
                         className="native-color-palette-container"
                         __experimentalIsRenderedInSidebar
-                        value={colorValue.default || ''}
-                        onChange={color => {
-                            onChangeColor({ ...colorValue, default: color });
-                        }}
-                        {...colorGradientSettings}
+                        value={ colorValue.default || '' }
+                        onChange={ color => {
+                            onChangeColor( { ...colorValue, default: color } );
+                        } }
+                        { ...colorGradientSettings }
                         enableAlpha
                     />
                 )

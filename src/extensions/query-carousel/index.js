@@ -60,10 +60,10 @@ const CAROUSEL_ATTRIBUTES = {
     }
 };
 
-const CAROUSEL_ATTR_KEYS = Object.keys(CAROUSEL_ATTRIBUTES);
+const CAROUSEL_ATTR_KEYS = Object.keys( CAROUSEL_ATTRIBUTES );
 
 // ── 1. Register the variation ──────────────────────────────────────────────────
-registerBlockVariation('core/query', {
+registerBlockVariation( 'core/query', {
     name: VARIATION_NAME,
     title: 'Query Carousel',
     description: 'Display posts in a carousel layout powered by Swiper.',
@@ -89,27 +89,27 @@ registerBlockVariation('core/query', {
             inherit: false
         }
     },
-    allowedControls: ['inherit', 'postType', 'order', 'taxQuery', 'search', 'author'],
-    scope: ['inserter'],
-    isActive: ['namespace'],
-    innerBlocks: [['core/post-template', {}, [['core/post-featured-image'], ['core/post-title']]], ['core/query-no-results']]
-});
+    allowedControls: [ 'inherit', 'postType', 'order', 'taxQuery', 'search', 'author' ],
+    scope: [ 'inserter' ],
+    isActive: [ 'namespace' ],
+    innerBlocks: [ [ 'core/post-template', {}, [ [ 'core/post-featured-image' ], [ 'core/post-title' ] ] ], [ 'core/query-no-results' ] ]
+} );
 
 // ── 2. Add custom attributes to core/query ──────────────────────────────────────
-addFilter('blocks.registerBlockType', 'insignia/query-carousel/add-attributes', (settings, name) => {
-    if (name !== 'core/query') {
+addFilter( 'blocks.registerBlockType', 'insignia/query-carousel/add-attributes', ( settings, name ) => {
+    if ( name !== 'core/query' ) {
         return settings;
     }
 
     const newAttributes = { ...settings.attributes };
-    CAROUSEL_ATTR_KEYS.forEach(key => {
-        if (!newAttributes[key]) {
-            newAttributes[key] = CAROUSEL_ATTRIBUTES[key];
+    CAROUSEL_ATTR_KEYS.forEach( key => {
+        if ( ! newAttributes[ key ] ) {
+            newAttributes[ key ] = CAROUSEL_ATTRIBUTES[ key ];
         }
-    });
+    } );
 
     return { ...settings, attributes: newAttributes };
-});
+} );
 
 // ── 3. Determine whether the current block is a Query Carousel ──────────────────
 const isQueryCarousel = props => props.name === 'core/query' && props.attributes.namespace === VARIATION_NAME;
@@ -118,35 +118,35 @@ const isQueryCarousel = props => props.name === 'core/query' && props.attributes
 addFilter(
     'editor.BlockEdit',
     'insignia/query-carousel/add-inspector-controls',
-    createHigherOrderComponent(BlockEdit => {
+    createHigherOrderComponent( BlockEdit => {
         return props => {
-            if (!isQueryCarousel(props)) {
-                return <BlockEdit {...props} />;
+            if ( ! isQueryCarousel( props ) ) {
+                return <BlockEdit { ...props } />;
             }
 
             return (
                 <>
-                    <BlockEdit {...props} />
-                    <Inspector {...props} />
+                    <BlockEdit { ...props } />
+                    <Inspector { ...props } />
                 </>
             );
         };
-    })
+    } )
 );
 
 // ── 5. Apply editor classes ────────────────────────────────────────────────────
 addFilter(
     'editor.BlockListBlock',
     'insignia/query-carousel/add-classes',
-    createHigherOrderComponent(BlockListBlock => {
+    createHigherOrderComponent( BlockListBlock => {
         return props => {
-            if (!isQueryCarousel(props)) {
-                return <BlockListBlock {...props} />;
+            if ( ! isQueryCarousel( props ) ) {
+                return <BlockListBlock { ...props } />;
             }
 
-            const classes = [props.className, 'insignia-query-carousel'].filter(Boolean).join(' ');
+            const classes = [ props.className, 'insignia-query-carousel' ].filter( Boolean ).join( ' ' );
 
-            return <BlockListBlock {...props} className={classes} />;
+            return <BlockListBlock { ...props } className={ classes } />;
         };
-    })
+    } )
 );

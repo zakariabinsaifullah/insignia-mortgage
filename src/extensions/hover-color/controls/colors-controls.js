@@ -8,7 +8,7 @@ import {
     __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
 } from '@wordpress/block-editor';
 
-const HoverColorsControls = ({
+const HoverColorsControls = ( {
     clientId,
     hoverTextColor,
     hoverBackgroundColor,
@@ -16,10 +16,10 @@ const HoverColorsControls = ({
     setHoverTextColor,
     setHoverBackgroundColor,
     setHoverBorderColor
-}) => {
+} ) => {
     const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
-    if (!colorGradientSettings.hasColorsOrGradients) {
+    if ( ! colorGradientSettings.hasColorsOrGradients ) {
         return null;
     }
 
@@ -28,47 +28,47 @@ const HoverColorsControls = ({
             colorValue: hoverTextColor?.color,
             onColorChange: setHoverTextColor,
             isShownByDefault: false,
-            label: __('Hover Text', 'gl-layout-builder'),
-            resetAllFilter: () => ({
+            label: __( 'Hover Text', 'gl-layout-builder' ),
+            resetAllFilter: () => ( {
                 hoverTextColor: undefined,
                 customHoverTextColor: undefined
-            })
+            } )
         },
         {
             colorValue: hoverBackgroundColor?.color,
             onColorChange: setHoverBackgroundColor,
             isShownByDefault: false,
-            label: __('Hover Background', 'gl-layout-builder'),
-            resetAllFilter: () => ({
+            label: __( 'Hover Background', 'gl-layout-builder' ),
+            resetAllFilter: () => ( {
                 hoverBackgroundColor: undefined,
                 customHoverBackgroundColor: undefined
-            })
+            } )
         },
         {
             colorValue: hoverBorderColor?.color,
             onColorChange: setHoverBorderColor,
             isShownByDefault: false,
-            label: __('Hover Border', 'gl-layout-builder'),
-            resetAllFilter: () => ({
+            label: __( 'Hover Border', 'gl-layout-builder' ),
+            resetAllFilter: () => ( {
                 hoverBorderColor: undefined,
                 customHoverBorderColor: undefined
-            })
+            } )
         }
     ];
 
     return (
         <>
-            {colorSettings.map((setting) => (
+            { colorSettings.map( setting => (
                 <ColorGradientSettingsDropdown
-                    key={`hover-color-${setting.label}`}
+                    key={ `hover-color-${ setting.label }` }
                     __experimentalIsRenderedInSidebar
-                    settings={[setting]}
-                    panelId={clientId}
-                    {...colorGradientSettings}
-                    gradients={[]}
+                    settings={ [ setting ] }
+                    panelId={ clientId }
+                    { ...colorGradientSettings }
+                    gradients={ [] }
                     disableCustomGradients
                 />
-            ))}
+            ) ) }
         </>
     );
 };
@@ -77,4 +77,4 @@ export default withColors(
     { hoverTextColor: 'color' },
     { hoverBackgroundColor: 'background-color' },
     { hoverBorderColor: 'border-color' }
-)(HoverColorsControls);
+)( HoverColorsControls );

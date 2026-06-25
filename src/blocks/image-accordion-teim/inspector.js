@@ -9,70 +9,68 @@ const Inspector = props => {
     return (
         <>
             <InspectorControls group="settings">
-                <PanelBody title={__('Image', 'insignia')} initialOpen={true}>
+                <PanelBody title={ __( 'Image', 'insignia' ) } initialOpen={ true }>
                     <MediaUploadCheck>
                         <MediaUpload
-                            onSelect={media =>
-                                setAttributes({
+                            onSelect={ media =>
+                                setAttributes( {
                                     image: {
                                         id: media.id,
                                         url: media.url,
                                         alt: media.alt
                                     }
-                                })
+                                } )
                             }
-                            allowedTypes={['image']}
-                            value={image?.id}
-                            render={({ open }) => (
+                            allowedTypes={ [ 'image' ] }
+                            value={ image?.id }
+                            render={ ( { open } ) => (
                                 <div>
-                                    {image?.url && (
+                                    { image?.url && (
                                         <img
-                                            src={image.url}
-                                            alt={image.alt || ''}
-                                            style={{ width: '100%', marginBottom: '8px', borderRadius: '4px' }}
+                                            src={ image.url }
+                                            alt={ image.alt || '' }
+                                            style={ { width: '100%', marginBottom: '8px', borderRadius: '4px' } }
                                         />
-                                    )}
+                                    ) }
                                     <Button
-                                        variant={image?.url ? 'secondary' : 'primary'}
-                                        onClick={open}
-                                        style={{ width: '100%', justifyContent: 'center' }}
+                                        variant={ image?.url ? 'secondary' : 'primary' }
+                                        onClick={ open }
+                                        style={ { width: '100%', justifyContent: 'center' } }
                                     >
-                                        {image?.url
-                                            ? __('Replace Image', 'insignia')
-                                            : __('Select Image', 'insignia')}
+                                        { image?.url ? __( 'Replace Image', 'insignia' ) : __( 'Select Image', 'insignia' ) }
                                     </Button>
-                                    {image?.url && (
+                                    { image?.url && (
                                         <Button
                                             isDestructive
-                                            onClick={() => setAttributes({ image: {} })}
-                                            style={{ width: '100%', justifyContent: 'center', marginTop: '4px' }}
+                                            onClick={ () => setAttributes( { image: {} } ) }
+                                            style={ { width: '100%', justifyContent: 'center', marginTop: '4px' } }
                                         >
-                                            {__('Remove Image', 'insignia')}
+                                            { __( 'Remove Image', 'insignia' ) }
                                         </Button>
-                                    )}
+                                    ) }
                                 </div>
-                            )}
+                            ) }
                         />
                     </MediaUploadCheck>
                 </PanelBody>
-                <PanelBody title={__('Button', 'insignia')} initialOpen={true}>
+                <PanelBody title={ __( 'Button', 'insignia' ) } initialOpen={ true }>
                     <TextControl
-                        label={__('Button Text', 'insignia')}
-                        value={buttonText || ''}
-                        onChange={value => setAttributes({ buttonText: value })}
-                        placeholder={__('Learn More', 'insignia')}
+                        label={ __( 'Button Text', 'insignia' ) }
+                        value={ buttonText || '' }
+                        onChange={ value => setAttributes( { buttonText: value } ) }
+                        placeholder={ __( 'Learn More', 'insignia' ) }
                     />
                     <TextControl
-                        label={__('Button URL', 'insignia')}
-                        value={buttonUrl || ''}
-                        onChange={value => setAttributes({ buttonUrl: value })}
+                        label={ __( 'Button URL', 'insignia' ) }
+                        value={ buttonUrl || '' }
+                        onChange={ value => setAttributes( { buttonUrl: value } ) }
                         placeholder="https://"
                         type="url"
                     />
                     <ToggleControl
-                        label={__('Open in new tab', 'insignia')}
-                        checked={buttonNewTab}
-                        onChange={value => setAttributes({ buttonNewTab: value })}
+                        label={ __( 'Open in new tab', 'insignia' ) }
+                        checked={ buttonNewTab }
+                        onChange={ value => setAttributes( { buttonNewTab: value } ) }
                     />
                 </PanelBody>
             </InspectorControls>

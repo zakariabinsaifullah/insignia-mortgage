@@ -1,18 +1,18 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const sliders = document.querySelectorAll('.wp-block-insignia-carousel');
-    sliders.forEach(function (slider) {
-        const options = JSON.parse(slider.getAttribute('data-options'));
+document.addEventListener( 'DOMContentLoaded', function () {
+    const sliders = document.querySelectorAll( '.wp-block-insignia-carousel' );
+    sliders.forEach( function ( slider ) {
+        const options = JSON.parse( slider.getAttribute( 'data-options' ) );
         const { loop, autoplay, columns, gaps } = options;
 
-        const swiper = new Swiper(slider.querySelector('.swiper'), {
-            loop: loop,
-            autoplay: autoplay,
+        const swiper = new Swiper( slider.querySelector( '.swiper' ), {
+            loop,
+            autoplay,
             navigation: {
-                nextEl: slider.querySelector('.swiper-custom-next'),
-                prevEl: slider.querySelector('.swiper-custom-prev')
+                nextEl: slider.querySelector( '.swiper-custom-next' ),
+                prevEl: slider.querySelector( '.swiper-custom-prev' )
             },
             pagination: {
-                el: slider.querySelector('.swiper-pagination'),
+                el: slider.querySelector( '.swiper-pagination' ),
                 clickable: true
             },
             // Touch/Swipe navigation options for mobile
@@ -42,6 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     spaceBetween: gaps?.Desktop || 20
                 }
             }
-        });
-    });
-});
+        } );
+    } );
+} );
