@@ -73,7 +73,7 @@
         },
         "cardStyle": {
             "type": "string",
-            "default": "style1"
+            "default": "style2"
         },
         "imageTextGap": {
             "type": "string",
