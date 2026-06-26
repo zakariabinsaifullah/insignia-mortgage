@@ -302,7 +302,7 @@ if ( ! function_exists( 'insignia_posts_grid_shortcode' ) ) :
 		// Filter nav.
 		if ( ! empty( $terms ) ) {
 			$html .= '<div class="ipg-nav">';
-			$html .= '<button class="ipg-filter-btn active" data-cat="0">' . esc_html__( 'All', 'insignia' ) . '</button>';
+			$html .= '<button class="ipg-filter-btn active" data-cat="0">' . esc_html__( 'All Articles', 'insignia' ) . '</button>';
 			foreach ( $terms as $term ) {
 				$html .= '<button class="ipg-filter-btn" data-cat="' . esc_attr( $term->term_id ) . '">' . esc_html( $term->name ) . '</button>';
 			}
