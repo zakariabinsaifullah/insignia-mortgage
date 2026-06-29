@@ -11,5 +11,5 @@
 }
 
 .is-style-post-typo.wp-block-post-content h2 {
-    font-size: var(--wp--preset--font-size--insa-x-large);
+    font-size: var(--wp--preset--font-size--insa-heading-three);
 }

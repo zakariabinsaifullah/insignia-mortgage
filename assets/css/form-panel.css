@@ -22,7 +22,8 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(520px, 100vw);
+    width: 100%;
+	max-width: 720px;
     background: #ffffff;
     z-index: 99999;
     transform: translateX(100%);
@@ -151,9 +152,8 @@ body.insi-panel-open {
     width: 100%;
     border: 1px solid #d1d5db;
     border-radius: 6px;
-    padding: 15px 16px;
-    font-size: 15px;
-    color: #000104;
+    font-size: 16px;
+    color: #020717;
     background: #ffffff;
     outline: none;
     box-shadow: none;
@@ -308,3 +308,44 @@ body.insi-panel-open {
 .gform_heading {
     display: none !important;
 }
+
+
+.gform-body.gform_body {
+    width: 100% !important;
+}
+
+.gform-theme--foundation .gform_fields {
+    gap: 16px !important;
+}
+
+.gfield_label {
+    margin-bottom: 8px !important;
+    color: #020717 !important;
+}
+
+.gform-body.gform_body input, .gform-body.gform_body select, .gform-body.gform_body textarea {
+    border: 1px solid #D1D5DB !important;
+    min-height: 48px !important;
+	line-height: 48px !important;
+}
+
+.gform_button.button {
+	min-height: 48px !important;
+	background: #071a4e !important;
+}
+
+.gform_wrapper form {
+    align-items: flex-start !important;
+}
+
+
+.gform-theme--framework
+    select:where(
+        :not(.gform-theme__disable):not(.gform-theme__disable *)
+            :not(.gform-theme__disable-framework):not(.gform-theme__disable-framework *)
+    ):where(:not([multiple])) {
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    padding-right: 40px !important;
+}
+

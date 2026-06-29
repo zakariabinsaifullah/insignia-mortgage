@@ -53,6 +53,9 @@
         "buttonNewTab": {
             "type": "boolean",
             "default": false
+        },
+        "overlayGraident" :{
+            "type": "string"
         }
     },
     "textdomain": "insignia",

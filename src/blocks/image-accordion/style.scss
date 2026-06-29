@@ -29,19 +29,19 @@
     transition: all 0.7s ease;
 
     // solid teal overlay for inactive items
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: var(--accordion-overlay, rgba(18, 100, 100, 0.6));
-        z-index: 10;
-        -webkit-transition: background 0.7s ease;
-        transition: background 0.7s ease;
-    }
+    // &::before {
+    //     content: '';
+    //     position: absolute;
+    //     inset: 0;
+    //     background: var(--overlay-gradient, linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%));
+    //     z-index: 10;
+    //     -webkit-transition: background 0.7s ease;
+    //     transition: background 0.7s ease;
+    // }
 
     // inactive: heading only visible
     &:not(.active) .info {
-        background: transparent;
+        // background: transparent;
 
         p,
         .accordion-btn-wrap {
@@ -78,13 +78,12 @@
         -ms-flex: 4 0 0%;
         flex: 4 0 0%;
 
-        &::before {
-            background: transparent;
-        }
+        // &::before {
+        //     background: transparent;
+        // }
 
         .info {
-            background: linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%);
-
+            // background: linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%);
             h1,
             h2,
             h3,
@@ -136,7 +135,7 @@
         align-content: flex-end;
         padding: 40px 19px;
         gap: 12px 20px;
-        background: linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%);
+        background: var(--overlay-gradient, linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%));
         z-index: 20;
         color: #fff;
         text-align: left;

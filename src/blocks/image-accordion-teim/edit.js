@@ -26,7 +26,7 @@ import Inspector from './inspector';
 // block edit function
 const Edit = props => {
     const { attributes, setAttributes, isSelected } = props;
-    const { uniqueId, preset, image, heading, description, buttonText, buttonUrl } = attributes;
+    const { uniqueId, preset, image, heading, description, buttonText, buttonUrl, overlayGraident } = attributes;
 
     const blockProps = useBlockProps( {
         className: classNames( uniqueId, preset )
@@ -35,7 +35,13 @@ const Edit = props => {
     return (
         <Fragment>
             { isSelected && <Inspector { ...props } /> }
-            <div { ...blockProps }>
+            <div { ...blockProps }
+                {...overlayGraident && {
+                    'style': {
+                        '--overlay-gradient': overlayGraident
+                    }
+                }}
+            >
                 <div className="img">
                     <img src={ image?.url || placeholderImage } alt={ image?.alt || 'accordion' } className="img-cover" />
                 </div>

@@ -6,14 +6,19 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 // block save function
 const Save = props => {
     const { attributes } = props;
-    const { uniqueId, image, heading, description, buttonText, buttonUrl, buttonNewTab } = attributes;
+    const { uniqueId, image, heading, description, buttonText, buttonUrl, buttonNewTab, overlayGraident } = attributes;
 
     const blockProps = useBlockProps.save( {
         className: uniqueId
     } );
 
     return (
-        <div { ...blockProps }>
+        <div { ...blockProps } 
+            {...overlayGraident && {
+            'style': {
+                '--overlay-gradient': overlayGraident
+            }
+        }}>
             <div className="img">
                 <img src={ image?.url } alt={ image?.alt || 'accordion' } className="img-cover" />
             </div>

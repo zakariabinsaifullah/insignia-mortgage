@@ -1,10 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { PanelBody, Button, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, Button, TextControl, ToggleControl, TextareaControl } from '@wordpress/components';
 
 const Inspector = props => {
     const { attributes, setAttributes } = props;
-    const { image, buttonText, buttonUrl, buttonNewTab } = attributes;
+    const { image, buttonText, buttonUrl, buttonNewTab, overlayGraident } = attributes;
 
     return (
         <>
@@ -52,6 +52,12 @@ const Inspector = props => {
                             ) }
                         />
                     </MediaUploadCheck>
+                        <TextareaControl
+                            label={__('Overlay Gradiant', 'insignia')}
+                            value={ overlayGraident }
+                            onChange={ ( v ) => setAttributes( { overlayGraident: v } ) }
+                            placeholder='linear-gradient(180deg, transparent 45%, rgba(18, 100, 100, 0.85) 75%, #126464 100%)'
+                        />
                 </PanelBody>
                 <PanelBody title={ __( 'Button', 'insignia' ) } initialOpen={ true }>
                     <TextControl
